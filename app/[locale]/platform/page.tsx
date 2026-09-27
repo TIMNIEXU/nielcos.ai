@@ -17,6 +17,11 @@ const TINTS = [
   "bg-risk-tint text-risk",
 ];
 
+const IMGS = [
+  "gttid", "classification", "compliance-automation",
+  "visibility", "landed-cost", "integrations",
+];
+
 export default async function PlatformPage({
   params,
 }: {
@@ -58,7 +63,16 @@ export default async function PlatformPage({
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {features.map((f, i) => (
             <Reveal key={f.t} delay={(i % 3) * 90}>
-              <div className="dash-card dash-card-hover h-full p-7">
+              <div className="dash-card dash-card-hover h-full overflow-hidden">
+                <div className="relative h-44 overflow-hidden bg-brand-tint/40">
+                  <img
+                    src={`/images/platform/${IMGS[i]}.png`}
+                    alt={f.t}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="p-7">
                 <div className="flex items-center justify-between">
                   <span className={`grid h-12 w-12 place-items-center rounded-2xl text-[17px] font-bold ${TINTS[i % TINTS.length]}`}>
                     {String(i + 1).padStart(2, "0")}
@@ -66,6 +80,7 @@ export default async function PlatformPage({
                 </div>
                 <p className="mt-5 text-[18px] font-bold tracking-tight text-ink">{f.t}</p>
                 <p className="mt-3 text-[14px] leading-relaxed text-muted">{f.d}</p>
+                </div>
               </div>
             </Reveal>
           ))}

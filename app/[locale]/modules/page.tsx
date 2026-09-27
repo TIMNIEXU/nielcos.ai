@@ -12,6 +12,11 @@ const TINTS = [
   "bg-warn-tint text-warn", "bg-vio-tint text-vio", "bg-risk-tint text-risk",
 ];
 
+const IMGS = [
+  "customs", "shipments", "compliance", "documents", "products",
+  "suppliers", "logistics", "finance", "ai-assistant",
+];
+
 export default async function ModulesPage({
   params,
 }: {
@@ -52,7 +57,16 @@ export default async function ModulesPage({
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {items.map((m, i) => (
             <Reveal key={m.n} delay={(i % 3) * 90}>
-              <div className="dash-card dash-card-hover flex h-full flex-col p-7">
+              <div className="dash-card dash-card-hover flex h-full flex-col overflow-hidden">
+                <div className="relative h-44 shrink-0 overflow-hidden bg-brand-tint/40">
+                  <img
+                    src={`/images/modules/${IMGS[i]}.png`}
+                    alt={m.n}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-7">
                 <div className="flex items-center justify-between">
                   <span className={`grid h-12 w-12 place-items-center rounded-2xl text-[16px] font-bold ${TINTS[i % TINTS.length]}`}>
                     {m.n.charAt(0)}
@@ -73,6 +87,7 @@ export default async function ModulesPage({
                     </li>
                   ))}
                 </ul>
+                </div>
               </div>
             </Reveal>
           ))}

@@ -11,6 +11,13 @@ export function generateStaticParams() {
 
 const MODULE_ICONS = ["doc", "truck", "shield", "box", "bot", "chart", "globe", "card"] as const;
 
+const MODULE_IMGS = [
+  "customs", "shipments", "compliance", "documents",
+  "logistics", "finance", "ai-assistant", "control-tower",
+];
+
+const CITY_IMGS = ["new-york-nj", "los-angeles", "chicago"];
+
 function ModuleGlyph({ i }: { i: number }) {
   const paths: Record<string, string> = {
     doc: "M6 2h9l5 5v15H6zM14 2v6h6",
@@ -156,10 +163,20 @@ export default async function HomePage({
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {modules.map((m, i) => (
             <Reveal key={m.name} delay={(i % 4) * 80}>
-              <div className="dash-card dash-card-hover h-full p-6">
-                <ModuleGlyph i={i} />
-                <p className="mt-4 text-[16px] font-bold text-ink">{m.name}</p>
-                <p className="mt-2 text-[13.5px] leading-relaxed text-muted">{m.desc}</p>
+              <div className="dash-card dash-card-hover h-full overflow-hidden">
+                <div className="relative h-32 overflow-hidden bg-brand-tint/40">
+                  <img
+                    src={`/images/modules/${MODULE_IMGS[i]}.png`}
+                    alt={m.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <ModuleGlyph i={i} />
+                  <p className="mt-4 text-[16px] font-bold text-ink">{m.name}</p>
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-muted">{m.desc}</p>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -184,6 +201,16 @@ export default async function HomePage({
               title={t("ai.title")}
               sub={t("ai.sub")}
             />
+            <Reveal delay={100} className="mt-8">
+              <div className="overflow-hidden rounded-2xl border border-line shadow-card">
+                <img
+                  src="/images/ai-risks.png"
+                  alt={t("ai.title")}
+                  loading="lazy"
+                  className="aspect-[16/10] w-full object-cover"
+                />
+              </div>
+            </Reveal>
             <Reveal delay={150} className="mt-8">
               <Link
                 href={`/${locale}/platform`}
@@ -272,9 +299,16 @@ export default async function HomePage({
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {cities.map((c, i) => (
               <Reveal key={c.n} delay={i * 100}>
-                <div className="dash-card dash-card-hover relative overflow-hidden p-6">
-                  <div className="dotgrid absolute inset-0 opacity-50" />
-                  <div className="relative">
+                <div className="dash-card dash-card-hover relative h-full overflow-hidden">
+                  <div className="relative h-44 overflow-hidden bg-brand-tint/40">
+                    <img
+                      src={`/images/network/${CITY_IMGS[i]}.png`}
+                      alt={c.n}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="relative p-6">
                     <span className="inline-flex items-center gap-2 rounded-full bg-brand-tint px-3 py-1 text-[11.5px] font-bold text-brand">
                       <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-brand" />
                       {c.d}
