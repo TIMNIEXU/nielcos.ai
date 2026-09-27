@@ -1,1 +1,419 @@
-{"contact":{"form":{"company":"Company","email":"Work email","message":"What are you moving, and where does it hurt?","name":"Full name","note":"Prefer email? Write to us directly — we reply within one business day.","sub":"Tell us about your operation and we'll tailor the walkthrough.","submit":"Send request","title":"Request a demo"},"hero":{"eyebrow":"Contact","sub":"Demos, pricing, partnerships, or a thorny customs question — a human replies within one business day.","titleA":"Talk to the team","titleB":"behind the system."},"info":{"email":"info@nielcustoms.ai","hours":"Mon–Fri, 9am–5pm ET","locations":"Chicago, IL · New York / New Jersey · Los Angeles, CA","phone":"+1 (732) 338-8098","phoneNote":"24/7 operations line","title":"Reach us"}},"footer":{"company":"Company","contact":"Contact","group":"Part of the Niel Group — alongside Joma Logistics Inc (est. 2008), Niel Supply Chain LLC, and Niel Insurance Agency LLC.","platform":"Platform","rights":"© 2026 NIEL COS. All rights reserved.","tag":"The AI Global Trade Operating System. One group. One global trade solution."},"home":{"ai":{"cta":"See AI in action","eyebrow":"AI Executive Intelligence","risks":[{"d":"$420K potential impact across 17 shipments","t":"Tariff exposure"},{"d":"17 shipments missing documents ahead of arrival","t":"Customs delay risk"},{"d":"8 missing certificates blocking clearance","t":"Supplier documentation"}],"sub":"NIEL AI watches every shipment, tariff change, and document — and flags what matters with a clear dollar impact.","title":"Risks surface before they cost you."},"compliance":{"eyebrow":"Compliance Center","items":[{"n":"FDA","v":"98%"},{"n":"USDA","v":"96%"},{"n":"APHIS","v":"94%"},{"n":"EPA","v":"91%"}],"overall":"Overall compliance","sub":"Every entry is checked against participating government agency requirements automatically — before CBP ever asks.","title":"Regulators, handled."},"cta":{"b1":"Request a demo","b2":"Talk to our team","sub":"See NIEL COS on your own shipments in a 30-minute working session.","title":"Put your trade operation under command."},"hero":{"badge":"AI-powered · Live trade data","cta1":"Request a demo","cta2":"Explore the platform","eyebrow":"Niel Customs Operating System","sub":"NIEL COS unifies customs brokerage, shipments, compliance, documents, and finance in a single AI-powered operating system — so every entry, container, and dollar is visible, predictable, and under control.","titleA":"Your entire global trade","titleB":"operation, under one command."},"kpis":[{"delta":"+1.2 pts this quarter","label":"Entry acceptance rate","value":"98.6%"},{"delta":"vs. manual brokerage","label":"Faster customs clearance","value":"40%"},{"delta":"for customers last year","label":"Duty savings identified","value":"$2.4M"},{"delta":"across every shipment","label":"AI trade monitoring","value":"24/7"}],"marquee":["Customs brokerage","Ocean & air freight","Drayage & trucking","Warehousing","Duty optimization","Trade compliance","Supply chain finance","Control tower visibility"],"modules":{"cta":"View all modules","eyebrow":"One platform","items":[{"desc":"AI-assisted entry filing, HTS classification, and PGA compliance in one flow.","name":"Customs"},{"desc":"End-to-end tracking across ocean, air, and drayage with milestone alerts.","name":"Shipments"},{"desc":"Continuous screening against FDA, USDA, APHIS, and EPA requirements.","name":"Compliance"},{"desc":"Invoices, packing lists, and certificates parsed, stored, and linked to entries.","name":"Documents"},{"desc":"Trucking, warehousing, and fulfillment orchestrated around your freight.","name":"Logistics"},{"desc":"Duty, freight, and landed-cost visibility with pay and financing tools.","name":"Finance"},{"desc":"Ask anything about your trade operations — in plain language.","name":"AI Assistant"},{"desc":"One live view of every shipment, risk, and exception worldwide.","name":"Control Tower"}],"sub":"Stop stitching together brokers, forwarders, spreadsheets, and email threads. NIEL COS brings every function of global trade into one operating system.","title":"Every trade function. One screen."},"network":{"cities":[{"d":"Port & customs hub","n":"New York / New Jersey"},{"d":"West coast gateway","n":"Los Angeles"},{"d":"Midwest distribution","n":"Chicago"}],"eyebrow":"Where we operate","sub":"Operated alongside Joma Logistics Inc — moving freight since 2008 — with teams on both coasts and the Midwest.","title":"From here to anywhere."}},"meta":{"description":"NIEL COS unifies customs, shipments, compliance, documents, and finance in one AI-powered operating system for global trade. One group. One global trade solution.","title":"NIEL COS — AI Global Trade Operating System"},"mock":{"aiTitle":"AI Executive Intelligence","analyze":"Analyze with NIEL AI","greetSub":"Here's what's happening with your global trade operations today.","greeting":"Good morning, Tim","kpi1":"Total Shipments","kpi2":"Customs Entries","kpi3":"Alerts & Risks","kpi4":"Trade Exposure","mapTitle":"Global Trade Overview","recent":"Recent Shipments","riskTitle":"material risks detected","viewAll":"View All"},"modulesPage":{"cta":{"b1":"Request a demo","b2":"Contact us","sub":"Start there. We'll have it live on your operation in weeks, not quarters.","title":"Which module hurts most right now?"},"hero":{"eyebrow":"Modules","sub":"Start with the module you need today. The rest are already connected when you're ready.","titleA":"Twelve modules.","titleB":"Zero blind spots."},"items":[{"d":"Entry filing, HTS classification, PGA messaging, and liquidation tracking — the brokerage desk, modernized.","n":"Customs","points":["AI-suggested HTS codes","PGA compliance checks","Entry status tracking"]},{"d":"Every container and airwaybill tracked across carriers with milestone alerts and exception workflows.","n":"Shipments","points":["Multi-carrier tracking","Milestone alerts","Exception queues"]},{"d":"Denied-party screening, admissibility rules, and audit-ready records for every transaction.","n":"Compliance","points":["Automated screening","Audit trail","Regulatory updates"]},{"d":"Commercial invoices, packing lists, and certificates parsed by AI and pinned to the right entry.","n":"Documents","points":["AI document parsing","Version control","One-click sharing"]},{"d":"Your SKU catalog with HTS, duty rates, and PGA flags maintained in one place.","n":"Products","points":["HTS library","Duty rate tracking","PGA flagging"]},{"d":"Supplier profiles, documentation status, and performance scoring across your vendor base.","n":"Suppliers","points":["Vendor scorecards","Document collection","Risk flags"]},{"d":"Drayage, trucking, and warehousing coordinated with your customs timeline — no more demurrage surprises.","n":"Logistics","points":["Drayage coordination","Warehouse slots","Demurrage watch"]},{"d":"Landed cost, duty payables, and cash-flow timing for every shipment — finance finally speaks freight.","n":"Finance","points":["Landed-cost engine","Duty forecasting","Pay & finance tools"]},{"d":"Ask about any shipment, entry, or regulation in plain language and get a sourced answer in seconds.","n":"AI Assistant","points":["Natural-language Q&A","Cited sources","24/7 availability"]}]},"nav":{"contact":"Contact","demo":"Request a demo","home":"Home","modules":"Modules","platform":"Platform"},"platform":{"cta":{"b1":"Request a demo","b2":"View modules","sub":"Bring one lane, one product, one headache — we'll show you what NIEL COS does with it.","title":"See the platform on your freight."},"features":[{"d":"Every shipment carries one GTTID from PO to proof of delivery. Trace any carton, entry, or invoice to its origin in seconds — no more hunting across systems.","t":"Global Trade Transaction ID"},{"d":"Machine-suggested HTS codes with confidence scoring, plus duty-rate analysis that finds legal savings before you file — not after you overpay.","t":"AI classification & duty engineering"},{"d":"PGA requirements, admissibility checks, and document validation run continuously against every entry. Exceptions arrive with a fix, not just a flag.","t":"Compliance automation"},{"d":"Ocean, air, and drayage milestones stream into one live map. At-risk shipments escalate automatically with owner, impact, and next action.","t":"Control tower visibility"},{"d":"Duty, freight, warehousing, and fees roll into true landed cost per SKU. Pay vendors, manage cash flow, and forecast with trade-accurate numbers.","t":"Landed-cost finance"},{"d":"Connect your ERP, WMS, or forwarder via API and EDI. NIEL COS meets your stack where it lives — no rip-and-replace required.","t":"Open integrations"}],"hero":{"eyebrow":"The platform","sub":"NIEL COS is built on a Trade-to-Cash spine: every order, shipment, entry, and payment linked by a single Global Trade Transaction ID — from purchase order to final delivery.","titleA":"One system of record","titleB":"for global trade."},"integration":{"points":["REST API & webhooks","EDI 850 / 856 / 810","ERP & WMS connectors","SSO & audit logs"],"sub":"API-first design with EDI support. Your ERP stays; your spreadsheets retire.","title":"Plays well with your stack"}}}
+{
+  "contact": {
+    "form": {
+      "company": "Company",
+      "email": "Work email",
+      "message": "What are you moving, and where does it hurt?",
+      "name": "Full name",
+      "note": "Prefer email? Write to us directly — we reply within one business day.",
+      "sub": "Tell us about your operation and we'll tailor the walkthrough.",
+      "submit": "Send request",
+      "title": "Request a demo"
+    },
+    "hero": {
+      "eyebrow": "Contact",
+      "sub": "Demos, pricing, partnerships, or a thorny customs question — a human replies within one business day.",
+      "titleA": "Talk to the team",
+      "titleB": "behind the system."
+    },
+    "info": {
+      "email": "info@nielcustoms.ai",
+      "hours": "Mon–Fri, 9am–5pm ET",
+      "locations": "Chicago, IL · New York / New Jersey · Los Angeles, CA",
+      "phone": "+1 (732) 338-8098",
+      "phoneNote": "24/7 operations line",
+      "title": "Reach us"
+    }
+  },
+  "footer": {
+    "company": "Company",
+    "contact": "Contact",
+    "group": "Part of the Niel Group — alongside Joma Logistics Inc (est. 2008), Niel Supply Chain LLC, and Niel Insurance Agency LLC.",
+    "platform": "Platform",
+    "rights": "© 2026 NIEL COS. All rights reserved.",
+    "tag": "The AI Global Trade Operating System. One group. One global trade solution."
+  },
+  "home": {
+    "ai": {
+      "cta": "See AI in action",
+      "eyebrow": "AI Executive Intelligence",
+      "risks": [
+        {
+          "d": "$420K potential impact across 17 shipments",
+          "t": "Tariff exposure"
+        },
+        {
+          "d": "17 shipments missing documents ahead of arrival",
+          "t": "Customs delay risk"
+        },
+        {
+          "d": "8 missing certificates blocking clearance",
+          "t": "Supplier documentation"
+        }
+      ],
+      "sub": "NIEL AI watches every shipment, tariff change, and document — and flags what matters with a clear dollar impact.",
+      "title": "Risks surface before they cost you."
+    },
+    "compliance": {
+      "eyebrow": "Compliance Center",
+      "items": [
+        {
+          "n": "FDA",
+          "v": "98%"
+        },
+        {
+          "n": "USDA",
+          "v": "96%"
+        },
+        {
+          "n": "APHIS",
+          "v": "94%"
+        },
+        {
+          "n": "EPA",
+          "v": "91%"
+        }
+      ],
+      "overall": "Overall compliance",
+      "sub": "Every entry is checked against participating government agency requirements automatically — before CBP ever asks.",
+      "title": "Regulators, handled."
+    },
+    "cta": {
+      "b1": "Request a demo",
+      "b2": "Talk to our team",
+      "sub": "See NIEL COS on your own shipments in a 30-minute working session.",
+      "title": "Put your trade operation under command."
+    },
+    "hero": {
+      "badge": "AI-powered · Live trade data",
+      "cta1": "Request a demo",
+      "cta2": "Explore the platform",
+      "eyebrow": "Niel Customs Operating System",
+      "sub": "NIEL COS unifies customs brokerage, shipments, compliance, documents, and finance in a single AI-powered operating system — so every entry, container, and dollar is visible, predictable, and under control.",
+      "titleA": "Your entire global trade",
+      "titleB": "operation, under one command."
+    },
+    "kpis": [
+      {
+        "delta": "+1.2 pts this quarter",
+        "label": "Entry acceptance rate",
+        "value": "98.6%"
+      },
+      {
+        "delta": "vs. manual brokerage",
+        "label": "Faster customs clearance",
+        "value": "40%"
+      },
+      {
+        "delta": "for customers last year",
+        "label": "Duty savings identified",
+        "value": "$2.4M"
+      },
+      {
+        "delta": "across every shipment",
+        "label": "AI trade monitoring",
+        "value": "24/7"
+      }
+    ],
+    "marquee": [
+      "Customs brokerage",
+      "Ocean & air freight",
+      "Drayage & trucking",
+      "Warehousing",
+      "Duty optimization",
+      "Trade compliance",
+      "Supply chain finance",
+      "Control tower visibility"
+    ],
+    "modules": {
+      "cta": "View all modules",
+      "eyebrow": "One platform",
+      "items": [
+        {
+          "desc": "AI-assisted entry filing, HTS classification, and PGA compliance in one flow.",
+          "name": "Customs"
+        },
+        {
+          "desc": "End-to-end tracking across ocean, air, and drayage with milestone alerts.",
+          "name": "Shipments"
+        },
+        {
+          "desc": "Continuous screening against FDA, USDA, APHIS, and EPA requirements.",
+          "name": "Compliance"
+        },
+        {
+          "desc": "Invoices, packing lists, and certificates parsed, stored, and linked to entries.",
+          "name": "Documents"
+        },
+        {
+          "desc": "Trucking, warehousing, and fulfillment orchestrated around your freight.",
+          "name": "Logistics"
+        },
+        {
+          "desc": "Duty, freight, and landed-cost visibility with pay and financing tools.",
+          "name": "Finance"
+        },
+        {
+          "desc": "Ask anything about your trade operations — in plain language.",
+          "name": "AI Assistant"
+        },
+        {
+          "desc": "One live view of every shipment, risk, and exception worldwide.",
+          "name": "Control Tower"
+        }
+      ],
+      "sub": "Stop stitching together brokers, forwarders, spreadsheets, and email threads. NIEL COS brings every function of global trade into one operating system.",
+      "title": "Every trade function. One screen."
+    },
+    "network": {
+      "cities": [
+        {
+          "d": "Port & customs hub",
+          "n": "New York / New Jersey"
+        },
+        {
+          "d": "West coast gateway",
+          "n": "Los Angeles"
+        },
+        {
+          "d": "Midwest distribution",
+          "n": "Chicago"
+        }
+      ],
+      "eyebrow": "Where we operate",
+      "sub": "Operated alongside Joma Logistics Inc — moving freight since 2008 — with teams on both coasts and the Midwest.",
+      "title": "From here to anywhere."
+    }
+  },
+  "meta": {
+    "description": "NIEL COS unifies customs, shipments, compliance, documents, and finance in one AI-powered operating system for global trade. One group. One global trade solution.",
+    "title": "NIEL COS — AI Global Trade Operating System"
+  },
+  "mock": {
+    "aiTitle": "AI Executive Intelligence",
+    "analyze": "Analyze with NIEL AI",
+    "greetSub": "Here's what's happening with your global trade operations today.",
+    "greeting": "Good morning, Tim",
+    "kpi1": "Total Shipments",
+    "kpi2": "Customs Entries",
+    "kpi3": "Alerts & Risks",
+    "kpi4": "Trade Exposure",
+    "mapTitle": "Global Trade Overview",
+    "recent": "Recent Shipments",
+    "riskTitle": "material risks detected",
+    "viewAll": "View All"
+  },
+  "modulesPage": {
+    "cta": {
+      "b1": "Request a demo",
+      "b2": "Contact us",
+      "sub": "Start there. We'll have it live on your operation in weeks, not quarters.",
+      "title": "Which module hurts most right now?"
+    },
+    "hero": {
+      "eyebrow": "Modules",
+      "sub": "Start with the module you need today. The rest are already connected when you're ready.",
+      "titleA": "Twelve modules.",
+      "titleB": "Zero blind spots."
+    },
+    "items": [
+      {
+        "d": "Entry filing, HTS classification, PGA messaging, and liquidation tracking — the brokerage desk, modernized.",
+        "n": "Customs",
+        "points": [
+          "AI-suggested HTS codes",
+          "PGA compliance checks",
+          "Entry status tracking"
+        ]
+      },
+      {
+        "d": "Every container and airwaybill tracked across carriers with milestone alerts and exception workflows.",
+        "n": "Shipments",
+        "points": [
+          "Multi-carrier tracking",
+          "Milestone alerts",
+          "Exception queues"
+        ]
+      },
+      {
+        "d": "Denied-party screening, admissibility rules, and audit-ready records for every transaction.",
+        "n": "Compliance",
+        "points": [
+          "Automated screening",
+          "Audit trail",
+          "Regulatory updates"
+        ]
+      },
+      {
+        "d": "Commercial invoices, packing lists, and certificates parsed by AI and pinned to the right entry.",
+        "n": "Documents",
+        "points": [
+          "AI document parsing",
+          "Version control",
+          "One-click sharing"
+        ]
+      },
+      {
+        "d": "Your SKU catalog with HTS, duty rates, and PGA flags maintained in one place.",
+        "n": "Products",
+        "points": [
+          "HTS library",
+          "Duty rate tracking",
+          "PGA flagging"
+        ]
+      },
+      {
+        "d": "Supplier profiles, documentation status, and performance scoring across your vendor base.",
+        "n": "Suppliers",
+        "points": [
+          "Vendor scorecards",
+          "Document collection",
+          "Risk flags"
+        ]
+      },
+      {
+        "d": "Drayage, trucking, and warehousing coordinated with your customs timeline — no more demurrage surprises.",
+        "n": "Logistics",
+        "points": [
+          "Drayage coordination",
+          "Warehouse slots",
+          "Demurrage watch"
+        ]
+      },
+      {
+        "d": "Landed cost, duty payables, and cash-flow timing for every shipment — finance finally speaks freight.",
+        "n": "Finance",
+        "points": [
+          "Landed-cost engine",
+          "Duty forecasting",
+          "Pay & finance tools"
+        ]
+      },
+      {
+        "d": "Ask about any shipment, entry, or regulation in plain language and get a sourced answer in seconds.",
+        "n": "AI Assistant",
+        "points": [
+          "Natural-language Q&A",
+          "Cited sources",
+          "24/7 availability"
+        ]
+      }
+    ]
+  },
+  "nav": {
+    "contact": "Contact",
+    "demo": "Request a demo",
+    "home": "Home",
+    "modules": "Modules",
+    "platform": "Platform",
+    "login": "Sign in"
+  },
+  "platform": {
+    "cta": {
+      "b1": "Request a demo",
+      "b2": "View modules",
+      "sub": "Bring one lane, one product, one headache — we'll show you what NIEL COS does with it.",
+      "title": "See the platform on your freight."
+    },
+    "features": [
+      {
+        "d": "Every shipment carries one GTTID from PO to proof of delivery. Trace any carton, entry, or invoice to its origin in seconds — no more hunting across systems.",
+        "t": "Global Trade Transaction ID"
+      },
+      {
+        "d": "Machine-suggested HTS codes with confidence scoring, plus duty-rate analysis that finds legal savings before you file — not after you overpay.",
+        "t": "AI classification & duty engineering"
+      },
+      {
+        "d": "PGA requirements, admissibility checks, and document validation run continuously against every entry. Exceptions arrive with a fix, not just a flag.",
+        "t": "Compliance automation"
+      },
+      {
+        "d": "Ocean, air, and drayage milestones stream into one live map. At-risk shipments escalate automatically with owner, impact, and next action.",
+        "t": "Control tower visibility"
+      },
+      {
+        "d": "Duty, freight, warehousing, and fees roll into true landed cost per SKU. Pay vendors, manage cash flow, and forecast with trade-accurate numbers.",
+        "t": "Landed-cost finance"
+      },
+      {
+        "d": "Connect your ERP, WMS, or forwarder via API and EDI. NIEL COS meets your stack where it lives — no rip-and-replace required.",
+        "t": "Open integrations"
+      }
+    ],
+    "hero": {
+      "eyebrow": "The platform",
+      "sub": "NIEL COS is built on a Trade-to-Cash spine: every order, shipment, entry, and payment linked by a single Global Trade Transaction ID — from purchase order to final delivery.",
+      "titleA": "One system of record",
+      "titleB": "for global trade."
+    },
+    "integration": {
+      "points": [
+        "REST API & webhooks",
+        "EDI 850 / 856 / 810",
+        "ERP & WMS connectors",
+        "SSO & audit logs"
+      ],
+      "sub": "API-first design with EDI support. Your ERP stays; your spreadsheets retire.",
+      "title": "Plays well with your stack"
+    }
+  },
+  "auth": {
+    "loginTitle": "Welcome back",
+    "loginSub": "Sign in to your NIEL COS workspace.",
+    "signupTitle": "Create your workspace",
+    "signupSub": "One account for your whole company. Free during the pilot.",
+    "name": "Your name",
+    "company": "Company name",
+    "email": "Work email",
+    "password": "Password",
+    "passwordHint": "At least 8 characters",
+    "signIn": "Sign in",
+    "signingIn": "Signing in…",
+    "createAccount": "Create account",
+    "creating": "Creating…",
+    "noAccount": "New to NIEL COS?",
+    "hasAccount": "Already have an account?",
+    "error": "Something went wrong — check your entries and try again.",
+    "confirmEmail": "Account created! Check your inbox for the confirmation link, then sign in.",
+    "notConfigured": "Sign-in isn't connected yet. Please come back soon."
+  },
+  "app": {
+    "workspace": "Workspace",
+    "myShipments": "My shipments",
+    "sub": "Live status of every container under your GTTID.",
+    "inTransit": "In transit",
+    "delivered": "Delivered",
+    "attention": "Needs attention",
+    "gttid": "GTTID",
+    "container": "Container",
+    "status": "Status",
+    "route": "Route",
+    "eta": "ETA",
+    "view": "View",
+    "empty": "No shipments yet. When your forwarder books freight under your account, it shows up here.",
+    "milestones": "Milestones",
+    "documents": "Documents",
+    "upload": "Upload document",
+    "uploading": "Uploading…",
+    "uploadHint": "Invoice, packing list, B/L… PDF, JPG or PNG, up to 20 MB.",
+    "uploadedBy": "Uploaded",
+    "download": "Download",
+    "delete": "Delete",
+    "back": "← All shipments",
+    "signOut": "Sign out",
+    "notFound": "Shipment not found.",
+    "updated": "Last updated",
+    "origin": "Origin",
+    "destination": "Destination",
+    "currentLocation": "Current location",
+    "statusNames": {
+      "pending_pickup": "Pending pickup",
+      "at_port": "At port",
+      "in_transit": "In transit",
+      "out_for_delivery": "Out for delivery",
+      "delivered": "Delivered",
+      "on_hold": "On hold"
+    }
+  }
+}

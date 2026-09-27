@@ -73,6 +73,12 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <LocaleSwitch />
           <Link
+            href={`/${locale}/login`}
+            className="hidden text-[14px] font-semibold text-ink-soft transition-colors hover:text-brand sm:block"
+          >
+            {t("login")}
+          </Link>
+          <Link
             href={`/${locale}/contact`}
             className="hidden rounded-full bg-brand px-4.5 py-2 text-[14px] font-semibold text-white shadow-[0_6px_16px_-6px_rgba(29,78,216,0.7)] transition-all hover:-translate-y-px hover:bg-brand-deep sm:block"
           >
