@@ -13,7 +13,7 @@
     "next": "16.3.6",
     "next-intl": "^4.14.7",
     "pdf-parse": "^2.4.5",
-    "pdfjs-dist": "^6.3.289",
+    "pdfjs-dist": "^5.4.296",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },

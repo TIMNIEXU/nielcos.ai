@@ -54,19 +54,19 @@ export async function POST(req: NextRequest) {
     .single();
   if (docErr || !doc) return NextResponse.json({ error: "not_found" }, { status: 404 });
 
-  const fail = async (status: string) => {
+  const fail = async (status: string, stage: string, detail = "") => {
     await sb.from("documents").update({ parse_status: status, parsed_at: new Date().toISOString() }).eq("id", docId);
-    return NextResponse.json({ ok: false, parse_status: status });
+    return NextResponse.json({ ok: false, parse_status: status, stage, detail: detail.slice(0, 300) });
   };
 
   const { data: fileData, error: dlErr } = await sb.storage
     .from("shipment-docs")
     .download(doc.file_path);
-  if (dlErr || !fileData) return fail("failed");
+  if (dlErr || !fileData) return fail("failed", "download", dlErr?.message || "empty");
 
   const buf = Buffer.from(await fileData.arrayBuffer());
   if (buf.length < 5 || buf.subarray(0, 5).toString("latin1") !== "%PDF-") {
-    return fail("not_pdf");
+    return fail("not_pdf", "magic-bytes");
   }
 
   let PDFParse: any;
@@ -75,8 +75,9 @@ export async function POST(req: NextRequest) {
     await import("pdfjs-dist/legacy/build/pdf.worker.mjs");
     ({ PDFParse } = await import("pdf-parse"));
   } catch (e) {
-    console.error("doc parse import error:", (e as Error)?.message);
-    return fail("failed");
+    const msg = (e as Error)?.message || String(e);
+    console.error("doc parse import error:", msg);
+    return fail("failed", "import", msg);
   }
 
   let text = "";
@@ -86,10 +87,11 @@ export async function POST(req: NextRequest) {
     await parser.destroy();
     text = data.text || "";
   } catch (e) {
-    console.error("doc parse error:", (e as Error)?.message);
-    return fail("failed");
+    const msg = (e as Error)?.message || String(e);
+    console.error("doc parse error:", msg);
+    return fail("failed", "extract", msg);
   }
-  if (text.trim().length < 50) return fail("no_text"); // scanned/image-only PDF
+  if (text.trim().length < 50) return fail("no_text", "extract", `chars=${text.trim().length}`); // scanned/image-only PDF
 
   const result = extractDocument(text);
   const extracted = {
@@ -109,7 +111,7 @@ export async function POST(req: NextRequest) {
     .eq("id", docId);
   if (upErr) {
     console.error("doc parse save error:", upErr.message);
-    return fail("failed");
+    return fail("failed", "save", upErr.message);
   }
   return NextResponse.json({ ok: true, doc_type: result.doc_type, extracted, parse_status: "parsed" });
 }

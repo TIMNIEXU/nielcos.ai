@@ -60,15 +60,26 @@ export default function DocPanel({
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState(false);
   const [parsingIds, setParsingIds] = useState<Set<string>>(new Set());
+  const [parseDetail, setParseDetail] = useState<Record<string, string>>({});
 
   async function runParse(docId: string) {
     setParsingIds((s) => new Set(s).add(docId));
     try {
-      await fetch("/api/app/documents/parse", {
+      const res = await fetch("/api/app/documents/parse", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ docId }),
       });
+      const j = await res.json().catch(() => ({} as any));
+      if (!j.ok && (j.stage || j.detail)) {
+        setParseDetail((m) => ({ ...m, [docId]: [j.stage, j.detail].filter(Boolean).join(": ") }));
+      } else {
+        setParseDetail((m) => {
+          const n = { ...m };
+          delete n[docId];
+          return n;
+        });
+      }
     } catch {
       /* status stays on the row; user can retry */
     }
@@ -180,12 +191,17 @@ export default function DocPanel({
       return <p className="mt-1 text-xs text-ink-soft/70">{t("parseNotPdf")}</p>;
     if (doc.parse_status === "failed")
       return (
-        <p className="mt-1 text-xs text-red-600">
-          {t("parseFailed")}{" "}
-          <button type="button" onClick={() => runParse(doc.id)} className="font-semibold underline">
-            {t("reparse")}
-          </button>
-        </p>
+        <div className="mt-1">
+          <p className="text-xs text-red-600">
+            {t("parseFailed")}{" "}
+            <button type="button" onClick={() => runParse(doc.id)} className="font-semibold underline">
+              {t("reparse")}
+            </button>
+          </p>
+          {parseDetail[doc.id] && (
+            <p className="mt-0.5 font-mono text-[11px] text-ink-soft/70">{parseDetail[doc.id]}</p>
+          )}
+        </div>
       );
     const s = doc.doc_type ? summary(doc) : null;
     if (s) return <p className="mt-1 text-xs text-ink-soft">{s}</p>;
