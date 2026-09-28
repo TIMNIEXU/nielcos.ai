@@ -445,7 +445,17 @@
       "freeTime": "免费期",
       "remarks": "备注",
       "consignee": "收货人",
-      "notify": "通知方"
+      "notify": "通知方",
+      "tblTitle": "柜号 / 封号",
+      "colCntr": "柜号",
+      "colSeal": "封号",
+      "colType": "柜型",
+      "colPkgs": "件数",
+      "colKgs": "公斤",
+      "colCbm": "体积",
+      "totalRow": "合计",
+      "invoiceNo": "发票号",
+      "preparedBy": "制单人"
     }
   }
 }

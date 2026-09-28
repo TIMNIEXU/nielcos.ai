@@ -41,12 +41,21 @@ export default async function ArrivalNoticePage({ params }: Props) {
   if (!shipment) redirect({ href: "/app", locale });
 
   // RLS: only issued notices of the customer's own company are readable.
-  const { data: n } = await sb
+  // Match by shipment, or by container number inside a multi-container notice.
+  const { data: noticeRows } = await sb
     .from("arrival_notices")
     .select("*")
-    .eq("shipment_id", shipment.id)
-    .eq("status", "issued")
-    .maybeSingle();
+    .eq("status", "issued");
+  const n =
+    (noticeRows ?? []).find(
+      (r: { shipment_id: string; containers?: unknown }) =>
+        r.shipment_id === shipment.id ||
+        (Array.isArray(r.containers) &&
+          r.containers.some(
+            (c: { container?: string }) =>
+              c.container && c.container.toUpperCase() === shipment.container_number.toUpperCase()
+          ))
+    ) ?? null;
   if (!n) redirect({ href: `/app/${encodeURIComponent(gttid)}`, locale });
 
   const charges = (Array.isArray(n.charges) ? n.charges : []) as Charge[];
@@ -54,6 +63,14 @@ export default async function ArrivalNoticePage({ params }: Props) {
   const cur = n.currency || "USD";
   const money = (v: number) =>
     `${cur} ${v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+  type Cntr = { container?: string; seal?: string; type?: string; packages?: string; weight_kgs?: number | null; cbm?: number | null };
+  const cntrs = (Array.isArray(n.containers) ? n.containers : []).filter(
+    (c: unknown) => c && (c as Cntr).container
+  ) as Cntr[];
+  const sumPkgs = cntrs.reduce((s, c) => s + (parseFloat(String(c.packages)) || 0), 0);
+  const sumKgs = cntrs.reduce((s, c) => s + (Number(c.weight_kgs) || 0), 0);
+  const sumCbm = cntrs.reduce((s, c) => s + (Number(c.cbm) || 0), 0);
 
   return (
     <section className="min-h-[75vh] bg-slate-200/60">
@@ -78,13 +95,19 @@ export default async function ArrivalNoticePage({ params }: Props) {
               <p className="text-2xl font-black tracking-tight text-slate-900">JOMA LOGISTICS INC</p>
               <p className="mt-1 text-[12px] leading-relaxed text-slate-600">
                 70 Carter Dr, Edison, NJ 08817 · Tel: 732-338-8098 · Fax: 888-302-0636
-                <br />tim@jomaus.com · www.jomaus.com
+                <br />tim@jomainc.com · www.jomaus.com
               </p>
             </div>
             <div className="text-right">
               <p className="text-lg font-black tracking-wide text-slate-900">ARRIVAL NOTICE</p>
               <p className="text-lg font-black tracking-wide text-slate-900">/ FREIGHT INVOICE</p>
               <p className="mt-1 font-mono text-sm font-bold text-brand">{n.notice_no}</p>
+              {n.invoice_no && (
+                <p className="mt-0.5 text-[12px] text-slate-600">{t("an.invoiceNo")}: <span className="font-mono font-semibold text-slate-800">{n.invoice_no}</span></p>
+              )}
+              {n.prepared_by && (
+                <p className="mt-0.5 text-[12px] text-slate-600">{t("an.preparedBy")}: {n.prepared_by}</p>
+              )}
             </div>
           </div>
 
@@ -109,7 +132,7 @@ export default async function ArrivalNoticePage({ params }: Props) {
             <Row k={t("an.mbl")} v={n.mbl_no} mono />
             <Row k={t("an.hbl")} v={n.hbl_no} mono />
             <Row k={t("an.vessel")} v={n.vessel_voyage} />
-            <Row k={t("an.cntrSeal")} v={n.container_seal || shipment.container_number} mono />
+            {cntrs.length === 0 && <Row k={t("an.cntrSeal")} v={n.container_seal || shipment.container_number} mono />}
             <Row k={t("an.pol")} v={n.port_of_loading} />
             <Row k={t("an.pod")} v={n.port_of_discharge} />
             <Row k={t("an.delivery")} v={n.place_of_delivery} />
@@ -119,6 +142,47 @@ export default async function ArrivalNoticePage({ params }: Props) {
             <Row k={t("an.deliveryEta")} v={n.delivery_eta} mono />
             <Row k={t("an.pickup")} v={n.pickup_location} />
           </dl>
+
+          {/* Containers table */}
+          {cntrs.length > 0 && (
+            <div className="mt-6 border-t border-slate-200 pt-6">
+              <p className="text-[10px] font-bold tracking-[0.18em] text-slate-500 uppercase">{t("an.tblTitle")}</p>
+              <table className="mt-2 w-full text-[13px]">
+                <thead>
+                  <tr className="border-b border-slate-200 text-left text-[11px] tracking-wider text-slate-500 uppercase">
+                    <th className="py-2">{t("an.colCntr")}</th>
+                    <th className="py-2">{t("an.colSeal")}</th>
+                    <th className="py-2">{t("an.colType")}</th>
+                    <th className="py-2 text-right">{t("an.colPkgs")}</th>
+                    <th className="py-2 text-right">{t("an.colKgs")}</th>
+                    <th className="py-2 text-right">{t("an.colCbm")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cntrs.map((c, i) => (
+                    <tr key={i} className="border-b border-slate-100">
+                      <td className="py-2 font-mono font-semibold text-slate-900">{c.container}</td>
+                      <td className="py-2 font-mono text-slate-700">{c.seal || "—"}</td>
+                      <td className="py-2 text-slate-700">{c.type || "—"}</td>
+                      <td className="py-2 text-right text-slate-800">{c.packages || "—"}</td>
+                      <td className="py-2 text-right font-mono text-slate-800">
+                        {c.weight_kgs ? Number(c.weight_kgs).toLocaleString() : "—"}
+                      </td>
+                      <td className="py-2 text-right font-mono text-slate-800">
+                        {c.cbm ? Number(c.cbm).toLocaleString() : "—"}
+                      </td>
+                    </tr>
+                  ))}
+                  <tr className="font-bold">
+                    <td className="py-2 text-slate-900" colSpan={3}>{t("an.totalRow")} ({cntrs.length})</td>
+                    <td className="py-2 text-right text-slate-900">{sumPkgs ? sumPkgs.toLocaleString() : "—"}</td>
+                    <td className="py-2 text-right font-mono text-slate-900">{sumKgs ? sumKgs.toLocaleString() : "—"}</td>
+                    <td className="py-2 text-right font-mono text-slate-900">{sumCbm ? sumCbm.toLocaleString() : "—"}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
 
           {/* Cargo */}
           <div className="mt-6 border-t border-slate-200 pt-6">

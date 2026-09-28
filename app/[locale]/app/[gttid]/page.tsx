@@ -64,12 +64,21 @@ export default async function ShipmentDetail({ params }: Props) {
     .eq("shipment_id", shipment.id)
     .order("created_at", { ascending: false });
 
-  const { data: arrival } = await sb
+  const { data: arrivalRows } = await sb
     .from("arrival_notices")
-    .select("notice_no, eta, charges, currency")
-    .eq("shipment_id", shipment.id)
-    .eq("status", "issued")
-    .maybeSingle();
+    .select("shipment_id, notice_no, eta, charges, currency, containers")
+    .eq("status", "issued");
+
+  // A notice covers the shipment directly, or lists its container in a multi-container notice.
+  const arrival = (arrivalRows ?? []).find(
+    (r) =>
+      r.shipment_id === shipment.id ||
+      (Array.isArray(r.containers) &&
+        r.containers.some(
+          (c: { container?: string }) =>
+            c.container && c.container.toUpperCase() === shipment.container_number.toUpperCase()
+        ))
+  ) ?? null;
 
   const statusName = (() => {
     try {

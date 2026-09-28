@@ -445,7 +445,17 @@
       "freeTime": "Free Time",
       "remarks": "Remarks",
       "consignee": "Consignee",
-      "notify": "Notify Party"
+      "notify": "Notify Party",
+      "tblTitle": "Container / Seal No.",
+      "colCntr": "Container",
+      "colSeal": "Seal",
+      "colType": "Type",
+      "colPkgs": "Packages",
+      "colKgs": "KGS",
+      "colCbm": "CBM",
+      "totalRow": "Total",
+      "invoiceNo": "Invoice No.",
+      "preparedBy": "Prepared by"
     }
   }
 }
