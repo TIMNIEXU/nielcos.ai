@@ -54,11 +54,6 @@ export default function ShipmentCards({
               <p className="font-mono text-lg font-bold text-ink">{s.gttid}</p>
               <p className="mt-0.5 text-sm text-ink-soft">
                 {t("container")}: <span className="font-semibold">{s.container_number}</span>
-                {(s.containers?.length ?? 0) > 1 && (
-                  <span className="ml-1.5 rounded-full bg-brand-tint px-2 py-0.5 text-[11px] font-bold text-brand-deep">
-                    +{s.containers!.length - 1}
-                  </span>
-                )}
               </p>
               {s.mbl_no && (
                 <p className="mt-0.5 font-mono text-xs text-ink-soft">
