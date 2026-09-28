@@ -455,7 +455,8 @@
       "colCbm": "体积",
       "totalRow": "合计",
       "invoiceNo": "发票号",
-      "preparedBy": "制单人"
+      "preparedBy": "制单人",
+      "shipper": "发货人"
     }
   }
 }

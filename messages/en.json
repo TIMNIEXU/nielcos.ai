@@ -455,7 +455,8 @@
       "colCbm": "CBM",
       "totalRow": "Total",
       "invoiceNo": "Invoice No.",
-      "preparedBy": "Prepared by"
+      "preparedBy": "Prepared by",
+      "shipper": "Shipper"
     }
   }
 }

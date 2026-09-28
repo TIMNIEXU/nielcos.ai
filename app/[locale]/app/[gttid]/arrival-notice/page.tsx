@@ -112,7 +112,12 @@ export default async function ArrivalNoticePage({ params }: Props) {
           </div>
 
           {/* Parties */}
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          <div className="mt-6 grid gap-6 sm:grid-cols-3">
+            <div className="rounded-lg bg-slate-50 p-4">
+              <p className="text-[10px] font-bold tracking-[0.18em] text-slate-500 uppercase">{t("an.shipper")}</p>
+              <p className="mt-1 font-bold text-slate-900">{n.shipper_name || "—"}</p>
+              {n.shipper_address && <p className="mt-1 text-[13px] whitespace-pre-line text-slate-700">{n.shipper_address}</p>}
+            </div>
             <div className="rounded-lg bg-slate-50 p-4">
               <p className="text-[10px] font-bold tracking-[0.18em] text-slate-500 uppercase">{t("an.consignee")}</p>
               <p className="mt-1 font-bold text-slate-900">{n.consignee_name || "—"}</p>
