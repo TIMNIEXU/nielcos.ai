@@ -35,10 +35,12 @@ type PreviewRow = {
   value_usd: string;
   hts: string;
   hts_rate: string;
+  rate_text: string;
   material: string;
   origin: string;
   confidence: string;
   candidates: Line["suggested_hts"];
+  duty: { kind: string; rate?: number; source?: string; text?: string } | null;
   keep: boolean;
 };
 
@@ -74,6 +76,8 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
 
   // per-line suggestion state
   const [suggesting, setSuggesting] = useState<string | null>(null);
+  const [rateLookup, setRateLookup] = useState<Record<string, any>>({});
+  const [lookingUp, setLookingUp] = useState<string | null>(null);
 
   // document import state
   const [impBusy, setImpBusy] = useState(false);
@@ -105,6 +109,8 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
         value_usd: l.value_usd != null ? String(l.value_usd) : "",
         hts: l.hts ?? "",
         hts_rate: l.hts_rate != null ? String(l.hts_rate) : "",
+        rate_text: l.rate_text ?? "",
+        duty: l.duty ?? null,
         material: l.material ?? "",
         origin: l.origin ?? data.origin_default ?? "",
         confidence: l.confidence ?? "low",
@@ -239,6 +245,22 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
     if (!confirm(t.confirmDeleteLine)) return;
     const res = await fetch(`/api/app/customs/lines/${id}`, { method: "DELETE" });
     if (res.ok) setLines((ls) => ls.filter((l) => l.id !== id));
+  };
+
+  const lookupRate = async (line: Line) => {
+    if (!line.confirmed_hts) return;
+    setLookingUp(line.id);
+    try {
+      const res = await fetch("/api/app/customs/suggest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ hts: line.confirmed_hts }),
+      });
+      const data = await res.json();
+      if (res.ok) setRateLookup((m) => ({ ...m, [line.id]: data }));
+    } finally {
+      setLookingUp(null);
+    }
   };
 
   const suggestFor = async (line: Line) => {
@@ -479,6 +501,54 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
                     />
                   </div>
                 </div>
+                {/* USITC rate lookup + additional-duty suggestion */}
+                <div className="mt-2">
+                  <button
+                    onClick={() => lookupRate(l)}
+                    disabled={lookingUp === l.id || !l.confirmed_hts}
+                    className="text-xs font-bold text-brand-deep hover:underline disabled:opacity-40"
+                  >
+                    {lookingUp === l.id ? t.lookingUp : `🔍 ${t.lookupRate}`}
+                  </button>
+                  {rateLookup[l.id] && (
+                    <div className="mt-1.5 rounded-lg bg-slate-50 p-2.5 text-xs ring-1 ring-line-soft">
+                      {rateLookup[l.id].found ? (
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-bold text-ink">
+                            USITC: {rateLookup[l.id].rate_text || (rateLookup[l.id].general_rate != null ? `${rateLookup[l.id].general_rate}%` : "—")}
+                          </span>
+                          {rateLookup[l.id].general_rate != null && (
+                            <button
+                              onClick={() => patchLine(l.id, { duty_rate: Number(rateLookup[l.id].general_rate) })}
+                              className="rounded-full bg-emerald-100 px-2.5 py-0.5 font-bold text-emerald-700 hover:bg-emerald-200"
+                            >
+                              {t.fillRate}
+                            </button>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="text-ink-soft">{t.usitcNotFound}</p>
+                      )}
+                      {rateLookup[l.id].duty_suggestion?.kind === "rate" && (
+                        <div className="mt-1.5 flex flex-wrap items-center gap-2">
+                          <span className="font-bold text-amber-700">
+                            {t.dutySuggest}: {rateLookup[l.id].duty_suggestion.rate}% ({rateLookup[l.id].duty_suggestion.source})
+                          </span>
+                          <button
+                            onClick={() => patchLine(l.id, { additional_pct: Number(rateLookup[l.id].duty_suggestion.rate) })}
+                            className="rounded-full bg-amber-100 px-2.5 py-0.5 font-bold text-amber-800 hover:bg-amber-200"
+                          >
+                            {t.adopt}
+                          </button>
+                          <span className="text-[11px] text-ink-soft">{t.verifyDuty}</span>
+                        </div>
+                      )}
+                      {rateLookup[l.id].duty_suggestion?.kind === "warning" && (
+                        <p className="mt-1.5 text-[11px] text-amber-700">⚠️ {rateLookup[l.id].duty_suggestion.text}</p>
+                      )}
+                    </div>
+                  )}
+                </div>
                 <div className="mt-3 grid grid-cols-2 gap-3">
                   <div>
                     <label className={lblCls}>{t.material}</label>
@@ -607,6 +677,17 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
                           />
                           {r.hts && r.hts_rate && (
                             <p className="mt-1 text-[11px] font-bold text-emerald-700">{r.hts_rate}%</p>
+                          )}
+                          {r.hts && !r.hts_rate && r.rate_text && (
+                            <p className="mt-1 text-[11px] text-ink-soft">{r.rate_text}</p>
+                          )}
+                          {r.duty?.kind === "rate" && (
+                            <p className="mt-1 text-[11px] font-bold text-amber-700">
+                              232 ≈ {r.duty.rate}% ({r.duty.source}) · {t.verifyDuty}
+                            </p>
+                          )}
+                          {r.duty?.kind === "warning" && (
+                            <p className="mt-1 text-[11px] text-amber-700">⚠️ {t.derivativeCheck}</p>
                           )}
                         </td>
                         <td className="py-2 pr-2">

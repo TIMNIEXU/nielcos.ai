@@ -547,6 +547,14 @@
     "docBl": "Bill of lading",
     "docArrival": "Arrival notice",
     "docOther": "Other",
-    "unsupportedType": "Unsupported file type — use PDF, XLSX, XLS or DOCX."
+    "unsupportedType": "Unsupported file type — use PDF, XLSX, XLS or DOCX.",
+    "lookupRate": "Look up USITC rate",
+    "lookingUp": "Looking up…",
+    "fillRate": "Fill rate",
+    "adopt": "Apply",
+    "verifyDuty": "verify before filing",
+    "usitcNotFound": "HTS not found in USITC schedule.",
+    "dutySuggest": "Additional duty suggestion",
+    "derivativeCheck": "Check 232 derivative list"
   }
 }

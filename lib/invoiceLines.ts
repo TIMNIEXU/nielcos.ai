@@ -79,6 +79,8 @@ const HEADER_COLS = /(QTY|QUANTITY|PCS|QTN)/i;
 const HEADER_AMT = /(AMOUNT|TOTAL|PRICE|VALUE)/i;
 const STOP_RE =
   /^(TOTAL|SUBTOTAL|SUB\s*TOTAL|GRAND\s*TOTAL|REMARKS?|DECLARATION|SIGNATURE|AUTHORIZED|BANK\s*(DETAILS|INFO)|PAYMENT\s*TERMS|FREIGHT|INSURANCE)\b/i;
+// Chinese forwarder worksheet header row — never a product line
+const CN_HEADER_RE = /序号.*(税号|海关编码).*材质|货物描述.*(税号|海关编码)/;
 
 function cleanDesc(raw: string): string {
   let s = raw
@@ -117,8 +119,139 @@ function parseRow(rowText: string, origin: string): ImportLine | null {
   };
 }
 
-/* Fallback for docs without a detectable table header:
-   lines shaped like "1  description ... qty ... amount". */
+/* ---------------- Excel: column-aware parsing ---------------- */
+/* Forwarder worksheets (e.g. 序号/货物描述/中文品名/税号/税率/材质/用途/
+   单价/数量/总价/箱数/毛重/净重/体积) parse far better by column position
+   than by flattening cells into text lines. */
+
+const COL_GROUPS: [string[], string][] = [
+  [["DESCRIPTION OF GOODS", "GOODS DESCRIPTION", "PRODUCT NAME", "DESCRIPTION", "货物描述", "货名", "品名"], "description"],
+  [["中文品名", "中文名称"], "cn_name"],
+  [["海关编码", "COMMODITY CODE", "HS CODE", "HSCODE", "税号", "HTS"], "hts"],
+  [["DUTY RATE", "税率"], "rate"],
+  [["MATERIAL", "材质"], "material"],
+  [["END USE", "PURPOSE", "用途"], "purpose"],
+  [["申报单价", "UNIT PRICE", "单价"], "unit_price"],
+  [["产品数量", "QUANTITY", "数量", "QTY"], "quantity"],
+  [["产品总价", "TOTAL VALUE", "TOTAL AMOUNT", "总值", "总价", "AMOUNT"], "value"],
+  [["COUNTRY OF ORIGIN", "产地国", "ORIGIN", "产地"], "origin"],
+];
+
+function mapColumns(headerRow: string[]): Map<string, number> {
+  const map = new Map<string, number>();
+  headerRow.forEach((cell, idx) => {
+    const c = cell.toUpperCase().replace(/\s+/g, " ").trim();
+    if (!c) return;
+    let bestGroup = "", bestLen = 0;
+    for (const [kws, group] of COL_GROUPS) {
+      for (const kw of kws) {
+        if (c.includes(kw.toUpperCase()) && kw.length > bestLen) {
+          bestGroup = group;
+          bestLen = kw.length;
+        }
+      }
+    }
+    if (bestGroup && ![...map.keys()].includes(bestGroup)) map.set(bestGroup, idx);
+  });
+  return map;
+}
+
+function headerScore(row: string[]): number {
+  return mapColumns(row).size;
+}
+
+function numOf(cell: string): number | null {
+  const m = cell.replace(/,/g, "").match(/-?\d+(?:\.\d+)?/);
+  return m ? parseFloat(m[0]) : null;
+}
+
+export function normalizeHts(cell: string): string | null {
+  const d = cell.replace(/\D/g, "");
+  if (d.length < 8) {
+    const m = cell.match(HTS_RE);
+    return m ? m[1] : null;
+  }
+  const h8 = d.slice(0, 8);
+  return `${h8.slice(0, 4)}.${h8.slice(4, 6)}.${h8.slice(6, 8)}`;
+}
+
+export function extractSheetRows(sheets: string[][][]): {
+  lines: (ImportLine & { doc_rate: number | null })[];
+  origin_default: string;
+} | null {
+  let bestRows: string[][] | null = null;
+  let bestMap: Map<string, number> | null = null;
+  let bestScore = -1;
+  let bestHeader = 0;
+  let origin_default = "";
+  for (const rows of sheets) {
+    const flat = rows.map((r) => r.join(" ")).join("\n");
+    const o = detectOrigin(flat);
+    if (o && !origin_default) origin_default = o;
+    if (bestRows) break;
+    for (let i = 0; i < Math.min(rows.length, 30); i++) {
+      const score = headerScore(rows[i]);
+      if (score >= 3 && score > bestScore) {
+        bestRows = rows;
+        bestMap = mapColumns(rows[i]);
+        bestScore = score;
+        bestHeader = i;
+        break;
+      }
+    }
+  }
+  if (!bestRows || !bestMap) return null;
+  const rows = bestRows;
+  const map = bestMap;
+  const headerIdx = bestHeader;
+  const cell = (r: string[], g: string) => {
+    const i = map.get(g);
+    return i === undefined ? "" : (r[i] ?? "").trim();
+  };
+
+  const lines: (ImportLine & { doc_rate: number | null })[] = [];
+  for (let i = headerIdx + 1; i < rows.length; i++) {
+    const r = rows[i];
+    const desc = cell(r, "description");
+    if (!desc || /^(合计|总计|TOTAL|REMARKS?|备注)/i.test(desc)) {
+      // stop at totals row when first column is numeric-empty and desc has total
+      if (/合计|总计|^TOTAL/i.test(r.join(" "))) break;
+      continue;
+    }
+    const cn = cell(r, "cn_name");
+    const purpose = cell(r, "purpose");
+    let description = desc;
+    if (cn && !description.includes(cn)) description += ` ${cn}`;
+    if (purpose && !description.includes(purpose)) description += `（用途: ${purpose}）`;
+
+    const hts = normalizeHts(cell(r, "hts"));
+    const rateRaw = cell(r, "rate").replace("%", "").trim();
+    const doc_rate = rateRaw !== "" && !isNaN(Number(rateRaw)) ? Number(rateRaw) : null;
+    const qCell = cell(r, "quantity");
+    const qm = qCell.match(QTY_RE);
+    const quantity = qm ? parseFloat(qm[1].replace(/,/g, "")) : numOf(qCell);
+    const unit = qm ? qm[2].toUpperCase() : "";
+    const value_usd = numOf(cell(r, "value")) ?? 0;
+    const unit_price = numOf(cell(r, "unit_price"));
+    const material = cell(r, "material") || detectMaterial(description);
+    const origin = cell(r, "origin") || origin_default;
+
+    lines.push({
+      description,
+      quantity,
+      unit,
+      unit_price,
+      value_usd,
+      hts,
+      material,
+      origin,
+      doc_rate,
+      confidence: hts && quantity != null && value_usd > 0 ? "high" : value_usd > 0 ? "medium" : "low",
+    });
+    if (lines.length >= 200) break;
+  }
+  return { lines, origin_default };
+}
 function fallbackRows(lines: string[], origin: string): ImportLine[] {
   const out: ImportLine[] = [];
   for (const ln of lines) {
@@ -177,6 +310,7 @@ export function extractLineItems(rawText: string): {
     for (let i = headerIdx + 1; i < allLines.length; i++) {
       const ln = allLines[i];
       if (STOP_RE.test(ln)) break;
+      if (CN_HEADER_RE.test(ln)) continue; // worksheet header row, not a line item
       const hasMoney = MONEY.test(ln);
       MONEY.lastIndex = 0;
       if (hasMoney) {

@@ -547,6 +547,14 @@
     "docBl": "提单",
     "docArrival": "到货通知",
     "docOther": "其他",
-    "unsupportedType": "不支持的文件类型，请用 PDF、XLSX、XLS 或 DOCX。"
+    "unsupportedType": "不支持的文件类型，请用 PDF、XLSX、XLS 或 DOCX。",
+    "lookupRate": "查 USITC 税率",
+    "lookingUp": "查询中…",
+    "fillRate": "填入税率",
+    "adopt": "采用",
+    "verifyDuty": "申报前请核实",
+    "usitcNotFound": "USITC 税则中未找到该税号。",
+    "dutySuggest": "附加税建议",
+    "derivativeCheck": "请核对 232 衍生品清单"
   }
 }

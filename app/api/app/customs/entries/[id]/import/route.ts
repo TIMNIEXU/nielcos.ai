@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { extractLineItems, type ImportLine } from "@/lib/invoiceLines";
+import { extractLineItems, extractSheetRows, type ImportLine } from "@/lib/invoiceLines";
 import { suggestHts } from "@/lib/hts";
+import { suggestAdditionalDuty, type DutyRule, type DutySuggestion } from "@/lib/additionalDuties";
 
 function ensureDomStubs() {
   const g = globalThis as any;
@@ -64,7 +65,9 @@ async function extractText(buf: Buffer, ext: string): Promise<string> {
 
 export type PreviewLine = ImportLine & {
   hts_rate: number | null;
-  candidates: { hts_no: string; description: string; rate: number | null; score: number }[];
+  rate_text: string | null;
+  candidates: { hts_no: string; description: string; rate: number | null; rate_text: string | null; score: number }[];
+  duty: DutySuggestion | null;
 };
 
 /* POST /api/app/customs/entries/[id]/import — multipart { file: PDF } ->
@@ -109,8 +112,22 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   }
 
   let text = "";
+  let sheetResult: { lines: (ImportLine & { doc_rate: number | null })[]; origin_default: string } | null = null;
   try {
-    text = await extractText(buf, ext);
+    if (ext === "xlsx" || ext === "xls") {
+      // Column-aware first: forwarder worksheets parse by header position.
+      // Falls back to the text-line heuristic when no header is found.
+      const XLSX = await import("xlsx");
+      const wb = XLSX.read(buf, { type: "buffer" });
+      const sheets: string[][][] = wb.SheetNames.map((name: string) => {
+        const rows: any[][] = XLSX.utils.sheet_to_json(wb.Sheets[name], { header: 1, raw: false, defval: "" });
+        return rows.map((r) => r.map((c) => String(c ?? "").trim()));
+      });
+      sheetResult = extractSheetRows(sheets);
+      text = sheets.map((rows) => rows.map((r) => r.filter(Boolean).join("   ")).join("\n")).join("\n");
+    } else {
+      text = await extractText(buf, ext);
+    }
   } catch (e) {
     const msg = (e as Error)?.message || "";
     if (msg === "unsupported") return NextResponse.json({ error: "unsupported_type" }, { status: 400 });
@@ -124,19 +141,39 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     );
   }
 
-  const { doc_type, origin_default, lines } = extractLineItems(text);
+  const parsed = extractLineItems(text);
+  const doc_type = parsed.doc_type;
+  // Prefer column-aware Excel rows when available (cleaner description/qty/value/hts).
+  const baseLines: (ImportLine & { doc_rate?: number | null })[] =
+    sheetResult && sheetResult.lines.length > 0 ? sheetResult.lines : parsed.lines;
+  const origin_default = sheetResult && sheetResult.origin_default ? sheetResult.origin_default : parsed.origin_default;
 
   const { data: schedule } = await sb
     .from("hts_schedule")
-    .select("hts_no, description, general_rate, keywords");
+    .select("hts_no, description, general_rate, keywords, rate_text");
   const rows = schedule ?? [];
   const byHts = new Map(rows.map((r) => [r.hts_no, r]));
+  const { data: dutyRules } = await sb.from("additional_duties").select("*");
 
-  const preview: PreviewLine[] = lines.map((l) => {
+  const preview: PreviewLine[] = baseLines.map((l) => {
     let hts_rate: number | null = null;
-    if (l.hts && byHts.has(l.hts)) hts_rate = byHts.get(l.hts)!.general_rate;
-    const candidates = suggestHts(l.description, rows).slice(0, 3);
-    return { ...l, hts_rate, candidates };
+    let rate_text: string | null = null;
+    if (l.doc_rate != null) hts_rate = l.doc_rate; // rate printed on the worksheet wins
+    else if (l.hts && byHts.has(l.hts)) {
+      hts_rate = byHts.get(l.hts)!.general_rate;
+      rate_text = byHts.get(l.hts)!.rate_text ?? null;
+    }
+    const candidates = suggestHts(l.description, rows).slice(0, 3).map((c) => {
+      const row = byHts.get(c.hts_no);
+      return { ...c, rate_text: row?.rate_text ?? null };
+    });
+    const duty = suggestAdditionalDuty(
+      l.hts,
+      l.origin || origin_default,
+      l.material,
+      (dutyRules ?? []) as DutyRule[]
+    );
+    return { ...l, hts_rate, rate_text, candidates, duty };
   });
 
   return NextResponse.json({ ok: true, doc_type, origin_default, lines: preview });
