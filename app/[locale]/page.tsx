@@ -176,6 +176,14 @@ export default async function HomePage({
                   <ModuleGlyph i={i} />
                   <p className="mt-4 text-[16px] font-bold text-ink">{m.name}</p>
                   <p className="mt-2 text-[13.5px] leading-relaxed text-muted">{m.desc}</p>
+                  {i === 0 && (
+                    <Link
+                      href={`/${locale}/app/customs`}
+                      className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-bold text-brand hover:gap-2.5 transition-all"
+                    >
+                      {tm("tryIt")} →
+                    </Link>
+                  )}
                 </div>
               </div>
             </Reveal>

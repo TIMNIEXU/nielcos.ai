@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import Link from "next/link";
 import { routing } from "@/i18n/routing";
 import Reveal from "@/components/Reveal";
 import { SectionHead, CtaBand } from "@/components/Section";
@@ -87,6 +88,16 @@ export default async function ModulesPage({
                     </li>
                   ))}
                 </ul>
+                {i === 0 && (
+                  <div className="mt-auto pt-5">
+                    <Link
+                      href={`/${locale}/app/customs`}
+                      className="inline-flex items-center gap-1.5 text-[13.5px] font-bold text-brand hover:gap-2.5 transition-all"
+                    >
+                      {t("tryIt")} →
+                    </Link>
+                  </div>
+                )}
                 </div>
               </div>
             </Reveal>
