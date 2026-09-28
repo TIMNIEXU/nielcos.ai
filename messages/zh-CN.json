@@ -415,6 +415,37 @@
       "out_for_delivery": "派送中",
       "delivered": "已送达",
       "on_hold": "异常暂扣"
+    },
+    "arrivalNotice": "到货通知",
+    "arrivalHint": "由 Joma Logistics Inc. 签发",
+    "viewPrint": "查看 / 打印",
+    "print": "打印 / 存为 PDF",
+    "backToShipment": "返回货运",
+    "totalDue": "应付总额",
+    "dueDate": "付款截止",
+    "an": {
+      "mbl": "主提单号",
+      "hbl": "分提单号",
+      "vessel": "船名 / 航次",
+      "pol": "起运港",
+      "pod": "目的港",
+      "delivery": "交货地",
+      "etd": "ETD",
+      "eta": "ETA",
+      "deliveryEta": "送货 ETA",
+      "cy": "堆场",
+      "pickup": "提货地点",
+      "cntrSeal": "柜号 / 封号",
+      "packages": "件数",
+      "weight": "毛重",
+      "measure": "体积",
+      "goods": "货物描述",
+      "charges": "费用明细",
+      "amount": "金额",
+      "freeTime": "免费期",
+      "remarks": "备注",
+      "consignee": "收货人",
+      "notify": "通知方"
     }
   }
 }

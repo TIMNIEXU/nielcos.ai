@@ -64,6 +64,13 @@ export default async function ShipmentDetail({ params }: Props) {
     .eq("shipment_id", shipment.id)
     .order("created_at", { ascending: false });
 
+  const { data: arrival } = await sb
+    .from("arrival_notices")
+    .select("notice_no, eta, charges, currency")
+    .eq("shipment_id", shipment.id)
+    .eq("status", "issued")
+    .maybeSingle();
+
   const statusName = (() => {
     try {
       return t(`statusNames.${shipment.status}`);
@@ -139,6 +146,26 @@ export default async function ShipmentDetail({ params }: Props) {
                 </li>
               ))}
             </ol>
+          </div>
+        )}
+
+        {arrival && (
+          <div className="mt-6 rounded-2xl border border-line bg-white p-6 sm:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h2 className="text-lg font-bold text-ink">{t("arrivalNotice")}</h2>
+                <p className="mt-1 text-sm text-ink-soft">
+                  <span className="font-mono font-semibold text-ink">{arrival.notice_no}</span>
+                  {" · "}{t("arrivalHint")}
+                </p>
+              </div>
+              <Link
+                href={`/${locale}/app/${encodeURIComponent(gttid)}/arrival-notice`}
+                className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-deep"
+              >
+                {t("viewPrint")}
+              </Link>
+            </div>
           </div>
         )}
 

@@ -415,6 +415,37 @@
       "out_for_delivery": "Out for delivery",
       "delivered": "Delivered",
       "on_hold": "On hold"
+    },
+    "arrivalNotice": "Arrival Notice",
+    "arrivalHint": "Issued by Joma Logistics Inc.",
+    "viewPrint": "View / Print",
+    "print": "Print / Save PDF",
+    "backToShipment": "Back to shipment",
+    "totalDue": "Total due",
+    "dueDate": "Due date",
+    "an": {
+      "mbl": "Master B/L",
+      "hbl": "House B/L",
+      "vessel": "Vessel / Voyage",
+      "pol": "Port of Loading",
+      "pod": "Port of Discharge",
+      "delivery": "Place of Delivery",
+      "etd": "ETD",
+      "eta": "ETA",
+      "deliveryEta": "Delivery ETA",
+      "cy": "CY Location",
+      "pickup": "Pickup Location",
+      "cntrSeal": "Container / Seal",
+      "packages": "Packages",
+      "weight": "Gross Weight",
+      "measure": "Measurement",
+      "goods": "Description of Goods",
+      "charges": "Description of Charges",
+      "amount": "Amount",
+      "freeTime": "Free Time",
+      "remarks": "Remarks",
+      "consignee": "Consignee",
+      "notify": "Notify Party"
     }
   }
 }
