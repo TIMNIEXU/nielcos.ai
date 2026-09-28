@@ -527,7 +527,7 @@
     "cancel": "Cancel",
     "importDoc": "Import from document",
     "importing": "Reading…",
-    "importFormats": "PDF: commercial invoice / packing list / B/L / arrival notice",
+    "importFormats": "PDF / Excel / Word: commercial invoice, packing list, B/L, arrival notice",
     "importPreview": "Import preview",
     "importHint": "Rule-based extraction — review each line before confirming.",
     "confirmImport": "Confirm import",
@@ -546,6 +546,7 @@
     "docPacking": "Packing list",
     "docBl": "Bill of lading",
     "docArrival": "Arrival notice",
-    "docOther": "Other"
+    "docOther": "Other",
+    "unsupportedType": "Unsupported file type — use PDF, XLSX, XLS or DOCX."
   }
 }

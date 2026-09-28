@@ -24,6 +24,44 @@ function ensureDomStubs() {
   }
 }
 
+/* Extract plain text from PDF / Excel / Word so the line-item
+   heuristics in lib/invoiceLines can work on any of them. */
+async function extractText(buf: Buffer, ext: string): Promise<string> {
+  if (ext === "pdf") {
+    let PDFParse: any;
+    ensureDomStubs();
+    await import("pdfjs-dist/legacy/build/pdf.worker.mjs");
+    ({ PDFParse } = await import("pdf-parse"));
+    const parser = new PDFParse({ data: buf });
+    try {
+      const data = await parser.getText();
+      return data.text || "";
+    } finally {
+      await parser.destroy();
+    }
+  }
+  if (ext === "xlsx" || ext === "xls") {
+    const XLSX = await import("xlsx");
+    const wb = XLSX.read(buf, { type: "buffer" });
+    const out: string[] = [];
+    for (const name of wb.SheetNames) {
+      const ws = wb.Sheets[name];
+      const rows: any[][] = XLSX.utils.sheet_to_json(ws, { header: 1, raw: false, defval: "" });
+      for (const r of rows) {
+        const line = r.map((c) => String(c).trim()).filter(Boolean).join("   ");
+        if (line) out.push(line);
+      }
+    }
+    return out.join("\n");
+  }
+  if (ext === "docx") {
+    const mammoth = await import("mammoth");
+    const { value } = await mammoth.extractRawText({ buffer: buf });
+    return value || "";
+  }
+  throw new Error("unsupported");
+}
+
 export type PreviewLine = ImportLine & {
   hts_rate: number | null;
   candidates: { hts_no: string; description: string; rate: number | null; score: number }[];
@@ -57,30 +95,33 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   if (!file) return NextResponse.json({ error: "file_required" }, { status: 400 });
 
   const buf = Buffer.from(await file.arrayBuffer());
-  if (buf.length < 5 || buf.subarray(0, 5).toString("latin1") !== "%PDF-") {
-    return NextResponse.json({ error: "not_pdf" }, { status: 400 });
+  const name = (file.name || "").toLowerCase();
+  const ext = name.endsWith(".xlsx") ? "xlsx"
+    : name.endsWith(".xls") ? "xls"
+    : name.endsWith(".docx") ? "docx"
+    : name.endsWith(".pdf") ? "pdf"
+    : "";
+  if (!ext) {
+    return NextResponse.json({ error: "unsupported_type", detail: "use PDF, XLSX, XLS or DOCX" }, { status: 400 });
   }
-
-  let PDFParse: any;
-  try {
-    ensureDomStubs();
-    await import("pdfjs-dist/legacy/build/pdf.worker.mjs");
-    ({ PDFParse } = await import("pdf-parse"));
-  } catch (e) {
-    return NextResponse.json({ error: "import_failed", detail: "pdf engine" }, { status: 500 });
+  if (ext === "pdf" && (buf.length < 5 || buf.subarray(0, 5).toString("latin1") !== "%PDF-")) {
+    return NextResponse.json({ error: "not_pdf" }, { status: 400 });
   }
 
   let text = "";
   try {
-    const parser = new PDFParse({ data: buf });
-    const data = await parser.getText();
-    await parser.destroy();
-    text = data.text || "";
+    text = await extractText(buf, ext);
   } catch (e) {
+    const msg = (e as Error)?.message || "";
+    if (msg === "unsupported") return NextResponse.json({ error: "unsupported_type" }, { status: 400 });
+    console.error("doc import extract error:", msg);
     return NextResponse.json({ error: "extract_failed" }, { status: 500 });
   }
   if (text.trim().length < 50) {
-    return NextResponse.json({ error: "no_text", detail: "scanned/image-only PDF" }, { status: 422 });
+    return NextResponse.json(
+      { error: "no_text", detail: ext === "pdf" ? "scanned/image-only PDF" : "empty document" },
+      { status: 422 }
+    );
   }
 
   const { doc_type, origin_default, lines } = extractLineItems(text);

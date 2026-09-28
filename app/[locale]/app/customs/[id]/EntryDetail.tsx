@@ -94,6 +94,7 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
         setImpError(
           data.error === "no_text" ? t.scannedPdf
           : data.error === "not_pdf" ? t.fileNotPdf
+          : data.error === "unsupported_type" ? t.unsupportedType
           : `${t.importFailed}: ${data.error ?? ""}`
         );
         return;
@@ -363,7 +364,7 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
             📄 {impBusy ? t.importing : t.importDoc}
             <input
               type="file"
-              accept=".pdf,application/pdf"
+              accept=".pdf,.xlsx,.xls,.docx,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
               className="hidden"
               onChange={(e) => { handleImportFile(e.target.files?.[0]); e.target.value = ""; }}
             />

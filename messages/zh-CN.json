@@ -527,7 +527,7 @@
     "cancel": "取消",
     "importDoc": "从单证导入",
     "importing": "识别中…",
-    "importFormats": "PDF：商业发票 / 装箱单 / 提单 / 到货通知",
+    "importFormats": "PDF / Excel / Word：商业发票 / 装箱单 / 提单 / 到货通知",
     "importPreview": "导入预览",
     "importHint": "规则式识别，请逐行核对后再确认。",
     "confirmImport": "确认导入",
@@ -546,6 +546,7 @@
     "docPacking": "装箱单",
     "docBl": "提单",
     "docArrival": "到货通知",
-    "docOther": "其他"
+    "docOther": "其他",
+    "unsupportedType": "不支持的文件类型，请用 PDF、XLSX、XLS 或 DOCX。"
   }
 }
