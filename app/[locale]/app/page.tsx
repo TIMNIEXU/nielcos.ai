@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { redirect } from "@/i18n/routing";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import SignOutButton from "./SignOutButton";
 import ShipmentCards from "./ShipmentCards";
@@ -73,7 +74,15 @@ export default async function AppHome({ params }: Props) {
           ))}
         </div>
 
-        <h2 className="mt-10 text-xl font-bold text-ink">{t("myShipments")}</h2>
+        <div className="mt-10 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-ink">{t("myShipments")}</h2>
+          <Link
+            href={`/${locale}/app/customs`}
+            className="rounded-full border border-brand/30 bg-white px-4 py-2 text-sm font-bold text-brand-deep transition-colors hover:bg-brand-tint"
+          >
+            {t("customs")} →
+          </Link>
+        </div>
         <div className="mt-4">
           {list.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-line bg-white p-10 text-center text-ink-soft">
