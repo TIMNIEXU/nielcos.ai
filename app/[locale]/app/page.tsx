@@ -32,7 +32,7 @@ export default async function AppHome({ params }: Props) {
 
   const { data: shipments } = await sb
     .from("shipments")
-    .select("gttid, container_number, status, origin, destination, eta, updated_at")
+    .select("gttid, container_number, mbl_no, containers, status, origin, destination, eta, updated_at")
     .order("updated_at", { ascending: false });
 
   const list = shipments ?? [];

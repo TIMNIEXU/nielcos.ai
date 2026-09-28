@@ -477,6 +477,7 @@
       "invoiceNo": "Invoice No.",
       "preparedBy": "Prepared by",
       "shipper": "Shipper"
-    }
+    },
+    "allContainers": "All containers"
   }
 }

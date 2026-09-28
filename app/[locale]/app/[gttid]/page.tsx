@@ -110,6 +110,19 @@ export default async function ShipmentDetail({ params }: Props) {
               <p className="mt-1 text-ink-soft">
                 {t("container")}: <span className="font-semibold text-ink">{shipment.container_number}</span>
               </p>
+              {shipment.mbl_no && (
+                <p className="mt-1 font-mono text-sm text-ink-soft">
+                  MBL <span className="font-semibold text-ink">{shipment.mbl_no}</span>
+                </p>
+              )}
+              {Array.isArray(shipment.containers) && shipment.containers.length > 1 && (
+                <p className="mt-1 text-sm text-ink-soft">
+                  {t("allContainers")}:{" "}
+                  <span className="font-mono font-semibold text-ink">
+                    {shipment.containers.map((c: { container?: string }) => c.container).filter(Boolean).join(" · ")}
+                  </span>
+                </p>
+              )}
             </div>
             <span className={`rounded-full px-4 py-1.5 text-sm font-bold ${TONE[shipment.status] ?? "bg-slate-100 text-slate-600"}`}>
               {statusName}

@@ -477,6 +477,7 @@
       "invoiceNo": "发票号",
       "preparedBy": "制单人",
       "shipper": "发货人"
-    }
+    },
+    "allContainers": "全部柜号"
   }
 }
