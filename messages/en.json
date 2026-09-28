@@ -54,6 +54,14 @@
       "sub": "NIEL AI watches every shipment, tariff change, and document — and flags what matters with a clear dollar impact.",
       "title": "Risks surface before they cost you."
     },
+    "certification": {
+      "alt": "APICS CSCP certificate — Nie XU, CSCP",
+      "badge": "CSCP · Certified Supply Chain Professional · ASCM / APICS",
+      "desc": "Niel COS is led by an ASCM/APICS CSCP — Certified Supply Chain Professional: independently validated expertise in end-to-end supply chain management.",
+      "eyebrow": "Credentials",
+      "hint": "Click to view the certificate",
+      "title": "Built by a certified supply chain professional"
+    },
     "compliance": {
       "eyebrow": "Compliance Center",
       "items": [

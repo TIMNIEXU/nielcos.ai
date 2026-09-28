@@ -54,6 +54,14 @@
       "sub": "NIEL AI 盯着每一票货、每一次关税变化、每一份单证 — 按金额影响把真正重要的事推到您面前。",
       "title": "风险，先于损失被发现。"
     },
+    "certification": {
+      "alt": "APICS CSCP 证书 — Nie XU, CSCP",
+      "badge": "CSCP · 认证供应链专业人士 · ASCM / APICS",
+      "desc": "Niel COS 由 ASCM/APICS CSCP（Certified Supply Chain Professional，认证供应链专业人士）领衔：经独立权威认证的端到端供应链管理专业能力。",
+      "eyebrow": "专业资质",
+      "hint": "点击查看证书大图",
+      "title": "由认证供应链专家打造"
+    },
     "compliance": {
       "eyebrow": "合规中心",
       "items": [

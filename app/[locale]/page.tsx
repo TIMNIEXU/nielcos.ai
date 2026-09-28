@@ -322,6 +322,48 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* ============ CERTIFICATION ============ */}
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+          <SectionHead
+            eyebrow={t("certification.eyebrow")}
+            title={t("certification.title")}
+            sub={t("certification.desc")}
+          />
+          <Reveal className="mt-12">
+            <div className="dash-card mx-auto flex max-w-3xl flex-col items-center gap-6 p-8 sm:flex-row">
+              <img
+                src="/images/cscp-badge.png"
+                alt="APICS CSCP Certified"
+                loading="lazy"
+                className="h-24 w-24 shrink-0 rounded-2xl bg-white object-contain p-1 shadow-sm"
+              />
+              <div className="text-center sm:text-left">
+                <span className="inline-block rounded-full bg-ink px-4 py-1.5 text-[12px] font-bold tracking-wide text-white">
+                  {t("certification.badge")}
+                </span>
+                <a
+                  href="/images/cscp-certificate.jpg"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group mt-5 flex flex-col items-center gap-2 sm:items-start"
+                >
+                  <img
+                    src="/images/cscp-certificate.jpg"
+                    alt={t("certification.alt")}
+                    loading="lazy"
+                    className="h-44 w-auto rounded-xl border border-line bg-white shadow-sm transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                  <span className="text-[13px] font-semibold text-brand underline-offset-2 group-hover:underline">
+                    {t("certification.hint")}
+                  </span>
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <div className="pt-20">
         <CtaBand
           title={t("cta.title")}
