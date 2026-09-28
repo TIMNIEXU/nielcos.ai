@@ -306,7 +306,8 @@
     "home": "首页",
     "modules": "模块",
     "platform": "平台",
-    "login": "登录"
+    "login": "登录",
+    "workspace": "工作台"
   },
   "platform": {
     "cta": {

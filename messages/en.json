@@ -306,7 +306,8 @@
     "home": "Home",
     "modules": "Modules",
     "platform": "Platform",
-    "login": "Sign in"
+    "login": "Sign in",
+    "workspace": "Workspace"
   },
   "platform": {
     "cta": {
