@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { suggestHts, matchPga } from "@/lib/hts";
-import { suggestAdditionalDuty, type DutyRule } from "@/lib/additionalDuties";
+import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
 
 /* POST /api/app/customs/suggest
    { description } -> { candidates: [{hts_no, description, rate, rate_text, score}], pga }
-   { hts }         -> { hts_no, general_rate, rate_text, revision, pga, duty_suggestion }
+   { hts }         -> { hts_no, general_rate, rate_text, revision, pga, duty_suggestions }
    Rule-based keyword matching over hts_schedule (offline, deterministic).
    Duty suggestions come from additional_duties (source + effective date
    labeled) and are advisory — the user always verifies. */
@@ -36,9 +36,9 @@ export async function POST(req: NextRequest) {
       .eq("hts_no", htsNo)
       .maybeSingle();
     const { data: dutyRules } = await sb.from("additional_duties").select("*");
-    const duty_suggestion = suggestAdditionalDuty(htsNo, "", "", (dutyRules ?? []) as DutyRule[]);
+    const duty_suggestions = suggestAdditionalDuties(htsNo, "", "", (dutyRules ?? []) as DutyRule[]);
     if (!row)
-      return NextResponse.json({ hts_no: htsNo, found: false, duty_suggestion });
+      return NextResponse.json({ hts_no: htsNo, found: false, duty_suggestions });
     const pga = matchPga(row.hts_no, rules ?? []);
     return NextResponse.json({
       hts_no: row.hts_no,
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
       rate_text: row.rate_text,
       revision: row.revision,
       pga,
-      duty_suggestion,
+      duty_suggestions,
     });
   }
 

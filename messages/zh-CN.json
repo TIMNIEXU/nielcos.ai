@@ -555,6 +555,8 @@
     "verifyDuty": "申报前请核实",
     "usitcNotFound": "USITC 税则中未找到该税号。",
     "dutySuggest": "附加税建议",
+    "dutySuggestFL": "301 强制劳动附加税建议",
+    "dutyCapNote": "（含 MFN 上限 — 301 部分 = 上限减现行 MFN 税率）",
     "derivativeCheck": "请核对 232 衍生品清单"
   }
 }

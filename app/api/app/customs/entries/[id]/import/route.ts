@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { extractLineItems, extractSheetRows, type ImportLine } from "@/lib/invoiceLines";
 import { suggestHts } from "@/lib/hts";
-import { suggestAdditionalDuty, type DutyRule, type DutySuggestion } from "@/lib/additionalDuties";
+import { suggestAdditionalDuties, type DutyRule, type DutySuggestion } from "@/lib/additionalDuties";
 
 function ensureDomStubs() {
   const g = globalThis as any;
@@ -67,7 +67,7 @@ export type PreviewLine = ImportLine & {
   hts_rate: number | null;
   rate_text: string | null;
   candidates: { hts_no: string; description: string; rate: number | null; rate_text: string | null; score: number }[];
-  duty: DutySuggestion | null;
+  duties: DutySuggestion[];
 };
 
 /* POST /api/app/customs/entries/[id]/import — multipart { file: PDF } ->
@@ -167,13 +167,13 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       const row = byHts.get(c.hts_no);
       return { ...c, rate_text: row?.rate_text ?? null };
     });
-    const duty = suggestAdditionalDuty(
+    const duties = suggestAdditionalDuties(
       l.hts,
       l.origin || origin_default,
       l.material,
       (dutyRules ?? []) as DutyRule[]
     );
-    return { ...l, hts_rate, rate_text, candidates, duty };
+    return { ...l, hts_rate, rate_text, candidates, duties };
   });
 
   return NextResponse.json({ ok: true, doc_type, origin_default, lines: preview });

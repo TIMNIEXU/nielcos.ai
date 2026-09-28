@@ -555,6 +555,8 @@
     "verifyDuty": "verify before filing",
     "usitcNotFound": "HTS not found in USITC schedule.",
     "dutySuggest": "Additional duty suggestion",
+    "dutySuggestFL": "301 forced-labor suggestion",
+    "dutyCapNote": "(cap incl. MFN — 301 part = cap minus current MFN rate)",
     "derivativeCheck": "Check 232 derivative list"
   }
 }
