@@ -92,10 +92,11 @@ export default async function ArrivalNoticePage({ params }: Props) {
           {/* Letterhead */}
           <div className="flex items-start justify-between border-b-2 border-slate-900 pb-5">
             <div>
-              <p className="text-2xl font-black tracking-tight text-slate-900">JOMA LOGISTICS INC</p>
-              <p className="mt-1 text-[12px] leading-relaxed text-slate-600">
-                70 Carter Dr, Edison, NJ 08817 · Tel: 732-338-8098 · Fax: 888-302-0636
-                <br />tim@jomainc.com · www.jomaus.com
+              <img src="/joma-logo.png" alt="Joma Logistics Incorporated" className="h-14 w-auto sm:h-16" />
+              <p className="mt-2 text-[12px] leading-relaxed text-slate-600">
+                70 CARTER DR. EDISON, NJ 08817
+                <br />
+                Tel: 1-732-338-8098 · Fax: 1-888-302-0636 · Email: tim@jomainc.com
               </p>
             </div>
             <div className="text-right">
