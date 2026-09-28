@@ -20,6 +20,9 @@ const UPDATABLE = [
   "confirmed_hts",
   "duty_rate",
   "additional_pct",
+  "material",
+  "origin_country",
+  "hts_source",
 ] as const;
 
 /* PATCH /api/app/customs/lines/[lineId] — confirm HTS, edit rate, etc. */
