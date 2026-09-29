@@ -31,7 +31,7 @@ function Kpi({ icon, tint, label, value, delta, deltaColor }: {
           <p className="text-[17px] font-bold tracking-tight text-ink">{value}</p>
         </div>
       </div>
-      <p className={`mt-1.5 text-[10px] font-semibold ${deltaColor}`}>{delta}</p>
+      {delta ? <p className={`mt-1.5 text-[10px] font-semibold ${deltaColor}`}>{delta}</p> : null}
     </div>
   );
 }
@@ -173,10 +173,10 @@ export default function DashboardMock() {
 
             {/* KPIs */}
             <div className="mt-3 grid grid-cols-2 gap-2.5 lg:grid-cols-4">
-              <Kpi icon="box" tint="bg-sky-tint text-sky" label={t("kpi1")} value="1,248" delta="↑ 12% vs. last 7 days" deltaColor="text-ok" />
-              <Kpi icon="doc" tint="bg-ok-tint text-ok" label={t("kpi2")} value="86" delta="↑ 8% vs. last 7 days" deltaColor="text-ok" />
-              <Kpi icon="shield" tint="bg-risk-tint text-risk" label={t("kpi3")} value="23" delta="↑ 35% vs. last 7 days" deltaColor="text-risk" />
-              <Kpi icon="truck" tint="bg-vio-tint text-vio" label={t("kpi4")} value="$2.4M" delta="↑ 18% vs. last 7 days" deltaColor="text-ok" />
+              <Kpi icon="box" tint="bg-sky-tint text-sky" label={t("kpi1")} value="1,248" delta="" deltaColor="text-ok" />
+              <Kpi icon="doc" tint="bg-ok-tint text-ok" label={t("kpi2")} value="86" delta="" deltaColor="text-ok" />
+              <Kpi icon="shield" tint="bg-risk-tint text-risk" label={t("kpi3")} value="23" delta="" deltaColor="text-risk" />
+              <Kpi icon="truck" tint="bg-vio-tint text-vio" label={t("kpi4")} value="$2.4M" delta="" deltaColor="text-ok" />
             </div>
 
             {/* map + AI */}
