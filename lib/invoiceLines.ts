@@ -134,7 +134,7 @@ const COL_GROUPS: [string[], string][] = [
   [["申报单价", "UNIT PRICE", "单价"], "unit_price"],
   [["产品数量", "QUANTITY", "数量", "QTY"], "quantity"],
   [["产品总价", "TOTAL VALUE", "TOTAL AMOUNT", "总值", "总价", "AMOUNT"], "value"],
-  [["COUNTRY OF ORIGIN", "产地国", "ORIGIN", "产地"], "origin"],
+  [["COUNTRY OF ORIGIN", "产地国", "原产国", "ORIGIN", "产地"], "origin"],
 ];
 
 function mapColumns(headerRow: string[]): Map<string, number> {

@@ -606,6 +606,13 @@
     "row301fl": "2026 年新增 301 附加税",
     "row232": "232 条款",
     "rowDutyTotal": "关税合计",
-    "rowGrand": "关税及上述海关费用合计"
+    "rowGrand": "关税及上述海关费用合计",
+    "importBtn": "导入单证识别",
+    "importHint": "PDF / Excel / Word — 自动识别产品名称、材质、用途、原产国、货值、HTS",
+    "importing": "正在读取单证…",
+    "importOk": "已识别 {n} 行产品，取第一行自动填入，请核对。",
+    "importFail": "读取失败，请换文本型 PDF、XLSX 或 DOCX 再试。",
+    "importNoText": "该 PDF 是扫描图片、无可选文字，请用文本型 PDF 或 Excel。",
+    "importTooBig": "文件过大（上限 8 MB）。"
   }
 }

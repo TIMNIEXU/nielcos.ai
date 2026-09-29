@@ -55,7 +55,7 @@ export default async function HomePage({
   const tm = await getTranslations({ locale, namespace: "modulesPage" });
   const te = await getTranslations({ locale, namespace: "estimator" });
   const estimatorLabels: Record<string, string> = Object.fromEntries(
-    ["eyebrow","title","sub","productName","productNamePh","material","materialPh","intendedUse","intendedUsePh","hts","htsPh","origin","originPh","lookup","lookingUp","needInput","pickCandidate","htsTooShort","notFound","compoundNote","lookupFailed","usitcRate","suggestFL","suggest232","capNote","apply","invValue","mfn","rate301orig","rate301fl","rate232","ocean","colItem","colRate","colAmount","rowBase","row301orig","row301fl","row232","rowDutyTotal","rowMpf","rowHmf","rowGrand","mpfFy26","mpfFy27","disclaimer","cta"].map((k) => [k, te(k)])
+    ["eyebrow","title","sub","importBtn","importHint","importing","importOk","importFail","importNoText","importTooBig","productName","productNamePh","material","materialPh","intendedUse","intendedUsePh","hts","htsPh","origin","originPh","lookup","lookingUp","needInput","pickCandidate","htsTooShort","notFound","compoundNote","lookupFailed","usitcRate","suggestFL","suggest232","capNote","apply","invValue","mfn","rate301orig","rate301fl","rate232","ocean","colItem","colRate","colAmount","rowBase","row301orig","row301fl","row232","rowDutyTotal","rowMpf","rowHmf","rowGrand","mpfFy26","mpfFy27","disclaimer","cta"].map((k) => [k, te(k)])
   );
 
   const kpis = [0, 1, 2, 3].map((i) => ({

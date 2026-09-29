@@ -606,6 +606,13 @@
     "row301fl": "2026 new Section 301 surcharge",
     "row232": "Section 232",
     "rowDutyTotal": "Total duties",
-    "rowGrand": "Total duties & CBP fees"
+    "rowGrand": "Total duties & CBP fees",
+    "importBtn": "Import document",
+    "importHint": "PDF / Excel / Word — auto-fills product, material, use, origin, value, HTS",
+    "importing": "Reading document…",
+    "importOk": "Read {n} product line(s); first line filled in. Please verify.",
+    "importFail": "Could not read this file. Try a text-based PDF, XLSX, or DOCX.",
+    "importNoText": "This PDF has no selectable text (scanned image). Please use a text PDF or Excel.",
+    "importTooBig": "File too large (max 8 MB)."
   }
 }

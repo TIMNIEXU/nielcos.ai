@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 /* Public US import duty estimator.
    Input order: product name → material → intended use → HTS → origin →
@@ -69,6 +69,9 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
   const [lookupMsg, setLookupMsg] = useState("");
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const [importing, setImporting] = useState(false);
+  const [importMsg, setImportMsg] = useState("");
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const sched = mpfSchedule(t);
 
@@ -160,6 +163,47 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
     else if ((s.duty_type ?? "").startsWith("232")) setR232(String(s.rate));
   };
 
+  /* ---- import a commercial document: auto-fill product fields ---- */
+  const onImportFile = async (f: File | undefined) => {
+    if (!f) return;
+    setImporting(true);
+    setImportMsg("");
+    try {
+      const form = new FormData();
+      form.append("file", f);
+      const res = await fetch("/api/public/extract", { method: "POST", body: form });
+      const data = await res.json();
+      if (!data.ok) {
+        setImportMsg(t[data.error === "no_text" ? "importNoText" : data.error === "too_big" ? "importTooBig" : "importFail"]);
+        return;
+      }
+      if (data.productName) setProductName(data.productName);
+      if (data.material) setMaterial(data.material);
+      if (data.intendedUse) setIntendedUse(data.intendedUse);
+      if (data.origin) setOrigin(data.origin);
+      if (data.invValue) setInvValue(String(data.invValue));
+      setImportMsg(
+        t.importOk.replace("{n}", String(data.lineCount ?? 1))
+      );
+      if (data.hts) {
+        const digits = String(data.hts).replace(/[^0-9]/g, "");
+        setHts(data.hts);
+        setLookingUp(true);
+        try { await lookupDirect(digits); } finally { setLookingUp(false); }
+      } else if (data.htsCandidates?.length) {
+        setCandidates(
+          data.htsCandidates.map((c: any) => ({ ...c, rate_text: null, score: 0 }))
+        );
+        setLookupMsg(t.pickCandidate);
+      }
+    } catch {
+      setImportMsg(t.importFail);
+    } finally {
+      setImporting(false);
+      if (fileRef.current) fileRef.current.value = "";
+    }
+  };
+
   const rateSuggestions = suggestions.filter((s) => s.kind === "rate");
   const warnings = suggestions.filter((s) => s.kind === "warning");
 
@@ -182,6 +226,24 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
     <div className="grid gap-6 lg:grid-cols-2">
       {/* -------- inputs -------- */}
       <div className="dash-card p-6 sm:p-8">
+        <div className="mb-5 flex flex-wrap items-center gap-3">
+          <button
+            onClick={() => fileRef.current?.click()}
+            disabled={importing}
+            className="rounded-full border-2 border-dashed border-brand/50 px-5 py-2 text-[13.5px] font-bold text-brand hover:border-brand hover:bg-brand-tint/40 disabled:opacity-50"
+          >
+            {importing ? t.importing : `📄 ${t.importBtn}`}
+          </button>
+          <input
+            ref={fileRef}
+            type="file"
+            accept=".pdf,.xlsx,.xls,.docx"
+            className="hidden"
+            onChange={(e) => onImportFile(e.target.files?.[0])}
+          />
+          <span className="text-[12px] text-faint">{t.importHint}</span>
+        </div>
+        {importMsg && <p className="mb-4 text-[12.5px] font-medium text-ink-soft">{importMsg}</p>}
         <div className="grid gap-5">
           <div>
             <label className={lblCls}>{t.productName}</label>
