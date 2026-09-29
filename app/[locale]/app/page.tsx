@@ -136,6 +136,12 @@ export default async function AppHome({ params }: Props) {
           >
             {t("towerNav")} →
           </Link>
+          <Link
+            href={`/${locale}/app/executive`}
+            className="rounded-full border border-brand/30 bg-white px-4 py-2 text-sm font-bold text-brand-deep transition-colors hover:bg-brand-tint"
+          >
+            {t("executiveNav")} →
+          </Link>
         </div>
         <div className="mt-4">
           {list.length === 0 ? (

@@ -39,16 +39,16 @@
       "eyebrow": "AI Executive Intelligence",
       "risks": [
         {
-          "d": "$420K potential impact across 17 shipments",
-          "t": "Tariff exposure"
+          "t": "Tariff exposure",
+          "d": "Duty exposure across in-transit shipments, ranked by impact"
         },
         {
-          "d": "17 shipments missing documents ahead of arrival",
-          "t": "Customs delay risk"
+          "t": "Customs delay risk",
+          "d": "Automatic alerts for documents missing ahead of arrival"
         },
         {
-          "d": "8 missing certificates blocking clearance",
-          "t": "Supplier documentation"
+          "t": "Supplier documentation",
+          "d": "Missing certificates that would block clearance, caught early"
         }
       ],
       "sub": "NIEL AI watches every shipment, tariff change, and document — and flags what matters with a clear dollar impact.",
@@ -321,6 +321,15 @@
           "Exception tickets with acknowledge / resolve workflow",
           "Demurrage, overdue payables & regulatory risks on one screen"
         ]
+      },
+      {
+        "n": "Executive AI",
+        "d": "Risks surface before they cost you: duty exposure, clearance risk, supplier docs in one view.",
+        "points": [
+          "Duty exposure ranked by impact",
+          "Missing-document alerts before arrival",
+          "Hand off to the AI assistant for deep analysis"
+        ]
       }
     ],
     "tryIt": "Open workspace"
@@ -582,7 +591,8 @@
     "logisticsNav": "Logistics",
     "financeNav": "Finance",
     "assistantNav": "AI Assistant",
-    "towerNav": "Control Tower"
+    "towerNav": "Control Tower",
+    "executiveNav": "Executive AI"
   },
   "estimator": {
     "eyebrow": "Free tool",
@@ -1182,5 +1192,41 @@
     "riskWarehouse": "Warehouse",
     "riskHold": "On hold",
     "riskStale": "Stale"
+  },
+  "executive": {
+    "title": "Executive AI",
+    "sub": "Risks surface before they cost you. NIEL AI watches every shipment, tariff change, and document.",
+    "kpiDuty": "Duty exposure",
+    "kpiDutyCount": "%N shipments",
+    "kpiClearance": "Clearance risk",
+    "kpiClearanceCount": "%N shipments",
+    "kpiSuppliers": "Supplier docs",
+    "kpiSuppliersCount": "%N open items",
+    "secDuty": "Duty exposure",
+    "secDutyDesc": "Duty amounts across cost sheets, sorted by impact",
+    "secClearance": "Clearance delay risk",
+    "secClearanceDesc": "Shipments arriving within 14 days missing key documents",
+    "secSuppliers": "Supplier documentation",
+    "secSuppliersDesc": "Active suppliers with incomplete document checklists",
+    "emptyDuty": "No duty exposure.",
+    "emptyClearance": "Shipments arriving within 14 days have complete documents.",
+    "emptySuppliers": "Supplier documents are complete.",
+    "emptyAll": "No risks right now. All clear.",
+    "analyzeCta": "Analyze with NIEL AI",
+    "docCommercialInvoice": "Commercial invoice",
+    "docPackingList": "Packing list",
+    "docBL": "Bill of lading",
+    "docBusinessLicense": "Business license",
+    "docIso": "ISO certificate",
+    "docBank": "Bank info",
+    "docTax": "Tax form",
+    "docCompliance": "Compliance declaration",
+    "docInsurance": "Insurance",
+    "stMissing": "Missing",
+    "stPending": "Pending",
+    "etaLabel": "ETA",
+    "missingLabel": "Missing",
+    "loadFailed": "Failed to load. Please retry.",
+    "retry": "Retry"
   }
 }

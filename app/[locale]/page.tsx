@@ -245,7 +245,7 @@ export default async function HomePage({
             </Reveal>
             <Reveal delay={150} className="mt-8">
               <Link
-                href={`/${locale}/platform`}
+                href={`/${locale}/app/executive`}
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[14.5px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-deep"
               >
                 {t("ai.cta")} →
@@ -255,7 +255,10 @@ export default async function HomePage({
           <div className="space-y-3">
             {risks.map((r, i) => (
               <Reveal key={r.t} delay={i * 100}>
-                <div className="dash-card flex items-center gap-4 p-5">
+                <Link
+                  href={`/${locale}/app/executive`}
+                  className="dash-card dash-card-hover flex items-center gap-4 p-5"
+                >
                   <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl text-[15px] font-bold ${riskTones[i]}`}>
                     {i + 1}
                   </span>
@@ -264,13 +267,16 @@ export default async function HomePage({
                     <p className="text-[13px] text-muted">{r.d}</p>
                   </div>
                   <span className="text-faint">→</span>
-                </div>
+                </Link>
               </Reveal>
             ))}
             <Reveal delay={320}>
-              <div className="rounded-2xl bg-brand px-6 py-4 text-center text-[14.5px] font-bold text-white shadow-[0_10px_24px_-8px_rgba(29,78,216,0.8)]">
+              <Link
+                href={`/${locale}/app/assistant`}
+                className="block rounded-2xl bg-brand px-6 py-4 text-center text-[14.5px] font-bold text-white shadow-[0_10px_24px_-8px_rgba(29,78,216,0.8)] transition-all hover:-translate-y-0.5 hover:bg-brand-deep"
+              >
                 Analyze with NIEL AI →
-              </div>
+              </Link>
             </Reveal>
           </div>
         </div>

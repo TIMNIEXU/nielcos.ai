@@ -39,16 +39,16 @@
       "eyebrow": "AI 高管智能",
       "risks": [
         {
-          "d": "17 票货，潜在影响 $420K",
-          "t": "关税敞口"
+          "t": "关税敞口",
+          "d": "汇总在途货运的关税敞口，按金额排序"
         },
         {
-          "d": "到港前单证缺失，17 票货",
-          "t": "报关延误风险"
+          "t": "报关延误风险",
+          "d": "到港前缺失单证自动预警"
         },
         {
-          "d": "8 份缺失证书阻碍放行",
-          "t": "供应商单证问题"
+          "t": "供应商单证问题",
+          "d": "缺失证书阻碍放行，提前发现"
         }
       ],
       "sub": "NIEL AI 盯着每一票货、每一次关税变化、每一份单证 — 按金额影响把真正重要的事推到您面前。",
@@ -321,6 +321,15 @@
           "异常工单可认领、可解决，全程跟进",
           "滞期、逾期应付、法规风险，一屏尽览"
         ]
+      },
+      {
+        "n": "AI 高管智能",
+        "d": "风险先于损失被发现：关税敞口、报关风险、供应商单证，一屏尽览。",
+        "points": [
+          "关税敞口按金额汇总",
+          "到港前缺单证自动预警",
+          "一键转交 AI 助手深入分析"
+        ]
       }
     ],
     "tryIt": "进入工作台"
@@ -582,7 +591,8 @@
     "logisticsNav": "物流",
     "financeNav": "财务",
     "assistantNav": "AI 助手",
-    "towerNav": "指挥塔"
+    "towerNav": "指挥塔",
+    "executiveNav": "AI 高管智能"
   },
   "estimator": {
     "eyebrow": "免费工具",
@@ -1182,5 +1192,41 @@
     "riskWarehouse": "仓储",
     "riskHold": "暂扣",
     "riskStale": "无动态"
+  },
+  "executive": {
+    "title": "AI 高管智能",
+    "sub": "风险，先于损失被发现。NIEL AI 盯着每一票货、每一次关税变化、每一份单证。",
+    "kpiDuty": "关税敞口",
+    "kpiDutyCount": "%N 票货",
+    "kpiClearance": "报关风险",
+    "kpiClearanceCount": "%N 票货",
+    "kpiSuppliers": "供应商单证",
+    "kpiSuppliersCount": "%N 项待补",
+    "secDuty": "关税敞口",
+    "secDutyDesc": "成本单中的关税金额汇总，按金额排序",
+    "secClearance": "报关延迟风险",
+    "secClearanceDesc": "14 天内到港但缺少关键单证的货运",
+    "secSuppliers": "供应商单证问题",
+    "secSuppliersDesc": "单证清单有缺失的活跃供应商",
+    "emptyDuty": "暂无关税敞口。",
+    "emptyClearance": "14 天内到港的货运单证齐全。",
+    "emptySuppliers": "供应商单证齐全。",
+    "emptyAll": "暂无风险预警，一切正常。",
+    "analyzeCta": "Analyze with NIEL AI",
+    "docCommercialInvoice": "商业发票",
+    "docPackingList": "装箱单",
+    "docBL": "提单",
+    "docBusinessLicense": "营业执照",
+    "docIso": "ISO 证书",
+    "docBank": "银行信息",
+    "docTax": "税务表格",
+    "docCompliance": "合规声明",
+    "docInsurance": "保险",
+    "stMissing": "缺失",
+    "stPending": "待补",
+    "etaLabel": "ETA",
+    "missingLabel": "缺失",
+    "loadFailed": "加载失败，请重试。",
+    "retry": "重试"
   }
 }
