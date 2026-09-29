@@ -102,7 +102,8 @@ export default function KeysTab({ m, locale, onChange }: Props) {
             <label className="text-[13px] font-bold text-ink">{m.keyNameLabel}</label>
             <input
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value.slice(0, 60))}
+              maxLength={60}
               placeholder={m.keyNamePh}
               className="mt-1.5 w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand"
             />
