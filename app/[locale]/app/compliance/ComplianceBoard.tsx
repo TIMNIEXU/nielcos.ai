@@ -114,7 +114,7 @@ export default function ComplianceBoard({ t }: { t: Record<string, string> }) {
     try {
       const r = await fetch("/api/app/compliance/updates/refresh", { method: "POST" });
       const j = await r.json();
-      if (j.ok) setSyncMsg(`${t.synced}: ${j.inserted} new / ${j.relevant} relevant / ${j.scanned} scanned`);
+      if (j.ok) setSyncMsg(`${t.synced}: ${j.inserted} new / ${j.relevant} relevant / ${j.scanned} scanned${j.translated != null ? ` / ${j.translated} translated` : ""}`);
       else setSyncMsg(j.detail || j.error || "failed");
     } catch (e) {
       setSyncMsg(String((e as Error).message || e));
