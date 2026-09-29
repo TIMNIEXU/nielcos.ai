@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
 /* Sync regulatory updates from the Federal Register (official US source).
@@ -54,20 +54,12 @@ async function authed() {
   return user ? sb : null;
 }
 
-const noAuth = () => NextResponse.json({ error: "unauthorized" }, { status: 401 });
-
-export async function POST() {
-  const sb = await authed();
-  if (!sb) return noAuth();
-
+async function runSync(sb: any) {
   const params = new URLSearchParams({
     order: "newest",
     per_page: "40",
-    "fields[]": ["title", "abstract", "publication_date", "html_url", "type", "agencies"].join(","),
   });
   for (const a of AGENCIES) params.append("conditions[agencies][]", a);
-  // fields[] needs repeating, not comma-joined
-  params.delete("fields[]");
   for (const f of ["title", "abstract", "publication_date", "html_url", "type", "agencies"])
     params.append("fields[]", f);
 
@@ -92,4 +84,41 @@ export async function POST() {
     inserted = data?.length ?? 0;
   }
   return NextResponse.json({ ok: true, scanned: docs.length, relevant: rows.length, inserted });
+}
+
+/* Throttle for unauthenticated callers (e.g. Vercel Cron): at most once
+   per hour. The sync only inserts public, URL-deduped notices, so an
+   outside trigger is harmless — this just prevents abuse. */
+async function throttled(sb: any): Promise<boolean> {
+  const { data } = await sb
+    .from("compliance_updates")
+    .select("created_at")
+    .eq("auto_imported", true)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .single();
+  if (!data?.created_at) return false;
+  return Date.now() - new Date(data.created_at).getTime() < 60 * 60 * 1000;
+}
+
+export async function POST() {
+  const sb = await authed();
+  if (!sb) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  return runSync(sb);
+}
+
+/* GET: Vercel Cron calls this weekly. Vercel auto-sends
+   Authorization: Bearer $CRON_SECRET when that env var is set.
+   If CRON_SECRET is not set yet, unauthenticated calls are allowed but
+   throttled — the sync only inserts public, URL-deduped notices. */
+export async function GET(req: NextRequest) {
+  const sb = await createClient();
+  const secret = process.env.CRON_SECRET;
+  const authedCron = !!secret && req.headers.get("authorization") === `Bearer ${secret}`;
+  if (secret && !authedCron) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+  if (!authedCron && (await throttled(sb)))
+    return NextResponse.json({ ok: true, throttled: true });
+  return runSync(sb);
 }
