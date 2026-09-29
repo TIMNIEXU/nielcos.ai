@@ -79,9 +79,8 @@ export default async function HomePage({
     t: t(`ai.risks.${i}.t`),
     d: t(`ai.risks.${i}.d`),
   }));
-  const agencies = [0, 1, 2, 3].map((i) => ({
+  const agencies = [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => ({
     n: t(`compliance.items.${i}.n`),
-    v: t(`compliance.items.${i}.v`),
   }));
   const cities = [0, 1, 2].map((i) => ({
     n: t(`network.cities.${i}.n`),
@@ -291,24 +290,24 @@ export default async function HomePage({
                 <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
                   <circle cx="60" cy="60" r="50" fill="none" stroke="#e8eef7" strokeWidth="13" />
                   <circle cx="60" cy="60" r="50" fill="none" stroke="#16a34a" strokeWidth="13"
-                    strokeLinecap="round" strokeDasharray={`${2 * Math.PI * 50 * 0.92} ${2 * Math.PI * 50}`} />
+                    strokeLinecap="round" strokeDasharray={`${2 * Math.PI * 50} ${2 * Math.PI * 50}`} />
                 </svg>
                 <div className="absolute inset-0 grid place-items-center text-center">
                   <div>
-                    <p className="text-3xl font-bold text-ink">92%</p>
+                    <p className="text-3xl font-bold text-ink">{agencies.length}</p>
                     <p className="text-[12px] font-medium text-muted">{t("compliance.overall")}</p>
                   </div>
                 </div>
               </div>
-              <div className="mt-6 w-full space-y-3">
+              <div className="mt-6 grid w-full grid-cols-3 gap-2">
                 {agencies.map((a) => (
-                  <div key={a.n}>
-                    <div className="mb-1 flex justify-between text-[12.5px] font-semibold">
-                      <span className="text-ink-soft">{a.n}</span>
-                      <span className="text-ink">{a.v}</span>
-                    </div>
-                    <div className="h-2 overflow-hidden rounded-full bg-line-soft">
-                      <div className="h-full rounded-full bg-gradient-to-r from-brand to-ok" style={{ width: a.v }} />
+                  <div key={a.n} className="flex items-center gap-1.5 rounded-lg border border-line-soft bg-white/70 px-2.5 py-2">
+                    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0 text-ok" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 8.5l3.2 3.2L13 5" />
+                    </svg>
+                    <div className="leading-tight">
+                      <p className="text-[12px] font-bold text-ink">{a.n}</p>
+                      <p className="text-[10.5px] text-muted">{t("compliance.autoChecked")}</p>
                     </div>
                   </div>
                 ))}

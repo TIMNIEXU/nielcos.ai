@@ -66,25 +66,37 @@
       "eyebrow": "Compliance Center",
       "items": [
         {
-          "n": "FDA",
-          "v": "98%"
+          "n": "FDA"
         },
         {
-          "n": "USDA",
-          "v": "96%"
+          "n": "FSIS"
         },
         {
-          "n": "APHIS",
-          "v": "94%"
+          "n": "APHIS"
         },
         {
-          "n": "EPA",
-          "v": "91%"
+          "n": "EPA"
+        },
+        {
+          "n": "FCC"
+        },
+        {
+          "n": "CPSC"
+        },
+        {
+          "n": "DOT"
+        },
+        {
+          "n": "ATF"
+        },
+        {
+          "n": "TTB"
         }
       ],
-      "overall": "Overall compliance",
+      "overall": "PGA agencies covered",
       "sub": "Every entry is checked against participating government agency requirements automatically — before CBP ever asks.",
-      "title": "Regulators, handled."
+      "title": "Regulators, handled.",
+      "autoChecked": "Auto-checked"
     },
     "cta": {
       "b1": "Request a demo",
