@@ -684,6 +684,6 @@ insert into hts_schedule (hts_no, description, general_rate, unit, keywords, rat
 ('8106.90.00','Bismuth and articles thereof, including waste and scrap: / Other',0.0,'ad val','bismuth,articles,thereof,including,waste,scrap','Free','USITC HTS 2026 Rev 19 (downloaded 2026-09-28)',true),
 ('8108.30.00','Titanium and articles thereof, including waste and scrap: / Waste and scrap',0.0,'ad val','titanium,articles,thereof,including,waste,scrap','Free','USITC HTS 2026 Rev 19 (downloaded 2026-09-28)',true),
 ('8109.21.00','Zirconium and articles thereof, including waste and scrap: / Unwrought zirconium; powders: / Containing less than 1 part hafnium to 500 parts zirconium by weight',4.2,'ad val','zirconium,articles,thereof,including,waste,scrap,unwrought,powders,containing,less,part,hafnium,500,parts,weight','4.2%','USITC HTS 2026 Rev 19 (downloaded 2026-09-28)',true),
-('8109.29.00','Zirconium and articles thereof, including waste and scrap: / Unwrought zirconium; powders: / Other',4.2,'ad val','zirconium,articles,thereof,including,waste,scrap,unwrought,powders','4.2%','USITC HTS 2026 Rev 19 (downloaded 2026-09-28)',true);
+('8109.29.00','Zirconium and articles thereof, including waste and scrap: / Unwrought zirconium; powders: / Other',4.2,'ad val','zirconium,articles,thereof,including,waste,scrap,unwrought,powders','4.2%','USITC HTS 2026 Rev 19 (downloaded 2026-09-28)',true)
 
 on conflict (hts_no) do update set description=excluded.description, general_rate=excluded.general_rate, unit=excluded.unit, rate_text=excluded.rate_text, revision=excluded.revision;
