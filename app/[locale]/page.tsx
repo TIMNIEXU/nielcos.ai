@@ -21,7 +21,7 @@ const MODULE_IMGS = [
 // Workspace app path per home module card; undefined = marketing-only card (no link).
 const MODULE_APPS: (string | undefined)[] = [
   "customs", "freight", "compliance", "documents",
-  "logistics", "finance", "assistant", undefined, // Control Tower has no app yet
+  "logistics", "finance", "assistant", "tower",
 ];
 
 const CITY_IMGS = ["new-york-nj", "los-angeles", "chicago"];
