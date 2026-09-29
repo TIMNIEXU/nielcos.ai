@@ -88,10 +88,10 @@ export default async function ModulesPage({
                     </li>
                   ))}
                 </ul>
-                {i === 0 && (
+                {(i === 0 || i === 1) && (
                   <div className="mt-auto pt-5">
                     <Link
-                      href={`/${locale}/app/customs`}
+                      href={`/${locale}/app/${i === 0 ? "customs" : "freight"}`}
                       className="inline-flex items-center gap-1.5 text-[13.5px] font-bold text-brand hover:gap-2.5 transition-all"
                     >
                       {t("tryIt")} →
