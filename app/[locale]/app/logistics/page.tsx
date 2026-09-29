@@ -17,7 +17,8 @@ export default async function LogisticsPage({
   if (!user) redirect(`/${locale}/login?next=/${locale}/app/logistics`);
 
   // Pre-translate without params (plain string lookup, no ICU placeholders).
-  const t = await getTranslations({ locale, namespace: "app" });
+  // Namespace "logistics" at message root, same convention as suppliers/products.
+  const t = await getTranslations({ locale, namespace: "logistics" });
   const keys = [
     "title", "sub",
     "tabMoves", "tabAppts", "tabDemurrage",
