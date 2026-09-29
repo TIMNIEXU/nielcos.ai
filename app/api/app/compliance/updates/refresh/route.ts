@@ -108,10 +108,13 @@ async function backfillZh(sb: any): Promise<number> {
     const titleZh = zh[i * 2];
     const bodyZh = zh[i * 2 + 1];
     if (titleZh === data[i].title && (bodyZh ?? "") === (data[i].body ?? "")) continue; // no key / failed
-    const { error } = await sb
-      .from("compliance_updates")
-      .update({ title_zh: titleZh, body_zh: bodyZh || null })
-      .eq("id", data[i].id);
+    // Writes go through the SECURITY DEFINER helper (v4): neither the
+    // cron anon role nor workspace users have raw UPDATE on this table.
+    const { error } = await sb.rpc("fill_update_zh", {
+      p_id: data[i].id,
+      p_title_zh: titleZh,
+      p_body_zh: bodyZh || null,
+    });
     if (!error) n++;
   }
   return n;
