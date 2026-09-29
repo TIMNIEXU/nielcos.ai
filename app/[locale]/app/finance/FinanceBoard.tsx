@@ -348,6 +348,7 @@ function DutyEstimator({ t, locale, sheet, onClose, onAdded }: {
   const [result, setResult] = useState<null | {
     hts_no: string; mfn: number | null; rate_text: string | null;
     suggestions: { duty_type: string; rate: number; source: string }[];
+    warnings: string[];
     duty: number; totalRate: number;
   }>(null);
   const [err, setErr] = useState("");
@@ -362,10 +363,11 @@ function DutyEstimator({ t, locale, sheet, onClose, onAdded }: {
       if (!d.found) { setErr(t("dutyNotFound")); setBusy(false); return; }
       const mfn = d.general_rate != null ? Number(d.general_rate) : null;
       const suggestions = (d.duty_suggestions ?? []).filter((s: any) => s.kind === "rate");
+      const warnings = (d.duty_suggestions ?? []).filter((s: any) => s.kind === "warning").map((s: any) => String(s.text ?? ""));
       const addRate = suggestions.reduce((a: number, s: any) => a + Number(s.rate || 0), 0);
       const totalRate = (mfn ?? 0) + addRate;
       setResult({
-        hts_no: d.hts_no, mfn, rate_text: d.rate_text ?? null, suggestions,
+        hts_no: d.hts_no, mfn, rate_text: d.rate_text ?? null, suggestions, warnings,
         duty: Math.round(v * totalRate) / 100, totalRate,
       });
     } catch { setErr(t("dutyNotFound")); }
@@ -412,6 +414,9 @@ function DutyEstimator({ t, locale, sheet, onClose, onAdded }: {
             </p>
             {result.suggestions.map((s, i) => (
               <p key={i} className="text-sm text-ink">{s.duty_type}: {s.rate}% <span className="text-xs text-ink-soft">({s.source})</span></p>
+            ))}
+            {result.warnings.map((w, i) => (
+              <p key={"w" + i} className="mt-1 text-xs font-bold text-amber-700">⚠️ {w}</p>
             ))}
             <div className="mt-2 flex items-center justify-between border-t border-line pt-2">
               <span className="text-sm font-bold text-ink">{t("dutyAmount")}</span>

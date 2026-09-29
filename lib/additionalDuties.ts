@@ -99,5 +99,15 @@ export function suggestAdditionalDuties(
       text: "Steel/aluminum/copper content — check the 232 derivative list (Annex I-B, HTS-specific rate) and confirm the rate before filing.",
     });
   }
+  // 4) Classic Section 301 China tariffs (Lists 1/2/3 = 25%, List 4A = 7.5%,
+  // 2018-2019 actions, still in effect) are only partially in the rule table.
+  // Never silently under-report a China-origin estimate.
+  const has301cn = out.some((s) => s.kind === "rate" && s.duty_type === "301-CN");
+  if (org === "CHINA" && !has301cn) {
+    out.push({
+      kind: "warning",
+      text: "Classic Section 301 China tariffs (Lists 1/2/3: 25%, List 4A: 7.5% — 9903.88 provisions) are not fully in the rate library yet, so this estimate may be understated. Verify your product's list membership before quoting.",
+    });
+  }
   return out;
 }

@@ -123,13 +123,20 @@ async function dutyAnswer(sb: Sb, htsNo: string, origin: string, zh: boolean, ct
     .select("hts_no, description, general_rate, rate_text, revision")
     .eq("hts_no", htsNo).maybeSingle();
   const { data: rules } = await sb.from("additional_duties").select("*");
-  const suggestions = suggestAdditionalDuties(htsNo, origin, "", (rules ?? []) as DutyRule[])
-    .filter((s) => s.kind === "rate") as { duty_type: string; rate: number; source: string }[];
+  const allSugg = suggestAdditionalDuties(htsNo, origin, "", (rules ?? []) as DutyRule[]);
+  const suggestions = allSugg.filter((s) => s.kind === "rate") as { duty_type: string; rate: number; source: string }[];
+  const warnings = allSugg.filter((s) => s.kind === "warning") as { text: string }[];
 
   const sources: Source[] = [
     { label: zh ? "USITC HTS 2026 Rev 19" : "USITC HTS 2026 Rev 19", detail: htsNo },
     ...suggestions.map((s) => ({ label: s.source, detail: `${s.duty_type} ${s.rate}%` })),
   ];
+  if (warnings.some((w) => w.text.includes("Classic Section 301"))) {
+    sources.push({
+      label: "USTR Section 301 tariff actions",
+      detail: zh ? "List 1–4A（2018–2019，仍然有效）" : "Lists 1–4A (2018–2019, still in effect)",
+    });
+  }
 
   if (!row) {
     return {
@@ -156,6 +163,7 @@ async function dutyAnswer(sb: Sb, htsNo: string, origin: string, zh: boolean, ct
     `Advisory only — verify the 232 derivative list and 301 exclusions before filing.`,
   ];
   if (row.description) lines.splice(1, 0, zh ? `品名：${row.description}` : `Description: ${row.description}`);
+  for (const w of warnings) lines.push(zh ? `⚠️ 注意：${w.text}` : `⚠️ Note: ${w.text}`);
 
   return { text: lines.join("\n"), sources, context: { ...ctx, lastHts: htsNo, lastOrigin: origin } };
 }
