@@ -596,6 +596,15 @@
     "mpfFy26": "FY2026: 0.3464%, min $33.58 / max $651.50",
     "mpfFy27": "FY2027: 0.3464%, min $34.58 / max $670.86",
     "disclaimer": "Estimate only. Actual duties depend on HTS classification, origin, trade preference eligibility, and CBP determination. Confirm with a licensed customs broker before relying on these figures.",
-    "cta": "Get an accurate quote"
+    "cta": "Get an accurate quote",
+    "productName": "Product name",
+    "productNamePh": "e.g. horizontal bar",
+    "material": "Material",
+    "materialPh": "e.g. steel",
+    "intendedUse": "Intended use",
+    "intendedUsePh": "e.g. gymnastic training",
+    "invValue": "Invoice value $",
+    "needInput": "Enter a product name or an HTS code first.",
+    "pickCandidate": "Pick the closest HTS code:"
   }
 }

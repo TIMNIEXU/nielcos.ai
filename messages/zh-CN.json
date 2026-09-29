@@ -596,6 +596,15 @@
     "mpfFy26": "FY2026：0.3464%，最低 $33.58 / 最高 $651.50",
     "mpfFy27": "FY2027：0.3464%，最低 $34.58 / 最高 $670.86",
     "disclaimer": "仅供估算。实际关税与规费取决于 HTS 归类、原产国、贸易优惠资格及海关（CBP）的最终裁定。在依据这些数字之前，请向持牌报关行确认。",
-    "cta": "获取精确报价"
+    "cta": "获取精确报价",
+    "productName": "产品名称",
+    "productNamePh": "例如 horizontal bar 单杠",
+    "material": "材质",
+    "materialPh": "例如 steel",
+    "intendedUse": "用途",
+    "intendedUsePh": "例如 gymnastic training",
+    "invValue": "Invoice Value $",
+    "needInput": "请先输入产品名称或 HTS 编码。",
+    "pickCandidate": "选择最接近的税号："
   }
 }
