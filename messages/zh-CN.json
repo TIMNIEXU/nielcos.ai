@@ -312,6 +312,15 @@
           "引用来源",
           "24/7 在线"
         ]
+      },
+      {
+        "n": "指挥塔",
+        "d": "全球每一票货、每一个风险、每一次异常，一屏尽览。",
+        "points": [
+          "全部货运实时汇总，节点进度一目了然",
+          "异常工单可认领、可解决，全程跟进",
+          "滞期、逾期应付、法规风险，一屏尽览"
+        ]
       }
     ],
     "tryIt": "进入工作台"
@@ -572,7 +581,8 @@
     "suppliersNav": "供应商",
     "logisticsNav": "物流",
     "financeNav": "财务",
-    "assistantNav": "AI 助手"
+    "assistantNav": "AI 助手",
+    "towerNav": "指挥塔"
   },
   "estimator": {
     "eyebrow": "免费工具",
@@ -1118,5 +1128,59 @@
     "confirmDelete": "删除这段对话？",
     "noThreads": "还没有对话。",
     "sendFailed": "出了点问题，请重试。"
+  },
+  "tower": {
+    "title": "指挥塔",
+    "sub": "全球每一票货、每一个风险、每一次异常，一屏尽览。",
+    "kpiActive": "在途货运",
+    "kpiExceptions": "未解决异常",
+    "kpiRisks": "风险预警",
+    "kpiDemurrage": "滞期敞口",
+    "kpiOverdue": "逾期应付",
+    "secExceptions": "异常工单",
+    "secRisks": "风险预警",
+    "secShipments": "货运一览",
+    "secRegulatory": "法规动态",
+    "searchPh": "搜索柜号 / MB-L / GTTID…",
+    "filterAll": "全部",
+    "filterActive": "在途",
+    "filterAttention": "需关注",
+    "emptyExceptions": "暂无未解决异常，一切正常。",
+    "emptyRisks": "暂无风险预警。",
+    "emptyShipments": "没有找到货运。",
+    "emptyRegulatory": "暂无法规动态。",
+    "actClaim": "认领",
+    "actResolve": "解决",
+    "sevHigh": "高",
+    "sevMedium": "中",
+    "sevLow": "低",
+    "stOpen": "未处理",
+    "stInProgress": "处理中",
+    "stResolved": "已解决",
+    "typeCustomsHold": "海关查验",
+    "typeDemurrageRisk": "滞期风险",
+    "typeDocMissing": "单证缺失",
+    "typeScheduleDelay": "船期延误",
+    "typeDamageClaim": "货损索赔",
+    "typeOther": "其他",
+    "viewShipment": "查看货运",
+    "loadFailed": "指挥塔数据加载失败。",
+    "retry": "重试",
+    "etaLabel": "预计到港",
+    "locLabel": "当前位置",
+    "updatedLabel": "更新于",
+    "daysAgo": "%N 天前",
+    "todayLabel": "今天",
+    "stInTransit": "在途",
+    "stAtPort": "在港",
+    "stOutForDelivery": "派送中",
+    "stPendingPickup": "待提货",
+    "stDelivered": "已交付",
+    "stOnHold": "暂扣",
+    "riskDemurrage": "滞期",
+    "riskPayable": "应付",
+    "riskWarehouse": "仓储",
+    "riskHold": "暂扣",
+    "riskStale": "无动态"
   }
 }

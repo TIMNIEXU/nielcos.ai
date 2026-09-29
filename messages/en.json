@@ -312,6 +312,15 @@
           "Cited sources",
           "24/7 availability"
         ]
+      },
+      {
+        "n": "Control Tower",
+        "d": "Every shipment, every risk, every exception — on one screen.",
+        "points": [
+          "Live shipment roll-up with milestone progress",
+          "Exception tickets with acknowledge / resolve workflow",
+          "Demurrage, overdue payables & regulatory risks on one screen"
+        ]
       }
     ],
     "tryIt": "Open workspace"
@@ -572,7 +581,8 @@
     "suppliersNav": "Suppliers",
     "logisticsNav": "Logistics",
     "financeNav": "Finance",
-    "assistantNav": "AI Assistant"
+    "assistantNav": "AI Assistant",
+    "towerNav": "Control Tower"
   },
   "estimator": {
     "eyebrow": "Free tool",
@@ -1118,5 +1128,59 @@
     "confirmDelete": "Delete this conversation?",
     "noThreads": "No conversations yet.",
     "sendFailed": "Something went wrong. Please try again."
+  },
+  "tower": {
+    "title": "Control Tower",
+    "sub": "Every shipment, every risk, every exception — on one screen.",
+    "kpiActive": "Active shipments",
+    "kpiExceptions": "Open exceptions",
+    "kpiRisks": "Risk alerts",
+    "kpiDemurrage": "Demurrage exposure",
+    "kpiOverdue": "Overdue payables",
+    "secExceptions": "Exception tickets",
+    "secRisks": "Risk alerts",
+    "secShipments": "Shipments",
+    "secRegulatory": "Regulatory updates",
+    "searchPh": "Search container / MBL / GTTID…",
+    "filterAll": "All",
+    "filterActive": "Active",
+    "filterAttention": "Attention",
+    "emptyExceptions": "No open exceptions. All clear.",
+    "emptyRisks": "No risk alerts right now.",
+    "emptyShipments": "No shipments found.",
+    "emptyRegulatory": "No regulatory updates yet.",
+    "actClaim": "Acknowledge",
+    "actResolve": "Resolve",
+    "sevHigh": "High",
+    "sevMedium": "Medium",
+    "sevLow": "Low",
+    "stOpen": "Open",
+    "stInProgress": "In progress",
+    "stResolved": "Resolved",
+    "typeCustomsHold": "Customs hold",
+    "typeDemurrageRisk": "Demurrage risk",
+    "typeDocMissing": "Docs missing",
+    "typeScheduleDelay": "Schedule delay",
+    "typeDamageClaim": "Damage claim",
+    "typeOther": "Other",
+    "viewShipment": "View shipment",
+    "loadFailed": "Couldn't load the tower snapshot.",
+    "retry": "Retry",
+    "etaLabel": "ETA",
+    "locLabel": "Location",
+    "updatedLabel": "",
+    "daysAgo": "%N days ago",
+    "todayLabel": "today",
+    "stInTransit": "In transit",
+    "stAtPort": "At port",
+    "stOutForDelivery": "Out for delivery",
+    "stPendingPickup": "Pending pickup",
+    "stDelivered": "Delivered",
+    "stOnHold": "On hold",
+    "riskDemurrage": "Demurrage",
+    "riskPayable": "Payable",
+    "riskWarehouse": "Warehouse",
+    "riskHold": "On hold",
+    "riskStale": "Stale"
   }
 }
