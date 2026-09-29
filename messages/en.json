@@ -191,6 +191,13 @@
       "eyebrow": "Where we operate",
       "sub": "Operated alongside Joma Logistics Inc — moving freight since 2008 — with teams on both coasts and the Midwest.",
       "title": "From here to anywhere."
+    },
+    "regFeed": {
+      "eyebrow": "Regulatory pulse",
+      "title": "Latest trade regulation updates",
+      "sub": "Auto-synced from the U.S. Federal Register (CBP & USTR). Click any item for the official notice.",
+      "viewAll": "Open the compliance workspace",
+      "empty": "No updates yet."
     }
   },
   "meta": {

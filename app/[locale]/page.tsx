@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import DashboardMock from "@/components/DashboardMock";
 import DutyEstimator from "@/components/DutyEstimator";
 import { SectionHead, CtaBand } from "@/components/Section";
+import RegulatoryFeed from "@/components/RegulatoryFeed";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -312,6 +313,18 @@ export default async function HomePage({
           </div>
         </div>
       </section>
+
+      {/* ============ REGULATORY FEED ============ */}
+      <RegulatoryFeed
+        locale={locale}
+        t={{
+          eyebrow: t("regFeed.eyebrow"),
+          title: t("regFeed.title"),
+          sub: t("regFeed.sub"),
+          viewAll: t("regFeed.viewAll"),
+          empty: t("regFeed.empty"),
+        }}
+      />
 
       {/* ============ NETWORK ============ */}
       <section className="border-t border-line bg-white">
