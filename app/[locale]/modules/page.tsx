@@ -16,6 +16,7 @@ const TINTS = [
 const IMGS = [
   "customs", "shipments", "compliance", "documents", "products",
   "suppliers", "logistics", "finance", "ai-assistant", "tower", "executive",
+  "integrations",
 ];
 
 export default async function ModulesPage({
@@ -27,7 +28,7 @@ export default async function ModulesPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "modulesPage" });
 
-  const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => ({
+  const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => ({
     n: t(`items.${i}.n`),
     d: t(`items.${i}.d`),
     points: [0, 1, 2].map((j) => t(`items.${i}.points.${j}`)),
@@ -88,10 +89,10 @@ export default async function ModulesPage({
                     </li>
                   ))}
                 </ul>
-                {(i <= 10) && (
+                {(i <= 11) && (
                   <div className="mt-auto pt-5">
                     <Link
-                      href={`/${locale}/app/${["customs", "freight", "compliance", "documents", "products", "suppliers", "logistics", "finance", "assistant", "tower", "executive"][i]}`}
+                      href={`/${locale}/app/${["customs", "freight", "compliance", "documents", "products", "suppliers", "logistics", "finance", "assistant", "tower", "executive", "integrations"][i]}`}
                       className="inline-flex items-center gap-1.5 text-[13.5px] font-bold text-brand hover:gap-2.5 transition-all"
                     >
                       {t("tryIt")} →

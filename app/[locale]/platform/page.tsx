@@ -91,12 +91,20 @@ export default async function PlatformPage({
       <section className="border-y border-line bg-white">
         <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
           <div className="grid items-center gap-10 lg:grid-cols-2">
-            <SectionHead
-              align="left"
-              eyebrow="Integrations"
-              title={t("integration.title")}
-              sub={t("integration.sub")}
-            />
+            <div>
+              <SectionHead
+                align="left"
+                eyebrow="Integrations"
+                title={t("integration.title")}
+                sub={t("integration.sub")}
+              />
+              <Link
+                href={`/${locale}/app/integrations`}
+                className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-bold text-brand hover:gap-2.5 transition-all"
+              >
+                {t("integration.cta")} →
+              </Link>
+            </div>
             <div className="grid grid-cols-2 gap-3">
               {points.map((p, i) => (
                 <Reveal key={p} delay={i * 80}>

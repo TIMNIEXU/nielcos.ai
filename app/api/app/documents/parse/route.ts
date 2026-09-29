@@ -113,5 +113,16 @@ export async function POST(req: NextRequest) {
     console.error("doc parse save error:", upErr.message);
     return fail("failed", "save", upErr.message);
   }
+  // Webhook event: document finished AI parsing (fire-and-forget).
+  try {
+    const { fireWebhooks } = await import("@/lib/integrations/webhooks");
+    const { data: cidRow } = await sb.rpc("own_company_id");
+    if (cidRow)
+      fireWebhooks(sb, cidRow as string, "document.parsed", {
+        document_id: docId,
+        file_name: doc.file_name,
+        doc_type: result.doc_type,
+      });
+  } catch { /* never break the parse response */ }
   return NextResponse.json({ ok: true, doc_type: result.doc_type, extracted, parse_status: "parsed" });
 }

@@ -92,5 +92,15 @@ export async function POST(req: NextRequest) {
     .single();
 
   if (error) return NextResponse.json({ error: "db_error", detail: error.message }, { status: 500 });
+  // Webhook event (fire-and-forget).
+  try {
+    const { fireWebhooks } = await import("@/lib/integrations/webhooks");
+    fireWebhooks(sb, cid, "drayage_move.created", {
+      move_id: data.id,
+      container_number: container,
+      move_type: moveType,
+      status,
+    });
+  } catch { /* never break the response */ }
   return NextResponse.json({ id: data.id });
 }

@@ -58,6 +58,16 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 
   const { error } = await sb.from("drayage_moves").update(patch).eq("id", id).eq("company_id", cid);
   if (error) return NextResponse.json({ error: "db_error", detail: error.message }, { status: 500 });
+  // Webhook event on status change only (fire-and-forget).
+  if (patch.status) {
+    try {
+      const { fireWebhooks } = await import("@/lib/integrations/webhooks");
+      fireWebhooks(sb, cid, "drayage_move.status_changed", {
+        move_id: id,
+        status: patch.status,
+      });
+    } catch { /* never break the response */ }
+  }
   return NextResponse.json({ ok: true });
 }
 
