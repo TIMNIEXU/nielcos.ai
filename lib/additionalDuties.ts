@@ -96,7 +96,7 @@ export function suggestAdditionalDuties(
   if (!has232 && METAL_RE.test(material || "") && org && !["US", "USA", "UNITED STATES"].includes(org)) {
     out.push({
       kind: "warning",
-      text: "Steel/aluminum/copper content — check the 232 derivative list (Annex I-B, currently 25%) and confirm the rate before filing.",
+      text: "Steel/aluminum/copper content — check the 232 derivative list (Annex I-B, HTS-specific rate) and confirm the rate before filing.",
     });
   }
   return out;
