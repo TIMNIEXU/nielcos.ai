@@ -18,7 +18,7 @@ export type DutyRule = {
 
 export type DutySuggestion =
   | { kind: "rate"; duty_type: string; rate: number; source: string; note: string; basis: string }
-  | { kind: "warning"; text: string };
+  | { kind: "warning"; text: string; text_zh?: string };
 
 const METAL_RE = /steel|aluminum|aluminium|copper|iron|钢|鐵|铝|鋁|铜|銅/i;
 
@@ -99,6 +99,7 @@ export function suggestAdditionalDuties(
       out.push({
         kind: "warning",
         text: `Classic Section 301 for ${disp}: the rate is 10-digit specific (Lists 1/2/3: 25%, List 4A: 7.5%). Enter the full 10-digit HTS instead of estimating from ${bare.length} digits.`,
+        text_zh: `该税号 ${disp} 的经典 Section 301 税率取决于十位编码（Lists 1/2/3：25%，List 4A：7.5%），请输入完整十位 HTS，不要用 ${bare.length} 位编码估算。`,
       });
     }
   }
@@ -127,6 +128,7 @@ export function suggestAdditionalDuties(
     out.push({
       kind: "warning",
       text: "Steel/aluminum/copper content — check the 232 derivative list (Annex I-B, HTS-specific rate) and confirm the rate before filing.",
+      text_zh: "产品含钢/铝/铜成分——请核对 232 衍生品清单（Annex I-B，按 HTS 逐项适用），正式申报前确认适用税率。",
     });
   }
   // 4) Classic Section 301 China tariffs (Lists 1/2/3 = 25%, List 4A = 7.5%,
@@ -137,6 +139,7 @@ export function suggestAdditionalDuties(
     out.push({
       kind: "warning",
       text: "Classic Section 301 China tariffs (Lists 1/2/3: 25%, List 4A: 7.5% — 9903.88 provisions) are not fully in the rate library yet, so this estimate may be understated. Verify your product's list membership before quoting.",
+      text_zh: "经典 Section 301 对华关税（Lists 1/2/3：25%，List 4A：7.5%——9903.88 项下）尚未完整入库，此估算可能偏低。报价前请核实产品所属清单。",
     });
   }
   return out;

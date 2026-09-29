@@ -133,7 +133,7 @@ async function dutyAnswer(sb: Sb, htsNo: string, origin: string, zh: boolean, ct
   const { data: rules } = await sb.from("additional_duties").select("*");
   const allSugg = suggestAdditionalDuties(htsNo, origin, "", (rules ?? []) as DutyRule[]);
   const suggestions = allSugg.filter((s) => s.kind === "rate") as { duty_type: string; rate: number; source: string }[];
-  const warnings = allSugg.filter((s) => s.kind === "warning") as { text: string }[];
+  const warnings = allSugg.filter((s) => s.kind === "warning") as { text: string; text_zh?: string }[];
 
   const sources: Source[] = [
     { label: zh ? "USITC HTS 2026 Rev 19" : "USITC HTS 2026 Rev 19", detail: htsNo },
@@ -171,7 +171,7 @@ async function dutyAnswer(sb: Sb, htsNo: string, origin: string, zh: boolean, ct
     `Advisory only — verify the 232 derivative list and 301 exclusions before filing.`,
   ];
   if (row.description) lines.splice(1, 0, zh ? `品名：${row.description}` : `Description: ${row.description}`);
-  for (const w of warnings) lines.push(zh ? `⚠️ 注意：${w.text}` : `⚠️ Note: ${w.text}`);
+  for (const w of warnings) lines.push(zh ? `⚠️ 注意：${w.text_zh ?? w.text}` : `⚠️ Note: ${w.text}`);
 
   return { text: lines.join("\n"), sources, context: { ...ctx, lastHts: htsNo, lastOrigin: origin } };
 }

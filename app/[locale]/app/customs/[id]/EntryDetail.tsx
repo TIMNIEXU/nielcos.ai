@@ -545,7 +545,7 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
                             <span className="text-[11px] text-ink-soft">{t.verifyDuty}</span>
                           </div>
                         ) : (
-                          <p key={di} className="mt-1.5 text-[11px] text-amber-700">⚠️ {d.text}</p>
+                          <p key={di} className="mt-1.5 text-[11px] text-amber-700">⚠️ {isZh ? (d.text_zh ?? d.text) : d.text}</p>
                         )
                       )}
                     </div>

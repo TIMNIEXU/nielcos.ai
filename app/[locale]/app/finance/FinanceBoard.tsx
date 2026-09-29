@@ -341,6 +341,7 @@ function SheetDetail({ t, locale, sheet, onChanged }: {
 function DutyEstimator({ t, locale, sheet, onClose, onAdded }: {
   t: (k: string) => string; locale: string; sheet: Sheet; onClose: () => void; onAdded: () => void;
 }) {
+  const isZh = locale === "zh-CN";
   const [hts, setHts] = useState("");
   const [origin, setOrigin] = useState("");
   const [value, setValue] = useState("");
@@ -363,7 +364,7 @@ function DutyEstimator({ t, locale, sheet, onClose, onAdded }: {
       if (!d.found) { setErr(t("dutyNotFound")); setBusy(false); return; }
       const mfn = d.general_rate != null ? Number(d.general_rate) : null;
       const suggestions = (d.duty_suggestions ?? []).filter((s: any) => s.kind === "rate");
-      const warnings = (d.duty_suggestions ?? []).filter((s: any) => s.kind === "warning").map((s: any) => String(s.text ?? ""));
+      const warnings = (d.duty_suggestions ?? []).filter((s: any) => s.kind === "warning").map((s: any) => String(isZh ? (s.text_zh ?? s.text) : (s.text ?? "")));
       const addRate = suggestions.reduce((a: number, s: any) => a + Number(s.rate || 0), 0);
       const totalRate = (mfn ?? 0) + addRate;
       setResult({

@@ -170,6 +170,7 @@ export default function ProductsBoard({ messages, locale }: { messages: Record<s
       {form && (
         <ProductForm
           t={t}
+          locale={locale}
           product={form.product}
           onClose={() => setForm(null)}
           onSaved={() => { setForm(null); load(q.trim()); }}
@@ -234,9 +235,10 @@ function Detail({ p, t, locale }: { p: Product; t: (k: string) => string; locale
 }
 
 /* ---- Add / edit form with HTS keyword search ---- */
-function ProductForm({ t, product, onClose, onSaved }: {
-  t: (k: string) => string; product?: Product; onClose: () => void; onSaved: () => void;
+function ProductForm({ t, locale, product, onClose, onSaved }: {
+  t: (k: string) => string; locale: string; product?: Product; onClose: () => void; onSaved: () => void;
 }) {
+  const isZh = locale === "zh-CN";
   const [sku, setSku] = useState(product?.sku ?? "");
   const [nameEn, setNameEn] = useState(product?.name_en ?? "");
   const [nameZh, setNameZh] = useState(product?.name_zh ?? "");
@@ -339,7 +341,11 @@ function ProductForm({ t, product, onClose, onSaved }: {
               <div className="mt-2 rounded-xl bg-brand-tint-soft/60 p-3 text-xs text-ink">
                 <p><span className="font-bold">MFN {pct(preview.general_rate)}</span> <span className="font-mono text-ink-soft">{preview.rate_text}</span></p>
                 {(preview.duty_suggestions ?? []).map((d: any, i: number) => (
-                  <p key={i} className="mt-0.5 text-amber-700">⚠ {d.kind} · {d.rate_text}</p>
+                  <p key={i} className="mt-0.5 text-amber-700">
+                    {d.kind === "rate"
+                      ? `⚠ ${d.duty_type}: ${d.rate}% (${d.source})`
+                      : `⚠ ${isZh ? (d.text_zh ?? d.text) : d.text}`}
+                  </p>
                 ))}
                 {(preview.pga ?? []).map((g: any) => (
                   <p key={g.agency} className="mt-0.5 text-sky-700">🏷 {g.agency} — {g.note}</p>
