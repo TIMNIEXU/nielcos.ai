@@ -2,20 +2,12 @@ import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import Reveal from "@/components/Reveal";
+import FeatureCard from "@/components/FeatureCard";
 import { SectionHead, CtaBand } from "@/components/Section";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-
-const TINTS = [
-  "bg-brand-tint text-brand",
-  "bg-vio-tint text-vio",
-  "bg-ok-tint text-ok",
-  "bg-warn-tint text-warn",
-  "bg-sky-tint text-sky",
-  "bg-risk-tint text-risk",
-];
 
 const IMGS = [
   "gttid", "classification", "compliance-automation",
@@ -63,25 +55,12 @@ export default async function PlatformPage({
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {features.map((f, i) => (
             <Reveal key={f.t} delay={(i % 3) * 90}>
-              <div className="dash-card dash-card-hover h-full overflow-hidden">
-                <div className="relative h-44 overflow-hidden bg-brand-tint/40">
-                  <img
-                    src={`/images/platform/${IMGS[i]}.png`}
-                    alt={f.t}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="p-7">
-                <div className="flex items-center justify-between">
-                  <span className={`grid h-12 w-12 place-items-center rounded-2xl text-[17px] font-bold ${TINTS[i % TINTS.length]}`}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <p className="mt-5 text-[18px] font-bold tracking-tight text-ink">{f.t}</p>
-                <p className="mt-3 text-[14px] leading-relaxed text-muted">{f.d}</p>
-                </div>
-              </div>
+              <FeatureCard
+                index={i}
+                title={f.t}
+                description={f.d}
+                image={`/images/platform/${IMGS[i]}.png`}
+              />
             </Reveal>
           ))}
         </div>
