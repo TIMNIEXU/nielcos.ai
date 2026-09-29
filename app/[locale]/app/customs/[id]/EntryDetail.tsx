@@ -254,7 +254,7 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
       const res = await fetch("/api/app/customs/suggest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ hts: line.confirmed_hts }),
+        body: JSON.stringify({ hts: line.confirmed_hts, origin: line.origin_country ?? "", material: line.material ?? "" }),
       });
       const data = await res.json();
       if (res.ok) setRateLookup((m) => ({ ...m, [line.id]: data }));

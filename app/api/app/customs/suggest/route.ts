@@ -18,10 +18,14 @@ export async function POST(req: NextRequest) {
 
   let description = "";
   let hts = "";
+  let origin = "";
+  let material = "";
   try {
     const body = await req.json();
     if (typeof body?.description === "string") description = body.description;
     if (typeof body?.hts === "string") hts = body.hts.trim();
+    if (typeof body?.origin === "string") origin = body.origin.trim();
+    if (typeof body?.material === "string") material = body.material.trim();
   } catch { /* fall through */ }
 
   const { data: rules } = await sb.from("pga_rules").select("hts_prefix, agency, agency_cn, note");
@@ -36,7 +40,7 @@ export async function POST(req: NextRequest) {
       .eq("hts_no", htsNo)
       .maybeSingle();
     const { data: dutyRules } = await sb.from("additional_duties").select("*");
-    const duty_suggestions = suggestAdditionalDuties(htsNo, "", "", (dutyRules ?? []) as DutyRule[]);
+    const duty_suggestions = suggestAdditionalDuties(htsNo, origin, material, (dutyRules ?? []) as DutyRule[]);
     if (!row)
       return NextResponse.json({ hts_no: htsNo, found: false, duty_suggestions });
     const pga = matchPga(row.hts_no, rules ?? []);
