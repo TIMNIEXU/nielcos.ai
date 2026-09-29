@@ -53,7 +53,7 @@ export default async function ProductsPage({ params }: Props) {
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink">{t("title")}</h1>
         <p className="mt-1 text-ink-soft">{t("sub")}</p>
         <div className="mt-6">
-          <ProductsBoard t={(k) => dict[k] ?? k} locale={locale} />
+          <ProductsBoard messages={dict} locale={locale} />
         </div>
       </div>
     </section>

@@ -26,7 +26,8 @@ function pct(r: number | null) {
   return `${(r * 100).toFixed(r < 0.01 ? 2 : 1).replace(/\.0$/, "")}%`;
 }
 
-export default function ProductsBoard({ t, locale }: { t: (k: string) => string; locale: string }) {
+export default function ProductsBoard({ messages, locale }: { messages: Record<string, string>; locale: string }) {
+  const t = (k: string) => messages[k] ?? k;
   const [items, setItems] = useState<Product[]>([]);
   const [q, setQ] = useState("");
   const [loading, setLoading] = useState(true);
