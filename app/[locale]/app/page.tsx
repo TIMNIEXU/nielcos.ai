@@ -124,6 +124,12 @@ export default async function AppHome({ params }: Props) {
           >
             {t("financeNav")} →
           </Link>
+          <Link
+            href={`/${locale}/app/assistant`}
+            className="rounded-full border border-brand/30 bg-white px-4 py-2 text-sm font-bold text-brand-deep transition-colors hover:bg-brand-tint"
+          >
+            {t("assistantNav")} →
+          </Link>
         </div>
         <div className="mt-4">
           {list.length === 0 ? (

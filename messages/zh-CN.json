@@ -571,7 +571,8 @@
     "productsNav": "产品",
     "suppliersNav": "供应商",
     "logisticsNav": "物流",
-    "financeNav": "财务"
+    "financeNav": "财务",
+    "assistantNav": "AI 助手"
   },
   "estimator": {
     "eyebrow": "免费工具",
@@ -1098,5 +1099,24 @@
     "paySub": "付给谁、付多少、什么时候付 — 关税、运费、拖车、供应商。",
     "filterAll": "全部",
     "perCurrencyNote": "金额按币种分别汇总，不做汇率换算。"
+  },
+  "assistant": {
+    "title": "AI 助手",
+    "sub": "用大白话问任何货、报关单或法规，每条回答都带出处。",
+    "newChat": "新对话",
+    "inputPh": "问税率、货运、法规……",
+    "send": "发送",
+    "sources": "引用来源",
+    "thinking": "思考中",
+    "emptyTitle": "想问点什么？",
+    "emptySub": "基于你的实时数据回答：税率库、你的货运、法规更新、你的产品库。",
+    "sugDuty": "9506.91.00 从中国进口税率多少？",
+    "sugTrack": "柜 CWNU2262061 到哪了？",
+    "sugReg": "232 钢铝关税有什么新规？",
+    "sugProd": "查产品 9506910030",
+    "deleteThread": "删除",
+    "confirmDelete": "删除这段对话？",
+    "noThreads": "还没有对话。",
+    "sendFailed": "出了点问题，请重试。"
   }
 }

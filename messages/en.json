@@ -571,7 +571,8 @@
     "productsNav": "Products",
     "suppliersNav": "Suppliers",
     "logisticsNav": "Logistics",
-    "financeNav": "Finance"
+    "financeNav": "Finance",
+    "assistantNav": "AI Assistant"
   },
   "estimator": {
     "eyebrow": "Free tool",
@@ -1098,5 +1099,24 @@
     "paySub": "Who gets paid, how much, and when — duty, freight, drayage, suppliers.",
     "filterAll": "All",
     "perCurrencyNote": "Amounts are grouped by currency. No FX conversion is applied."
+  },
+  "assistant": {
+    "title": "AI Assistant",
+    "sub": "Ask about any shipment, customs entry or regulation in plain words — every answer comes with sources.",
+    "newChat": "New chat",
+    "inputPh": "Ask about duty rates, shipments, regulations…",
+    "send": "Send",
+    "sources": "Sources",
+    "thinking": "Thinking",
+    "emptyTitle": "What would you like to know?",
+    "emptySub": "Grounded in your live data: tariff library, your shipments, regulation updates, your products.",
+    "sugDuty": "Duty rate for 9506.91.00 from China?",
+    "sugTrack": "Where is container CWNU2262061?",
+    "sugReg": "Any new 232 steel and aluminum rules?",
+    "sugProd": "Look up product 9506910030",
+    "deleteThread": "Delete",
+    "confirmDelete": "Delete this conversation?",
+    "noThreads": "No conversations yet.",
+    "sendFailed": "Something went wrong. Please try again."
   }
 }
