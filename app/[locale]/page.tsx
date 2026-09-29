@@ -61,6 +61,7 @@ export default async function HomePage({
   const t = await getTranslations({ locale, namespace: "home" });
   const tm = await getTranslations({ locale, namespace: "modulesPage" });
   const te = await getTranslations({ locale, namespace: "estimator" });
+  const tl = await getTranslations({ locale, namespace: "landedCost" });
   const estimatorLabels: Record<string, string> = Object.fromEntries(
     ["eyebrow","title","sub","importBtn","importHint","importing","importOk","importFail","importNoText","importTooBig","productName","productNamePh","material","materialPh","intendedUse","intendedUsePh","hts","htsPh","origin","originPh","lookup","lookingUp","needInput","pickCandidate","htsTooShort","notFound","compoundNote","lookupFailed","usitcRate","suggestFL","suggest232","capNote","apply","invValue","mfn","rate301orig","rate301fl","rate232","ocean","colItem","colRate","colAmount","rowBase","row301orig","row301fl","row232","rowDutyTotal","rowMpf","rowHmf","rowGrand","mpfFy26","mpfFy27","disclaimer","cta"].map((k) => [k, te(k)])
   );
@@ -128,6 +129,16 @@ export default async function HomePage({
                 {t("hero.cta2")}
               </Link>
             </div>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] font-semibold text-faint">
+              {[0, 1, 2, 3].map((i) => (
+                <span key={i} className="inline-flex items-center gap-1.5">
+                  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 text-ok" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 8.5l3.2 3.2L13 5" />
+                  </svg>
+                  {t(`hero.trust.${i}`)}
+                </span>
+              ))}
+            </div>
           </Reveal>
           <Reveal delay={260} className="mt-12 lg:mt-16">
             <DashboardMock />
@@ -159,6 +170,14 @@ export default async function HomePage({
         />
         <Reveal className="mt-12">
           <DutyEstimator t={estimatorLabels} locale={locale} />
+        </Reveal>
+        <Reveal className="mt-6 text-center">
+          <Link
+            href={`/${locale}/landed-cost`}
+            className="inline-flex items-center gap-2 text-[15px] font-bold text-brand transition-all hover:gap-3"
+          >
+            {tl("openFull")} →
+          </Link>
         </Reveal>
       </section>
 

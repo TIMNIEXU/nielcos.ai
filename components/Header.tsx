@@ -52,6 +52,8 @@ export default function Header() {
     { href: `/${locale}`, label: t("home") },
     { href: `/${locale}/platform`, label: t("platform") },
     { href: `/${locale}/modules`, label: t("modules") },
+    { href: `/${locale}/landed-cost`, label: t("landedCost") },
+    { href: `/${locale}/regulatory`, label: t("regulatory") },
     { href: `/${locale}/contact`, label: t("contact") },
   ];
 

@@ -71,7 +71,7 @@ export default function RegulatoryFeed({
         </div>
         <Reveal className="mt-8 text-center">
           <a
-            href={`/${locale}/app/compliance`}
+            href={`/${locale}/regulatory`}
             className="inline-flex items-center gap-2 text-[15px] font-bold text-brand hover:gap-3 transition-all"
           >
             {t.viewAll} →

@@ -105,13 +105,19 @@
       "title": "Put your trade operation under command."
     },
     "hero": {
-      "badge": "AI-powered · Live trade data",
+      "badge": "US–China trade · Tariff intelligence",
       "cta1": "Request a demo",
       "cta2": "Explore the platform",
       "eyebrow": "Niel Customs Operating System",
-      "sub": "NIEL COS unifies customs brokerage, shipments, compliance, documents, and finance in a single AI-powered operating system — so every entry, container, and dollar is visible, predictable, and under control.",
-      "titleA": "Your entire global trade",
-      "titleB": "operation, under one command."
+      "sub": "NIEL COS checks every HTS code against 6,857 USITC rates, Section 232 & 301 duties, and 9 PGA agencies — in English and Chinese — before CBP ever asks. Backed by the Joma trucking team moving containers since 2008.",
+      "titleA": "US–China trade,",
+      "titleB": "duties decoded.",
+      "trust": [
+        "Joma Logistics Inc · since 2008",
+        "100+ company trucks",
+        "FMC OTI #033998",
+        "APICS CSCP® certified"
+      ]
     },
     "kpis": [
       {
@@ -208,7 +214,7 @@
       "eyebrow": "Regulatory pulse",
       "title": "Latest trade regulation updates",
       "sub": "Auto-synced from the U.S. Federal Register (CBP & USTR). Click any item for the official notice.",
-      "viewAll": "Open the compliance workspace",
+      "viewAll": "View all regulatory updates",
       "empty": "No updates yet."
     }
   },
@@ -353,7 +359,9 @@
     "modules": "Modules",
     "platform": "Platform",
     "login": "Sign in",
-    "workspace": "Workspace"
+    "workspace": "Workspace",
+    "regulatory": "Regulatory",
+    "landedCost": "Landed cost"
   },
   "platform": {
     "cta": {
@@ -1240,5 +1248,32 @@
     "missingLabel": "Missing",
     "loadFailed": "Failed to load. Please retry.",
     "retry": "Retry"
+  },
+  "regulatory": {
+    "eyebrow": "Regulatory radar",
+    "title": "Every CBP & USTR move, translated.",
+    "sub": "Federal Register notices on tariffs, customs and trade — auto-synced every Monday and machine-translated into Chinese. Free, no login required.",
+    "empty": "No updates yet — check back after Monday's sync.",
+    "expand": "Show full text",
+    "collapse": "Show less",
+    "official": "Official notice",
+    "effectiveOn": "Effective",
+    "updatedWeekly": "Updated every Monday",
+    "disclaimer": "Machine-translated from the U.S. Federal Register. Always verify against the official notice before filing."
+  },
+  "landedCost": {
+    "eyebrow": "Free tool",
+    "title": "Know your landed cost before you buy.",
+    "sub": "Describe a product, pick an HTS code and origin — get MFN duty, Section 232, Section 301, MPF and Harbor Maintenance Fee in one table. Live USITC 2026 rates, no login.",
+    "steps": [
+      "Describe your product",
+      "Pick HTS code & origin",
+      "Get the duty breakdown"
+    ],
+    "openFull": "Open the full calculator",
+    "ctaTitle": "Want a second pair of eyes?",
+    "ctaSub": "Send us your BOM or supplier quote — we’ll sanity-check the classification and total duty before you commit.",
+    "ctaBtn": "Talk to our team",
+    "ctaBtn2": "Open the workbench"
   }
 }

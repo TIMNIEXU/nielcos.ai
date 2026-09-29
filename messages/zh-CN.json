@@ -105,13 +105,19 @@
       "title": "让您的贸易运营，一切尽在掌控。"
     },
     "hero": {
-      "badge": "AI 驱动 · 实时贸易数据",
+      "badge": "中美贸易 · 关税智能",
       "cta1": "预约演示",
       "cta2": "探索平台",
       "eyebrow": "Niel 海关操作系统",
-      "sub": "NIEL COS 把报关、货运、合规、单证和财务统一在一个 AI 驱动的操作系统里 — 每一票报关、每一个柜、每一美元都清晰、可预测、尽在掌控。",
-      "titleA": "您的全球贸易",
-      "titleB": "尽在一个指挥舱。"
+      "sub": "NIEL COS 把每一条 HTS 编码自动对照 6,857 条 USITC 税率、232 / 301 附加税与 9 个 PGA 机构要求——中英双语，在 CBP 问起之前就查清楚。背靠自 2008 年起运输集装箱的 Joma 卡车团队。",
+      "titleA": "中美贸易，",
+      "titleB": "关税一眼看穿。",
+      "trust": [
+        "Joma Logistics Inc · 2008年成立",
+        "100+ 自营卡车",
+        "FMC OTI #033998",
+        "APICS CSCP® 国际认证"
+      ]
     },
     "kpis": [
       {
@@ -208,7 +214,7 @@
       "eyebrow": "法规动态",
       "title": "最新贸易法规更新",
       "sub": "每周自动同步美国联邦公报（CBP 与 USTR）。点击任意条目查看官方原文。",
-      "viewAll": "进入合规工作台",
+      "viewAll": "查看全部法规动态",
       "empty": "暂无更新。"
     }
   },
@@ -353,7 +359,9 @@
     "modules": "模块",
     "platform": "平台",
     "login": "登录",
-    "workspace": "工作台"
+    "workspace": "工作台",
+    "regulatory": "法规动态",
+    "landedCost": "到岸成本"
   },
   "platform": {
     "cta": {
@@ -1240,5 +1248,32 @@
     "missingLabel": "缺失",
     "loadFailed": "加载失败，请重试。",
     "retry": "重试"
+  },
+  "regulatory": {
+    "eyebrow": "法规雷达",
+    "title": "CBP 与 USTR 的每一步，都有中文解读。",
+    "sub": "联邦公报上的关税、海关与贸易公告——每周一自动同步、机器翻译成中文。免费，免登录。",
+    "empty": "暂无更新——每周一同步后再来看看。",
+    "expand": "展开全文",
+    "collapse": "收起",
+    "official": "官方原文",
+    "effectiveOn": "生效日期",
+    "updatedWeekly": "每周一更新",
+    "disclaimer": "由美国联邦公报机器翻译。正式申报前请以官方原文为准。"
+  },
+  "landedCost": {
+    "eyebrow": "免费工具",
+    "title": "下单之前，先算清到岸成本。",
+    "sub": "描述产品、选择 HTS 编码与原产国——MFN 关税、232、301、MPF 与港口维护费，一张表全算清。USITC 2026 实时税率，免登录。",
+    "steps": [
+      "描述你的产品",
+      "选择 HTS 编码与原产国",
+      "拿到关税明细表"
+    ],
+    "openFull": "打开完整计算器",
+    "ctaTitle": "想请人再核一遍？",
+    "ctaSub": "把你的 BOM 或供应商报价发给我们——下单前帮你复核归类和总关税。",
+    "ctaBtn": "联系我们的团队",
+    "ctaBtn2": "打开工作台"
   }
 }
