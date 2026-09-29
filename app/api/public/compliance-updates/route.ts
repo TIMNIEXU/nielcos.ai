@@ -9,7 +9,7 @@ export async function GET() {
   const sb = await createClient();
   const { data, error } = await sb
     .from("compliance_updates")
-    .select("id, title, body, source, effective_date, url, created_at")
+    .select("id, title, title_zh, body, body_zh, source, effective_date, url, created_at")
     .eq("auto_imported", true)
     .order("effective_date", { ascending: false, nullsFirst: false })
     .order("created_at", { ascending: false })

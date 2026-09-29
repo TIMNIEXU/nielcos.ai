@@ -722,6 +722,9 @@
     "syncNow": "Sync Federal Register",
     "syncing": "Syncing…",
     "synced": "Sync complete",
-    "autoBadge": "Federal Register auto-sync"
+    "autoBadge": "Federal Register auto-sync",
+    "zhToggle": "中文",
+    "enToggle": "EN",
+    "mtNote": "Machine translation for reference — the English original prevails."
   }
 }

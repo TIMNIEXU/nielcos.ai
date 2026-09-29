@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { translateToZh } from "@/lib/compliance/translate";
 
 /* Sync regulatory updates from the Federal Register (official US source).
    Pulls the newest CBP + USTR documents, keeps only tariff/trade-relevant
@@ -83,7 +84,37 @@ async function runSync(sb: any) {
     if (error) return NextResponse.json({ error: "db_error", detail: error.message }, { status: 500 });
     inserted = data?.length ?? 0;
   }
-  return NextResponse.json({ ok: true, scanned: docs.length, relevant: rows.length, inserted });
+  const translated = await backfillZh(sb);
+  return NextResponse.json({ ok: true, scanned: docs.length, relevant: rows.length, inserted, translated });
+}
+
+/* Translate auto-synced items missing a Chinese version (new + backlog,
+   capped per run). Cached in title_zh / body_zh so each item is
+   translated once. No-op without DEEPL_API_KEY. */
+async function backfillZh(sb: any): Promise<number> {
+  const { data } = await sb
+    .from("compliance_updates")
+    .select("id, title, body")
+    .eq("auto_imported", true)
+    .is("title_zh", null)
+    .order("created_at", { ascending: false })
+    .limit(12);
+  if (!data?.length) return 0;
+  const flat: string[] = [];
+  for (const r of data) flat.push(r.title ?? "", r.body ?? "");
+  const zh = await translateToZh(flat);
+  let n = 0;
+  for (let i = 0; i < data.length; i++) {
+    const titleZh = zh[i * 2];
+    const bodyZh = zh[i * 2 + 1];
+    if (titleZh === data[i].title && (bodyZh ?? "") === (data[i].body ?? "")) continue; // no key / failed
+    const { error } = await sb
+      .from("compliance_updates")
+      .update({ title_zh: titleZh, body_zh: bodyZh || null })
+      .eq("id", data[i].id);
+    if (!error) n++;
+  }
+  return n;
 }
 
 /* Throttle for unauthenticated callers (e.g. Vercel Cron): at most once

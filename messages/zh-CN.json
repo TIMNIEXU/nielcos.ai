@@ -722,6 +722,9 @@
     "syncNow": "同步联邦公报最新",
     "syncing": "同步中…",
     "synced": "同步完成",
-    "autoBadge": "联邦公报自动同步"
+    "autoBadge": "联邦公报自动同步",
+    "zhToggle": "中文",
+    "enToggle": "EN",
+    "mtNote": "机器翻译仅供参考，以英文原文为准。"
   }
 }

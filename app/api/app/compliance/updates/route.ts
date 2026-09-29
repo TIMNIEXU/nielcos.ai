@@ -21,7 +21,7 @@ export async function GET() {
   if (!a) return noAuth();
   const { data, error } = await a.sb
     .from("compliance_updates")
-    .select("id, title, body, source, effective_date, url, auto_imported, created_at")
+    .select("id, title, title_zh, body, body_zh, source, effective_date, url, auto_imported, created_at")
     .order("effective_date", { ascending: false, nullsFirst: false })
     .order("created_at", { ascending: false })
     .limit(100);

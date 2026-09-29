@@ -13,7 +13,7 @@ const KEYS = [
   "watchlist","importSeed","importing","importDone","addInternal","intNamePh","intCountryPh",
   "add","added","logsEmpty","logTime","logQuery","logResult","logMatch",
   "updatesEmpty","newUpdate","upTitle","upTitlePh","upBody","upBodyPh","upSource","upSourcePh",
-  "upDate","publish","published","effective","seedAsOf",
+  "upDate","publish","published","effective","seedAsOf","zhToggle","enToggle","mtNote",
 ];
 
 export default async function CompliancePage({ params }: Props) {

@@ -7,7 +7,9 @@ import { SectionHead } from "./Section";
 type U = {
   id: string;
   title: string;
+  title_zh: string | null;
   body: string;
+  body_zh: string | null;
   source: string | null;
   effective_date: string | null;
   url: string | null;
@@ -31,6 +33,7 @@ export default function RegulatoryFeed({
 
   // Don't render the section until we know there's content.
   if (!items || items.length === 0) return null;
+  const preferZh = locale.startsWith("zh");
 
   return (
     <section className="border-y border-line bg-white py-20 lg:py-24">
@@ -54,10 +57,12 @@ export default function RegulatoryFeed({
                   {u.source && <span className="truncate text-faint">{u.source.split("·")[0].trim()}</span>}
                 </div>
                 <p className="mt-3 line-clamp-3 text-[15px] font-bold leading-snug text-ink">
-                  {u.title}
+                  {preferZh && u.title_zh ? u.title_zh : u.title}
                 </p>
-                {u.body && (
-                  <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-muted">{u.body}</p>
+                {(preferZh && u.body_zh ? u.body_zh : u.body) && (
+                  <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-muted">
+                    {preferZh && u.body_zh ? u.body_zh : u.body}
+                  </p>
                 )}
                 <span className="mt-auto pt-4 text-[13px] font-bold text-brand">↗</span>
               </a>

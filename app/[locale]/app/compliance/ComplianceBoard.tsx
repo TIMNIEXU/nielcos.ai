@@ -8,7 +8,7 @@ type ScreenRes = {
   screened_at: string; watchlist_size: number;
 };
 type Log = { id: string; query_name: string; query_country: string | null; result: string; match_detail: string | null; created_at: string };
-type Update = { id: string; title: string; body: string; source: string | null; effective_date: string | null; url: string | null; auto_imported: boolean; created_at: string };
+type Update = { id: string; title: string; title_zh: string | null; body: string; body_zh: string | null; source: string | null; effective_date: string | null; url: string | null; auto_imported: boolean; created_at: string };
 
 const RES_STYLE: Record<string, string> = {
   clear: "bg-emerald-50 text-emerald-700 ring-emerald-200",
@@ -31,6 +31,9 @@ export default function ComplianceBoard({ t }: { t: Record<string, string> }) {
   const [nt, setNt] = useState({ title: "", body: "", source: "", date: "" });
   const [syncMsg, setSyncMsg] = useState("");
   const [syncing, setSyncing] = useState(false);
+  const [zhOn, setZhOn] = useState(
+    () => typeof document !== "undefined" && document.documentElement.lang.startsWith("zh")
+  );
 
   async function refreshMeta() {
     const [s, l, u] = await Promise.all([
@@ -306,10 +309,31 @@ export default function ComplianceBoard({ t }: { t: Record<string, string> }) {
       {tab === "updates" && (
         <div className="mt-6 grid gap-6 lg:grid-cols-5">
           <div className="lg:col-span-3 space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="inline-flex rounded-full bg-white p-1 ring-1 ring-line">
+                {(["en", "zh"] as const).map((v) => (
+                  <button
+                    key={v}
+                    type="button"
+                    onClick={() => setZhOn(v === "zh")}
+                    className={`rounded-full px-3.5 py-1.5 text-xs font-bold transition ${
+                      (v === "zh") === zhOn ? "bg-brand text-white" : "text-muted hover:text-ink"
+                    }`}
+                  >
+                    {v === "zh" ? t.zhToggle : t.enToggle}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {zhOn && (
+              <p className="text-xs text-faint">{t.mtNote}</p>
+            )}
             {updates.length === 0 ? (
               <p className="rounded-2xl bg-white p-8 text-center text-sm text-faint shadow-card ring-1 ring-line">{t.updatesEmpty}</p>
             ) : (
-              updates.map((u) => (
+              updates.map((u) => {
+                const showZh = zhOn && u.title_zh;
+                return (
                 <article key={u.id} className="rounded-2xl bg-white p-6 shadow-card ring-1 ring-line">
                   <div className="flex flex-wrap items-center gap-2 text-xs text-faint">
                     {u.effective_date && (
@@ -322,10 +346,10 @@ export default function ComplianceBoard({ t }: { t: Record<string, string> }) {
                   <h3 className="mt-2 font-bold text-ink">
                     {u.url ? (
                       <a href={u.url} target="_blank" rel="noopener noreferrer" className="text-brand-deep hover:underline">
-                        {u.title} ↗
+                        {showZh ? u.title_zh : u.title} ↗
                       </a>
                     ) : (
-                      u.title
+                      showZh ? u.title_zh : u.title
                     )}
                   </h3>
                   {u.auto_imported && (
@@ -333,9 +357,10 @@ export default function ComplianceBoard({ t }: { t: Record<string, string> }) {
                       {t.autoBadge}
                     </span>
                   )}
-                  {u.body && <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{u.body}</p>}
+                  {(showZh ? u.body_zh : u.body) && <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{showZh ? u.body_zh : u.body}</p>}
                 </article>
-              ))
+                );
+              })
             )}
           </div>
           <form onSubmit={publishUpdate} className="lg:col-span-2 h-fit rounded-2xl bg-white p-6 shadow-card ring-1 ring-line">
