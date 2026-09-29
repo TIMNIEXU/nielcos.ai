@@ -53,7 +53,7 @@ export default function ProductsBoard({ t, locale }: { t: (k: string) => string;
   }, [q, load]);
 
   const del = async (p: Product) => {
-    if (!confirm(t("deleteConfirm").replace("{sku}", p.sku))) return;
+    if (!confirm(t("deleteConfirm").replace("%SKU%", p.sku))) return;
     await fetch(`/api/app/products/${p.id}`, { method: "DELETE" });
     load(q.trim());
   };
@@ -390,7 +390,7 @@ function ImportDialog({ t, onClose, onDone }: { t: (k: string) => string; onClos
       const d = await r.json();
       if (!r.ok) { setResult(t("importFailed")); }
       else {
-        setResult(t("importDone").replace("{a}", d.imported).replace("{b}", d.updated).replace("{c}", d.skipped));
+        setResult(t("importDone").replace("%A%", d.imported).replace("%B%", d.updated).replace("%C%", d.skipped));
         setTimeout(onDone, 1200);
       }
     } catch { setResult(t("importFailed")); }
