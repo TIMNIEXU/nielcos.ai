@@ -40,7 +40,9 @@ export async function POST(req: NextRequest) {
       .eq("hts_no", htsNo)
       .maybeSingle();
     const { data: dutyRules } = await sb.from("additional_duties").select("*");
-    const duty_suggestions = suggestAdditionalDuties(htsNo, origin, material, (dutyRules ?? []) as DutyRule[]);
+    // MFN schedule is 8-digit (htsNo); duty rules may be 10-digit, so pass
+    // the raw input through instead of the truncated 8-digit code.
+    const duty_suggestions = suggestAdditionalDuties(hts, origin, material, (dutyRules ?? []) as DutyRule[]);
     if (!row)
       return NextResponse.json({ hts_no: htsNo, found: false, duty_suggestions });
     const pga = matchPga(row.hts_no, rules ?? []);

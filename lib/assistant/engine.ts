@@ -64,11 +64,14 @@ function findOrigin(q: string): string | null {
 function findHts(q: string): string | null {
   const m = q.replace(/,/g, "").match(/(\d{4})[.\s-]?(\d{2})(?:[.\s-]?(\d{2}))?(?:[.\s-]?(\d{2}))?/);
   if (!m) return null;
-  const digits = (m[1] + m[2] + (m[3] ?? "") + (m[4] ?? "")).slice(0, 8);
+  // Up to 10 digits: classic Section 301 (China) rates are 10-digit specific.
+  const digits = (m[1] + m[2] + (m[3] ?? "") + (m[4] ?? "")).slice(0, 10);
   if (digits.length < 6) return null;
-  return digits.length >= 8
-    ? `${digits.slice(0, 4)}.${digits.slice(4, 6)}.${digits.slice(6, 8)}`
-    : `${digits.slice(0, 4)}.${digits.slice(4)}`;
+  return digits.length >= 10
+    ? `${digits.slice(0, 4)}.${digits.slice(4, 6)}.${digits.slice(6, 8)}.${digits.slice(8, 10)}`
+    : digits.length >= 8
+      ? `${digits.slice(0, 4)}.${digits.slice(4, 6)}.${digits.slice(6, 8)}`
+      : `${digits.slice(0, 4)}.${digits.slice(4)}`;
 }
 
 const DUTY_WORDS = /(税率|关税|duty|duties|tariff|加征|232|301)/i;
@@ -119,9 +122,14 @@ export async function answerQuestion(
 
 /* ================= duty ================= */
 async function dutyAnswer(sb: Sb, htsNo: string, origin: string, zh: boolean, ctx: ThreadCtx): Promise<Answer> {
+  // MFN schedule is 8-digit; the duty matcher gets the full (up to 10-digit) code.
+  const digits = htsNo.replace(/[^0-9]/g, "");
+  const hts8 = digits.length >= 8
+    ? `${digits.slice(0, 4)}.${digits.slice(4, 6)}.${digits.slice(6, 8)}`
+    : htsNo;
   const { data: row } = await sb.from("hts_schedule")
     .select("hts_no, description, general_rate, rate_text, revision")
-    .eq("hts_no", htsNo).maybeSingle();
+    .eq("hts_no", hts8).maybeSingle();
   const { data: rules } = await sb.from("additional_duties").select("*");
   const allSugg = suggestAdditionalDuties(htsNo, origin, "", (rules ?? []) as DutyRule[]);
   const suggestions = allSugg.filter((s) => s.kind === "rate") as { duty_type: string; rate: number; source: string }[];

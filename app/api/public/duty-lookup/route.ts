@@ -15,7 +15,8 @@ export async function GET(req: NextRequest) {
   const origin = (q.get("origin") ?? "").trim();
   const material = (q.get("material") ?? "").trim();
   const description = (q.get("description") ?? "").trim();
-  const bare = (q.get("hts") ?? "").replace(/[^0-9]/g, "").slice(0, 8);
+  const digits = (q.get("hts") ?? "").replace(/[^0-9]/g, "");
+  const bare = digits.slice(0, 8);
 
   const { data: dutyRules } = await sb.from("additional_duties").select("*");
   const rules = (dutyRules ?? []) as DutyRule[];
@@ -31,7 +32,9 @@ export async function GET(req: NextRequest) {
       .select("hts_no, description, general_rate, rate_text, revision")
       .eq("hts_no", htsNo)
       .maybeSingle();
-    const duty_suggestions = suggestAdditionalDuties(htsNo, origin, material, rules);
+    // MFN schedule is 8-digit; additional-duty rules may be 10-digit, so the
+    // full input (up to 10 digits) goes to the duty matcher.
+    const duty_suggestions = suggestAdditionalDuties(digits, origin, material, rules);
     if (!row)
       return NextResponse.json({ found: false, hts_no: htsNo, duty_suggestions });
     return NextResponse.json({

@@ -50,9 +50,19 @@ export function suggestAdditionalDuties(
   material: string,
   rules: DutyRule[]
 ): DutySuggestion[] {
-  const bare = (htsNo || "").replace(/[^0-9]/g, "");
+  // Keep up to 10 digits: classic Section 301 (China) rates are defined at
+  // the 10-digit level (Lists 1/2/3 = 25%, List 4A = 7.5%). MFN lookup stays
+  // 8-digit; only the additional-duty matching uses the full code.
+  const bare = (htsNo || "").replace(/[^0-9]/g, "").slice(0, 10);
   if (!bare) return [];
   const out: DutySuggestion[] = [];
+  const org = normOrigin(origin);
+  const disp =
+    bare.length > 8
+      ? `${bare.slice(0, 4)}.${bare.slice(4, 6)}.${bare.slice(6, 8)}.${bare.slice(8)}`
+      : bare.length >= 8
+        ? `${bare.slice(0, 4)}.${bare.slice(4, 6)}.${bare.slice(6, 8)}`
+        : htsNo || bare;
 
   // 1) HTS-prefix rules (e.g. Section 232 steel/aluminum/copper articles)
   let best: DutyRule | null = null;
@@ -72,8 +82,28 @@ export function suggestAdditionalDuties(
     });
   }
 
+  // 1b) The query is less specific than a 301-CN rule (e.g. 8-digit query,
+  // but the rate only exists at 10 digits). Never guess a list rate from a
+  // shorter code — ask for the 10-digit HTS instead.
+  let needTenDigit = false;
+  if (!best && bare.length < 10) {
+    needTenDigit = rules.some(
+      (r) =>
+        r.duty_type === "301-CN" &&
+        !!r.hts_prefix &&
+        r.hts_prefix.length > bare.length &&
+        r.hts_prefix.startsWith(bare) &&
+        normOrigin(r.origin_country) === org
+    );
+    if (needTenDigit) {
+      out.push({
+        kind: "warning",
+        text: `Classic Section 301 for ${disp}: the rate is 10-digit specific (Lists 1/2/3: 25%, List 4A: 7.5%). Enter the full 10-digit HTS instead of estimating from ${bare.length} digits.`,
+      });
+    }
+  }
+
   // 2) Blanket origin-based rules (e.g. Section 301 forced labor, all HTS)
-  const org = normOrigin(origin);
   const has232 = out.some((s) => s.kind === "rate" && s.duty_type === "232");
   for (const r of rules) {
     if (r.hts_prefix) continue;
@@ -103,7 +133,7 @@ export function suggestAdditionalDuties(
   // 2018-2019 actions, still in effect) are only partially in the rule table.
   // Never silently under-report a China-origin estimate.
   const has301cn = out.some((s) => s.kind === "rate" && s.duty_type === "301-CN");
-  if (org === "CHINA" && !has301cn) {
+  if (org === "CHINA" && !has301cn && !needTenDigit) {
     out.push({
       kind: "warning",
       text: "Classic Section 301 China tariffs (Lists 1/2/3: 25%, List 4A: 7.5% — 9903.88 provisions) are not fully in the rate library yet, so this estimate may be understated. Verify your product's list membership before quoting.",
