@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import Reveal from "@/components/Reveal";
 import DashboardMock from "@/components/DashboardMock";
+import DutyEstimator from "@/components/DutyEstimator";
 import { SectionHead, CtaBand } from "@/components/Section";
 
 export function generateStaticParams() {
@@ -52,6 +53,10 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home" });
   const tm = await getTranslations({ locale, namespace: "modulesPage" });
+  const te = await getTranslations({ locale, namespace: "estimator" });
+  const estimatorLabels: Record<string, string> = Object.fromEntries(
+    ["eyebrow","title","sub","value","freight","insurance","mfn","rate301","rate232","hts","htsPh","origin","originPh","lookup","lookingUp","htsTooShort","notFound","compoundNote","lookupFailed","usitcRate","suggestFL","suggest232","capNote","apply","ocean","breakdown","rowDuty","rowDutyMfn","rowDuty301","rowDuty232","rowMpf","rowHmf","rowTotal","mpfFy26","mpfFy27","disclaimer","cta"].map((k) => [k, te(k)])
+  );
 
   const kpis = [0, 1, 2, 3].map((i) => ({
     value: t(`kpis.${i}.value`),
@@ -137,6 +142,18 @@ export default async function HomePage({
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* ============ DUTY ESTIMATOR ============ */}
+      <section id="duty-estimator" className="mx-auto max-w-7xl scroll-mt-24 px-5 py-20 lg:px-8 lg:py-24">
+        <SectionHead
+          eyebrow={te("eyebrow")}
+          title={te("title")}
+          sub={te("sub")}
+        />
+        <Reveal className="mt-12">
+          <DutyEstimator t={estimatorLabels} locale={locale} />
+        </Reveal>
       </section>
 
       {/* ============ MARQUEE ============ */}
