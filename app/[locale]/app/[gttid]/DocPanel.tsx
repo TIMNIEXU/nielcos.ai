@@ -20,6 +20,9 @@ type Doc = {
   doc_type?: string | null;
   parse_status?: string | null;
   extracted?: Extracted | null;
+  group_id?: string | null;
+  version_no?: number | null;
+  is_current?: boolean | null;
 };
 
 const MAX_MB = 20;
@@ -119,6 +122,10 @@ export default function DocPanel({
         .select("id")
         .single();
       if (dbErr) throw dbErr;
+      // First version: the version group is the row itself.
+      if (inserted?.id) {
+        await sb.from("documents").update({ group_id: inserted.id }).eq("id", inserted.id);
+      }
       router.refresh();
       // Fire-and-forget AI classification + extraction.
       if (inserted?.id) runParse(inserted.id);
@@ -229,6 +236,11 @@ export default function DocPanel({
             <div className="min-w-0">
               <p className="flex flex-wrap items-center gap-2 text-sm font-semibold text-ink">
                 <span className="truncate">{d.file_name}</span>
+                {(d.version_no ?? 1) > 1 && (
+                  <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-600">
+                    v{d.version_no}
+                  </span>
+                )}
                 {d.doc_type && (
                   <span
                     className={`shrink-0 rounded-full border px-2 py-0.5 text-[11px] font-bold ${TYPE_TONE[d.doc_type] ?? TYPE_TONE.other}`}

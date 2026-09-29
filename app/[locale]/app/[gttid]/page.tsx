@@ -62,6 +62,7 @@ export default async function ShipmentDetail({ params }: Props) {
     .from("documents")
     .select("*")
     .eq("shipment_id", shipment.id)
+    .eq("is_current", true)
     .order("created_at", { ascending: false });
 
   const { data: arrivalRows } = await sb
