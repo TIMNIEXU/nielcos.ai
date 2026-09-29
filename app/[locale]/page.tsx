@@ -18,6 +18,12 @@ const MODULE_IMGS = [
   "logistics", "finance", "ai-assistant", "control-tower",
 ];
 
+// Workspace app path per home module card; undefined = marketing-only card (no link).
+const MODULE_APPS: (string | undefined)[] = [
+  "customs", "freight", "compliance", "documents",
+  "logistics", "finance", "assistant", undefined, // Control Tower has no app yet
+];
+
 const CITY_IMGS = ["new-york-nj", "los-angeles", "chicago"];
 
 function ModuleGlyph({ i }: { i: number }) {
@@ -194,9 +200,9 @@ export default async function HomePage({
                   <ModuleGlyph i={i} />
                   <p className="mt-4 text-[16px] font-bold text-ink">{m.name}</p>
                   <p className="mt-2 text-[13.5px] leading-relaxed text-muted">{m.desc}</p>
-                  {(i === 0 || i === 1 || i === 2) && (
+                  {MODULE_APPS[i] && (
                     <Link
-                      href={`/${locale}/app/${["customs", "freight", "compliance"][i]}`}
+                      href={`/${locale}/app/${MODULE_APPS[i]}`}
                       className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-bold text-brand hover:gap-2.5 transition-all"
                     >
                       {tm("tryIt")} →
