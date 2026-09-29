@@ -2,9 +2,11 @@
 
 import { useMemo, useState } from "react";
 
-/* Public US import duty & landed-cost estimator.
+/* Public US import duty estimator.
    Input order: product name → material → intended use → HTS → origin →
-   invoice value → MFN / 301 / 232 → MPF / HMF / total.
+   invoice value → base duty (MFN) / existing 301 / 2026 new 301 / 232.
+   Result table: 项目 | 税率 | 本批金额（美元）, ending with
+   关税及上述海关费用合计 (duties + MPF + HMF).
    All math runs in the browser. Rate lookups hit the public read-only
    /api/public/duty-lookup (USITC rates + 301/232 suggestions).
    Figures are estimates — the UI always says verify before relying. */
@@ -30,6 +32,7 @@ const num = (s: string) => {
 };
 const usd = (n: number) =>
   n.toLocaleString("en-US", { style: "currency", currency: "USD" });
+const pct = (n: number) => `${n}%`;
 
 type Suggestion = {
   kind: string;
@@ -56,10 +59,9 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
   const [hts, setHts] = useState("");
   const [origin, setOrigin] = useState("");
   const [invValue, setInvValue] = useState("");
-  const [freight, setFreight] = useState("");
-  const [insurance, setInsurance] = useState("");
   const [mfn, setMfn] = useState("");
-  const [r301, setR301] = useState("");
+  const [r301orig, setR301orig] = useState("");
+  const [r301fl, setR301fl] = useState("");
   const [r232, setR232] = useState("");
   const [ocean, setOcean] = useState(false);
 
@@ -72,17 +74,20 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
 
   const calc = useMemo(() => {
     const v = num(invValue);
-    const dutyMfn = (v * num(mfn)) / 100;
-    const duty301 = (v * num(r301)) / 100;
-    const duty232 = (v * num(r232)) / 100;
-    const duty = dutyMfn + duty301 + duty232;
+    const m = num(mfn), o = num(r301orig), f = num(r301fl), w = num(r232);
+    const dutyMfn = (v * m) / 100;
+    const duty301orig = (v * o) / 100;
+    const duty301fl = (v * f) / 100;
+    const duty232 = (v * w) / 100;
+    const dutyTotal = dutyMfn + duty301orig + duty301fl + duty232;
+    const totalRate = m + o + f + w;
     const mpfRaw = (v * sched.rate) / 100;
     const mpf = v > 0 ? Math.min(sched.max, Math.max(sched.min, mpfRaw)) : 0;
     const hmf = ocean ? (v * HMF_RATE) / 100 : 0;
-    const total = v + num(freight) + num(insurance) + duty + mpf + hmf;
-    return { v, dutyMfn, duty301, duty232, duty, mpf, hmf, total };
+    const grand = dutyTotal + mpf + hmf;
+    return { v, m, o, f, w, dutyMfn, duty301orig, duty301fl, duty232, dutyTotal, totalRate, mpf, hmf, grand };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [invValue, freight, insurance, mfn, r301, r232, ocean]);
+  }, [invValue, mfn, r301orig, r301fl, r232, ocean]);
 
   const applyDirectResult = (data: any) => {
     if (data.general_rate != null) {
@@ -151,7 +156,7 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
 
   const applySuggestion = (s: Suggestion) => {
     if (s.rate == null) return;
-    if ((s.duty_type ?? "").startsWith("301")) setR301(String(s.rate));
+    if (s.duty_type === "301-FL") setR301fl(String(s.rate));
     else if ((s.duty_type ?? "").startsWith("232")) setR232(String(s.rate));
   };
 
@@ -162,9 +167,20 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
     "w-full rounded-xl border border-line bg-white px-4 py-2.5 text-[15px] text-ink placeholder:text-faint focus:border-brand focus:outline-none";
   const lblCls = "mb-1.5 block text-[13px] font-semibold text-ink-soft";
 
+  const rows: { item: string; rate: string; amount: number; bold?: boolean; dim?: boolean }[] = [
+    { item: t.rowBase, rate: pct(calc.m), amount: calc.dutyMfn },
+    ...(calc.o > 0 ? [{ item: t.row301orig, rate: pct(calc.o), amount: calc.duty301orig }] : []),
+    ...(calc.f > 0 ? [{ item: t.row301fl, rate: pct(calc.f), amount: calc.duty301fl }] : []),
+    ...(calc.w > 0 ? [{ item: t.row232, rate: pct(calc.w), amount: calc.duty232 }] : []),
+    { item: t.rowDutyTotal, rate: pct(calc.totalRate), amount: calc.dutyTotal, bold: true },
+    { item: `${t.rowMpf}`, rate: `${sched.rate}%`, amount: calc.mpf, dim: true },
+    ...(ocean ? [{ item: t.rowHmf, rate: `${HMF_RATE}%`, amount: calc.hmf, dim: true }] : []),
+    { item: t.rowGrand, rate: "", amount: calc.grand, bold: true },
+  ];
+
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      {/* -------- inputs: product → HTS → origin → value → rates -------- */}
+      {/* -------- inputs -------- */}
       <div className="dash-card p-6 sm:p-8">
         <div className="grid gap-5">
           <div>
@@ -240,7 +256,7 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
             {rateSuggestions.map((s, i) => (
               <div key={i} className="mt-2 flex flex-wrap items-center gap-2 text-[12.5px]">
                 <span className="font-bold text-amber-700">
-                  {s.duty_type === "301-FL" ? t.suggestFL : t.suggest232}: {s.rate}% ({s.source})
+                  {(s.duty_type === "301-FL" ? t.suggestFL : t.suggest232)}: {s.rate}% ({s.source})
                   {s.basis === "cap_net_of_mfn" ? ` ${t.capNote}` : ""}
                 </span>
                 <button
@@ -262,24 +278,18 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
             <label className={lblCls}>{t.invValue}</label>
             <input value={invValue} onChange={(e) => setInvValue(e.target.value)} placeholder="0.00" inputMode="decimal" className={inputCls} />
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={lblCls}>{t.freight}</label>
-              <input value={freight} onChange={(e) => setFreight(e.target.value)} placeholder="0.00" inputMode="decimal" className={inputCls} />
-            </div>
-            <div>
-              <label className={lblCls}>{t.insurance}</label>
-              <input value={insurance} onChange={(e) => setInsurance(e.target.value)} placeholder="0.00" inputMode="decimal" className={inputCls} />
-            </div>
-          </div>
           <div>
             <label className={lblCls}>{t.mfn}</label>
             <input value={mfn} onChange={(e) => setMfn(e.target.value)} placeholder="0.0" inputMode="decimal" className={inputCls} />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div>
-              <label className={lblCls}>{t.rate301}</label>
-              <input value={r301} onChange={(e) => setR301(e.target.value)} placeholder="0.0" inputMode="decimal" className={inputCls} />
+              <label className={lblCls}>{t.rate301orig}</label>
+              <input value={r301orig} onChange={(e) => setR301orig(e.target.value)} placeholder="0.0" inputMode="decimal" className={inputCls} />
+            </div>
+            <div>
+              <label className={lblCls}>{t.rate301fl}</label>
+              <input value={r301fl} onChange={(e) => setR301fl(e.target.value)} placeholder="0.0" inputMode="decimal" className={inputCls} />
             </div>
             <div>
               <label className={lblCls}>{t.rate232}</label>
@@ -293,40 +303,36 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
         </div>
       </div>
 
-      {/* -------- breakdown: duty → MPF → HMF → total -------- */}
+      {/* -------- result table: 项目 | 税率 | 本批金额 -------- */}
       <div className="dash-card flex flex-col p-6 sm:p-8">
-        <h3 className="text-lg font-bold text-ink">{t.breakdown}</h3>
-        <dl className="mt-5 space-y-3 text-[14.5px]">
-          <div className="flex justify-between">
-            <dt className="text-ink-soft">{t.invValue}</dt>
-            <dd className="font-semibold text-ink">{usd(calc.v)}</dd>
-          </div>
-          <div className="border-t border-line pt-3">
-            <div className="flex justify-between">
-              <dt className="font-semibold text-ink">{t.rowDuty}</dt>
-              <dd className="font-bold text-ink">{usd(calc.duty)}</dd>
+        <div className="grid grid-cols-[1fr_auto_auto] items-baseline gap-3 border-b border-line pb-3 text-[13px] font-bold text-ink-soft">
+          <span>{t.colItem}</span>
+          <span className="text-right">{t.colRate}</span>
+          <span className="w-28 text-right">{t.colAmount}</span>
+        </div>
+        <div>
+          {rows.map((r, i) => (
+            <div
+              key={i}
+              className={`grid grid-cols-[1fr_auto_auto] items-baseline gap-3 border-b border-line/60 py-3 ${
+                r.bold ? "border-b-0" : ""
+              }`}
+            >
+              <span className={`text-[14.5px] ${r.bold ? "font-bold text-ink" : r.dim ? "text-ink-soft" : "text-ink"}`}>
+                {r.item}
+                {r.item === t.rowMpf && (
+                  <span className="ml-1 text-[12px] text-faint">({sched.note})</span>
+                )}
+              </span>
+              <span className={`text-right text-[14.5px] ${r.bold ? "font-bold text-ink" : "text-ink-soft"}`}>
+                {r.rate}
+              </span>
+              <span className={`w-28 text-right text-[14.5px] ${r.bold ? "text-[17px] font-bold text-ink" : "text-ink"}`}>
+                {usd(r.amount)}
+              </span>
             </div>
-            <div className="mt-1.5 space-y-1 pl-3 text-[13px] text-ink-soft">
-              <div className="flex justify-between"><span>{t.rowDutyMfn}</span><span>{usd(calc.dutyMfn)}</span></div>
-              {calc.duty301 > 0 && <div className="flex justify-between"><span>{t.rowDuty301}</span><span>{usd(calc.duty301)}</span></div>}
-              {calc.duty232 > 0 && <div className="flex justify-between"><span>{t.rowDuty232}</span><span>{usd(calc.duty232)}</span></div>}
-            </div>
-          </div>
-          <div className="flex justify-between border-t border-line pt-3">
-            <dt className="text-ink-soft">{t.rowMpf} <span className="text-[12px] text-faint">({sched.note})</span></dt>
-            <dd className="font-semibold text-ink">{usd(calc.mpf)}</dd>
-          </div>
-          {ocean && (
-            <div className="flex justify-between">
-              <dt className="text-ink-soft">{t.rowHmf}</dt>
-              <dd className="font-semibold text-ink">{usd(calc.hmf)}</dd>
-            </div>
-          )}
-          <div className="flex items-center justify-between rounded-xl bg-brand-tint/60 px-4 py-3.5">
-            <dt className="text-[15px] font-bold text-ink">{t.rowTotal}</dt>
-            <dd className="text-[22px] font-bold text-brand">{usd(calc.total)}</dd>
-          </div>
-        </dl>
+          ))}
+        </div>
         <p className="mt-5 rounded-xl bg-amber-50 p-4 text-[12.5px] leading-relaxed text-amber-800">
           {t.disclaimer}
         </p>
