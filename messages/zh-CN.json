@@ -711,6 +711,10 @@
     "upSourcePh": "例如：CBP 公告",
     "upDate": "生效日期",
     "publish": "发布",
-    "effective": "生效"
+    "effective": "生效",
+    "syncNow": "同步联邦公报最新",
+    "syncing": "同步中…",
+    "synced": "同步完成",
+    "autoBadge": "联邦公报自动同步"
   }
 }

@@ -711,6 +711,10 @@
     "upSourcePh": "e.g. CBP notice",
     "upDate": "Effective date",
     "publish": "Publish",
-    "effective": "Effective"
+    "effective": "Effective",
+    "syncNow": "Sync Federal Register",
+    "syncing": "Syncing…",
+    "synced": "Sync complete",
+    "autoBadge": "Federal Register auto-sync"
   }
 }

@@ -8,7 +8,7 @@ type ScreenRes = {
   screened_at: string; watchlist_size: number;
 };
 type Log = { id: string; query_name: string; query_country: string | null; result: string; match_detail: string | null; created_at: string };
-type Update = { id: string; title: string; body: string; source: string | null; effective_date: string | null; created_at: string };
+type Update = { id: string; title: string; body: string; source: string | null; effective_date: string | null; url: string | null; auto_imported: boolean; created_at: string };
 
 const RES_STYLE: Record<string, string> = {
   clear: "bg-emerald-50 text-emerald-700 ring-emerald-200",
@@ -29,6 +29,8 @@ export default function ComplianceBoard({ t }: { t: Record<string, string> }) {
   const [intName, setIntName] = useState("");
   const [intCountry, setIntCountry] = useState("");
   const [nt, setNt] = useState({ title: "", body: "", source: "", date: "" });
+  const [syncMsg, setSyncMsg] = useState("");
+  const [syncing, setSyncing] = useState(false);
 
   async function refreshMeta() {
     const [s, l, u] = await Promise.all([
@@ -100,6 +102,23 @@ export default function ComplianceBoard({ t }: { t: Record<string, string> }) {
     });
     setIntName(""); setIntCountry("");
     refreshMeta();
+  }
+
+  async function syncFederalRegister() {
+    if (syncing) return;
+    setSyncing(true);
+    setSyncMsg(t.syncing);
+    try {
+      const r = await fetch("/api/app/compliance/updates/refresh", { method: "POST" });
+      const j = await r.json();
+      if (j.ok) setSyncMsg(`${t.synced}: ${j.inserted} new / ${j.relevant} relevant / ${j.scanned} scanned`);
+      else setSyncMsg(j.detail || j.error || "failed");
+    } catch (e) {
+      setSyncMsg(String((e as Error).message || e));
+    } finally {
+      setSyncing(false);
+      refreshMeta();
+    }
   }
 
   async function publishUpdate(e: React.FormEvent) {
@@ -300,7 +319,20 @@ export default function ComplianceBoard({ t }: { t: Record<string, string> }) {
                     )}
                     {u.source && <span>{u.source}</span>}
                   </div>
-                  <h3 className="mt-2 font-bold text-ink">{u.title}</h3>
+                  <h3 className="mt-2 font-bold text-ink">
+                    {u.url ? (
+                      <a href={u.url} target="_blank" rel="noopener noreferrer" className="text-brand-deep hover:underline">
+                        {u.title} ↗
+                      </a>
+                    ) : (
+                      u.title
+                    )}
+                  </h3>
+                  {u.auto_imported && (
+                    <span className="mt-1.5 inline-block rounded-full bg-brand-tint px-2.5 py-0.5 text-[11px] font-bold text-brand">
+                      {t.autoBadge}
+                    </span>
+                  )}
                   {u.body && <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{u.body}</p>}
                 </article>
               ))
@@ -308,6 +340,13 @@ export default function ComplianceBoard({ t }: { t: Record<string, string> }) {
           </div>
           <form onSubmit={publishUpdate} className="lg:col-span-2 h-fit rounded-2xl bg-white p-6 shadow-card ring-1 ring-line">
             <h3 className="font-bold text-ink">{t.newUpdate}</h3>
+            <button
+              type="button" onClick={syncFederalRegister} disabled={syncing}
+              className="mt-3 w-full rounded-xl bg-ink px-4 py-2.5 text-sm font-bold text-white disabled:opacity-40"
+            >
+              {syncing ? t.syncing : t.syncNow}
+            </button>
+            {syncMsg && <p className="mt-2 text-xs text-ink-soft">{syncMsg}</p>}
             <input
               value={nt.title} onChange={(e) => setNt({ ...nt, title: e.target.value })}
               placeholder={t.upTitlePh}
