@@ -134,7 +134,7 @@ export default function DashboardMock() {
       </div>
       <div className="floaty-slow absolute -right-4 top-1/3 z-10 hidden items-center gap-2 rounded-xl border border-line bg-white px-3.5 py-2.5 shadow-pop sm:flex">
         <span className="pulse-dot h-2.5 w-2.5 rounded-full bg-ok" />
-        <p className="text-[11px] font-bold text-ink">1,248 <span className="font-medium text-muted">shipments live</span></p>
+        <p className="text-[11px] font-bold text-ink"><span className="font-medium text-muted">Live tracking</span></p>
       </div>
 
       {/* browser frame */}
@@ -198,9 +198,9 @@ export default function DashboardMock() {
                   {t("riskTitle")}
                 </p>
                 {[
-                  { c: "bg-risk-tint text-risk", tt: "Tariff exposure", dd: "$420K potential impact" },
-                  { c: "bg-warn-tint text-warn", tt: "Customs delay", dd: "17 shipments" },
-                  { c: "bg-vio-tint text-vio", tt: "Supplier documentation", dd: "8 missing certificates" },
+                  { c: "bg-risk-tint text-risk", tt: "Tariff exposure", dd: "Ranked by dollar impact" },
+                  { c: "bg-warn-tint text-warn", tt: "Customs delay", dd: "Missing documents flagged" },
+                  { c: "bg-vio-tint text-vio", tt: "Supplier documentation", dd: "Certificates pending review" },
                 ].map((r) => (
                   <div key={r.tt} className="flex items-center gap-2 border-b border-line-soft py-2 last:border-0">
                     <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-lg ${r.c}`}>

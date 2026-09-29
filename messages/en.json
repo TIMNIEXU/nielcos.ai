@@ -103,24 +103,24 @@
     },
     "kpis": [
       {
-        "delta": "+1.2 pts this quarter",
-        "label": "Entry acceptance rate",
-        "value": "98.6%"
+        "value": "11",
+        "label": "Workspace modules",
+        "delta": "across the trade lifecycle"
       },
       {
-        "delta": "vs. manual brokerage",
-        "label": "Faster customs clearance",
-        "value": "40%"
+        "value": "6,857",
+        "label": "HTS duty rates",
+        "delta": "USITC 2026 Rev 19 schedule"
       },
       {
-        "delta": "for customers last year",
-        "label": "Duty savings identified",
-        "value": "$2.4M"
-      },
-      {
-        "delta": "across every shipment",
+        "value": "24/7",
         "label": "AI trade monitoring",
-        "value": "24/7"
+        "delta": "across every shipment"
+      },
+      {
+        "value": "2",
+        "label": "Languages",
+        "delta": "English + 中文简体"
       }
     ],
     "marquee": [

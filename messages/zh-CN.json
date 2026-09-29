@@ -103,24 +103,24 @@
     },
     "kpis": [
       {
-        "delta": "本季度 +1.2 个百分点",
-        "label": "报关通过率",
-        "value": "98.6%"
+        "value": "11",
+        "label": "工作台模块",
+        "delta": "覆盖贸易全链路"
       },
       {
-        "delta": "对比传统人工报关",
-        "label": "清关提速",
-        "value": "40%"
+        "value": "6,857",
+        "label": "HTS 税率条目",
+        "delta": "美国官方税则 2026"
       },
       {
-        "delta": "去年为客户发现",
-        "label": "发现的关税节省",
-        "value": "$2.4M"
-      },
-      {
-        "delta": "覆盖每一票货",
+        "value": "24/7",
         "label": "AI 贸易监控",
-        "value": "24/7"
+        "delta": "覆盖每一票货"
+      },
+      {
+        "value": "2",
+        "label": "语言版本",
+        "delta": "English + 中文简体"
       }
     ],
     "marquee": [
