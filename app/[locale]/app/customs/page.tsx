@@ -3,6 +3,7 @@ import { redirect } from "@/i18n/routing";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import NewEntryForm from "./NewEntryForm";
+import { intlLocale } from "@/lib/locale";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -80,7 +81,7 @@ export default async function CustomsList({ params }: Props) {
                 </span>
               </div>
               <p className="mt-3 text-xs text-ink-soft">
-                {new Date(e.updated_at).toLocaleDateString(locale === "zh-CN" ? "zh-CN" : "en-US")}
+                {new Date(e.updated_at).toLocaleDateString(intlLocale(locale))}
                 <span className="ml-2 font-bold text-brand-deep group-hover:underline">{t("openEntry")} →</span>
               </p>
             </Link>

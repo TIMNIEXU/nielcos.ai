@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { matchPga, type PgaRule } from "@/lib/hts";
+import { isZhLocale } from "@/lib/locale";
 
 type Entry = {
   id: string;
@@ -318,7 +319,7 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
 
   const inputCls = "w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm text-ink outline-none focus:border-brand";
   const lblCls = "mb-1 block text-xs font-bold tracking-wider text-ink-soft uppercase";
-  const isZh = locale === "zh-CN";
+  const isZh = isZhLocale(locale);
 
   return (
     <div>

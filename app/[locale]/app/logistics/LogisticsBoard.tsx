@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { intlLocale } from "@/lib/locale";
 
 type Move = {
   id: string; container_number: string; mbl: string | null; gttid: string | null;
@@ -245,7 +246,7 @@ function ApptsTab({ t, locale }: { t: (k: string) => string; locale: string }) {
   const fmtDt = (iso: string | null) => {
     if (!iso) return "—";
     const d = new Date(iso);
-    return isNaN(d.getTime()) ? iso : d.toLocaleString(locale === "zh-CN" ? "zh-CN" : "en-US", {
+    return isNaN(d.getTime()) ? iso : d.toLocaleString(intlLocale(locale), {
       month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit",
     });
   };
@@ -367,7 +368,7 @@ function DemurrageTab({ t, locale }: { t: (k: string) => string; locale: string 
   const dueSoon = rows.filter((r) => r.daysLeft >= 0 && r.daysLeft <= 3);
   const exposure = overdue.reduce((a, r) => a + r.est, 0);
 
-  const money = (n: number) => "$" + (Math.round(n * 100) / 100).toLocaleString(locale === "zh-CN" ? "zh-CN" : "en-US");
+  const money = (n: number) => "$" + (Math.round(n * 100) / 100).toLocaleString(intlLocale(locale));
 
   return (
     <div>

@@ -7,6 +7,7 @@
 
 import { suggestHts } from "@/lib/hts";
 import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
+import { isZhLocale } from "@/lib/locale";
 
 export type Source = { label: string; detail?: string };
 export type ThreadCtx = { lastHts?: string; lastOrigin?: string; lastGttid?: string };
@@ -85,7 +86,7 @@ export async function answerQuestion(
   sb: Sb, question: string, locale: string, ctx: ThreadCtx
 ): Promise<Answer> {
   const q = question.trim();
-  const zh = locale === "zh-CN";
+  const zh = isZhLocale(locale);
 
   if (!q) return fallback(zh, ctx);
   if (HELLO.test(q) || (q.length < 12 && /(你|you).*(能|can)/i.test(q))) return help(zh);

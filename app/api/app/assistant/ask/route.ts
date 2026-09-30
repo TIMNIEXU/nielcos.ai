@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { answerQuestion, type ThreadCtx } from "@/lib/assistant/engine";
+import { isZhLocale } from "@/lib/locale";
 
 /* POST /api/app/assistant/ask — { thread_id?, question, locale }
    Runs the grounded Q&A engine, persists both messages, returns the answer. */
@@ -21,7 +22,8 @@ export async function POST(req: NextRequest) {
   }
   const question = String(body?.question ?? "").trim().slice(0, 2000);
   if (!question) return NextResponse.json({ error: "question_required" }, { status: 400 });
-  const locale = body?.locale === "zh-CN" ? "zh-CN" : "en";
+  const rawLocale = String(body?.locale ?? "en");
+  const locale = isZhLocale(rawLocale) ? rawLocale : "en";
 
   // Resolve or create thread
   let threadId: string | null = typeof body?.thread_id === "string" ? body.thread_id : null;

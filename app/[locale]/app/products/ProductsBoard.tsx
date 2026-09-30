@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { preferDbZh, isZhLocale } from "@/lib/locale";
 
 type Duty = {
   kind: string;
@@ -204,7 +205,7 @@ function Detail({ p, t, locale }: { p: Product; t: (k: string) => string; locale
                 <p className="text-xs font-bold text-ink">
                   {d.kind} · {d.rate_text}
                 </p>
-                <p className="text-xs text-ink-soft">{locale === "zh-CN" ? d.label_cn ?? d.label : d.label}</p>
+                <p className="text-xs text-ink-soft">{preferDbZh(locale) ? d.label_cn ?? d.label : d.label}</p>
                 {d.source && <p className="mt-0.5 text-[11px] text-ink-soft/70">{d.source}</p>}
               </div>
             ))}
@@ -217,7 +218,7 @@ function Detail({ p, t, locale }: { p: Product; t: (k: string) => string; locale
             {p.pga_auto.map((g) => (
               <p key={g.agency} className="text-xs text-ink">
                 <span className="font-bold text-sky-700">{g.agency}</span>
-                <span className="text-ink-soft"> · {locale === "zh-CN" ? g.agency_cn : g.agency} — {g.note}</span>
+                <span className="text-ink-soft"> · {preferDbZh(locale) ? g.agency_cn : g.agency} — {g.note}</span>
               </p>
             ))}
             {p.pga_manual.map((a) => (
@@ -238,7 +239,7 @@ function Detail({ p, t, locale }: { p: Product; t: (k: string) => string; locale
 function ProductForm({ t, locale, product, onClose, onSaved }: {
   t: (k: string) => string; locale: string; product?: Product; onClose: () => void; onSaved: () => void;
 }) {
-  const isZh = locale === "zh-CN";
+  const isZh = isZhLocale(locale);
   const [sku, setSku] = useState(product?.sku ?? "");
   const [nameEn, setNameEn] = useState(product?.name_en ?? "");
   const [nameZh, setNameZh] = useState(product?.name_zh ?? "");

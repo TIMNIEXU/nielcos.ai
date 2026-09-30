@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { routing } from "@/i18n/routing";
+import { useEffect, useRef, useState } from "react";
+import { Link as LocaleLink, usePathname, routing, localeNames } from "@/i18n/routing";
 
 import AuthLink from "./AuthLink";
 
@@ -26,21 +27,67 @@ export function Logo({ dark = false }: { dark?: boolean }) {
 
 function LocaleSwitch() {
   const locale = useLocale();
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const boxRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (boxRef.current && !boxRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open ]);
+
   return (
-    <div className="flex items-center overflow-hidden rounded-full border border-line bg-card-soft text-[12px] font-semibold">
-      {routing.locales.map((l) => (
-        <Link
-          key={l}
-          href={`/${l}`}
-          className={`px-2.5 py-1.5 transition-colors ${
-            l === locale
-              ? "bg-ink text-white"
-              : "text-muted hover:text-ink"
-          }`}
+    <div ref={boxRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label="Language"
+        className="grid h-11 w-11 place-items-center rounded-xl border border-line bg-white text-ink transition-colors hover:border-brand hover:text-brand"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18" />
+          <path d="M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z" />
+        </svg>
+      </button>
+      {open && (
+        <div
+          role="listbox"
+          className="absolute right-0 top-full z-[60] mt-2 min-w-[190px] rounded-2xl border border-line bg-white py-2 shadow-[0_16px_48px_-12px_rgba(14,30,56,0.25)]"
         >
-          {l === "en" ? "EN" : "中文"}
-        </Link>
-      ))}
+          {routing.locales.map((l) => {
+            const active = l === locale;
+            return (
+              <LocaleLink
+                key={l}
+                href={pathname}
+                locale={l}
+                role="option"
+                aria-selected={active}
+                onClick={() => setOpen(false)}
+                className={`block px-5 py-2.5 text-[15px] transition-colors hover:bg-brand-tint-soft ${
+                  active ? "font-bold text-brand" : "font-medium text-ink"
+                }`}
+              >
+                {localeNames[l] ?? l}
+              </LocaleLink>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

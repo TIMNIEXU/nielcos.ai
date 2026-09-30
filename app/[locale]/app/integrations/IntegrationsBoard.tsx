@@ -6,6 +6,7 @@ import WebhooksTab from "./tabs/WebhooksTab";
 import EdiTab from "./tabs/EdiTab";
 import ConnectorsTab from "./tabs/ConnectorsTab";
 import AuditTab from "./tabs/AuditTab";
+import { intlLocale } from "@/lib/locale";
 
 type Props = {
   messages: Record<string, string>;
@@ -16,7 +17,7 @@ type Props = {
 export function fmtDate(iso: string | null, locale: string): string {
   if (!iso) return "—";
   try {
-    return new Date(iso).toLocaleString(locale === "zh-CN" ? "zh-CN" : "en-US", {
+    return new Date(iso).toLocaleString(intlLocale(locale), {
       month: "short",
       day: "numeric",
       hour: "2-digit",

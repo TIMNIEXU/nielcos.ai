@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
+import { isZhLocale } from "@/lib/locale";
 
 /* Public US import duty estimator.
    Input order: product name → material → intended use → HTS → origin →
@@ -331,7 +332,7 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
             ))}
             {warnings.map((w, i) => (
               <p key={i} className="mt-2 text-[12.5px] font-medium text-amber-700">
-                ⚠️ {locale === "zh-CN" ? w.note_cn || w.note : w.note || w.note_cn}
+                ⚠️ {isZhLocale(locale) ? w.note_cn || w.note : w.note || w.note_cn}
               </p>
             ))}
           </div>

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import FinanceBoard from "./FinanceBoard";
+import { isZhLocale } from "@/lib/locale";
 
 export default async function FinancePage({
   params,
@@ -55,7 +56,7 @@ export default async function FinancePage({
         <div className="mb-6 flex flex-wrap items-center gap-4">
           <Link href={`/${locale}/app`}
             className="rounded-full border border-line bg-white px-4 py-1.5 text-sm font-bold text-ink-soft transition-colors hover:border-brand hover:text-brand-deep">
-            ← {locale === "zh-CN" ? "工作台" : "Workspace"}
+            ← {isZhLocale(locale) ? "工作台" : "Workspace"}
           </Link>
           <div>
             <h1 className="text-2xl font-bold text-ink md:text-3xl">{dict.title}</h1>

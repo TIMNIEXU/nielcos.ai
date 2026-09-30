@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { intlLocale, isZhLocale } from "@/lib/locale";
 
 type Sheet = {
   id: string; gttid: string | null; title: string; currency: string;
@@ -25,7 +26,7 @@ const SHEET_STATUSES = ["draft", "final"];
 const PAY_STATUSES = ["pending", "paid", "cancelled"];
 
 function money(n: number, cur: string, locale: string) {
-  const s = (Math.round(n * 100) / 100).toLocaleString(locale === "zh-CN" ? "zh-CN" : "en-US", {
+  const s = (Math.round(n * 100) / 100).toLocaleString(intlLocale(locale), {
     minimumFractionDigits: 2, maximumFractionDigits: 2,
   });
   return cur === "USD" ? "$" + s : s + " " + cur;
@@ -341,7 +342,7 @@ function SheetDetail({ t, locale, sheet, onChanged }: {
 function DutyEstimator({ t, locale, sheet, onClose, onAdded }: {
   t: (k: string) => string; locale: string; sheet: Sheet; onClose: () => void; onAdded: () => void;
 }) {
-  const isZh = locale === "zh-CN";
+  const isZh = isZhLocale(locale);
   const [hts, setHts] = useState("");
   const [origin, setOrigin] = useState("");
   const [value, setValue] = useState("");
@@ -468,7 +469,7 @@ function ForecastTab({ t, locale }: { t: (k: string) => string; locale: string }
   const ordered = [...months.entries()].sort(([a], [b]) => a.localeCompare(b));
   const monthName = (ym: string) => {
     const d = new Date(ym + "-01T00:00:00");
-    return d.toLocaleString(locale === "zh-CN" ? "zh-CN" : "en-US", { year: "numeric", month: "long" });
+    return d.toLocaleString(intlLocale(locale), { year: "numeric", month: "long" });
   };
   const maxTotal = Math.max(0, ...ordered.map(([, list]) =>
     Math.max(0, ...sumByCurrency(list, (s) => s.duty_total, (s) => s.currency).map((p) => p.t))));

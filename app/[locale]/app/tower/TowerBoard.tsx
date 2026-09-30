@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { isZhLocale } from "@/lib/locale";
 
 type Props = { messages: Record<string, string>; locale: string };
 
@@ -42,7 +43,7 @@ const sevDot: Record<string, string> = {
 
 export default function TowerBoard({ messages: dict, locale }: Props) {
   const t = (k: string) => dict[k] ?? k;
-  const isZh = locale === "zh-CN";
+  const isZh = isZhLocale(locale);
   const [data, setData] = useState<Snapshot | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
