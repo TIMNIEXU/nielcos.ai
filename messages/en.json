@@ -2083,6 +2083,20 @@
     ],
     "hint": "Free · No signup needed",
     "uploading": "Reading your document…",
-    "uploadFail": "Couldn't read that file — try typing a description instead."
+    "uploadFail": "Couldn't read that file — try typing a description instead.",
+    "planTitle": "Your import plan",
+    "htsTitle": "HTS candidates",
+    "confidence": "confidence",
+    "costTitle": "Cost estimate",
+    "complianceTitle": "Compliance check",
+    "nextTitle": "Next steps",
+    "totalDuty": "Total duties",
+    "landedCost": "Landed cost",
+    "newPlan": "Start over",
+    "working": "Building your import plan…",
+    "notConfigured": "AI planning isn't switched on yet — calculate your duty manually below.",
+    "planError": "Couldn't build the plan — try again or calculate manually.",
+    "rateLimited": "Too many plans — please try again in an hour.",
+    "openCalculator": "Open duty calculator"
   }
 }

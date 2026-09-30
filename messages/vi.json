@@ -2083,6 +2083,20 @@
     ],
     "hint": "Miễn phí · Không cần đăng ký",
     "uploading": "Đang đọc tài liệu…",
-    "uploadFail": "Không đọc được tệp — hãy thử nhập mô tả."
+    "uploadFail": "Không đọc được tệp — hãy thử nhập mô tả.",
+    "planTitle": "Kế hoạch nhập khẩu của bạn",
+    "htsTitle": "Ứng viên HTS",
+    "confidence": "độ tin cậy",
+    "costTitle": "Ước tính chi phí",
+    "complianceTitle": "Kiểm tra tuân thủ",
+    "nextTitle": "Bước tiếp theo",
+    "totalDuty": "Tổng thuế",
+    "landedCost": "Giá landed",
+    "newPlan": "Làm lại",
+    "working": "Đang lập kế hoạch nhập khẩu…",
+    "notConfigured": "Lập kế hoạch AI chưa bật — hãy tính thuế thủ công bên dưới.",
+    "planError": "Không lập được kế hoạch — thử lại hoặc tính thủ công.",
+    "rateLimited": "Quá nhiều yêu cầu — thử lại sau một giờ.",
+    "openCalculator": "Mở công cụ tính thuế"
   }
 }

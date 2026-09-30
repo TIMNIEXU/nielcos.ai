@@ -2083,6 +2083,20 @@
     ],
     "hint": "免费 · 无需注册",
     "uploading": "正在读取文件…",
-    "uploadFail": "读取失败，试试直接输入文字描述。"
+    "uploadFail": "读取失败，试试直接输入文字描述。",
+    "planTitle": "你的进口方案",
+    "htsTitle": "HTS 候选",
+    "confidence": "置信度",
+    "costTitle": "成本测算",
+    "complianceTitle": "合规检查",
+    "nextTitle": "下一步",
+    "totalDuty": "关税合计",
+    "landedCost": "到岸成本",
+    "newPlan": "重新来一份",
+    "working": "正在生成进口方案…",
+    "notConfigured": "AI 方案功能尚未开通，先用下面的测算工具。",
+    "planError": "方案生成失败，重试或手动测算。",
+    "rateLimited": "请求太频繁，请一小时后再试。",
+    "openCalculator": "打开关税测算"
   }
 }

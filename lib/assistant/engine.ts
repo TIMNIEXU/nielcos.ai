@@ -119,6 +119,16 @@ export async function answerQuestion(
   // Bare HTS digits with no duty words
   if (htsInQ) return dutyAnswer(sb, htsInQ, originOnly ?? "China", zh, ctx);
 
+  // GRI-001 V2 — long free-text import descriptions belong in the Universal Import Box.
+  if (q.length > 120) {
+    return {
+      text: zh
+        ? `这段描述很适合用首页的 Import Box 生成完整进口方案（HTS 候选、税费测算、合规提示一步到位）。去试试：/${locale}#import-box`
+        : `This looks like a full import-plan request — try the Import Box on the homepage for HTS candidates, duty estimates, and compliance notes: /${locale}#import-box`,
+      sources: [], kind: "recommendation", context: ctx,
+    };
+  }
+
   return fallback(zh, ctx);
 }
 

@@ -2083,6 +2083,20 @@
     ],
     "hint": "免費 · 無需註冊",
     "uploading": "正在讀取文件…",
-    "uploadFail": "讀取失敗，試試直接輸入文字描述。"
+    "uploadFail": "讀取失敗，試試直接輸入文字描述。",
+    "planTitle": "你的進口方案",
+    "htsTitle": "HTS 候選",
+    "confidence": "可信度",
+    "costTitle": "成本測算",
+    "complianceTitle": "合規檢查",
+    "nextTitle": "下一步",
+    "totalDuty": "關稅合計",
+    "landedCost": "到岸成本",
+    "newPlan": "重新來一份",
+    "working": "正在生成進口方案…",
+    "notConfigured": "AI 方案功能尚未開通，先用下面的測算工具。",
+    "planError": "方案生成失敗，重試或手動測算。",
+    "rateLimited": "請求太頻繁，請一小時後再試。",
+    "openCalculator": "打開關稅測算"
   }
 }

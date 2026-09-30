@@ -2083,6 +2083,20 @@
     ],
     "hint": "무료 · 가입 불필요",
     "uploading": "문서를 읽는 중…",
-    "uploadFail": "파일을 읽지 못했습니다 — 설명을 직접 입력해 보세요."
+    "uploadFail": "파일을 읽지 못했습니다 — 설명을 직접 입력해 보세요.",
+    "planTitle": "수입 계획",
+    "htsTitle": "HTS 후보",
+    "confidence": "신뢰도",
+    "costTitle": "비용 산정",
+    "complianceTitle": "컴플라이언스 점검",
+    "nextTitle": "다음 단계",
+    "totalDuty": "관세 합계",
+    "landedCost": "랜디드 코스트",
+    "newPlan": "다시 하기",
+    "working": "수입 계획을 생성하는 중…",
+    "notConfigured": "AI 계획 기능이 아직 켜지지 않았습니다 — 아래에서 직접 계산하세요.",
+    "planError": "계획을 생성하지 못했습니다 — 다시 시도하거나 직접 계산하세요.",
+    "rateLimited": "요청이 너무 많습니다 — 한 시간 후 다시 시도하세요.",
+    "openCalculator": "관세 계산기 열기"
   }
 }

@@ -2083,6 +2083,20 @@
     ],
     "hint": "無料・登録不要",
     "uploading": "書類を読み取り中…",
-    "uploadFail": "ファイルを読み取れませんでした — 説明を入力してみてください。"
+    "uploadFail": "ファイルを読み取れませんでした — 説明を入力してみてください。",
+    "planTitle": "あなたの輸入プラン",
+    "htsTitle": "HTS候補",
+    "confidence": "信頼度",
+    "costTitle": "コスト試算",
+    "complianceTitle": "コンプライアンスチェック",
+    "nextTitle": "次のステップ",
+    "totalDuty": "関税合計",
+    "landedCost": "ランドコスト",
+    "newPlan": "やり直す",
+    "working": "輸入プランを作成中…",
+    "notConfigured": "AIプラン機能はまだ有効化されていません — 以下で手動試算してください。",
+    "planError": "プランを作成できませんでした — 再試行するか手動で試算してください。",
+    "rateLimited": "リクエストが多すぎます — 1時間後に再試行してください。",
+    "openCalculator": "関税試算を開く"
   }
 }
