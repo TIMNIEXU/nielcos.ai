@@ -1878,9 +1878,6 @@
         "d": "海外仓备货期间的库存保障——FBA、零售分拨、第三方仓都适用。"
       }
     ],
-    "bondTitle": "需要海关保证金（Customs Bond）？",
-    "bondDesc": "美国常规进口商的连续保证金，由 Niel Insurance Agency 办理。",
-    "bondCta": "去 nielinsurance.com",
     "stepsEyebrow": "流程",
     "stepsTitle": "三步，从询价到保障",
     "steps": [
@@ -1915,7 +1912,19 @@
     "ctaTitle": "往美国出货？先把保障配好。",
     "ctaSub": "告诉我们货值和路线，剩下的交给持牌代理。",
     "ctaB1": "免费询价",
-    "ctaB2": "估算到岸成本"
+    "ctaB2": "估算到岸成本",
+    "heroQuoteCta": "免费获取报价",
+    "heroBondCta": "海关保证金",
+    "bondEyebrow": "海关保证金",
+    "bondTitle": "进口美国，先办好海关保证金。",
+    "bondBody": "美国海关要求每一位进口商都持有海关保证金（Customs Bond），用于担保关税、税费按时缴纳。没有保证金，货物无法清关。连续保证金（Continuous Bond）一年内所有进口通用；单次保证金（Single Transaction Bond）只保一票货。",
+    "bondPoints": [
+      "美国海关（CBP）强制要求，所有商业进口必备",
+      "连续保证金：一份保函，保全年进口",
+      "单次保证金：一票货，一份保函"
+    ],
+    "bondCta": "立即申请保证金",
+    "bondNote": "DocuSign 在线申请，安全快捷——由持牌保险代理 Niel Insurance Agency LLC（IL #3004050191）受理。"
   },
   "insuranceApp": {
     "title": "保险",

@@ -1878,9 +1878,6 @@
         "d": "海外の倉庫に保管されている在庫（FBA、小売流通、3PL在庫）を対象としています。"
       }
     ],
-    "bondTitle": "通関保証が必要ですか？",
-    "bondDesc": "ニール保険代理店が取り扱う、米国の常連輸入業者向けの継続輸入保証保険。",
-    "bondCta": "nielinsurance.com をご覧ください",
     "stepsEyebrow": "仕組み",
     "stepsTitle": "見積もりから保険適用まで、たったの3ステップ",
     "steps": [
@@ -1915,7 +1912,19 @@
     "ctaTitle": "米国への発送をお考えですか？まずは保険に加入しましょう。",
     "ctaSub": "貨物の価値と輸送ルートをお知らせください。あとは認可を受けた代理店がすべて手配いたします。",
     "ctaB1": "お見積りをご依頼ください",
-    "ctaB2": "着荷コストの見積もり"
+    "ctaB2": "着荷コストの見積もり",
+    "heroQuoteCta": "無料で見積を取得",
+    "heroBondCta": "カスタムズボンド",
+    "bondEyebrow": "カスタムズボンド",
+    "bondTitle": "米国輸入は、カスタムズボンドから。",
+    "bondBody": "米国税関はすべての輸入者に対してカスタムズボンドの保持を義務付けています — 関税・税金・手数料の納付を保証するものです。ボンドがなければ通関できません。Continuous Bondは1年間のすべての輸入をカバーし、Single Transaction Bondは1件の輸入のみを対象とします。",
+    "bondPoints": [
+      "米国税関(CBP)が義務付け、すべての商業輸入に必須",
+      "Continuous Bond: 1件のボンドで1年間の輸入をカバー",
+      "Single Transaction Bond: 1件の貨物に対するボンド"
+    ],
+    "bondCta": "今すぐボンドを申請",
+    "bondNote": "DocuSignによる安全なオンライン申請 — 免許保険代理店 Niel Insurance Agency LLC(IL #3004050191)が対応します。"
   },
   "insuranceApp": {
     "title": "保険",

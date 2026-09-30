@@ -1878,9 +1878,6 @@
         "d": "해외 창고에 보관 중인 재고(FBA, 소매 유통, 3PL 재고)를 포함합니다."
       }
     ],
-    "bondTitle": "통관 보증금이 필요하신가요?",
-    "bondDesc": "Niel Insurance Agency에서 처리하는 미국 정기 수입업체용 연속 수입 보증서.",
-    "bondCta": "nielinsurance.com을 방문해 보세요",
     "stepsEyebrow": "작동 원리",
     "stepsTitle": "견적부터 보장까지 3단계로 완료",
     "steps": [
@@ -1915,7 +1912,19 @@
     "ctaTitle": "미국으로 배송하시나요? 먼저 보험에 가입하세요.",
     "ctaSub": "화물 가치와 운송 경로를 알려주시면, 면허를 소지한 대리인이 나머지 절차를 처리해 드립니다.",
     "ctaB1": "견적 요청하기",
-    "ctaB2": "도착 비용 산정"
+    "ctaB2": "도착 비용 산정",
+    "heroQuoteCta": "무료 견적 받기",
+    "heroBondCta": "관세 보증",
+    "bondEyebrow": "관세 보증",
+    "bondTitle": "미국 수입? 관세 보증부터 준비하세요.",
+    "bondBody": "미국 세관은 모든 수입업체에게 관세 보증(Customs Bond)을 요구합니다 — 관세, 세금, 수수료의 납부를 보증합니다. 보증이 없으면 통관할 수 없습니다. Continuous Bond는 1년간 모든 수입을 커버하고, Single Transaction Bond는 한 건의 수입에만 적용됩니다.",
+    "bondPoints": [
+      "미국 세관(CBP) 의무 요건, 모든 상업 수입에 필수",
+      "Continuous Bond: 하나의 보증으로 1년 수입 커버",
+      "Single Transaction Bond: 한 건의 화물에 대한 보증"
+    ],
+    "bondCta": "지금 보증 신청하기",
+    "bondNote": "DocuSign 온라인 신청 — 면허 보험 대리점 Niel Insurance Agency LLC(IL #3004050191)가 처리합니다."
   },
   "insuranceApp": {
     "title": "보험",

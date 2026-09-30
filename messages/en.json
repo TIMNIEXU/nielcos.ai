@@ -1878,9 +1878,6 @@
         "d": "Covers inventory sitting in overseas warehouses — FBA, retail distribution, 3PL stock."
       }
     ],
-    "bondTitle": "Need a customs bond?",
-    "bondDesc": "Continuous import bonds for regular US importers, handled by Niel Insurance Agency.",
-    "bondCta": "Visit nielinsurance.com",
     "stepsEyebrow": "How it works",
     "stepsTitle": "From quote to covered in three steps",
     "steps": [
@@ -1915,7 +1912,19 @@
     "ctaTitle": "Shipping to the US? Get covered first.",
     "ctaSub": "Tell us the cargo value and route — a licensed agent handles the rest.",
     "ctaB1": "Request a quote",
-    "ctaB2": "Estimate landed cost"
+    "ctaB2": "Estimate landed cost",
+    "heroQuoteCta": "Get a free quote",
+    "heroBondCta": "Customs Bond",
+    "bondEyebrow": "Customs Bond",
+    "bondTitle": "Importing into the US? Start with your customs bond.",
+    "bondBody": "US Customs requires every importer to hold a customs bond — it guarantees your duties, taxes, and fees get paid. No bond, no clearance. A continuous bond covers all your shipments for a full year; a single-transaction bond covers one entry.",
+    "bondPoints": [
+      "Required by US Customs (CBP) for every commercial import",
+      "Continuous bond: one bond, a full year of entries",
+      "Single-transaction bond: one shipment, one bond"
+    ],
+    "bondCta": "Apply for a bond now",
+    "bondNote": "Secure online application via DocuSign — processed by Niel Insurance Agency LLC, a licensed insurance agency (IL #3004050191)."
   },
   "insuranceApp": {
     "title": "Insurance",

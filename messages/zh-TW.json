@@ -1878,9 +1878,6 @@
         "d": "海外倉備貨期間的庫存保障——FBA、零售分撥、第三方倉都適用。"
       }
     ],
-    "bondTitle": "需要海關保證金（Customs Bond）？",
-    "bondDesc": "美國常規進口商的連續保證金，由 Niel Insurance Agency 辦理。",
-    "bondCta": "去 nielinsurance.com",
     "stepsEyebrow": "流程",
     "stepsTitle": "三步，從詢價到保障",
     "steps": [
@@ -1915,7 +1912,19 @@
     "ctaTitle": "往美國出貨？先把保障配好。",
     "ctaSub": "告訴我們貨值和路線，剩下的交給持牌代理。",
     "ctaB1": "免費詢價",
-    "ctaB2": "估算到岸成本"
+    "ctaB2": "估算到岸成本",
+    "heroQuoteCta": "免費獲取報價",
+    "heroBondCta": "海關保證金",
+    "bondEyebrow": "海關保證金",
+    "bondTitle": "進口美國，先辦好海關保證金。",
+    "bondBody": "美國海關要求每一位進口商都持有海關保證金（Customs Bond），用於擔保關稅、稅費按時繳納。沒有保證金，貨物無法清關。連續保證金（Continuous Bond）一年內所有進口通用；單次保證金（Single Transaction Bond）只保一票貨。",
+    "bondPoints": [
+      "美國海關（CBP）強制要求，所有商業進口必備",
+      "連續保證金：一份保函，保全年進口",
+      "單次保證金：一票貨，一份保函"
+    ],
+    "bondCta": "立即申請保證金",
+    "bondNote": "DocuSign 線上申請，安全快捷——由持牌保險代理 Niel Insurance Agency LLC（IL #3004050191）受理。"
   },
   "insuranceApp": {
     "title": "保險",

@@ -1878,9 +1878,6 @@
         "d": "Áp dụng cho hàng tồn kho đang được lưu trữ tại các kho ở nước ngoài — hàng FBA, hàng phân phối bán lẻ, hàng tồn kho của nhà cung cấp dịch vụ logistics bên thứ ba (3PL)."
       }
     ],
-    "bondTitle": "Bạn cần bảo lãnh hải quan không?",
-    "bondDesc": "Giấy phép nhập khẩu liên tục dành cho các nhà nhập khẩu thường xuyên của Hoa Kỳ, do Công ty Bảo hiểm Niel phụ trách.",
-    "bondCta": "Hãy truy cập nielinsurance.com",
     "stepsEyebrow": "Cách thức hoạt động",
     "stepsTitle": "Chỉ cần ba bước là có thể nhận được bảo hiểm ngay sau khi nhận báo giá",
     "steps": [
@@ -1915,7 +1912,19 @@
     "ctaTitle": "Bạn định gửi hàng sang Mỹ? Hãy mua bảo hiểm trước đã.",
     "ctaSub": "Hãy cho chúng tôi biết giá trị hàng hóa và lộ trình — một đại lý được cấp phép sẽ lo liệu phần còn lại.",
     "ctaB1": "Yêu cầu báo giá",
-    "ctaB2": "Ước tính chi phí nhập khẩu"
+    "ctaB2": "Ước tính chi phí nhập khẩu",
+    "heroQuoteCta": "Nhận báo giá miễn phí",
+    "heroBondCta": "Customs Bond",
+    "bondEyebrow": "Bảo lãnh hải quan",
+    "bondTitle": "Nhập khẩu vào Mỹ? Hãy bắt đầu với customs bond.",
+    "bondBody": "Hải quan Mỹ yêu cầu mọi nhà nhập khẩu phải có customs bond — bảo lãnh cho thuế nhập khẩu, thuế và phí. Không có bond, hàng hóa không thể thông quan. Continuous bond áp dụng cho mọi lô hàng trong một năm; single-transaction bond chỉ cho một lô hàng.",
+    "bondPoints": [
+      "Hải quan Mỹ (CBP) bắt buộc cho mọi lô hàng nhập khẩu thương mại",
+      "Continuous bond: một bond, cả năm nhập khẩu",
+      "Single-transaction bond: một lô hàng, một bond"
+    ],
+    "bondCta": "Đăng ký bond ngay",
+    "bondNote": "Đơn đăng ký trực tuyến an toàn qua DocuSign — do Niel Insurance Agency LLC, đại lý bảo hiểm được cấp phép (IL #3004050191) xử lý."
   },
   "insuranceApp": {
     "title": "Bảo hiểm",
