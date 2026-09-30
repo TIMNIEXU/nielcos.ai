@@ -4,7 +4,7 @@ import { routing } from "@/i18n/routing";
 import Reveal from "@/components/Reveal";
 import DutyEstimator from "@/components/DutyEstimator";
 import { SectionHead, CtaBand } from "@/components/Section";
-import { buildEstimatorLabels } from "@/lib/estimator-labels";
+import { buildFxestLabels } from "@/lib/estimator-labels";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -24,8 +24,8 @@ export default async function LandedCostPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "landedCost" });
-  const te = await getTranslations({ locale, namespace: "estimator" });
-  const estimatorLabels = buildEstimatorLabels(te);
+  const tf = await getTranslations({ locale, namespace: "fxest" });
+  const estimatorLabels = buildFxestLabels(tf);
   const steps = [0, 1, 2].map((i) => t(`steps.${i}`));
 
   return (

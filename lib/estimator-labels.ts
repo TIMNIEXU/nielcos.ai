@@ -63,3 +63,67 @@ export function buildEstimatorLabels(
 ): Record<string, string> {
   return Object.fromEntries(ESTIMATOR_LABEL_KEYS.map((k) => [k, te(k)]));
 }
+
+/* Flexport-style estimator labels (`fxest` message namespace). */
+export const FXEST_LABEL_KEYS = [
+  "eyebrow",
+  "title",
+  "sub",
+  "calcTitle",
+  "resetForm",
+  "importBtn",
+  "importHint",
+  "importing",
+  "importOk",
+  "importFail",
+  "importNoText",
+  "importTooBig",
+  "searchLabel",
+  "searchPh",
+  "clearSearch",
+  "lookup",
+  "lookingUp",
+  "needInput",
+  "pickCandidate",
+  "notFound",
+  "lookupFailed",
+  "valueLabel",
+  "originLabel",
+  "modeLabel",
+  "modeOcean",
+  "modeAir",
+  "entryDateLabel",
+  "exclTitle",
+  "exclDonationDesc",
+  "applied",
+  "notApplied",
+  "exclNote",
+  "resultsTitle",
+  "sendResults",
+  "copied",
+  "adTitle",
+  "adCta",
+  "dutyRateLabel",
+  "totalDutiesLabel",
+  "costTitle",
+  "baseCost",
+  "hmfRow",
+  "mpfRow",
+  "landedCost",
+  "lineTitle",
+  "lineValue",
+  "mfnName",
+  "flName",
+  "c301Name",
+  "r232Name",
+  "free",
+  "disclaimer",
+  "disclaimerShort",
+  "cta",
+] as const;
+
+export function buildFxestLabels(
+  tf: (key: string) => string
+): Record<string, string> {
+  return Object.fromEntries(FXEST_LABEL_KEYS.map((k) => [k, tf(k)]));
+}

@@ -7,6 +7,7 @@ import DutyEstimator from "@/components/DutyEstimator";
 import AiDemo from "@/components/AiDemo";
 import { SectionHead, CtaBand } from "@/components/Section";
 import RegulatoryFeed from "@/components/RegulatoryFeed";
+import { buildFxestLabels } from "@/lib/estimator-labels";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -61,12 +62,10 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home" });
   const tm = await getTranslations({ locale, namespace: "modulesPage" });
-  const te = await getTranslations({ locale, namespace: "estimator" });
+  const tf = await getTranslations({ locale, namespace: "fxest" });
   const tl = await getTranslations({ locale, namespace: "landedCost" });
   const t2 = await getTranslations({ locale, namespace: "mkt2" });
-  const estimatorLabels: Record<string, string> = Object.fromEntries(
-    ["eyebrow","title","sub","importBtn","importHint","importing","importOk","importFail","importNoText","importTooBig","productName","productNamePh","material","materialPh","intendedUse","intendedUsePh","hts","htsPh","origin","originPh","lookup","lookingUp","needInput","pickCandidate","htsTooShort","notFound","compoundNote","lookupFailed","usitcRate","suggestFL","suggest232","capNote","apply","invValue","mfn","rate301orig","rate301fl","rate232","ocean","colItem","colRate","colAmount","rowBase","row301orig","row301fl","row232","rowDutyTotal","rowMpf","rowHmf","rowGrand","mpfFy26","mpfFy27","disclaimer","cta"].map((k) => [k, te(k)])
-  );
+  const estimatorLabels = buildFxestLabels(tf);
 
   const kpis = [0, 1, 2, 3].map((i) => ({
     value: t(`kpis.${i}.value`),
@@ -184,9 +183,9 @@ export default async function HomePage({
       {/* ============ DUTY ESTIMATOR ============ */}
       <section id="duty-estimator" className="mx-auto max-w-7xl scroll-mt-24 px-5 py-20 lg:px-8 lg:py-24">
         <SectionHead
-          eyebrow={te("eyebrow")}
-          title={te("title")}
-          sub={te("sub")}
+          eyebrow={tf("eyebrow")}
+          title={tf("title")}
+          sub={tf("sub")}
         />
         <Reveal className="mt-12">
           <DutyEstimator t={estimatorLabels} locale={locale} />
