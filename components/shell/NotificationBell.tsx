@@ -24,10 +24,11 @@ export default function NotificationBell({ labels }: Props) {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [open, setOpen] = useState(false);
 
-  /* /api/app/alerts is implemented by track C; until then (404) stay in empty state. */
+  /* GET /api/app/alerts?locale=xx — server translates via dash.* templates. */
   useEffect(() => {
     let alive = true;
-    fetch("/api/app/alerts")
+    const seg = window.location.pathname.split("/").filter(Boolean)[0] ?? "en";
+    fetch(`/api/app/alerts?locale=${encodeURIComponent(seg)}`)
       .then((r) => (r.ok ? r.json() : { alerts: [] }))
       .then((d) => {
         if (alive) setAlerts(Array.isArray(d?.alerts) ? d.alerts : []);
