@@ -105,13 +105,13 @@
       "title": "Put your trade operation under command."
     },
     "hero": {
-      "badge": "Global trade · Tariff intelligence",
+      "badge": "US import duties · for global traders",
       "cta1": "Request a demo",
       "cta2": "Explore the platform",
       "eyebrow": "Niel Customs Operating System",
-      "sub": "NIEL COS checks every HTS code against 6,857 USITC rates, Section 232 & 301 duties, and 9 PGA agencies — in six languages — before CBP ever asks. Backed by the Joma trucking team moving containers since 2008.",
-      "titleA": "Global trade,",
-      "titleB": "duties decoded.",
+      "sub": "NIEL COS checks every HTS code against 6,857 USITC rates, Section 232 & 301 additional duties, and 9 PGA requirements — in six languages — before CBP ever asks. Built for importers, forwarders, and brands shipping to the United States, backed by the Joma trucking team moving containers since 2008.",
+      "titleA": "US import duties,",
+      "titleB": "decoded for global traders.",
       "trust": [
         "Joma Logistics Inc · since 2008",
         "100+ company trucks",
