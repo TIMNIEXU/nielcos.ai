@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
 /* /api/app/insurance/quotes — workbench triage for public quote requests.
-   GET: quotes visible to the caller (own claimed + unclaimed for owners).
+   GET: quotes visible to the caller (own claimed + unclaimed lead pool for
+   triage-enabled agency companies only).
    PATCH: { id, status?, quoted_premium?, quoted_note?, claim?: true }
    Claiming pins company_id to the caller's company (RLS with-check). */
 

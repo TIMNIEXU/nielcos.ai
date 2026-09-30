@@ -4,8 +4,16 @@
 -- Design notes (honest scoping):
 --   * insurance_quotes are LEADS for the agency (Niel Insurance Agency LLC).
 --     Anyone on the public site can submit one (anon INSERT). Triage happens
---     in the workbench: a company owner claims a quote (sets company_id),
---     then records quoted premium / declines it.
+--     in the workbench.
+--   * LEAD VISIBILITY (multi-tenant safety): unclaimed leads (company_id is
+--     null) are visible ONLY to companies flagged with insurance_triage = true
+--     (the agency's own company). Ordinary customer companies can NEVER see
+--     other people's leads — they only see quotes they have claimed themselves.
+--     After running this file, flag the agency company once:
+--       update companies set insurance_triage = true where id = '<AGENCY_COMPANY_UUID>';
+--     (find the id with: select id, name from companies;)
+--   * Claiming pins company_id to the caller's own company (RLS with-check),
+--     so a lead can never be claimed into someone else's tenant.
 --   * insurance_policies are per-tenant: one row per policy, optionally linked
 --     to a shipment (GTTID) and/or the quote it was converted from.
 --   * The agency is a licensed broker (IL #3004050191, NJ licensed), not an
@@ -14,8 +22,13 @@
 --     responds.
 --   * Guarded + re-runnable: every DDL uses IF NOT EXISTS / DROP IF EXISTS.
 
--- Helper: is the signed-in user an owner of their company?
-create or replace function public.is_company_owner()
+-- Agency triage flag on the shared companies table (safe to re-run).
+alter table public.companies
+  add column if not exists insurance_triage boolean not null default false;
+
+-- Helper: does the signed-in user belong to a company allowed to triage
+-- insurance leads (i.e. the agency's own company)?
+create or replace function public.can_triage_insurance()
 returns boolean
 language sql
 stable
@@ -23,7 +36,11 @@ security definer
 set search_path = public
 as $$
   select exists (
-    select 1 from public.profiles where id = auth.uid() and role = 'owner'
+    select 1
+    from public.profiles p
+    join public.companies c on c.id = p.company_id
+    where p.id = auth.uid()
+      and c.insurance_triage = true
   );
 $$;
 
@@ -79,23 +96,24 @@ create policy "insurance_quotes public insert" on insurance_quotes
     and char_length(coalesce(message, '')) <= 2000
   );
 
--- Workbench read: own claimed quotes; owners may also see unclaimed leads.
+-- Workbench read: own claimed quotes; unclaimed leads ONLY for the agency's
+-- triage-enabled company. Ordinary tenants never see the lead pool.
 drop policy if exists "insurance_quotes tenant read" on insurance_quotes;
 create policy "insurance_quotes tenant read" on insurance_quotes
   for select to authenticated
   using (
     company_id = public.own_company_id()
-    or (company_id is null and public.is_company_owner())
+    or (company_id is null and public.can_triage_insurance())
   );
 
--- Workbench triage: members update their company's quotes; owners may claim
--- unclaimed leads (the with-check pins company_id to their own company).
+-- Workbench triage: members update their company's quotes; the agency may
+-- claim unclaimed leads (the with-check pins company_id to their own company).
 drop policy if exists "insurance_quotes tenant update" on insurance_quotes;
 create policy "insurance_quotes tenant update" on insurance_quotes
   for update to authenticated
   using (
     company_id = public.own_company_id()
-    or (company_id is null and public.is_company_owner())
+    or (company_id is null and public.can_triage_insurance())
   )
   with check (company_id = public.own_company_id());
 
@@ -156,4 +174,8 @@ grant select, insert, update, delete on insurance_policies to authenticated;
 -- After running, expect:
 --   select * from insurance_quotes limit 0;    -- ok (RLS on)
 --   select * from insurance_policies limit 0;  -- ok (RLS on)
+--   select column_name from information_schema.columns
+--     where table_name = 'companies' and column_name = 'insurance_triage';  -- 1 row
 -- Public form insert works with the anon key; workbench reads only after login.
+-- Remember to flag the agency company:
+--   update companies set insurance_triage = true where id = '<AGENCY_COMPANY_UUID>';
