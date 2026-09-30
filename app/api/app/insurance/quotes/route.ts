@@ -8,7 +8,7 @@ import { createClient } from "@/lib/supabase/server";
    Claiming pins company_id to the caller's company (RLS with-check). */
 
 const FIELDS =
-  "id, created_at, name, company, email, phone, cargo_value, currency, origin, destination, mode, coverage, message, status, company_id, quoted_premium, quoted_note, updated_at";
+  "id, created_at, name, company, email, phone, cargo_value, currency, origin, destination, mode, coverage, message, status, company_id, quoted_premium, quoted_note, updated_at, bond_recommendation, bond_amount_est, annual_import_value, entries_per_year, duties_paid";
 
 async function companyId(sb: Awaited<ReturnType<typeof createClient>>) {
   const {

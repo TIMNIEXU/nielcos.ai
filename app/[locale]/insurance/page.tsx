@@ -134,6 +134,13 @@ export default async function InsurancePage({
                 >
                   {t("bondCta")} ↗
                 </a>
+                <Link
+                  href={`/${locale}/bond`}
+                  className="mt-3 block rounded-xl border-2 border-brand bg-white px-6 py-3.5 text-[15.5px] font-bold text-brand transition-all hover:-translate-y-px hover:bg-brand-tint-soft"
+                >
+                  {t("bondWizardCta")}
+                </Link>
+                <p className="mt-3 text-[12.5px] text-faint">{t("bondWizardSub")}</p>
                 <p className="mt-4 text-[12.5px] leading-relaxed text-faint">
                   {t("bondNote")}
                 </p>

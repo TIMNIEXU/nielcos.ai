@@ -4,10 +4,13 @@ import { createClient } from "@/lib/supabase/server";
 /* POST /api/public/insurance-quote — public cargo-insurance quote request.
    No login. Inserts into insurance_quotes; the RLS "public insert" policy
    forces company_id NULL + status 'new' and caps field lengths, so the form
-   cannot claim or pre-triage a lead. Server-side validation mirrors it. */
+   cannot claim or pre-triage a lead. Server-side validation mirrors it.
+   The Bond Intelligence wizard (/bond) posts coverage='bond' with the
+   bond_* assessment columns (needs insurance_v2.sql). */
 
-const MODES = new Set(["ocean", "air"]);
-const COVERAGES = new Set(["marine", "warehouse", "contingent", "stock"]);
+const MODES = new Set(["ocean", "air", "bond"]);
+const COVERAGES = new Set(["marine", "warehouse", "contingent", "stock", "bond"]);
+const BOND_RECS = new Set(["continuous", "stb", "none_needed"]);
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
@@ -26,6 +29,17 @@ export async function POST(req: NextRequest) {
   const mode = MODES.has(body.mode) ? body.mode : "ocean";
   const coverage = COVERAGES.has(body.coverage) ? body.coverage : "marine";
   const cargoValue = Number(body.cargo_value);
+  const num = (v: unknown) => {
+    const n = Number(v);
+    return Number.isFinite(n) && n >= 0 ? n : null;
+  };
+  const int = (v: unknown) => {
+    const n = Number(v);
+    return Number.isFinite(n) && n >= 0 ? Math.floor(n) : null;
+  };
+  const bondRec = BOND_RECS.has(body.bond_recommendation)
+    ? body.bond_recommendation
+    : null;
   const row = {
     name,
     company: s(body.company, 160) || null,
@@ -39,6 +53,12 @@ export async function POST(req: NextRequest) {
     mode,
     coverage,
     message: s(body.message, 2000) || null,
+    // Bond Intelligence assessment (only meaningful for coverage='bond')
+    bond_recommendation: coverage === "bond" ? bondRec : null,
+    bond_amount_est: coverage === "bond" ? num(body.bond_amount_est) : null,
+    annual_import_value: coverage === "bond" ? num(body.annual_import_value) : null,
+    entries_per_year: coverage === "bond" ? int(body.entries_per_year) : null,
+    duties_paid: coverage === "bond" ? num(body.duties_paid) : null,
   };
 
   if (

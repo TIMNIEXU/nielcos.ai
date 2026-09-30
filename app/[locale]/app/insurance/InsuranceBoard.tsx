@@ -8,6 +8,9 @@ type Quote = {
   currency: string; origin: string | null; destination: string | null;
   mode: string; coverage: string; message: string | null; status: string;
   company_id: string | null; quoted_premium: number | null; quoted_note: string | null;
+  bond_recommendation: string | null; bond_amount_est: number | null;
+  annual_import_value: number | null; entries_per_year: number | null;
+  duties_paid: number | null;
 };
 
 type Policy = {
@@ -23,7 +26,11 @@ const P_STATUSES = ["pending", "active", "expired", "cancelled"] as const;
 
 const COV_KEY: Record<string, string> = {
   marine: "covMarine", warehouse: "covWarehouse",
-  contingent: "covContingent", stock: "covStock",
+  contingent: "covContingent", stock: "covStock", bond: "covBond",
+};
+
+const BOND_REC_LABEL: Record<string, string> = {
+  continuous: "Continuous", stb: "Single TX", none_needed: "—",
 };
 
 function quoteTone(s: string) {
@@ -194,6 +201,11 @@ export default function InsuranceBoard({ messages }: { messages: Record<string, 
       ) : tab === "quotes" ? (
         /* ---------------- quotes ---------------- */
         <div className="dash-card mt-4 overflow-x-auto">
+          {quotes.some((q) => q.coverage === "bond" && q.status === "new") && (
+            <div className="m-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-[13px] leading-relaxed text-amber-900">
+              <b>⚠</b> {t("bondHint")}
+            </div>
+          )}
           {quotes.length === 0 ? (
             <p className="p-10 text-center text-[13.5px] text-faint">{t("emptyQuotes")}</p>
           ) : (
@@ -223,8 +235,16 @@ export default function InsuranceBoard({ messages }: { messages: Record<string, 
                       </td>
                       <td className="px-4 py-3">{fmtMoney(q.cargo_value, q.currency)}</td>
                       <td className="px-4 py-3 text-ink-soft">{[q.origin, q.destination].filter(Boolean).join(" → ") || "—"}</td>
-                      <td className="px-4 py-3">{t(q.mode === "air" ? "modeAir" : "modeOcean")}</td>
-                      <td className="px-4 py-3">{t(COV_KEY[q.coverage] ?? "covMarine")}</td>
+                      <td className="px-4 py-3">{t(q.mode === "air" ? "modeAir" : q.mode === "bond" ? "modeBond" : "modeOcean")}</td>
+                      <td className="px-4 py-3">
+                        {t(COV_KEY[q.coverage] ?? "covMarine")}
+                        {q.coverage === "bond" && q.bond_recommendation && q.bond_recommendation !== "none_needed" && (
+                          <p className="mt-0.5 text-[11.5px] font-semibold text-faint">
+                            {q.bond_recommendation === "continuous" ? t("recContShort") : t("recStbShort")}
+                            {q.bond_amount_est != null && ` · ≈ $${Number(q.bond_amount_est).toLocaleString()}`}
+                          </p>
+                        )}
+                      </td>
                       <td className="px-4 py-3">
                         <span className={`rounded-full px-2.5 py-1 text-[12px] font-bold ${quoteTone(q.status)}`}>
                           {t(q.status === "quoted" ? "stQuoted" : q.status === "declined" ? "stDeclined" : "stNew")}
@@ -242,17 +262,19 @@ export default function InsuranceBoard({ messages }: { messages: Record<string, 
                               <button onClick={() => patchQuote(q.id, { status: "declined", claim: !q.company_id || undefined })} className="text-faint hover:underline">{t("markDeclined")}</button>
                             </>
                           )}
+                          {q.coverage !== "bond" && (
                           <button
                             onClick={() => setPForm({ preset: {
                               quote_id: q.id, cargo_value: q.cargo_value, currency: q.currency,
-                              coverage: q.coverage, notes: `${q.name}${q.company ? ` · ${q.company}` : ""} — ${q.email}`,
+                              coverage: q.coverage,
+                              notes: `${q.name}${q.company ? ` · ${q.company}` : ""} — ${q.email}`,
                             }})}
                             className="text-vio hover:underline"
                           >{t("toPolicy")}</button>
+                          )}
                         </div>
                       </td>
-                    </tr>
-                    {expanded === q.id && (
+                    </tr>                    {expanded === q.id && (
                       <tr className="border-b border-line-soft bg-brand-tint-soft/30">
                         <td colSpan={8} className="px-4 py-3 text-[13px] text-ink-soft">
                           <p><b>{q.email}</b>{q.phone ? ` · ${q.phone}` : ""}</p>
