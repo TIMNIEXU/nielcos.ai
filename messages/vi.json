@@ -105,13 +105,13 @@
       "title": "Hãy đưa hoạt động giao dịch của bạn vào tầm kiểm soát."
     },
     "hero": {
-      "badge": "Thuế nhập khẩu Hoa Kỳ · cho nhà giao dịch toàn cầu",
-      "cta1": "Yêu cầu bản demo",
-      "cta2": "Khám phá nền tảng này",
-      "eyebrow": "Hệ thống vận hành hải quan Niel",
-      "sub": "NIEL COS đối chiếu từng mã HTS với 6.857 mức thuế của USITC, thuế bổ sung theo Mục 232 & 301 và 9 cơ quan PGA — bằng sáu ngôn ngữ — trước khi CBP yêu cầu. Được xây dựng cho các nhà nhập khẩu, forwarder và thương hiệu xuất hàng sang Hoa Kỳ, với sự hậu thuẫn của đội xe tải Joma vận chuyển container từ năm 2008.",
-      "titleA": "Thuế nhập khẩu Hoa Kỳ,",
-      "titleB": "được giải mã cho nhà giao dịch toàn cầu.",
+      "badge": "Hệ điều hành thương mại AI",
+      "cta1": "Tính chi phí nhập khẩu",
+      "cta2": "Bắt đầu nhập khẩu",
+      "eyebrow": "NIEL COS — Hệ điều hành thương mại toàn cầu AI",
+      "sub": "Biết thuế nhập khẩu. Lấy giá cước. Thông quan. Kéo container. Mua bảo hiểm. Theo dõi mọi thứ. Một nền tảng AI duy nhất.",
+      "titleA": "AI vận hành",
+      "titleB": "thương mại toàn cầu của bạn.",
       "trust": [
         "Joma Logistics Inc · thành lập từ năm 2008",
         "Hơn 100 xe tải của công ty",
@@ -151,46 +151,6 @@
       "Tài chính chuỗi cung ứng",
       "Khả năng theo dõi và kiểm soát toàn diện"
     ],
-    "modules": {
-      "cta": "Xem tất cả các mô-đun",
-      "eyebrow": "Một nền tảng",
-      "items": [
-        {
-          "desc": "Nộp tờ khai, phân loại HTS và tuân thủ PGA được hỗ trợ bởi trí tuệ nhân tạo (AI) trong một quy trình duy nhất.",
-          "name": "Hải quan"
-        },
-        {
-          "desc": "Theo dõi toàn bộ quá trình vận chuyển đường biển, đường hàng không và vận chuyển nội địa kèm cảnh báo các mốc quan trọng.",
-          "name": "Lô hàng"
-        },
-        {
-          "desc": "Kiểm tra liên tục theo các yêu cầu của FDA, USDA, APHIS và EPA.",
-          "name": "Tuân thủ"
-        },
-        {
-          "desc": "Hóa đơn, danh sách đóng gói và chứng nhận được phân tích, lưu trữ và liên kết với các tờ khai.",
-          "name": "Tài liệu"
-        },
-        {
-          "desc": "Vận tải đường bộ, kho bãi và hoàn tất đơn hàng được điều phối xoay quanh lô hàng của bạn.",
-          "name": "Logistics"
-        },
-        {
-          "desc": "Khả năng theo dõi thuế, cước vận chuyển và chi phí nhập khẩu cùng các công cụ thanh toán và tài chính.",
-          "name": "Tài chính"
-        },
-        {
-          "desc": "Hỏi bất cứ điều gì về hoạt động thương mại của bạn — bằng ngôn ngữ dễ hiểu.",
-          "name": "Trợ lý AI"
-        },
-        {
-          "desc": "Tổng quan trực tiếp về mọi lô hàng, rủi ro và trường hợp ngoại lệ trên toàn thế giới.",
-          "name": "Trung tâm điều hành"
-        }
-      ],
-      "sub": "Đừng phải loay hoay kết nối các nhà môi giới, công ty giao nhận, bảng tính và chuỗi email nữa. NIEL COS tích hợp mọi chức năng của thương mại toàn cầu vào một hệ điều hành duy nhất.",
-      "title": "Tất cả các chức năng giao dịch. Chỉ trên một màn hình."
-    },
     "network": {
       "cities": [
         {
@@ -216,6 +176,38 @@
       "sub": "Được đồng bộ hóa tự động từ Công báo Liên bang Hoa Kỳ (CBP & USTR). Nhấp vào bất kỳ mục nào để xem thông báo chính thức.",
       "viewAll": "Xem tất cả các cập nhật về quy định",
       "empty": "Chưa có thông tin cập nhật nào."
+    },
+    "entries": {
+      "eyebrow": "Bắt đầu tại đây",
+      "title": "Bạn cần làm gì?",
+      "sub": "Đừng học hệ thống của chúng tôi. Hãy cho biết việc cần làm — NIEL COS lo phần còn lại.",
+      "items": [
+        {
+          "name": "Tính chi phí",
+          "desc": "Lô hàng này tốn bao nhiêu? Thuế + giá landed trong 60 giây.",
+          "cta": "Tính ngay →"
+        },
+        {
+          "name": "Kiểm tra",
+          "desc": "Có được nhập khẩu hợp pháp? Ứng viên HTS, rủi ro AD/CVD, yêu cầu PGA.",
+          "cta": "Kiểm tra →"
+        },
+        {
+          "name": "Vận chuyển",
+          "desc": "Cước bao nhiêu? Đường biển, hàng không, kéo container, kho bãi.",
+          "cta": "Lấy giá →"
+        },
+        {
+          "name": "Thông quan",
+          "desc": "Thông quan suôn sẻ. Môi giới, bond, chứng từ, tờ khai.",
+          "cta": "Thông quan →"
+        },
+        {
+          "name": "Bảo vệ",
+          "desc": "Bảo vệ lô hàng. Bảo hiểm hàng hóa + tuân thủ + rủi ro.",
+          "cta": "Bảo vệ →"
+        }
+      ]
     }
   },
   "meta": {
@@ -2076,5 +2068,21 @@
     "faq4a": "Không — nộp đơn miễn phí, kể cả khi thẩm định không đạt. Phí bảo hiểm thu theo năm, có giá ưu đãi năm đầu.",
     "attnTitle": "Lưu ý quan trọng",
     "contPriceNote": "Phí bảo hiểm năm được báo sau thẩm định — gửi đánh giá để chúng tôi báo giá chính xác. Nộp đơn miễn phí."
+  },
+  "importbox": {
+    "title": "Bạn đang nhập khẩu gì?",
+    "sub": "Mô tả bằng lời của bạn, hoặc tải lên hóa đơn thương mại — NIEL AI lập kế hoạch nhập khẩu cho bạn.",
+    "placeholder": "VD: \"Tôi nhập $120.000 đồ nội thất nhôm từ Trung Quốc về Chicago\"",
+    "button": "Lập kế hoạch nhập khẩu",
+    "uploadLabel": "hoặc tải lên tài liệu",
+    "fileTypes": "Hóa đơn · Phiếu đóng gói · Excel · BOM · Ảnh",
+    "chips": [
+      "$120k đồ nội thất nhôm từ Trung Quốc về Chicago",
+      "500 xe đẩy bếp inox từ Việt Nam",
+      "Gạch ceramic cho dự án nhà hàng ở Texas"
+    ],
+    "hint": "Miễn phí · Không cần đăng ký",
+    "uploading": "Đang đọc tài liệu…",
+    "uploadFail": "Không đọc được tệp — hãy thử nhập mô tả."
   }
 }

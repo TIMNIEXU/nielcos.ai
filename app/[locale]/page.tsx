@@ -4,6 +4,7 @@ import { routing } from "@/i18n/routing";
 import Reveal from "@/components/Reveal";
 import DashboardMock from "@/components/DashboardMock";
 import DutyEstimator from "@/components/DutyEstimator";
+import ImportBox from "@/components/ImportBox";
 import AiDemo from "@/components/AiDemo";
 import { SectionHead, CtaBand } from "@/components/Section";
 import RegulatoryFeed from "@/components/RegulatoryFeed";
@@ -14,17 +15,6 @@ export function generateStaticParams() {
 }
 
 const MODULE_ICONS = ["doc", "truck", "shield", "box", "bot", "chart", "globe", "card"] as const;
-
-const MODULE_IMGS = [
-  "customs", "shipments", "compliance", "documents",
-  "logistics", "finance", "ai-assistant", "control-tower",
-];
-
-// Workspace app path per home module card; undefined = marketing-only card (no link).
-const MODULE_APPS: (string | undefined)[] = [
-  "customs", "freight", "compliance", "documents",
-  "logistics", "finance", "assistant", "tower",
-];
 
 const CITY_IMGS = ["new-york-nj", "los-angeles", "chicago"];
 
@@ -73,10 +63,19 @@ export default async function HomePage({
     delta: t(`kpis.${i}.delta`),
   }));
   const marquee = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => t(`marquee.${i}`));
-  const modules = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => ({
-    name: t(`modules.items.${i}.name`),
-    desc: t(`modules.items.${i}.desc`),
+  const entries = [0, 1, 2, 3, 4].map((i) => ({
+    name: t(`entries.items.${i}.name`),
+    desc: t(`entries.items.${i}.desc`),
+    cta: t(`entries.items.${i}.cta`),
   }));
+  // GRI-001 V1: five customer entries. Check -> /app/customs for now; V3 re-points it to /classify.
+  const ENTRY_APPS = [
+    `/${locale}/landed-cost`,
+    `/${locale}/app/customs`,
+    `/${locale}/app/logistics`,
+    `/${locale}/bond`,
+    `/${locale}/insurance`,
+  ];
   const risks = [0, 1, 2].map((i) => ({
     t: t(`ai.risks.${i}.t`),
     d: t(`ai.risks.${i}.d`),
@@ -136,13 +135,13 @@ export default async function HomePage({
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
-                href={`/${locale}/contact`}
+                href="#duty-estimator"
                 className="rounded-full bg-brand px-8 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_-8px_rgba(29,78,216,0.8)] transition-all hover:-translate-y-0.5 hover:bg-brand-deep"
               >
                 {t("hero.cta1")}
               </Link>
               <Link
-                href={`/${locale}/platform`}
+                href="#import-box"
                 className="rounded-full border border-line bg-white px-8 py-3.5 text-[15px] font-semibold text-ink shadow-card transition-all hover:-translate-y-0.5 hover:border-brand"
               >
                 {t("hero.cta2")}
@@ -161,6 +160,15 @@ export default async function HomePage({
           </Reveal>
           <Reveal delay={260} className="mt-12 lg:mt-16">
             <DashboardMock />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ UNIVERSAL IMPORT BOX (GRI-001 V1) ============ */}
+      <section id="import-box" className="relative scroll-mt-24 overflow-hidden border-y border-line bg-gradient-to-b from-brand-tint/50 via-white to-white">
+        <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
+          <Reveal>
+            <ImportBox locale={locale} />
           </Reveal>
         </div>
       </section>
@@ -214,50 +222,27 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ============ MODULES ============ */}
+      {/* ============ FIVE ENTRIES (GRI-001 V1) ============ */}
       <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
         <SectionHead
-          eyebrow={t("modules.eyebrow")}
-          title={t("modules.title")}
-          sub={t("modules.sub")}
+          eyebrow={t("entries.eyebrow")}
+          title={t("entries.title")}
+          sub={t("entries.sub")}
         />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {modules.map((m, i) => (
-            <Reveal key={m.name} delay={(i % 4) * 80}>
-              <div className="dash-card dash-card-hover h-full overflow-hidden">
-                <div className="relative h-32 overflow-hidden bg-brand-tint/40">
-                  <img
-                    src={`/images/modules/${MODULE_IMGS[i]}.png`}
-                    alt={m.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <ModuleGlyph i={i} />
-                  <p className="mt-4 text-[16px] font-bold text-ink">{m.name}</p>
-                  <p className="mt-2 text-[13.5px] leading-relaxed text-muted">{m.desc}</p>
-                  {MODULE_APPS[i] && (
-                    <Link
-                      href={`/${locale}/app/${MODULE_APPS[i]}`}
-                      className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-bold text-brand hover:gap-2.5 transition-all"
-                    >
-                      {tm("tryIt")} →
-                    </Link>
-                  )}
-                </div>
-              </div>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {entries.map((m, i) => (
+            <Reveal key={m.name} delay={(i % 5) * 80}>
+              <Link href={ENTRY_APPS[i]} className="dash-card dash-card-hover block h-full p-6">
+                <ModuleGlyph i={i} />
+                <p className="mt-4 text-[16px] font-bold text-ink">{m.name}</p>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-muted">{m.desc}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-brand">
+                  {m.cta}
+                </span>
+              </Link>
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-10 text-center">
-          <Link
-            href={`/${locale}/modules`}
-            className="inline-flex items-center gap-2 text-[15px] font-bold text-brand hover:gap-3 transition-all"
-          >
-            {t("modules.cta")} →
-          </Link>
-        </Reveal>
       </section>
 
       {/* ============ WORKFLOW ============ */}

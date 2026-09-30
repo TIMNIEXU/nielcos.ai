@@ -105,13 +105,13 @@
       "title": "Put your trade operation under command."
     },
     "hero": {
-      "badge": "US import duties · for global traders",
-      "cta1": "Request a demo",
-      "cta2": "Explore the platform",
-      "eyebrow": "Niel Customs Operating System",
-      "sub": "NIEL COS checks every HTS code against 6,857 USITC rates, Section 232 & 301 additional duties, and 9 PGA requirements — in six languages — before CBP ever asks. Built for importers, forwarders, and brands shipping to the United States, backed by the Joma trucking team moving containers since 2008.",
-      "titleA": "US import duties,",
-      "titleB": "decoded for global traders.",
+      "badge": "AI Trade Operating System",
+      "cta1": "Calculate my import cost",
+      "cta2": "Start importing",
+      "eyebrow": "NIEL COS — AI Global Trade Operating System",
+      "sub": "Know your duty. Get your freight rate. Clear customs. Move the container. Insure the cargo. Track everything. One AI-powered platform.",
+      "titleA": "AI that runs",
+      "titleB": "your global trade.",
       "trust": [
         "Joma Logistics Inc · since 2008",
         "100+ company trucks",
@@ -151,46 +151,6 @@
       "Supply chain finance",
       "Control tower visibility"
     ],
-    "modules": {
-      "cta": "View all modules",
-      "eyebrow": "One platform",
-      "items": [
-        {
-          "desc": "AI-assisted entry filing, HTS classification, and PGA compliance in one flow.",
-          "name": "Customs"
-        },
-        {
-          "desc": "End-to-end tracking across ocean, air, and drayage with milestone alerts.",
-          "name": "Shipments"
-        },
-        {
-          "desc": "Continuous screening against FDA, USDA, APHIS, and EPA requirements.",
-          "name": "Compliance"
-        },
-        {
-          "desc": "Invoices, packing lists, and certificates parsed, stored, and linked to entries.",
-          "name": "Documents"
-        },
-        {
-          "desc": "Trucking, warehousing, and fulfillment orchestrated around your freight.",
-          "name": "Logistics"
-        },
-        {
-          "desc": "Duty, freight, and landed-cost visibility with pay and financing tools.",
-          "name": "Finance"
-        },
-        {
-          "desc": "Ask anything about your trade operations — in plain language.",
-          "name": "AI Assistant"
-        },
-        {
-          "desc": "One live view of every shipment, risk, and exception worldwide.",
-          "name": "Control Tower"
-        }
-      ],
-      "sub": "Stop stitching together brokers, forwarders, spreadsheets, and email threads. NIEL COS brings every function of global trade into one operating system.",
-      "title": "Every trade function. One screen."
-    },
     "network": {
       "cities": [
         {
@@ -216,6 +176,38 @@
       "sub": "Auto-synced from the U.S. Federal Register (CBP & USTR). Click any item for the official notice.",
       "viewAll": "View all regulatory updates",
       "empty": "No updates yet."
+    },
+    "entries": {
+      "eyebrow": "Start here",
+      "title": "What do you need to get done?",
+      "sub": "Don't learn our system. Tell us your job — NIEL COS does the rest.",
+      "items": [
+        {
+          "name": "Calculate",
+          "desc": "What will my import cost? Tariff + landed cost in 60 seconds.",
+          "cta": "Calculate →"
+        },
+        {
+          "name": "Check",
+          "desc": "Can I legally import this? HTS candidates, AD/CVD risk, PGA requirements.",
+          "cta": "Check →"
+        },
+        {
+          "name": "Ship",
+          "desc": "How much to move it? Ocean, air, trucking & warehousing.",
+          "cta": "Get rates →"
+        },
+        {
+          "name": "Clear",
+          "desc": "Get it through customs. Brokerage, bonds, documents & entries.",
+          "cta": "Clear customs →"
+        },
+        {
+          "name": "Protect",
+          "desc": "Protect the shipment. Cargo insurance + compliance + risk.",
+          "cta": "Protect →"
+        }
+      ]
     }
   },
   "meta": {
@@ -2076,5 +2068,21 @@
     "faq4a": "No — applying is free, even if underwriting declines. Premium is billed annually, with a first-year special available.",
     "attnTitle": "Important",
     "contPriceNote": "The annual premium is quoted after underwriting — submit your assessment and we will get you an exact figure. Applying is free."
+  },
+  "importbox": {
+    "title": "What are you importing?",
+    "sub": "Describe it in your own words, or upload your commercial invoice — NIEL AI builds your import plan.",
+    "placeholder": "e.g. \"I'm importing $120,000 of aluminum furniture from China to Chicago\"",
+    "button": "Build my import plan",
+    "uploadLabel": "or upload a document",
+    "fileTypes": "Invoice · Packing List · Excel · BOM · Photo",
+    "chips": [
+      "$120k of aluminum furniture from China to Chicago",
+      "Stainless steel kitchen trolleys, 500 pcs from Vietnam",
+      "Ceramic tiles for a restaurant project in Texas"
+    ],
+    "hint": "Free · No signup needed",
+    "uploading": "Reading your document…",
+    "uploadFail": "Couldn't read that file — try typing a description instead."
   }
 }

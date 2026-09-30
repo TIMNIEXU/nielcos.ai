@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { isZhLocale } from "@/lib/locale";
 
 /* Flexport-style US import duty simulator (public, no login).
@@ -85,7 +86,7 @@ function dutyLabel(s: Suggestion, t: T, origin: string): string {
 
 const todayStr = () => new Date().toISOString().slice(0, 10);
 
-export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
+function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
   const [query, setQuery] = useState("");
   const [hts, setHts] = useState("");
   const [htsDesc, setHtsDesc] = useState("");
@@ -107,6 +108,19 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
   const fileRef = useRef<HTMLInputElement>(null);
 
   const zh = isZhLocale(locale);
+  const searchParams = useSearchParams();
+
+  /* GRI-001 V1 — prefill from ?q= (Universal Import Box handoff) and auto-run. */
+  const qInit = useRef(false);
+  useEffect(() => {
+    if (qInit.current) return;
+    const q = (searchParams.get("q") ?? "").trim();
+    if (!q) return;
+    qInit.current = true;
+    setQuery(q);
+    void lookupWithText(q);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const sched = mpfSchedule(entryDate || "2000-01-01");
 
   const rateSuggestions = useMemo(
@@ -193,8 +207,9 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
     applyDirectResult(await res.json());
   };
 
-  const doLookup = async () => {
-    const code = query.replace(/[^0-9]/g, "");
+  const lookupWithText = async (text: string) => {
+    const q = text.trim();
+    const code = q.replace(/[^0-9]/g, "");
     setLookingUp(true);
     setLookupMsg("");
     setCandidates([]);
@@ -203,12 +218,12 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
         await lookupDirect(code);
         return;
       }
-      if (!query.trim()) {
+      if (!q) {
         setLookupMsg(t.needInput);
         return;
       }
       const res = await fetch(
-        `/api/public/duty-lookup?description=${encodeURIComponent(query.trim())}&origin=${encodeURIComponent(origin)}`
+        `/api/public/duty-lookup?description=${encodeURIComponent(q)}&origin=${encodeURIComponent(origin)}`
       );
       const data = await res.json();
       const cs: Candidate[] = (data.candidates ?? []).slice(0, 5);
@@ -220,6 +235,8 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
       setLookingUp(false);
     }
   };
+
+  const doLookup = () => lookupWithText(query);
 
   const pickCandidate = async (c: Candidate) => {
     setQuery(c.hts_no);
@@ -595,5 +612,14 @@ export default function DutyEstimator({ t, locale }: { t: T; locale: string }) {
         </a>
       </div>
     </div>
+  );
+}
+
+/* useSearchParams requires a Suspense boundary under the app router. */
+export default function DutyEstimator(props: { t: T; locale: string }) {
+  return (
+    <Suspense>
+      <DutyEstimatorInner {...props} />
+    </Suspense>
   );
 }
