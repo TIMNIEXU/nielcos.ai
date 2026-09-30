@@ -397,15 +397,15 @@
         "t": "Global Trade Transaction ID"
       },
       {
-        "d": "Machine-suggested HTS codes with confidence scoring, plus duty-rate analysis that finds legal savings before you file — not after you overpay.",
-        "t": "AI classification & duty engineering"
+        "d": "Machine-suggested HTS candidate codes with confidence scoring, plus duty-rate analysis that finds legal savings before you file — not after you overpay. Candidates are a starting point; confirm before filing.",
+        "t": "HTS candidates & duty engineering"
       },
       {
         "d": "PGA requirements, admissibility checks, and document validation run continuously against every entry. Exceptions arrive with a fix, not just a flag.",
         "t": "Compliance automation"
       },
       {
-        "d": "Ocean, air, and drayage milestones stream into one live map. At-risk shipments escalate automatically with owner, impact, and next action.",
+        "d": "Ocean, air, and drayage milestones roll up into one tower dashboard. At-risk shipments escalate automatically with owner, impact, and next action.",
         "t": "Control tower visibility"
       },
       {
@@ -413,7 +413,7 @@
         "t": "Landed-cost finance"
       },
       {
-        "d": "Connect your ERP, WMS, or forwarder via API and EDI. NIEL COS meets your stack where it lives — no rip-and-replace required.",
+        "d": "Read your NIEL COS data via read-only API, webhooks, and EDI — key events pushed to your stack. Write API coming soon.",
         "t": "Open integrations"
       }
     ],

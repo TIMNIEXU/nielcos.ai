@@ -397,15 +397,15 @@
         "t": "Mã giao dịch thương mại toàn cầu (GTTID)"
       },
       {
-        "d": "Mã HTS do hệ thống đề xuất kèm điểm tin cậy, cùng phân tích mức thuế giúp phát hiện các khoản tiết kiệm hợp pháp trước khi nộp hồ sơ — chứ không phải sau khi bạn đã trả thừa.",
-        "t": "Phân loại bằng AI & tối ưu hóa thuế"
+        "d": "Hệ thống đề xuất các mã HTS ứng viên kèm điểm tin cậy, cùng phân tích mức thuế giúp phát hiện các khoản tiết kiệm hợp pháp trước khi nộp hồ sơ — chứ không phải sau khi bạn đã trả thừa. Mã đề xuất chỉ mang tính tham khảo; vui lòng xác nhận trước khi nộp.",
+        "t": "Đề xuất HTS & tối ưu hóa thuế"
       },
       {
         "d": "Các yêu cầu PGA, kiểm tra tính hợp lệ và xác thực tài liệu được thực hiện liên tục đối với mọi lô hàng nhập khẩu. Các trường hợp ngoại lệ được gửi kèm giải pháp khắc phục, không chỉ là cảnh báo.",
         "t": "Tự động hóa tuân thủ"
       },
       {
-        "d": "Các mốc quan trọng về vận chuyển đường biển, đường hàng không và vận chuyển nội địa được cập nhật liên tục trên một bản đồ trực tuyến. Các lô hàng có rủi ro sẽ được báo cáo tự động kèm theo thông tin về chủ hàng, tác động và hành động tiếp theo.",
+        "d": "Các mốc vận chuyển đường biển, đường hàng không và vận chuyển nội địa được tổng hợp trên một bảng điều khiển trung tâm. Các lô hàng có rủi ro sẽ được báo cáo tự động kèm theo thông tin về chủ hàng, tác động và hành động tiếp theo.",
         "t": "Khả năng hiển thị từ trung tâm điều hành"
       },
       {
@@ -413,7 +413,7 @@
         "t": "Quản lý tài chính dựa trên chi phí nhập khẩu thực tế"
       },
       {
-        "d": "Kết nối hệ thống ERP, WMS hoặc nhà vận chuyển của bạn qua API và EDI. NIEL COS tích hợp trực tiếp với hệ thống hiện có của bạn — không cần thay thế hệ thống hiện tại.",
+        "d": "Đọc dữ liệu NIEL COS của bạn qua API chỉ đọc, webhook và EDI — các sự kiện quan trọng được đẩy về hệ thống của bạn. API ghi sắp ra mắt.",
         "t": "Tích hợp mở"
       }
     ],
