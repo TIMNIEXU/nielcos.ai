@@ -136,9 +136,9 @@
         "delta": "すべての出荷において"
       },
       {
-        "value": "2",
+        "value": "6",
         "label": "言語",
-        "delta": "英語 + 簡体字中国語"
+        "delta": "英語 · 簡体字中国語 · 繁体字中国語 · ベトナム語 · 韓国語 · 日本語"
       }
     ],
     "marquee": [
@@ -234,7 +234,8 @@
     "mapTitle": "世界貿易の概要",
     "recent": "最近の出荷",
     "riskTitle": "特定された重要なリスク",
-    "viewAll": "すべて表示"
+    "viewAll": "すべて表示",
+    "sampleData": "サンプルデータ"
   },
   "modulesPage": {
     "cta": {

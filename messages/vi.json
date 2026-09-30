@@ -136,9 +136,9 @@
         "delta": "trên mọi lô hàng"
       },
       {
-        "value": "2",
+        "value": "6",
         "label": "Ngôn ngữ",
-        "delta": "Tiếng Anh + Tiếng Trung giản thể"
+        "delta": "Tiếng Anh · Tiếng Trung giản thể · Tiếng Trung phồn thể · Tiếng Việt · Tiếng Hàn · Tiếng Nhật"
       }
     ],
     "marquee": [
@@ -234,7 +234,8 @@
     "mapTitle": "Tổng quan về thương mại toàn cầu",
     "recent": "Các lô hàng gần đây",
     "riskTitle": "các rủi ro đáng kể đã được phát hiện",
-    "viewAll": "Xem tất cả"
+    "viewAll": "Xem tất cả",
+    "sampleData": "Dữ liệu mẫu"
   },
   "modulesPage": {
     "cta": {

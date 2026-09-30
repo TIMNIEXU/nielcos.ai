@@ -136,9 +136,9 @@
         "delta": "모든 선적 건에 걸쳐"
       },
       {
-        "value": "2",
+        "value": "6",
         "label": "언어",
-        "delta": "영어 + 중국어(간체)"
+        "delta": "영어 · 중국어(간체) · 중국어(번체) · 베트남어 · 한국어 · 일본어"
       }
     ],
     "marquee": [
@@ -234,7 +234,8 @@
     "mapTitle": "세계 무역 개요",
     "recent": "최근 발송 내역",
     "riskTitle": "확인된 중대한 위험",
-    "viewAll": "모두 보기"
+    "viewAll": "모두 보기",
+    "sampleData": "샘플 데이터"
   },
   "modulesPage": {
     "cta": {

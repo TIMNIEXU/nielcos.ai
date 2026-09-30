@@ -165,6 +165,9 @@ export default function DashboardMock() {
               <div>
                 <p className="text-[15px] font-bold tracking-tight text-ink">{t("greeting")}</p>
                 <p className="text-[10.5px] text-muted">{t("greetSub")}</p>
+                <span className="mt-1 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wider text-amber-800 ring-1 ring-amber-200">
+                  {t("sampleData")}
+                </span>
               </div>
               <span className="hidden items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[10px] font-semibold text-muted ring-1 ring-line md:flex">
                 <span className="h-1.5 w-1.5 rounded-full bg-ok" /> New York 18°C

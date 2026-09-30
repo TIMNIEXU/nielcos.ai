@@ -136,9 +136,9 @@
         "delta": "across every shipment"
       },
       {
-        "value": "2",
+        "value": "6",
         "label": "Languages",
-        "delta": "English + 中文简体"
+        "delta": "English · 简体中文 · 繁體中文 · Tiếng Việt · 한국어 · 日本語"
       }
     ],
     "marquee": [
@@ -234,7 +234,8 @@
     "mapTitle": "Global Trade Overview",
     "recent": "Recent Shipments",
     "riskTitle": "material risks detected",
-    "viewAll": "View All"
+    "viewAll": "View All",
+    "sampleData": "Sample data"
   },
   "modulesPage": {
     "cta": {

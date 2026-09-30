@@ -136,9 +136,9 @@
         "delta": "覆蓋每一票貨"
       },
       {
-        "value": "2",
+        "value": "6",
         "label": "語言版本",
-        "delta": "English + 中文簡體"
+        "delta": "英語 · 簡體中文 · 繁體中文 · 越南語 · 韓語 · 日語"
       }
     ],
     "marquee": [
@@ -234,7 +234,8 @@
     "mapTitle": "全球貿易總覽",
     "recent": "近期貨運",
     "riskTitle": "個實質風險已檢出",
-    "viewAll": "查看全部"
+    "viewAll": "查看全部",
+    "sampleData": "範例資料"
   },
   "modulesPage": {
     "cta": {
