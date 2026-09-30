@@ -2047,11 +2047,6 @@
     "amtTitle": "Estimated bond amount",
     "amtNote": "Estimated per CBP guidance: 10% of duties / taxes / fees paid in the prior 12 months, minimum $50,000. The final amount is set during underwriting.",
     "perShipment": "per shipment",
-    "priceTitle": "$50,000 continuous bond — reference premium",
-    "priceIntro": "First-year special",
-    "priceRenew": "Standard renewal",
-    "yr": "yr",
-    "priceNote": "First-year special from our surety partner; final premium is subject to underwriting. Admin fees are included in the premium.",
     "finTitle": "Bond amount over $50,000",
     "finBody": "You'll need financials upfront: CPA-reviewed statements or a tax return, plus a year-to-date internal balance sheet and P&L. Send us your assessment and we'll get you an individual underwritten quote.",
     "stbPriceNote": "Single-transaction premiums are underwritten per shipment value — submit your assessment and we'll quote it accurately.",
@@ -2077,6 +2072,8 @@
     "faq3q": "How is the bond amount set?",
     "faq3a": "CBP guidance: 10% of the duties, taxes and fees you paid in the prior 12 months, with a $50,000 minimum. Amounts above $50,000 require financials for underwriting.",
     "faq4q": "Does applying cost anything?",
-    "faq4a": "No — applying is free, even if underwriting declines. Premium is billed annually, with a first-year special available."
+    "faq4a": "No — applying is free, even if underwriting declines. Premium is billed annually, with a first-year special available.",
+    "attnTitle": "Important",
+    "contPriceNote": "The annual premium is quoted after underwriting — submit your assessment and we will get you an exact figure. Applying is free."
   }
 }

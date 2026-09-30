@@ -2047,11 +2047,6 @@
     "amtTitle": "Số tiền bond ước tính",
     "amtNote": "Ước tính theo quy định CBP: 10% thuế / phí đã nộp trong 12 tháng qua, tối thiểu $50,000. Số tiền cuối cùng do thẩm định quyết định.",
     "perShipment": "mỗi chuyến",
-    "priceTitle": "Phí tham khảo bond năm $50,000",
-    "priceIntro": "Giá ưu đãi năm đầu",
-    "priceRenew": "Giá gia hạn tiêu chuẩn",
-    "yr": "năm",
-    "priceNote": "Giá ưu đãi năm đầu từ đối tác bảo lãnh; phí cuối cùng tùy thẩm định. Phí đã bao gồm phí quản lý.",
     "finTitle": "Số tiền bond trên $50,000",
     "finBody": "Bạn cần chuẩn bị báo cáo tài chính: báo cáo có kiểm toán CPA hoặc tờ khai thuế, kèm bảng cân đối kế toán và báo cáo lãi lỗ nội bộ từ đầu năm. Gửi đánh giá cho chúng tôi để được báo phí thẩm định riêng.",
     "stbPriceNote": "Phí bond theo chuyến được thẩm định theo giá trị từng chuyến — gửi đánh giá để chúng tôi báo giá chính xác.",
@@ -2077,6 +2072,8 @@
     "faq3q": "Số tiền bond được xác định thế nào?",
     "faq3a": "Quy định CBP: 10% thuế / phí đã nộp trong 12 tháng qua, tối thiểu $50,000. Trên $50,000 cần báo cáo tài chính để thẩm định.",
     "faq4q": "Nộp đơn có mất phí không?",
-    "faq4a": "Không — nộp đơn miễn phí, kể cả khi thẩm định không đạt. Phí bảo hiểm thu theo năm, có giá ưu đãi năm đầu."
+    "faq4a": "Không — nộp đơn miễn phí, kể cả khi thẩm định không đạt. Phí bảo hiểm thu theo năm, có giá ưu đãi năm đầu.",
+    "attnTitle": "Lưu ý quan trọng",
+    "contPriceNote": "Phí bảo hiểm năm được báo sau thẩm định — gửi đánh giá để chúng tôi báo giá chính xác. Nộp đơn miễn phí."
   }
 }

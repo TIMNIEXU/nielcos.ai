@@ -20,12 +20,11 @@ const BOND_KEYS = [
   "next","back","restart","stepOf",
   "resEyebrow","recContinuous","recContinuousD","recStb","recStbD","recNone","recNoneD",
   "whyTitle","whyCont1","whyCont2","whyCont3","whyStb1","whyStb2",
-  "amtTitle","amtNote","perShipment",
-  "priceTitle","priceIntro","priceRenew","yr","priceNote",
+  "amtTitle","amtNote","perShipment","contPriceNote",
   "finTitle","finBody","stbPriceNote",
   "saveTitle","saveSub","sName","sCompany","sEmail","sPhone",
   "submit","sending","done","fail",
-  "docusignTitle","docusignCta","docusignNote","disclaimer",
+  "attnTitle","docusignTitle","docusignCta","docusignNote","disclaimer",
   "faqT","faq1q","faq1a","faq2q","faq2a","faq3q","faq3a","faq4q","faq4a",
 ];
 

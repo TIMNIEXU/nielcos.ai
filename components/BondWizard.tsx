@@ -13,13 +13,6 @@ type Msg = Record<string, string>;
 type Rec = "continuous" | "stb" | "none_needed";
 type HasBond = "none" | "stb" | "cont";
 
-const PRICE_TIERS = [
-  { y: 1, intro: 325, std: 413 },
-  { y: 2, intro: 563, std: 678 },
-  { y: 3, intro: 750, std: 921 },
-  { y: 5, intro: 1125, std: 1270 },
-];
-
 const inputCls =
   "w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20";
 const labelCls = "mb-1.5 block text-[13.5px] font-bold text-ink-soft";
@@ -316,35 +309,7 @@ export default function BondWizard({
               <p className="text-[13.5px] font-black text-ink">{m.amtTitle}</p>
               <p className="mt-1 text-4xl font-black text-brand">{fmtUSD.format(contAmount)}</p>
               <p className="mt-2 text-[13px] text-faint">{m.amtNote}</p>
-
-              {contAmount === 50000 && (
-                <div className="mt-5">
-                  <p className="text-[13.5px] font-black text-ink">{m.priceTitle}</p>
-                  <div className="mt-3 overflow-hidden rounded-xl border border-line-soft">
-                    <table className="w-full text-[13.5px]">
-                      <thead>
-                        <tr className="bg-brand-tint-soft/60 text-left text-[12px] uppercase tracking-wide text-faint">
-                          <th className="px-4 py-2.5" />
-                          <th className="px-4 py-2.5">{m.priceIntro}</th>
-                          <th className="px-4 py-2.5">{m.priceRenew}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {PRICE_TIERS.map((t) => (
-                          <tr key={t.y} className="border-t border-line-soft">
-                            <td className="px-4 py-2.5 font-bold text-ink">
-                              {t.y} {m.yr}
-                            </td>
-                            <td className="px-4 py-2.5 font-black text-ok">{fmtUSD.format(t.intro)}</td>
-                            <td className="px-4 py-2.5 text-ink-soft">{fmtUSD.format(t.std)}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <p className="mt-2 text-[12.5px] text-faint">{m.priceNote}</p>
-                </div>
-              )}
+              <p className="mt-3 text-[13.5px] font-semibold text-ink-soft">{m.contPriceNote}</p>
 
               {contAmount > 50000 && (
                 <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4">
@@ -366,6 +331,20 @@ export default function BondWizard({
               <p className="mt-3 text-[13.5px] text-ink-soft">{m.stbPriceNote}</p>
             </div>
           )}
+
+          {/* attribution notice — must always be visible on the result */}
+          <div className="mt-6 rounded-2xl border-2 border-amber-300 bg-amber-50 p-5">
+            <p className="text-[14.5px] font-black text-amber-900">⚠ {m.attnTitle}</p>
+            <p className="mt-1.5 text-[13.5px] leading-relaxed text-amber-900">{m.docusignNote}</p>
+            <a
+              href={docusignUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block rounded-xl bg-brand px-6 py-2.5 text-[14px] font-black text-white shadow transition hover:brightness-110"
+            >
+              {m.docusignCta} ↗
+            </a>
+          </div>
 
           {/* lead capture */}
           <div className="mt-8 rounded-2xl border border-line bg-white p-6">
