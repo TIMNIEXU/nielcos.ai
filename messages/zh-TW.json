@@ -2,7 +2,7 @@
   "contact": {
     "form": {
       "company": "公司",
-      "email": "工作郵箱",
+      "email": "工作信箱",
       "message": "您在運什麼貨？卡點在哪裏？",
       "name": "姓名",
       "note": "更習慣郵件？直接寫信給我們 — 一個工作日內回覆。",
@@ -36,19 +36,19 @@
   "home": {
     "ai": {
       "cta": "查看 AI 實戰",
-      "eyebrow": "AI 高管智能",
+      "eyebrow": "AI 高管智慧",
       "risks": [
         {
-          "t": "关税敞口",
-          "d": "汇总在途货运的关税敞口，按金额排序"
+          "t": "關稅敞口",
+          "d": "彙總在途貨運的關稅敞口，按金額排序"
         },
         {
-          "t": "报关延误风险",
-          "d": "到港前缺失单证自动预警"
+          "t": "報關延誤風險",
+          "d": "到港前缺失單證自動預警"
         },
         {
-          "t": "供应商单证问题",
-          "d": "缺失证书阻碍放行，提前发现"
+          "t": "供應商單證問題",
+          "d": "缺失證書阻礙放行，提前發現"
         }
       ],
       "sub": "NIEL AI 盯着每一票貨、每一次關稅變化、每一份單證 — 按金額影響把真正重要的事推到您面前。",
@@ -105,87 +105,87 @@
       "title": "讓您的貿易運營，一切盡在掌控。"
     },
     "hero": {
-      "badge": "中美貿易 · 關稅智能",
+      "badge": "中美貿易 · 關稅智慧",
       "cta1": "預約演示",
       "cta2": "探索平臺",
       "eyebrow": "Niel 海關操作系統",
-      "sub": "NIEL COS 把每一條 HTS 編碼自動對照 6,857 條 USITC 稅率、232 / 301 附加稅與 9 個 PGA 機構要求——中英雙語，在 CBP 問起之前就查清楚。背靠自 2008 年起運輸集裝箱的 Joma 卡車團隊。",
+      "sub": "NIEL COS 把每一條 HTS 編碼自動對照 6,857 條 USITC 稅率、232 / 301 附加稅與 9 個 PGA 機構要求——中英雙語，在 CBP 問起之前就查清楚。背靠自 2008 年起運輸貨櫃的 Joma 卡車團隊。",
       "titleA": "中美貿易，",
       "titleB": "關稅一眼看穿。",
       "trust": [
         "Joma Logistics Inc · 2008年成立",
-        "100+ 自营卡车",
+        "100+ 自營卡車",
         "FMC OTI #033998",
-        "APICS CSCP® 国际认证"
+        "APICS CSCP® 國際認證"
       ]
     },
     "kpis": [
       {
         "value": "11",
-        "label": "工作台模块",
-        "delta": "覆盖贸易全链路"
+        "label": "工作臺模組",
+        "delta": "覆蓋貿易全鏈路"
       },
       {
         "value": "6,857",
-        "label": "HTS 税率条目",
-        "delta": "美国官方税则 2026"
+        "label": "HTS 稅率條目",
+        "delta": "美國官方稅則 2026"
       },
       {
         "value": "24/7",
-        "label": "AI 贸易监控",
-        "delta": "覆盖每一票货"
+        "label": "AI 貿易監控",
+        "delta": "覆蓋每一票貨"
       },
       {
         "value": "2",
-        "label": "语言版本",
-        "delta": "English + 中文简体"
+        "label": "語言版本",
+        "delta": "English + 中文簡體"
       }
     ],
     "marquee": [
-      "海关报关",
-      "海运空运",
-      "拖车运输",
-      "仓储",
-      "关税优化",
-      "贸易合规",
-      "供应链金融",
-      "指挥塔可视化"
+      "海關報關",
+      "海運空運",
+      "拖車運輸",
+      "倉儲",
+      "關稅優化",
+      "貿易合規",
+      "供應鏈金融",
+      "指揮塔可視化"
     ],
     "modules": {
-      "cta": "查看全部模塊",
+      "cta": "查看全部模組",
       "eyebrow": "一個平臺",
       "items": [
         {
-          "desc": "AI 辅助报关、HTS 归类、PGA 合规，一气呵成。",
-          "name": "报关"
+          "desc": "AI 輔助報關、HTS 歸類、PGA 合規，一氣呵成。",
+          "name": "報關"
         },
         {
-          "desc": "海运、空运、拖车全程追踪，节点预警。",
-          "name": "货运"
+          "desc": "海運、空運、拖車全程追蹤，節點預警。",
+          "name": "貨運"
         },
         {
-          "desc": "FDA、USDA、APHIS、EPA 要求持续筛查。",
-          "name": "合规"
+          "desc": "FDA、USDA、APHIS、EPA 要求持續篩查。",
+          "name": "合規"
         },
         {
-          "desc": "发票、箱单、证书自动解析、归档、关联报关单。",
-          "name": "单证"
+          "desc": "發票、箱單、證書自動解析、歸檔、關聯報關單。",
+          "name": "單證"
         },
         {
-          "desc": "围绕您的货，编排拖车、仓储与履约。",
+          "desc": "圍繞您的貨，編排拖車、倉儲與履約。",
           "name": "物流"
         },
         {
-          "desc": "关税、运费、到岸成本一目了然，支付与融资工具齐备。",
-          "name": "财务"
+          "desc": "關稅、運費、到岸成本一目瞭然，支付與融資工具齊備。",
+          "name": "財務"
         },
         {
-          "desc": "用大白话问任何贸易问题，秒得答案。",
+          "desc": "用大白話問任何貿易問題，秒得答案。",
           "name": "AI 助手"
         },
         {
-          "desc": "全球每一票货、每一个风险、每一次异常，一屏尽览。",
-          "name": "指挥塔"
+          "desc": "全球每一票貨、每一個風險、每一次異常，一屏盡覽。",
+          "name": "指揮塔"
         }
       ],
       "sub": "別再在報關行、貨代、表格和郵件之間來回拼湊。NIEL COS 把全球貿易的每個環節裝進一個操作系統。",
@@ -194,12 +194,12 @@
     "network": {
       "cities": [
         {
-          "d": "港口与报关枢纽",
-          "n": "纽约 / 新泽西"
+          "d": "港口與報關樞紐",
+          "n": "紐約 / 新澤西"
         },
         {
-          "d": "西海岸门户",
-          "n": "洛杉矶"
+          "d": "西海岸門戶",
+          "n": "洛杉磯"
         },
         {
           "d": "中西部配送",
@@ -223,7 +223,7 @@
     "title": "NIEL COS — AI 全球貿易操作系統"
   },
   "mock": {
-    "aiTitle": "AI 高管智能",
+    "aiTitle": "AI 高管智慧",
     "analyze": "用 NIEL AI 分析",
     "greetSub": "這是您今日全球貿易運營的動態。",
     "greeting": "早上好，Tim",
@@ -244,118 +244,118 @@
       "title": "現在哪塊最讓您頭疼？"
     },
     "hero": {
-      "eyebrow": "模塊",
-      "sub": "今天先用最需要的模塊，其餘的早已連通，隨時啓用。",
-      "titleA": "十二個模塊，",
+      "eyebrow": "模組",
+      "sub": "今天先用最需要的模組，其餘的早已連通，隨時啓用。",
+      "titleA": "十二個模組，",
       "titleB": "零盲區。"
     },
     "items": [
       {
-        "d": "报关申报、HTS 归类、PGA 报文、税单跟踪 — 报关行现代化。",
-        "n": "报关",
+        "d": "報關申報、HTS 歸類、PGA 報文、稅單跟蹤 — 報關行現代化。",
+        "n": "報關",
         "points": [
-          "AI 推荐 HTS 编码",
-          "PGA 合规检查",
-          "报关状态跟踪"
+          "AI 推薦 HTS 編碼",
+          "PGA 合規檢查",
+          "報關狀態跟蹤"
         ]
       },
       {
-        "d": "跨承运人追踪每个柜和运单，节点预警加异常工单。",
-        "n": "货运",
+        "d": "跨承運人追蹤每個櫃和運單，節點預警加異常工單。",
+        "n": "貨運",
         "points": [
-          "多承运人追踪",
-          "节点预警",
-          "异常队列"
+          "多承運人追蹤",
+          "節點預警",
+          "異常隊列"
         ]
       },
       {
-        "d": "拒止方筛查、准入规则、每笔交易审计就绪的记录。",
-        "n": "合规",
+        "d": "拒止方篩查、准入規則、每筆交易審計就緒的記錄。",
+        "n": "合規",
         "points": [
-          "自动筛查",
-          "审计轨迹",
-          "法规更新"
+          "自動篩查",
+          "審計軌跡",
+          "法規更新"
         ]
       },
       {
-        "d": "商业发票、箱单、证书经 AI 解析，钉在对应的报关单上。",
-        "n": "单证",
+        "d": "商業發票、箱單、證書經 AI 解析，釘在對應的報關單上。",
+        "n": "單證",
         "points": [
-          "AI 单证解析",
+          "AI 單證解析",
           "版本管理",
-          "一键分享"
+          "一鍵分享"
         ]
       },
       {
-        "d": "SKU 目录配 HTS、税率、PGA 标识，一处维护。",
-        "n": "产品",
+        "d": "SKU 目錄配 HTS、稅率、PGA 標識，一處維護。",
+        "n": "產品",
         "points": [
-          "HTS 库",
-          "税率跟踪",
-          "PGA 标识"
+          "HTS 庫",
+          "稅率跟蹤",
+          "PGA 標識"
         ]
       },
       {
-        "d": "供应商档案、单证状态、绩效评分，一个都不少。",
-        "n": "供应商",
+        "d": "供應商檔案、單證狀態、績效評分，一個都不少。",
+        "n": "供應商",
         "points": [
-          "供应商评分卡",
-          "单证收集",
-          "风险标识"
+          "供應商評分卡",
+          "單證收集",
+          "風險標識"
         ]
       },
       {
-        "d": "拖车、卡车、仓储跟着您的报关时间表走 — 告别滞箱费惊吓。",
+        "d": "拖車、卡車、倉儲跟着您的報關時間表走 — 告別滯箱費驚嚇。",
         "n": "物流",
         "points": [
-          "拖车协同",
-          "仓储预约",
-          "滞期监控"
+          "拖車協同",
+          "倉儲預約",
+          "滯期監控"
         ]
       },
       {
-        "d": "每票货的到岸成本、关税应付、现金流时点 — 财务终于听得懂货运。",
-        "n": "财务",
+        "d": "每票貨的到岸成本、關稅應付、現金流時點 — 財務終於聽得懂貨運。",
+        "n": "財務",
         "points": [
           "到岸成本引擎",
-          "关税预测",
-          "支付与融资工具"
+          "關稅預測",
+          "支付與融資工具"
         ]
       },
       {
-        "d": "用大白话问任何货、报关单或法规，秒得有出处的答案。",
+        "d": "用大白話問任何貨、報關單或法規，秒得有出處的答案。",
         "n": "AI 助手",
         "points": [
-          "自然语言问答",
-          "引用来源",
-          "24/7 在线"
+          "自然語言問答",
+          "引用來源",
+          "24/7 線上"
         ]
       },
       {
-        "n": "指挥塔",
-        "d": "全球每一票货、每一个风险、每一次异常，一屏尽览。",
+        "n": "指揮塔",
+        "d": "全球每一票貨、每一個風險、每一次異常，一屏盡覽。",
         "points": [
-          "全部货运实时汇总，节点进度一目了然",
-          "异常工单可认领、可解决，全程跟进",
-          "滞期、逾期应付、法规风险，一屏尽览"
+          "全部貨運即時彙總，節點進度一目瞭然",
+          "異常工單可認領、可解決，全程跟進",
+          "滯期、逾期應付、法規風險，一屏盡覽"
         ]
       },
       {
-        "n": "AI 高管智能",
-        "d": "风险先于损失被发现：关税敞口、报关风险、供应商单证，一屏尽览。",
+        "n": "AI 高管智慧",
+        "d": "風險先於損失被發現：關稅敞口、報關風險、供應商單證，一屏盡覽。",
         "points": [
-          "关税敞口按金额汇总",
-          "到港前缺单证自动预警",
-          "一键转交 AI 助手深入分析"
+          "關稅敞口按金額彙總",
+          "到港前缺單證自動預警",
+          "一鍵轉交 AI 助手深入分析"
         ]
       },
       {
-        "n": "系统集成",
-        "d": "您的 ERP 留下，表格退休：真正可用的 REST API、签名 Webhook、EDI 850 / 856 / 810。",
+        "n": "系統集成",
+        "d": "您的 ERP 留下，表格退休：真正可用的 REST API、簽名 Webhook、EDI 850 / 856 / 810。",
         "points": [
-          "带权限范围的 API 密钥 + 版本化 v1 接口",
-          "签名实时 Webhook 事件推送",
-          "EDI 收件箱把 X12 解析为结构化数据"
+          "帶權限範圍的 API 密鑰 + 版本化 v1 介面",
+          "簽名即時 Webhook 事件推播",
+          "EDI 收件箱把 X12 解析爲結構化資料"
         ]
       }
     ],
@@ -365,9 +365,9 @@
     "contact": "聯繫",
     "demo": "預約演示",
     "home": "首頁",
-    "modules": "模塊",
+    "modules": "模組",
     "platform": "平臺",
-    "login": "登錄",
+    "login": "登入",
     "workspace": "工作臺",
     "regulatory": "法規動態",
     "landedCost": "到岸成本"
@@ -375,48 +375,48 @@
   "platform": {
     "cta": {
       "b1": "預約演示",
-      "b2": "查看模塊",
+      "b2": "查看模組",
       "sub": "帶一條航線、一個產品、一個痛點來 — 我們現場演示 NIEL COS 能做什麼。",
       "title": "用您的貨，看平臺實力。"
     },
     "features": [
       {
-        "d": "每票货从采购订单到签收只有一个 GTTID。任何纸箱、报关单、发票都能秒级追溯源头 — 不用再跨系统大海捞针。",
-        "t": "全球贸易交易 ID"
+        "d": "每票貨從採購訂單到簽收只有一個 GTTID。任何紙箱、報關單、發票都能秒級追溯源頭 — 不用再跨系統大海撈針。",
+        "t": "全球貿易交易 ID"
       },
       {
-        "d": "机器推荐 HTS 编码并给出置信度，税率分析在申报前就找到合法节税空间 — 而不是多缴之后才发现。",
-        "t": "AI 归类与关税工程"
+        "d": "機器推薦 HTS 編碼並給出置信度，稅率分析在申報前就找到合法節稅空間 — 而不是多繳之後才發現。",
+        "t": "AI 歸類與關稅工程"
       },
       {
-        "d": "PGA 要求、准入检查、单证校验对每票报关持续运行。异常带着修复方案来，不只是一个红灯。",
-        "t": "合规自动化"
+        "d": "PGA 要求、准入檢查、單證校驗對每票報關持續運行。異常帶着修復方案來，不只是一個紅燈。",
+        "t": "合規自動化"
       },
       {
-        "d": "海运、空运、拖车节点实时汇入一张地图。风险货自动升级，附带负责人、影响和下一步。",
-        "t": "指挥塔可视化"
+        "d": "海運、空運、拖車節點即時匯入一張地圖。風險貨自動升級，附帶負責人、影響和下一步。",
+        "t": "指揮塔可視化"
       },
       {
-        "d": "关税、运费、仓储、杂费汇成每个 SKU 的真实到岸成本。付款、现金流、预测，用的都是贸易级准确数字。",
-        "t": "到岸成本财务"
+        "d": "關稅、運費、倉儲、雜費匯成每個 SKU 的真實到岸成本。付款、現金流、預測，用的都是貿易級準確數字。",
+        "t": "到岸成本財務"
       },
       {
-        "d": "通过 API 与 EDI 接入您的 ERP、WMS 或货代。NIEL COS 落在您现有的系统里 — 不用推倒重来。",
-        "t": "开放集成"
+        "d": "通過 API 與 EDI 接入您的 ERP、WMS 或貨代。NIEL COS 落在您現有的系統裏 — 不用推倒重來。",
+        "t": "開放集成"
       }
     ],
     "hero": {
       "eyebrow": "平臺",
       "sub": "NIEL COS 建立在 Trade-to-Cash 主軸上：每個訂單、貨運、報關、付款都由唯一的全球貿易交易 ID 串聯 — 從採購訂單到最終交付。",
       "titleA": "全球貿易的",
-      "titleB": "唯一真實數據源。"
+      "titleB": "唯一真實資料源。"
     },
     "integration": {
       "points": [
-        "REST API 与 Webhooks",
+        "REST API 與 Webhooks",
         "EDI 850 / 856 / 810",
-        "ERP 与 WMS 连接器",
-        "SSO 与审计日志"
+        "ERP 與 WMS 連接器",
+        "SSO 與審計日誌"
       ],
       "sub": "API 優先，支持 EDI。您的 ERP 留下，表格退休。",
       "title": "和您的系統好好相處",
@@ -425,28 +425,28 @@
   },
   "auth": {
     "loginTitle": "歡迎回來",
-    "loginSub": "登錄您的 NIEL COS 工作臺。",
-    "signupTitle": "創建您的工作區",
-    "signupSub": "一個賬號，全公司共用。試點期間免費。",
+    "loginSub": "登入您的 NIEL COS 工作臺。",
+    "signupTitle": "建立您的工作區",
+    "signupSub": "一個帳號，全公司共用。試點期間免費。",
     "name": "您的姓名",
     "company": "公司名稱",
-    "email": "工作郵箱",
+    "email": "工作信箱",
     "password": "密碼",
     "passwordHint": "至少 8 位",
-    "signIn": "登錄",
-    "signingIn": "登錄中…",
-    "createAccount": "創建賬號",
-    "creating": "創建中…",
-    "noAccount": "還沒有賬號？",
-    "hasAccount": "已有賬號？",
+    "signIn": "登入",
+    "signingIn": "登入中…",
+    "createAccount": "建立帳號",
+    "creating": "建立中…",
+    "noAccount": "還沒有帳號？",
+    "hasAccount": "已有帳號？",
     "error": "出錯了——請檢查輸入後重試。",
-    "confirmEmail": "賬號已創建！請查收郵件中的確認鏈接，然後登錄。",
-    "notConfigured": "登錄尚未接入，請稍後再來。"
+    "confirmEmail": "帳號已建立！請查收郵件中的確認連結，然後登入。",
+    "notConfigured": "登入尚未接入，請稍後再來。"
   },
   "app": {
     "workspace": "工作臺",
     "myShipments": "我的貨運",
-    "sub": "每個 GTTID 櫃子的實時狀態。",
+    "sub": "每個 GTTID 櫃子的即時狀態。",
     "inTransit": "在途中",
     "delivered": "已送達",
     "attention": "需要關注",
@@ -456,7 +456,7 @@
     "route": "路線",
     "eta": "預計到達",
     "view": "查看",
-    "empty": "還沒有貨運記錄。貨代在您賬號下訂艙後，會顯示在這裏。",
+    "empty": "還沒有貨運記錄。貨代在您帳號下訂艙後，會顯示在這裏。",
     "milestones": "里程碑",
     "documents": "單證",
     "upload": "上傳單證",
@@ -470,7 +470,7 @@
     "docTypeOther": "其他單證",
     "parsing": "AI 解析中…",
     "parseNoText": "掃描件暫不支持自動解析",
-    "parseNotPdf": "非 PDF 文件，未自動解析",
+    "parseNotPdf": "非 PDF 檔案，未自動解析",
     "parseFailed": "自動解析失敗",
     "reparse": "重新解析",
     "summaryContainers": "{n} 個櫃",
@@ -478,7 +478,7 @@
     "download": "下載",
     "delete": "刪除",
     "back": "返回",
-    "signOut": "退出登錄",
+    "signOut": "登出",
     "notFound": "未找到該貨運。",
     "updated": "最後更新",
     "origin": "起運地",
@@ -494,8 +494,8 @@
     },
     "arrivalNotice": "到貨通知",
     "arrivalHint": "由 Joma Logistics Inc. 簽發",
-    "viewPrint": "查看 / 打印",
-    "print": "打印 / 存爲 PDF",
+    "viewPrint": "查看 / 列印",
+    "print": "列印 / 另存為 PDF",
     "backToShipment": "返回貨運",
     "totalDue": "應付總額",
     "dueDate": "付款截止",
@@ -536,7 +536,7 @@
     },
     "allContainers": "全部櫃號",
     "customs": "報關",
-    "customsSub": "申報前智能工作：HTS 歸類、稅費測算、PGA 預警。",
+    "customsSub": "申報前智慧工作：HTS 歸類、稅費測算、PGA 預警。",
     "newEntry": "新建申報",
     "entryNo": "Entry 號",
     "entryNoHint": "報關行申報後的 entry 號——草稿可留空。",
@@ -554,7 +554,7 @@
     "lineDesc": "品名描述",
     "qty": "數量",
     "valueUsd": "貨值 (USD)",
-    "suggestHts": "智能歸類",
+    "suggestHts": "智慧歸類",
     "suggesting": "匹配中...",
     "candidates": "候選編碼",
     "useThis": "採用",
@@ -566,7 +566,7 @@
     "totalDuty": "預估關稅合計",
     "pgaFlags": "PGA 預警",
     "noPga": "確認的 HTS 無 PGA 預警。",
-    "rateNote": "稅率爲 HTS 表參考值——申報前請以現行 USITC HTS 爲準。智能歸類結果須經人工確認。",
+    "rateNote": "稅率爲 HTS 表參考值——申報前請以現行 USITC HTS 爲準。智慧歸類結果須經人工確認。",
     "addMilestone": "加里程碑",
     "milestoneLabel": "里程碑",
     "milestoneNote": "備註（可選）",
@@ -574,7 +574,7 @@
     "save": "保存",
     "confirmDeleteEntry": "刪除這份申報及全部明細？",
     "confirmDeleteLine": "刪除這一行？",
-    "created": "創建於",
+    "created": "建立於",
     "matchScore": "匹配度",
     "noCandidates": "沒找到匹配的 HTS——試試更具體的品名描述。",
     "ruleBased": "規則匹配",
@@ -595,14 +595,14 @@
     "linesFound": "行",
     "confidence": "置信度",
     "importFailed": "導入失敗",
-    "fileNotPdf": "請上傳 PDF 文件。",
+    "fileNotPdf": "請上傳 PDF 檔案。",
     "scannedPdf": "掃描件沒有文本層，無法識別。",
     "docInvoice": "商業發票",
     "docPacking": "裝箱單",
     "docBl": "提單",
     "docArrival": "到貨通知",
     "docOther": "其他",
-    "unsupportedType": "不支持的文件類型，請用 PDF、XLSX、XLS 或 DOCX。",
+    "unsupportedType": "不支持的檔案類型，請用 PDF、XLSX、XLS 或 DOCX。",
     "lookupRate": "查 USITC 稅率",
     "lookingUp": "查詢中…",
     "fillRate": "填入稅率",
@@ -622,13 +622,13 @@
     "financeNav": "財務",
     "assistantNav": "AI 助手",
     "towerNav": "指揮塔",
-    "executiveNav": "AI 高管智能",
+    "executiveNav": "AI 高管智慧",
     "integrationsNav": "系統集成"
   },
   "estimator": {
     "eyebrow": "免費工具",
     "title": "美國進口關稅估算器",
-    "sub": "幾秒鐘估算關稅、MPF、HMF 與總到岸成本。輸入 HTS 編碼和原產國，稅率自動從官方數據填入。",
+    "sub": "幾秒鐘估算關稅、MPF、HMF 與總到岸成本。輸入 HTS 編碼和原產國，稅率自動從官方資料填入。",
     "mfn": "基礎關稅 (MFN) %",
     "rate232": "232 條款稅率 %（可選）",
     "hts": "HS / HTS 編碼（可選）",
@@ -679,7 +679,7 @@
     "importOk": "已識別 {n} 行產品，取第一行自動填入，請覈對。",
     "importFail": "讀取失敗，請換文本型 PDF、XLSX 或 DOCX 再試。",
     "importNoText": "該 PDF 是掃描圖片、無可選文字，請用文本型 PDF 或 Excel。",
-    "importTooBig": "文件過大（上限 8 MB）。"
+    "importTooBig": "檔案過大（上限 8 MB）。"
   },
   "freight": {
     "title": "貨運",
@@ -707,10 +707,10 @@
     "ticketTitlePh": "例如 NY 港口海關查驗扣留",
     "ticketNote": "詳情",
     "ticketNotePh": "發生了什麼、聯繫誰、下一步…",
-    "submit": "創建",
+    "submit": "建立",
     "cancel": "取消",
     "needTitle": "請填寫標題。",
-    "ticketCreated": "工單已創建。",
+    "ticketCreated": "工單已建立。",
     "exceptionsEmpty": "暫無工單，有需要跟進的事項就建一個。",
     "filterAll": "全部",
     "statusOpen": "待處理",
@@ -789,10 +789,10 @@
     "sub": "商業發票、箱單、證書經 AI 解析，釘在對應的貨運上。",
     "tabLibrary": "單證庫",
     "tabUpload": "上傳單證",
-    "tabShares": "分享鏈接",
-    "searchPh": "搜索文件名…",
+    "tabShares": "分享連結",
+    "searchPh": "搜尋檔案名稱…",
     "allTypes": "全部類型",
-    "thName": "文件名",
+    "thName": "檔案名稱",
     "thType": "類型",
     "thVersion": "版本",
     "thShipment": "所屬貨運",
@@ -811,18 +811,18 @@
     "expiry7d": "7 天",
     "expiry30d": "30 天",
     "expiryNever": "永久",
-    "createShare": "生成鏈接",
-    "copyLink": "複製鏈接",
+    "createShare": "生成連結",
+    "copyLink": "複製連結",
     "copied": "已複製",
     "revoke": "撤銷",
-    "revokeConfirm": "確定撤銷此分享鏈接？",
-    "shareEmpty": "暫無分享鏈接。",
-    "shareNote": "獲得鏈接的人可查看 AI 解析內容；原文件下載需登錄。",
+    "revokeConfirm": "確定撤銷此分享連結？",
+    "shareEmpty": "暫無分享連結。",
+    "shareNote": "獲得連結的人可查看 AI 解析內容；原檔案下載需登入。",
     "uploadTitle": "上傳單證",
     "shipmentLabel": "所屬貨運",
     "shipmentPh": "選擇貨運…",
     "noShipment": "未指定貨運",
-    "chooseFile": "選擇文件",
+    "chooseFile": "選擇檔案",
     "uploadDone": "上傳成功，AI 解析已開始。",
     "uploadHint2": "支持 PDF、JPG、PNG、XLS、XLSX、DOC、DOCX，最大 20 MB。",
     "deleteGroup": "刪除該單證的所有版本？",
@@ -837,7 +837,7 @@
   "products": {
     "title": "產品",
     "sub": "SKU 目錄配 HTS、稅率、PGA 標識，一處維護。",
-    "searchPh": "搜索 SKU、名稱或 HTS…",
+    "searchPh": "搜尋 SKU、名稱或 HTS…",
     "addProduct": "新增產品",
     "import": "Excel 導入",
     "thSku": "SKU",
@@ -862,9 +862,9 @@
     "delete": "刪除",
     "editTitle": "編輯產品",
     "addTitle": "新增產品",
-    "htsSearch": "搜索",
+    "htsSearch": "搜尋",
     "htsSearchPh": "描述產品以查找 HTS…",
-    "htsSearching": "搜索中…",
+    "htsSearching": "搜尋中…",
     "officialDesc": "官方描述",
     "htsNoMatch": "HTS 庫中未找到該編碼——請覈對。",
     "dutyDetail": "詳情",
@@ -875,10 +875,10 @@
     "deleteConfirm": "刪除產品 %SKU%？此操作不可撤銷。",
     "importTitle": "從 Excel 導入產品",
     "importHint": "列：SKU*、name_en、name_zh、hts、origin、material、notes。已存在的 SKU 會被更新。",
-    "chooseFile": "選擇 .xlsx 文件",
+    "chooseFile": "選擇 .xlsx 檔案",
     "importRun": "導入",
     "importDone": "完成：新增 %A% 項，更新 %B% 項，跳過 %C% 項。",
-    "importFailed": "導入失敗——請檢查文件格式。",
+    "importFailed": "導入失敗——請檢查檔案格式。",
     "skuRequired": "SKU 爲必填項。",
     "dupSku": "該 SKU 已存在。",
     "saveFailed": "保存失敗——請重試。"
@@ -886,7 +886,7 @@
   "suppliers": {
     "title": "供應商",
     "sub": "供應商檔案、單證狀態、績效評分，一個都不少。",
-    "searchPh": "按編號、名稱或聯繫人搜索…",
+    "searchPh": "按編號、名稱或聯繫人搜尋…",
     "addSupplier": "新增供應商",
     "import": "導入",
     "thCode": "編號",
@@ -906,7 +906,7 @@
     "fNameZh": "中文名稱",
     "fCountry": "國家",
     "fContactName": "聯繫人",
-    "fContactEmail": "郵箱",
+    "fContactEmail": "信箱",
     "fContactPhone": "電話",
     "fAddress": "地址",
     "fPaymentTerms": "付款條件",
@@ -914,7 +914,7 @@
     "fStatus": "狀態",
     "statusActive": "啓用",
     "statusInactive": "停用",
-    "scoreQuality": "質量",
+    "scoreQuality": "品質",
     "scoreDelivery": "交期",
     "scoreCost": "成本",
     "scoreService": "服務",
@@ -927,7 +927,7 @@
     "docMissing": "缺失",
     "doc_business_license": "營業執照",
     "doc_iso_cert": "ISO 證書",
-    "doc_bank_info": "銀行信息",
+    "doc_bank_info": "銀行資訊",
     "doc_tax_form": "稅務表格",
     "doc_compliance_decl": "合規聲明",
     "doc_insurance": "保險證明",
@@ -939,7 +939,7 @@
     "flag_financial": "財務",
     "flag_compliance": "合規",
     "flag_delivery": "交期",
-    "flag_quality": "質量",
+    "flag_quality": "品質",
     "flag_geopolitical": "地緣政治",
     "fNotes": "備註",
     "save": "保存",
@@ -951,11 +951,11 @@
     "detail": "詳情",
     "deleteConfirm": "確定刪除供應商 %CODE%？此操作不可撤銷。",
     "importTitle": "導入供應商",
-    "importHint": "上傳 .xlsx 文件。列：編號*、英文名、中文名、國家、聯繫人、郵箱、電話、地址、付款條件、幣種、狀態、四項評分、備註。已存在的編號會被更新。",
-    "chooseFile": "選擇 Excel 文件",
+    "importHint": "上傳 .xlsx 檔案。列：編號*、英文名、中文名、國家、聯繫人、信箱、電話、地址、付款條件、幣種、狀態、四項評分、備註。已存在的編號會被更新。",
+    "chooseFile": "選擇 Excel 檔案",
     "importRun": "開始導入",
     "importDone": "新增 %A% 家，更新 %B% 家，跳過 %C% 行。",
-    "importFailed": "導入失敗，請檢查文件格式後重試。",
+    "importFailed": "導入失敗，請檢查檔案格式後重試。",
     "codeRequired": "請填寫供應商編號。",
     "dupCode": "該編號已存在。",
     "saveFailed": "保存失敗，請重試。"
@@ -966,7 +966,7 @@
     "tabMoves": "拖車協同",
     "tabAppts": "倉儲預約",
     "tabDemurrage": "滯期監控",
-    "searchPh": "搜索櫃號、提單、承運人、司機…",
+    "searchPh": "搜尋櫃號、提單、承運人、司機…",
     "import": "導入 Excel",
     "addMove": "新增拖車",
     "addAppt": "新增預約",
@@ -1036,7 +1036,7 @@
     "save": "保存",
     "importTitle": "從 Excel 導入拖車任務",
     "importHint": "列：櫃號 / 主提單 / 類型 / 起點 / 終點 / 承運人 / 司機 / 計劃日期 / 免費用箱截止 / 滯箱費率 / 備註。",
-    "chooseFile": "點擊選擇 .xlsx 文件",
+    "chooseFile": "點擊選擇 .xlsx 檔案",
     "importRun": "導入",
     "importDone": "新增 %A%，更新 %B%，跳過 %C%。",
     "importFailed": "導入失敗。",
@@ -1061,7 +1061,7 @@
     "tabCost": "到岸成本",
     "tabForecast": "關稅預測",
     "tabPayables": "應付賬款",
-    "searchPh": "搜索名稱、GTTID、收款方…",
+    "searchPh": "搜尋名稱、GTTID、收款方…",
     "addSheet": "新建成本單",
     "addPayable": "新增應付",
     "statSheets": "成本單",
@@ -1138,7 +1138,7 @@
     "fCargoValue": "貨值",
     "estimateDuty": "估算",
     "dutyNotFound": "沒找到這個 HTS，檢查編碼後重試。",
-    "dutyHint": "調用實時 USITC 2026 稅率庫 + 232 / 301 附加稅建議。僅爲估算，申報前請覈實。",
+    "dutyHint": "調用即時 USITC 2026 稅率庫 + 232 / 301 附加稅建議。僅爲估算，申報前請覈實。",
     "estimatorInputErr": "請填寫 HTS、原產國和大於 0 的貨值。",
     "dutyMfn": "最惠國稅率",
     "dutyAmount": "預估關稅",
@@ -1160,7 +1160,7 @@
     "sources": "引用來源",
     "thinking": "思考中",
     "emptyTitle": "想問點什麼？",
-    "emptySub": "基於你的實時數據回答：稅率庫、你的貨運、法規更新、你的產品庫。",
+    "emptySub": "基於你的即時資料回答：稅率庫、你的貨運、法規更新、你的產品庫。",
     "sugDuty": "9506.91.00 從中國進口稅率多少？",
     "sugTrack": "櫃 CWNU2262061 到哪了？",
     "sugReg": "232 鋼鋁關稅有什麼新規？",
@@ -1182,7 +1182,7 @@
     "secRisks": "風險預警",
     "secShipments": "貨運一覽",
     "secRegulatory": "法規動態",
-    "searchPh": "搜索櫃號 / MB-L / GTTID…",
+    "searchPh": "搜尋櫃號 / MB-L / GTTID…",
     "filterAll": "全部",
     "filterActive": "在途",
     "filterAttention": "需關注",
@@ -1205,7 +1205,7 @@
     "typeDamageClaim": "貨損索賠",
     "typeOther": "其他",
     "viewShipment": "查看貨運",
-    "loadFailed": "指揮塔數據加載失敗。",
+    "loadFailed": "指揮塔資料加載失敗。",
     "retry": "重試",
     "etaLabel": "預計到港",
     "locLabel": "當前位置",
@@ -1225,7 +1225,7 @@
     "riskStale": "無動態"
   },
   "executive": {
-    "title": "AI 高管智能",
+    "title": "AI 高管智慧",
     "sub": "風險，先於損失被發現。NIEL AI 盯着每一票貨、每一次關稅變化、每一份單證。",
     "kpiDuty": "關稅敞口",
     "kpiDutyCount": "%N 票貨",
@@ -1249,7 +1249,7 @@
     "docBL": "提單",
     "docBusinessLicense": "營業執照",
     "docIso": "ISO 證書",
-    "docBank": "銀行信息",
+    "docBank": "銀行資訊",
     "docTax": "稅務表格",
     "docCompliance": "合規聲明",
     "docInsurance": "保險",
@@ -1263,7 +1263,7 @@
   "regulatory": {
     "eyebrow": "法規雷達",
     "title": "CBP 與 USTR 的每一步，都有中文解讀。",
-    "sub": "聯邦公報上的關稅、海關與貿易公告——每週一自動同步、機器翻譯成中文。免費，免登錄。",
+    "sub": "聯邦公報上的關稅、海關與貿易公告——每週一自動同步、機器翻譯成中文。免費，免登入。",
     "empty": "暫無更新——每週一同步後再來看看。",
     "expand": "展開全文",
     "collapse": "收起",
@@ -1275,11 +1275,11 @@
   "landedCost": {
     "eyebrow": "免費工具",
     "title": "下單之前，先算清到岸成本。",
-    "sub": "描述產品、選擇 HTS 編碼與原產國——MFN 關稅、232、301、MPF 與港口維護費，一張表全算清。USITC 2026 實時稅率，免登錄。",
+    "sub": "描述產品、選擇 HTS 編碼與原產國——MFN 關稅、232、301、MPF 與港口維護費，一張表全算清。USITC 2026 即時稅率，免登入。",
     "steps": [
-      "描述你的产品",
-      "选择 HTS 编码与原产国",
-      "拿到关税明细表"
+      "描述你的產品",
+      "選擇 HTS 編碼與原產國",
+      "拿到關稅明細表"
     ],
     "openFull": "打開完整計算器",
     "ctaTitle": "想請人再核一遍？",
@@ -1305,8 +1305,8 @@
     "keyNameLabel": "密鑰名稱",
     "keyNamePh": "例如：ERP 同步",
     "scopeRead": "讀取 —— 貨運、單證",
-    "scopeWrite": "寫入 —— 預留給未來接口",
-    "create": "創建",
+    "scopeWrite": "寫入 —— 預留給未來介面",
+    "create": "建立",
     "cancel": "取消",
     "keyOnceTitle": "立即複製您的密鑰",
     "keyOnceWarn": "完整密鑰只顯示這一次，請存入密鑰管理工具。",
@@ -1317,21 +1317,21 @@
     "thName": "名稱",
     "thPrefix": "前綴",
     "thScopes": "權限",
-    "thCreated": "創建時間",
+    "thCreated": "建立時間",
     "thLastUsed": "上次使用",
     "thStatus": "狀態",
     "thActions": "操作",
     "statusActive": "生效中",
     "statusRevoked": "已吊銷",
-    "emptyKeys": "還沒有 API 密鑰。創建一個，讓您的 ERP 或 WMS 調用 Niel COS API。",
-    "apiDocsTitle": "API 文檔",
+    "emptyKeys": "還沒有 API 密鑰。建立一個，讓您的 ERP 或 WMS 調用 Niel COS API。",
+    "apiDocsTitle": "API 檔案",
     "apiDocsSub": "Base URL",
     "apiAuthNote": "每次請求都在 Authorization 頭中攜帶密鑰：",
     "epShipments": "查詢貨運列表",
     "epShipmentOne": "按 GTTID、提單號或櫃號查詢單票貨運",
     "epDocuments": "查詢單證列表",
     "whTitle": "Webhooks",
-    "whHint": "工作區發生事件時，我們向您的 URL 推送帶簽名的 JSON。驗籤：X-Niel-Signature 頭 = 原始請求體的 HMAC-SHA256。",
+    "whHint": "工作區發生事件時，我們向您的 URL 推播帶簽名的 JSON。驗籤：X-Niel-Signature 頭 = 原始請求體的 HMAC-SHA256。",
     "newEndpoint": "新增端點",
     "whUrlLabel": "接收 URL",
     "whUrlPh": "https://your-system.example.com/niel-webhook",
@@ -1343,7 +1343,7 @@
     "testOk": "投遞成功",
     "testFail": "投遞失敗",
     "deliveries": "投遞記錄",
-    "emptyWh": "還沒有 Webhook 端點。添加接收 URL，實時獲取事件推送。",
+    "emptyWh": "還沒有 Webhook 端點。添加接收 URL，即時獲取事件推播。",
     "delete": "刪除",
     "deleteConfirm": "刪除該端點？之後將不再向它投遞。",
     "save": "保存",
@@ -1355,28 +1355,28 @@
     "statusOk": "成功",
     "statusFail": "失敗",
     "ev_document_parsed": "單證解析完成",
-    "ev_drayage_move_created": "拖車任務已創建",
+    "ev_drayage_move_created": "拖車任務已建立",
     "ev_drayage_move_status_changed": "拖車任務狀態變更",
     "ev_webhook_test": "測試事件",
     "ediTitle": "EDI 收件箱",
-    "ediHint": "粘貼或上傳 ANSI X12 文件。自動識別 850（採購訂單）、856（發貨通知 ASN）、810（發票）並解析爲結構化數據。",
+    "ediHint": "貼上或上傳 ANSI X12 檔案。自動識別 850（採購訂單）、856（發貨通知 ASN）、810（發票）並解析爲結構化資料。",
     "ediUploadTitle": "接收 EDI 單證",
-    "ediFileLabel": "文件（.edi / .txt）",
-    "ediPasteLabel": "或粘貼 X12 內容",
+    "ediFileLabel": "檔案（.edi / .txt）",
+    "ediPasteLabel": "或貼上 X12 內容",
     "ediPastePh": "ISA*00*...",
     "ediSubmit": "解析並保存",
     "ediKind850": "採購訂單",
     "ediKind856": "發貨通知（ASN）",
     "ediKind810": "發票",
     "ediKindUnknown": "無法識別",
-    "ediThFile": "文件",
+    "ediThFile": "檔案",
     "ediThKind": "類型",
     "ediThSummary": "摘要",
     "ediThTime": "接收時間",
     "emptyEdi": "還沒有 EDI 單證。上傳第一份 850、856 或 810 試試。",
     "ediView": "查看",
     "ediClose": "關閉",
-    "ediHeader": "頭部信息",
+    "ediHeader": "標頭資訊",
     "ediLines": "明細行",
     "ediTotals": "合計",
     "ediRaw": "原始 X12",
@@ -1395,15 +1395,15 @@
     "conOpenWebhooks": "打開 Webhooks",
     "conOpenEdi": "打開 EDI 收件箱",
     "cn_webhooks": "Webhooks",
-    "cd_webhooks": "簽名實時事件：單證解析完成、拖車任務創建與狀態變更。",
+    "cd_webhooks": "簽名即時事件：單證解析完成、拖車任務建立與狀態變更。",
     "cn_edi": "EDI 850 / 856 / 810",
-    "cd_edi": "把 X12 文件丟進來 —— 採購訂單、發貨通知、發票解析爲結構化數據。",
+    "cd_edi": "把 X12 檔案丟進來 —— 採購訂單、發貨通知、發票解析爲結構化資料。",
     "cn_netsuite": "NetSuite",
     "cd_netsuite": "與 Oracle NetSuite 同步訂單、物料與供應商。",
     "cn_sap": "SAP",
-    "cd_sap": "對接 SAP S/4HANA 或 Business One，做主數據同步。",
+    "cd_sap": "對接 SAP S/4HANA 或 Business One，做主資料同步。",
     "cn_quickbooks": "QuickBooks",
-    "cd_quickbooks": "把應付賬款與發票推送到 QuickBooks Online。",
+    "cd_quickbooks": "把應付賬款與發票推播到 QuickBooks Online。",
     "cn_shopify": "Shopify",
     "cd_shopify": "把 Shopify 訂單導入爲貨運草稿。",
     "auditTitle": "審計日誌",
@@ -1413,17 +1413,17 @@
     "auditThAction": "動作",
     "auditThDetail": "詳情",
     "emptyAudit": "暫無審計記錄。",
-    "audit_api_key_created": "創建了 API 密鑰",
+    "audit_api_key_created": "建立了 API 密鑰",
     "audit_api_key_revoked": "吊銷了 API 密鑰",
-    "audit_webhook_created": "創建了 Webhook",
+    "audit_webhook_created": "建立了 Webhook",
     "audit_webhook_updated": "更新了 Webhook",
     "audit_webhook_deleted": "刪除了 Webhook",
     "audit_webhook_tested": "發送了 Webhook 測試",
     "audit_edi_received": "接收了 EDI 單證",
     "audit_connector_requested": "申請了連接器",
     "cn_rest-api": "REST API",
-    "cd_rest-api": "用帶權限範圍的 API 密鑰讀取貨運與單證，版本化接口 /api/v1。",
+    "cd_rest-api": "用帶權限範圍的 API 密鑰讀取貨運與單證，版本化介面 /api/v1。",
     "cn_excel-import": "Excel 導入",
-    "cd_excel-import": "各模塊均已支持 Excel 上傳，自動去重。"
+    "cd_excel-import": "各模組均已支持 Excel 上傳，自動去重。"
   }
 }
