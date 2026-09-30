@@ -357,6 +357,15 @@
           "Real-time signed webhook events",
           "EDI inbox that parses X12 into structured data"
         ]
+      },
+      {
+        "n": "Insurance",
+        "d": "Cargo cover arranged through a licensed agency - quoted, issued, and tracked per shipment.",
+        "points": [
+          "Online quote requests",
+          "Policies linked to GTTID",
+          "Expiry and coverage tracking"
+        ]
       }
     ],
     "tryIt": "Open workspace"
@@ -1518,7 +1527,8 @@
       "executive": "Executive",
       "integrations": "Integrations",
       "team": "Team",
-      "settings": "Settings"
+      "settings": "Settings",
+      "insurance": "Insurance"
     },
     "collapse": "Collapse sidebar",
     "expand": "Expand sidebar",
@@ -1843,5 +1853,136 @@
     "disclaimer": "Estimate only. Actual duties depend on HTS classification, origin, trade preference eligibility, and CBP determination. Confirm with a licensed customs broker before relying on these figures.",
     "disclaimerShort": "Estimate only — verify with a licensed customs broker before filing.",
     "cta": "Get an accurate quote"
+  },
+  "insurance": {
+    "eyebrow": "Cargo insurance · Ocean & air",
+    "title": "Every shipment deserves coverage.",
+    "sub": "NIEL COS arranges cargo insurance for global traders shipping to the United States — ocean, air, and warehouse-to-warehouse. Placed through a licensed insurance agency. Quotes are free; nothing is charged before a policy is issued.",
+    "covEyebrow": "What we arrange",
+    "covTitle": "Coverage for the way you ship",
+    "coverages": [
+      {
+        "t": "Ocean marine cargo",
+        "d": "Port-to-port or door-to-door, covering water damage, collision, sinking and other marine perils. FCL and LCL alike."
+      },
+      {
+        "t": "Warehouse-to-warehouse",
+        "d": "Continuous cover from origin warehouse to destination warehouse, including the transit storage leg."
+      },
+      {
+        "t": "Contingent cargo",
+        "d": "Fills the gap when a carrier's liability falls short. Built for forwarders and their customers."
+      },
+      {
+        "t": "Stock throughput",
+        "d": "Covers inventory sitting in overseas warehouses — FBA, retail distribution, 3PL stock."
+      }
+    ],
+    "bondTitle": "Need a customs bond?",
+    "bondDesc": "Continuous import bonds for regular US importers, handled by Niel Insurance Agency.",
+    "bondCta": "Visit nielinsurance.com",
+    "stepsEyebrow": "How it works",
+    "stepsTitle": "From quote to covered in three steps",
+    "steps": [
+      "Submit a quote request: cargo value, origin, destination.",
+      "Talk to a specialist: a licensed agent replies within one business day.",
+      "Get covered: the policy is linked to your shipment in the workbench."
+    ],
+    "formTitle": "Get a free quote",
+    "formSub": "A licensed agent will contact you within one business day. No instant pricing — every shipment is underwritten by a human.",
+    "fName": "Full name",
+    "fCompany": "Company",
+    "fEmail": "Email",
+    "fPhone": "Phone (optional)",
+    "fCargoValue": "Cargo value",
+    "fCurrency": "Currency",
+    "fOrigin": "Origin",
+    "fDestination": "Destination",
+    "fMode": "Mode",
+    "modeOcean": "Ocean",
+    "modeAir": "Air",
+    "fCoverage": "Coverage",
+    "fMessage": "Cargo description (optional)",
+    "submit": "Request quote",
+    "sending": "Sending…",
+    "done": "Received! We'll contact you within one business day.",
+    "fail": "Submission failed. Please try again or contact us directly.",
+    "credEyebrow": "Licensed agency",
+    "credTitle": "Placed through a licensed insurance agency",
+    "credBody": "Niel Insurance Agency LLC · Illinois License #3004050191 · New Jersey License #262024174779",
+    "credContact": "732-338-8098 · info@nielinsurance.com · Serving Illinois / New Jersey",
+    "disclaimer": "Insurance is arranged by a licensed agency. Final coverage and terms follow the issued policy.",
+    "ctaTitle": "Shipping to the US? Get covered first.",
+    "ctaSub": "Tell us the cargo value and route — a licensed agent handles the rest.",
+    "ctaB1": "Request a quote",
+    "ctaB2": "Estimate landed cost"
+  },
+  "insuranceApp": {
+    "title": "Insurance",
+    "sub": "Quote triage and policy management.",
+    "tabQuotes": "Quote requests",
+    "tabPolicies": "Policies",
+    "statNew": "Open quotes",
+    "statActive": "Active policies",
+    "statCovered": "Cargo covered",
+    "statExpiring": "Expiring in 30 days",
+    "thDate": "Date",
+    "thContact": "Contact",
+    "thCompany": "Company",
+    "thCargo": "Cargo value",
+    "thRoute": "Route",
+    "thMode": "Mode",
+    "thCoverage": "Coverage",
+    "thStatus": "Status",
+    "thActions": "Actions",
+    "stNew": "Open",
+    "stQuoted": "Quoted",
+    "stDeclined": "Declined",
+    "claim": "Claim",
+    "markQuoted": "Mark quoted",
+    "markDeclined": "Decline",
+    "toPolicy": "New policy",
+    "qTitle": "Quote request",
+    "qPremium": "Quoted premium",
+    "qNote": "Note",
+    "save": "Save",
+    "cancel": "Cancel",
+    "saveFailed": "Save failed.",
+    "emptyQuotes": "No quote requests yet. Share the public insurance page to collect them.",
+    "emptyPolicies": "No policies yet. Convert a quote or add one manually.",
+    "addPolicy": "Add policy",
+    "thPolicyNo": "Policy no.",
+    "thInsurer": "Underwriter",
+    "thPremium": "Premium",
+    "thPeriod": "Period",
+    "thGttid": "Shipment",
+    "pPending": "Pending",
+    "pActive": "Active",
+    "pExpired": "Expired",
+    "pCancelled": "Cancelled",
+    "fPolicyNo": "Policy number",
+    "fInsurer": "Underwriter",
+    "fCoverage": "Coverage",
+    "fCargoValue": "Cargo value",
+    "fCurrency": "Currency",
+    "fPremium": "Premium",
+    "fEffective": "Effective date",
+    "fExpiry": "Expiry date",
+    "fStatus": "Status",
+    "fGttid": "Shipment (GTTID / MBL / container)",
+    "fNotes": "Notes",
+    "covMarine": "Ocean marine",
+    "covWarehouse": "Warehouse-to-warehouse",
+    "covContingent": "Contingent",
+    "covStock": "Stock throughput",
+    "modeOcean": "Ocean",
+    "modeAir": "Air",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this policy? This cannot be undone.",
+    "policyNoRequired": "Policy number is required.",
+    "dupPolicyNo": "This policy number already exists.",
+    "claimedByYou": "Claimed",
+    "unclaimed": "Unclaimed lead"
   }
 }

@@ -357,6 +357,15 @@
           "실시간 서명된 웹훅 이벤트",
           "X12를 구조화된 데이터로 파싱하는 EDI 수신함"
         ]
+      },
+      {
+        "n": "보험",
+        "d": "면허 대리점을 통한 화물 보험 - 견적, 발행, 선적별 추적.",
+        "points": [
+          "온라인 견적 요청",
+          "GTTID 연계 보험증권",
+          "만기 및 보장 추적"
+        ]
       }
     ],
     "tryIt": "작업 공간 열기"
@@ -1479,7 +1488,8 @@
       "executive": "경영진",
       "integrations": "연동 기능",
       "team": "팀",
-      "settings": "설정"
+      "settings": "설정",
+      "insurance": "보험"
     },
     "collapse": "사이드바 접기",
     "expand": "사이드바 펼치기",
@@ -1843,5 +1853,136 @@
     "disclaimer": "단순 추정치입니다. 실제 관세는 HTS 분류, 원산지, 무역 우대 자격 여부 및 CBP의 결정에 따라 달라집니다. 이 수치를 참고하기 전에 면허를 소지한 통관 대리인에게 확인하시기 바랍니다.",
     "disclaimerShort": "단순 추정치일 뿐입니다. 신고하기 전에 면허를 소지한 통관 대행사와 확인하시기 바랍니다.",
     "cta": "정확한 견적 받기"
+  },
+  "insurance": {
+    "eyebrow": "화물 보험 · 해상 및 항공",
+    "title": "모든 화물은 보험 적용을 받아야 합니다.",
+    "sub": "NIEL COS는 미국으로 화물을 운송하는 글로벌 무역업체를 대상으로 해상, 항공 및 창고 간 운송에 대한 화물 보험을 취급합니다. 모든 보험 계약은 면허를 보유한 보험 대리점을 통해 체결됩니다. 견적은 무료이며, 보험 증권이 발급되기 전까지는 어떠한 비용도 청구되지 않습니다.",
+    "covEyebrow": "저희가 준비해 드리는 것",
+    "covTitle": "배송 방식에 따른 보장 범위",
+    "coverages": [
+      {
+        "t": "해상 화물",
+        "d": "항구 간 또는 문 앞까지 운송하며, 수해, 충돌, 침몰 및 기타 해상 위험을 보장합니다. FCL 및 LCL 모두 해당됩니다."
+      },
+      {
+        "t": "창고 간",
+        "d": "출발지 창고에서 도착지 창고까지, 환적 보관 구간을 포함하여 연속적으로 보장됩니다."
+      },
+      {
+        "t": "조건부 화물",
+        "d": "운송사의 배상 책임이 미치지 못하는 부분을 보완해 드립니다. 포워더와 그 고객을 위해 마련되었습니다."
+      },
+      {
+        "t": "주식 처리량",
+        "d": "해외 창고에 보관 중인 재고(FBA, 소매 유통, 3PL 재고)를 포함합니다."
+      }
+    ],
+    "bondTitle": "통관 보증금이 필요하신가요?",
+    "bondDesc": "Niel Insurance Agency에서 처리하는 미국 정기 수입업체용 연속 수입 보증서.",
+    "bondCta": "nielinsurance.com을 방문해 보세요",
+    "stepsEyebrow": "작동 원리",
+    "stepsTitle": "견적부터 보장까지 3단계로 완료",
+    "steps": [
+      "견적 요청 제출: 화물 가치, 출발지, 도착지.",
+      "전문가와 상담해 보세요: 자격을 갖춘 상담사가 영업일 기준 1일 이내에 답변해 드립니다.",
+      "보장받으세요: 이 보험 증서는 워크벤치 내 귀하의 발송물과 연동되어 있습니다."
+    ],
+    "formTitle": "무료 견적 받기",
+    "formSub": "면허를 소지한 담당자가 영업일 기준 1일 이내에 연락을 드릴 것입니다. 즉시 견적 제공은 없습니다. 모든 발송 건은 담당자가 직접 심사합니다.",
+    "fName": "성명",
+    "fCompany": "회사",
+    "fEmail": "이메일",
+    "fPhone": "전화번호 (선택 사항)",
+    "fCargoValue": "화물 가치",
+    "fCurrency": "통화",
+    "fOrigin": "출처",
+    "fDestination": "목적지",
+    "fMode": "모드",
+    "modeOcean": "바다",
+    "modeAir": "공기",
+    "fCoverage": "보도 범위",
+    "fMessage": "화물 설명 (선택 사항)",
+    "submit": "견적 요청",
+    "sending": "보내는 중…",
+    "done": "수신 확인되었습니다! 영업일 기준 1일 이내에 연락드리겠습니다.",
+    "fail": "제출에 실패했습니다. 다시 시도하시거나 당사에 직접 문의해 주십시오.",
+    "credEyebrow": "인가된 대행사",
+    "credTitle": "인가를 받은 보험 대리점을 통해 가입",
+    "credBody": "Niel Insurance Agency LLC · Illinois License #3004050191 · New Jersey License #262024174779",
+    "credContact": "732-338-8098 · info@nielinsurance.com · Serving Illinois / New Jersey",
+    "disclaimer": "보험은 면허를 소지한 대리점을 통해 가입됩니다. 최종 보장 범위 및 약관은 발급된 보험증서에 따릅니다.",
+    "ctaTitle": "미국으로 배송하시나요? 먼저 보험에 가입하세요.",
+    "ctaSub": "화물 가치와 운송 경로를 알려주시면, 면허를 소지한 대리인이 나머지 절차를 처리해 드립니다.",
+    "ctaB1": "견적 요청하기",
+    "ctaB2": "도착 비용 산정"
+  },
+  "insuranceApp": {
+    "title": "보험",
+    "sub": "견적 선별 및 정책 관리.",
+    "tabQuotes": "견적 요청",
+    "tabPolicies": "정책",
+    "statNew": "따옴표 열기",
+    "statActive": "현재 시행 중인 정책",
+    "statCovered": "화물 포함",
+    "statExpiring": "30일 후 만료됩니다",
+    "thDate": "날짜",
+    "thContact": "문의하기",
+    "thCompany": "회사",
+    "thCargo": "화물 가치",
+    "thRoute": "경로",
+    "thMode": "모드",
+    "thCoverage": "보도 범위",
+    "thStatus": "상태",
+    "thActions": "작업",
+    "stNew": "열기",
+    "stQuoted": "인용",
+    "stDeclined": "거절됨",
+    "claim": "주장",
+    "markQuoted": "마크의 말을 인용하면",
+    "markDeclined": "감소",
+    "toPolicy": "새로운 정책",
+    "qTitle": "견적 요청",
+    "qPremium": "인수 보험료",
+    "qNote": "참고",
+    "save": "저장",
+    "cancel": "취소",
+    "saveFailed": "저장에 실패했습니다.",
+    "emptyQuotes": "아직 견적 요청이 없습니다. 공개 보험 페이지를 공유하여 견적 요청을 받아보세요.",
+    "emptyPolicies": "아직 보험 계약이 없습니다. 견적을 보험 계약으로 전환하거나 수동으로 추가해 주세요.",
+    "addPolicy": "정책 추가",
+    "thPolicyNo": "보험증 번호",
+    "thInsurer": "주관사",
+    "thPremium": "프리미엄",
+    "thPeriod": "기간",
+    "thGttid": "선적",
+    "pPending": "처리 중",
+    "pActive": "활성",
+    "pExpired": "만료됨",
+    "pCancelled": "취소됨",
+    "fPolicyNo": "보험 계약 번호",
+    "fInsurer": "주관사",
+    "fCoverage": "보도 범위",
+    "fCargoValue": "화물 가치",
+    "fCurrency": "통화",
+    "fPremium": "프리미엄",
+    "fEffective": "시행일",
+    "fExpiry": "유효기간",
+    "fStatus": "상태",
+    "fGttid": "선적 (GTTID / MBL / 컨테이너)",
+    "fNotes": "참고 사항",
+    "covMarine": "해양",
+    "covWarehouse": "창고 간",
+    "covContingent": "조건부",
+    "covStock": "주식 처리량",
+    "modeOcean": "바다",
+    "modeAir": "공기",
+    "edit": "편집",
+    "delete": "삭제",
+    "deleteConfirm": "이 정책을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "policyNoRequired": "보험 계약 번호를 입력해야 합니다.",
+    "dupPolicyNo": "이 보험 계약 번호는 이미 존재합니다.",
+    "claimedByYou": "주장된",
+    "unclaimed": "미청구 리드"
   }
 }

@@ -105,9 +105,9 @@ export default function Header() {
     { href: `/${locale}/regulatory`, label: t("regulatory") },
     { href: `/${locale}/developers`, label: t("developers") },
     { href: `/${locale}/#resources`, label: t("resources") },
+    { href: `/${locale}/insurance`, label: t("insurance") },
     { href: `/${locale}/contact`, label: t("contact") },
   ];
-  const insurance = { href: "https://www.nielinsurance.com", label: t("insurance") };
 
   const linkCls =
     "rounded-lg px-3.5 py-2 text-[14px] font-medium text-ink-soft transition-colors hover:bg-brand-tint-soft hover:text-brand";
@@ -124,15 +124,6 @@ export default function Header() {
               {l.label}
             </Link>
           ))}
-          <a
-            href={insurance.href}
-            target="_blank"
-            rel="noreferrer"
-            className={linkCls}
-          >
-            {insurance.label}
-            <span aria-hidden="true" className="ml-1 inline-block text-[10px]">↗</span>
-          </a>
         </nav>
         <div className="flex items-center gap-3">
           <LocaleSwitch />

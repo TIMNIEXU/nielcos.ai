@@ -32,6 +32,9 @@ const ICONS: Record<string, React.ReactNode> = {
   finance: (
     <path d="M4 7h16v12H4zM4 10h16M7 15h4" />
   ),
+  insurance: (
+    <><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3.5" /><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21" /></>
+  ),
   compliance: (
     <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6zM9 12l2 2 4-4" />
   ),
@@ -76,7 +79,7 @@ function Icon({ name }: { name: string }) {
    is treated as a shipment-detail-style page. */
 const SECTION_SLUGS = new Set([
   "trades", "customs", "documents", "products", "suppliers", "logistics",
-  "finance", "freight", "compliance", "assistant", "tower", "executive",
+  "finance", "insurance", "freight", "compliance", "assistant", "tower", "executive",
   "integrations", "team", "settings",
 ]);
 

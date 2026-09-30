@@ -357,6 +357,15 @@
           "Các sự kiện webhook có chữ ký theo thời gian thực",
           "Hộp thư đến EDI có chức năng phân tích cú pháp X12 thành dữ liệu có cấu trúc"
         ]
+      },
+      {
+        "n": "Bảo hiểm",
+        "d": "Bảo hiểm hàng hóa qua đại lý được cấp phép - báo giá, phát hành và theo dõi theo từng lô hàng.",
+        "points": [
+          "Yêu cầu báo giá trực tuyến",
+          "Hợp đồng gắn với GTTID",
+          "Theo dõi hiệu lực và phạm vi"
+        ]
       }
     ],
     "tryIt": "Không gian làm việc mở"
@@ -1479,7 +1488,8 @@
       "executive": "Giám đốc điều hành",
       "integrations": "Tích hợp",
       "team": "Đội",
-      "settings": "Cài đặt"
+      "settings": "Cài đặt",
+      "insurance": "Bảo hiểm"
     },
     "collapse": "Thu gọn thanh bên",
     "expand": "Mở rộng thanh bên",
@@ -1843,5 +1853,136 @@
     "disclaimer": "Chỉ mang tính ước tính. Các nghĩa vụ thực tế phụ thuộc vào mã phân loại HTS, xuất xứ, điều kiện hưởng ưu đãi thương mại và quyết định của CBP. Vui lòng xác nhận với một đại lý hải quan được cấp phép trước khi dựa vào các con số này.",
     "disclaimerShort": "Chỉ mang tính ước tính — hãy xác minh với một đại lý hải quan được cấp phép trước khi nộp hồ sơ.",
     "cta": "Nhận báo giá chính xác"
+  },
+  "insurance": {
+    "eyebrow": "Bảo hiểm hàng hóa · Vận chuyển đường biển và đường hàng không",
+    "title": "Mỗi lô hàng đều cần được bảo hiểm.",
+    "sub": "NIEL COS cung cấp dịch vụ bảo hiểm hàng hóa cho các doanh nghiệp thương mại toàn cầu vận chuyển hàng hóa đến Hoa Kỳ — bao gồm vận chuyển đường biển, đường hàng không và từ kho đến kho. Dịch vụ được thực hiện thông qua một đại lý bảo hiểm được cấp phép. Báo giá miễn phí; không có khoản phí nào được tính trước khi hợp đồng bảo hiểm được cấp.",
+    "covEyebrow": "Những dịch vụ chúng tôi cung cấp",
+    "covTitle": "Chính sách bảo hiểm phù hợp với phương thức vận chuyển của bạn",
+    "coverages": [
+      {
+        "t": "Hàng hóa vận chuyển đường biển",
+        "d": "Từ cảng đến cảng hoặc từ cửa đến cửa, bao gồm các rủi ro như hư hỏng do nước, va chạm, chìm tàu và các rủi ro hàng hải khác. Áp dụng cho cả container nguyên chuyến (FCL) và container ghép (LCL)."
+      },
+      {
+        "t": "Từ kho này sang kho khác",
+        "d": "Bảo hiểm liên tục từ kho xuất phát đến kho đích, bao gồm cả giai đoạn lưu kho trong quá trình vận chuyển."
+      },
+      {
+        "t": "Hàng hóa có điều kiện",
+        "d": "Giải quyết những trường hợp trách nhiệm của hãng vận chuyển không đủ. Được thiết kế dành cho các công ty giao nhận và khách hàng của họ."
+      },
+      {
+        "t": "Năng suất xử lý hàng tồn kho",
+        "d": "Áp dụng cho hàng tồn kho đang được lưu trữ tại các kho ở nước ngoài — hàng FBA, hàng phân phối bán lẻ, hàng tồn kho của nhà cung cấp dịch vụ logistics bên thứ ba (3PL)."
+      }
+    ],
+    "bondTitle": "Bạn cần bảo lãnh hải quan không?",
+    "bondDesc": "Giấy phép nhập khẩu liên tục dành cho các nhà nhập khẩu thường xuyên của Hoa Kỳ, do Công ty Bảo hiểm Niel phụ trách.",
+    "bondCta": "Hãy truy cập nielinsurance.com",
+    "stepsEyebrow": "Cách thức hoạt động",
+    "stepsTitle": "Chỉ cần ba bước là có thể nhận được bảo hiểm ngay sau khi nhận báo giá",
+    "steps": [
+      "Gửi yêu cầu báo giá: giá trị hàng hóa, nơi xuất phát, nơi đến.",
+      "Liên hệ với chuyên gia: một đại lý được cấp phép sẽ trả lời trong vòng một ngày làm việc.",
+      "Đăng ký bảo hiểm: Hợp đồng bảo hiểm được liên kết với lô hàng của bạn trong bảng điều khiển."
+    ],
+    "formTitle": "Nhận báo giá miễn phí",
+    "formSub": "Một đại lý được cấp phép sẽ liên hệ với bạn trong vòng một ngày làm việc. Không có báo giá ngay lập tức — mỗi lô hàng đều được chuyên viên thẩm định trực tiếp.",
+    "fName": "Họ và tên",
+    "fCompany": "Công ty",
+    "fEmail": "Email",
+    "fPhone": "Số điện thoại (không bắt buộc)",
+    "fCargoValue": "Giá trị hàng hóa",
+    "fCurrency": "Đơn vị tiền tệ",
+    "fOrigin": "Nguồn gốc",
+    "fDestination": "Điểm đến",
+    "fMode": "Chế độ",
+    "modeOcean": "Đại dương",
+    "modeAir": "Không khí",
+    "fCoverage": "Phạm vi bảo hiểm",
+    "fMessage": "Mô tả hàng hóa (không bắt buộc)",
+    "submit": "Yêu cầu báo giá",
+    "sending": "Đang gửi…",
+    "done": "Đã nhận được! Chúng tôi sẽ liên hệ với bạn trong vòng một ngày làm việc.",
+    "fail": "Việc gửi đã không thành công. Vui lòng thử lại hoặc liên hệ trực tiếp với chúng tôi.",
+    "credEyebrow": "Công ty môi giới được cấp phép",
+    "credTitle": "Được thực hiện thông qua một đại lý bảo hiểm được cấp phép",
+    "credBody": "Niel Insurance Agency LLC · Illinois License #3004050191 · New Jersey License #262024174779",
+    "credContact": "732-338-8098 · info@nielinsurance.com · Serving Illinois / New Jersey",
+    "disclaimer": "Hợp đồng bảo hiểm được thực hiện thông qua một đại lý được cấp phép. Phạm vi bảo hiểm và các điều khoản cuối cùng tuân theo nội dung của hợp đồng bảo hiểm đã được cấp.",
+    "ctaTitle": "Bạn định gửi hàng sang Mỹ? Hãy mua bảo hiểm trước đã.",
+    "ctaSub": "Hãy cho chúng tôi biết giá trị hàng hóa và lộ trình — một đại lý được cấp phép sẽ lo liệu phần còn lại.",
+    "ctaB1": "Yêu cầu báo giá",
+    "ctaB2": "Ước tính chi phí nhập khẩu"
+  },
+  "insuranceApp": {
+    "title": "Bảo hiểm",
+    "sub": "Phân loại báo giá và quản lý chính sách.",
+    "tabQuotes": "Yêu cầu báo giá",
+    "tabPolicies": "Chính sách",
+    "statNew": "Mở dấu ngoặc kép",
+    "statActive": "Các chính sách hiện hành",
+    "statCovered": "Hàng hóa được che phủ",
+    "statExpiring": "Sẽ hết hạn sau 30 ngày",
+    "thDate": "Ngày",
+    "thContact": "Liên hệ",
+    "thCompany": "Công ty",
+    "thCargo": "Giá trị hàng hóa",
+    "thRoute": "Tuyến đường",
+    "thMode": "Chế độ",
+    "thCoverage": "Phạm vi bảo hiểm",
+    "thStatus": "Tình trạng",
+    "thActions": "Các hành động",
+    "stNew": "Mở",
+    "stQuoted": "Trích dẫn",
+    "stDeclined": "Bị từ chối",
+    "claim": "Yêu cầu",
+    "markQuoted": "Mark trích dẫn",
+    "markDeclined": "Suy giảm",
+    "toPolicy": "Chính sách mới",
+    "qTitle": "Yêu cầu báo giá",
+    "qPremium": "Phí bảo hiểm được báo giá",
+    "qNote": "Lưu ý",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "saveFailed": "Lỗi khi lưu.",
+    "emptyQuotes": "Chưa có yêu cầu báo giá nào. Hãy chia sẻ trang thông tin bảo hiểm công khai để thu thập các yêu cầu này.",
+    "emptyPolicies": "Hiện chưa có chính sách nào. Hãy chuyển đổi báo giá hoặc thêm chính sách theo cách thủ công.",
+    "addPolicy": "Thêm chính sách",
+    "thPolicyNo": "Số chính sách:",
+    "thInsurer": "Nhà bảo lãnh phát hành",
+    "thPremium": "Cao cấp",
+    "thPeriod": "Kỳ",
+    "thGttid": "Lô hàng",
+    "pPending": "Đang chờ xử lý",
+    "pActive": "Hoạt động",
+    "pExpired": "Đã hết hạn",
+    "pCancelled": "Đã hủy",
+    "fPolicyNo": "Số hợp đồng bảo hiểm",
+    "fInsurer": "Nhà bảo lãnh phát hành",
+    "fCoverage": "Phạm vi bảo hiểm",
+    "fCargoValue": "Giá trị hàng hóa",
+    "fCurrency": "Đơn vị tiền tệ",
+    "fPremium": "Cao cấp",
+    "fEffective": "Ngày có hiệu lực",
+    "fExpiry": "Hạn sử dụng",
+    "fStatus": "Tình trạng",
+    "fGttid": "Lô hàng (GTTID / MBL / container)",
+    "fNotes": "Ghi chú",
+    "covMarine": "Biển cả",
+    "covWarehouse": "Từ kho này sang kho khác",
+    "covContingent": "Tình huống",
+    "covStock": "Năng suất xử lý hàng tồn kho",
+    "modeOcean": "Đại dương",
+    "modeAir": "Không khí",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "deleteConfirm": "Xóa chính sách này? Hành động này không thể hoàn tác.",
+    "policyNoRequired": "Phải có số hợp đồng bảo hiểm.",
+    "dupPolicyNo": "Số hợp đồng này đã tồn tại rồi.",
+    "claimedByYou": "Được cho là",
+    "unclaimed": "Khách hàng tiềm năng chưa được tiếp cận"
   }
 }

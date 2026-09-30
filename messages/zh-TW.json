@@ -357,6 +357,15 @@
           "簽名即時 Webhook 事件推播",
           "EDI 收件箱把 X12 解析爲結構化資料"
         ]
+      },
+      {
+        "n": "保險",
+        "d": "經持牌代理安排貨物保險——詢價、出單、跟蹤，一票一單。",
+        "points": [
+          "線上詢價",
+          "保單關聯貨運單",
+          "到期與保障跟蹤"
+        ]
       }
     ],
     "tryIt": "進入工作臺"
@@ -1479,7 +1488,8 @@
       "executive": "高管",
       "integrations": "集成",
       "team": "團隊",
-      "settings": "設置"
+      "settings": "設置",
+      "insurance": "保險"
     },
     "collapse": "收起側邊欄",
     "expand": "展開側邊欄",
@@ -1843,5 +1853,136 @@
     "disclaimer": "僅供估算。實際關稅取決於 HTS 歸類、原產地、貿易優惠資格及 CBP 裁定。採用這些數據前請與持牌報關行確認。",
     "disclaimerShort": "僅供估算 —— 申報前請與持牌報關行覈實。",
     "cta": "獲取準確報價"
+  },
+  "insurance": {
+    "eyebrow": "貨物保險 · 海運 / 空運",
+    "title": "給每一票貨，加一份保障。",
+    "sub": "NIEL COS 為向美國出口的全球貿易商安排貨物保險——海運、空運、倉到倉全覆蓋。經持牌保險代理出面辦理。詢價免費，出單之前不收任何費用。",
+    "covEyebrow": "我們可以安排",
+    "covTitle": "按你的出貨方式配保障",
+    "coverages": [
+      {
+        "t": "海運貨物險",
+        "d": "港到港或門到門，覆蓋水漬、碰撞、沉沒等海運風險。整櫃、拼箱都能保。"
+      },
+      {
+        "t": "倉到倉",
+        "d": "從起運地倉庫到目的地倉庫全程覆蓋，含中轉倉儲段。"
+      },
+      {
+        "t": "或有險",
+        "d": "承運人責任不夠賠時補上，適合貨代及其客戶。"
+      },
+      {
+        "t": "庫存險",
+        "d": "海外倉備貨期間的庫存保障——FBA、零售分撥、第三方倉都適用。"
+      }
+    ],
+    "bondTitle": "需要海關保證金（Customs Bond）？",
+    "bondDesc": "美國常規進口商的連續保證金，由 Niel Insurance Agency 辦理。",
+    "bondCta": "去 nielinsurance.com",
+    "stepsEyebrow": "流程",
+    "stepsTitle": "三步，從詢價到保障",
+    "steps": [
+      "提交詢價：貨值、起運地、目的地。",
+      "專人對接：持牌代理 1 個工作日內回覆。",
+      "出單關聯：保單自動關聯到工作臺裡的貨運單。"
+    ],
+    "formTitle": "免費詢價",
+    "formSub": "持牌代理會在 1 個工作日內聯絡你。不做即時報價——每一票都由人工核保。",
+    "fName": "姓名",
+    "fCompany": "公司",
+    "fEmail": "郵箱",
+    "fPhone": "電話（選填）",
+    "fCargoValue": "貨值",
+    "fCurrency": "幣種",
+    "fOrigin": "起運地",
+    "fDestination": "目的地",
+    "fMode": "運輸方式",
+    "modeOcean": "海運",
+    "modeAir": "空運",
+    "fCoverage": "險種",
+    "fMessage": "貨物描述（選填）",
+    "submit": "提交詢價",
+    "sending": "提交中…",
+    "done": "已收到！我們會在 1 個工作日內聯絡你。",
+    "fail": "提交失敗，請稍後再試或直接聯絡我們。",
+    "credEyebrow": "持牌代理",
+    "credTitle": "經持牌保險代理辦理",
+    "credBody": "Niel Insurance Agency LLC · Illinois License #3004050191 · New Jersey License #262024174779",
+    "credContact": "732-338-8098 · info@nielinsurance.com · 服務 Illinois / New Jersey",
+    "disclaimer": "保險由持牌代理安排，最終保障範圍與條款以保單正本為準。",
+    "ctaTitle": "往美國出貨？先把保障配好。",
+    "ctaSub": "告訴我們貨值和路線，剩下的交給持牌代理。",
+    "ctaB1": "免費詢價",
+    "ctaB2": "估算到岸成本"
+  },
+  "insuranceApp": {
+    "title": "保險",
+    "sub": "詢價單處理與保單管理。",
+    "tabQuotes": "詢價單",
+    "tabPolicies": "保單",
+    "statNew": "待處理詢價",
+    "statActive": "有效保單",
+    "statCovered": "保障中貨值",
+    "statExpiring": "30天內到期",
+    "thDate": "日期",
+    "thContact": "聯絡人",
+    "thCompany": "公司",
+    "thCargo": "貨值",
+    "thRoute": "路線",
+    "thMode": "方式",
+    "thCoverage": "險種",
+    "thStatus": "狀態",
+    "thActions": "操作",
+    "stNew": "待處理",
+    "stQuoted": "已報價",
+    "stDeclined": "已謝絕",
+    "claim": "認領",
+    "markQuoted": "標為已報價",
+    "markDeclined": "謝絕",
+    "toPolicy": "轉保單",
+    "qTitle": "詢價單詳情",
+    "qPremium": "報價保費",
+    "qNote": "備註",
+    "save": "儲存",
+    "cancel": "取消",
+    "saveFailed": "儲存失敗。",
+    "emptyQuotes": "還沒有詢價單。把公開保險頁面分享出去即可收集詢價。",
+    "emptyPolicies": "還沒有保單。從詢價單轉入或手動新增。",
+    "addPolicy": "新增保單",
+    "thPolicyNo": "保單號",
+    "thInsurer": "承保公司",
+    "thPremium": "保費",
+    "thPeriod": "保障期",
+    "thGttid": "關聯貨運",
+    "pPending": "待生效",
+    "pActive": "有效",
+    "pExpired": "已到期",
+    "pCancelled": "已登出",
+    "fPolicyNo": "保單號",
+    "fInsurer": "承保公司",
+    "fCoverage": "險種",
+    "fCargoValue": "貨值",
+    "fCurrency": "幣種",
+    "fPremium": "保費",
+    "fEffective": "生效日期",
+    "fExpiry": "到期日期",
+    "fStatus": "狀態",
+    "fGttid": "關聯貨運（GTTID / 提單號 / 櫃號）",
+    "fNotes": "備註",
+    "covMarine": "海運貨物險",
+    "covWarehouse": "倉到倉",
+    "covContingent": "或有險",
+    "covStock": "庫存險",
+    "modeOcean": "海運",
+    "modeAir": "空運",
+    "edit": "編輯",
+    "delete": "刪除",
+    "deleteConfirm": "刪除這張保單？此操作不可撤銷。",
+    "policyNoRequired": "保單號必填。",
+    "dupPolicyNo": "該保單號已存在。",
+    "claimedByYou": "已認領",
+    "unclaimed": "待認領"
   }
 }

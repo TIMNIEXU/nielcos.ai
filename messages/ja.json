@@ -357,6 +357,15 @@
           "リアルタイムの署名付きWebhookイベント",
           "X12を構造化データに解析するEDI受信ボックス"
         ]
+      },
+      {
+        "n": "保険",
+        "d": "免許代理店を通じた貨物保険の手配——見積、発行、船積みごとの追跡。",
+        "points": [
+          "オンライン見積依頼",
+          "GTTIDに紐づく保険証券",
+          "満期・補償の追跡"
+        ]
       }
     ],
     "tryIt": "オープンワークスペース"
@@ -1479,7 +1488,8 @@
       "executive": "経営陣",
       "integrations": "連携機能",
       "team": "チーム",
-      "settings": "設定"
+      "settings": "設定",
+      "insurance": "保険"
     },
     "collapse": "サイドバーを折りたたむ",
     "expand": "サイドバーを展開する",
@@ -1843,5 +1853,136 @@
     "disclaimer": "あくまで目安です。実際の関税は、HTS分類、原産地、貿易優遇措置の適用可否、およびCBPの判断によって異なります。これらの数値を参考にする前に、認可を受けた通関業者にご確認ください。",
     "disclaimerShort": "あくまで概算です。申告を行う前に、認可を受けた通関業者に確認してください。",
     "cta": "正確な見積もりを取得する"
+  },
+  "insurance": {
+    "eyebrow": "貨物保険・海上・航空",
+    "title": "すべての発送には保険が必要です。",
+    "sub": "NIEL COSは、米国へ貨物を輸送する世界中の貿易業者向けに、海上輸送、航空輸送、および倉庫間輸送の貨物保険を手配しています。保険契約は認可を受けた保険代理店を通じて締結されます。見積もりは無料で、保険証券が発行されるまでは一切費用はかかりません。",
+    "covEyebrow": "当社が手配する内容",
+    "covTitle": "お客様の配送方法に合わせた補償",
+    "coverages": [
+      {
+        "t": "海上貨物",
+        "d": "港から港、あるいはドア・ツー・ドアの輸送で、水害、衝突、沈没、その他の海上リスクを補償します。FCL・LCLを問わず対応いたします。"
+      },
+      {
+        "t": "倉庫間輸送",
+        "d": "出発倉庫から到着倉庫までの全行程（輸送中の保管期間を含む）をカバーします。"
+      },
+      {
+        "t": "条件付き貨物",
+        "d": "運送業者の賠償責任が不十分な場合の空白を埋めます。フォワーダーとその顧客のために設計されています。"
+      },
+      {
+        "t": "在庫処理量",
+        "d": "海外の倉庫に保管されている在庫（FBA、小売流通、3PL在庫）を対象としています。"
+      }
+    ],
+    "bondTitle": "通関保証が必要ですか？",
+    "bondDesc": "ニール保険代理店が取り扱う、米国の常連輸入業者向けの継続輸入保証保険。",
+    "bondCta": "nielinsurance.com をご覧ください",
+    "stepsEyebrow": "仕組み",
+    "stepsTitle": "見積もりから保険適用まで、たったの3ステップ",
+    "steps": [
+      "見積依頼の送信：貨物の価値、出発地、目的地。",
+      "専門家に相談：有資格のエージェントが1営業日以内に返信いたします。",
+      "補償を受けましょう：この保険契約は、ワークベンチ内の出荷情報と紐付けられています。"
+    ],
+    "formTitle": "無料のお見積もりをご依頼ください",
+    "formSub": "有資格の担当者が1営業日以内にご連絡いたします。即時見積もりはございません。すべての発送について、担当者が個別に審査を行います。",
+    "fName": "氏名",
+    "fCompany": "会社",
+    "fEmail": "電子メール",
+    "fPhone": "電話番号（任意）",
+    "fCargoValue": "貨物の価値",
+    "fCurrency": "通貨",
+    "fOrigin": "起源",
+    "fDestination": "目的地",
+    "fMode": "モード",
+    "modeOcean": "海",
+    "modeAir": "空気",
+    "fCoverage": "取材範囲",
+    "fMessage": "貨物の説明（任意）",
+    "submit": "見積もりの依頼",
+    "sending": "送信中…",
+    "done": "受信しました！1営業日以内にご連絡いたします。",
+    "fail": "送信に失敗しました。もう一度お試しいただくか、弊社まで直接お問い合わせください。",
+    "credEyebrow": "認可を受けた代理店",
+    "credTitle": "認可を受けた保険代理店を通じて契約しました",
+    "credBody": "Niel Insurance Agency LLC · Illinois License #3004050191 · New Jersey License #262024174779",
+    "credContact": "732-338-8098 · info@nielinsurance.com · Serving Illinois / New Jersey",
+    "disclaimer": "保険の手配は、認可を受けた代理店が行います。最終的な補償内容および契約条件は、発行された保険証券に準じます。",
+    "ctaTitle": "米国への発送をお考えですか？まずは保険に加入しましょう。",
+    "ctaSub": "貨物の価値と輸送ルートをお知らせください。あとは認可を受けた代理店がすべて手配いたします。",
+    "ctaB1": "お見積りをご依頼ください",
+    "ctaB2": "着荷コストの見積もり"
+  },
+  "insuranceApp": {
+    "title": "保険",
+    "sub": "見積もりの選別とポリシー管理。",
+    "tabQuotes": "見積依頼",
+    "tabPolicies": "方針",
+    "statNew": "引用符を開く",
+    "statActive": "有効なポリシー",
+    "statCovered": "貨物の補償対象",
+    "statExpiring": "あと30日で期限切れとなります",
+    "thDate": "日付",
+    "thContact": "お問い合わせ",
+    "thCompany": "会社",
+    "thCargo": "貨物の価値",
+    "thRoute": "ルート",
+    "thMode": "モード",
+    "thCoverage": "取材範囲",
+    "thStatus": "ステータス",
+    "thActions": "アクション",
+    "stNew": "開く",
+    "stQuoted": "引用",
+    "stDeclined": "却下",
+    "claim": "主張",
+    "markQuoted": "マークは次のように述べた",
+    "markDeclined": "減少",
+    "toPolicy": "新しい方針",
+    "qTitle": "見積依頼",
+    "qPremium": "引受保険料",
+    "qNote": "注記",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "saveFailed": "保存に失敗しました。",
+    "emptyQuotes": "まだ見積もり依頼はありません。公開保険ページを共有して、見積もり依頼を集めましょう。",
+    "emptyPolicies": "まだポリシーはありません。見積もりを変換するか、手動で追加してください。",
+    "addPolicy": "ポリシーを追加する",
+    "thPolicyNo": "保険証券番号",
+    "thInsurer": "引受会社",
+    "thPremium": "プレミアム",
+    "thPeriod": "期間",
+    "thGttid": "出荷",
+    "pPending": "保留中",
+    "pActive": "アクティブ",
+    "pExpired": "有効期限切れ",
+    "pCancelled": "中止",
+    "fPolicyNo": "保険証券番号",
+    "fInsurer": "引受会社",
+    "fCoverage": "取材範囲",
+    "fCargoValue": "貨物の価値",
+    "fCurrency": "通貨",
+    "fPremium": "プレミアム",
+    "fEffective": "施行日",
+    "fExpiry": "有効期限",
+    "fStatus": "ステータス",
+    "fGttid": "出荷（GTTID／MBL／コンテナ）",
+    "fNotes": "注記",
+    "covMarine": "海洋",
+    "covWarehouse": "倉庫間輸送",
+    "covContingent": "条件付き",
+    "covStock": "在庫処理量",
+    "modeOcean": "海",
+    "modeAir": "空気",
+    "edit": "編集",
+    "delete": "削除",
+    "deleteConfirm": "このポリシーを削除しますか？この操作は元に戻せません。",
+    "policyNoRequired": "保険証券番号の入力が必要です。",
+    "dupPolicyNo": "この保険証券番号はすでに存在しています。",
+    "claimedByYou": "主張された",
+    "unclaimed": "未処理のリード"
   }
 }

@@ -357,6 +357,15 @@
           "签名实时 Webhook 事件推送",
           "EDI 收件箱把 X12 解析为结构化数据"
         ]
+      },
+      {
+        "n": "保险",
+        "d": "经持牌代理安排货物保险——询价、出单、跟踪，一票一单。",
+        "points": [
+          "在线询价",
+          "保单关联货运单",
+          "到期与保障跟踪"
+        ]
       }
     ],
     "tryIt": "进入工作台"
@@ -1518,7 +1527,8 @@
       "executive": "高管",
       "integrations": "集成",
       "team": "团队",
-      "settings": "设置"
+      "settings": "设置",
+      "insurance": "保险"
     },
     "collapse": "收起侧边栏",
     "expand": "展开侧边栏",
@@ -1843,5 +1853,136 @@
     "disclaimer": "仅供估算。实际关税取决于 HTS 归类、原产地、贸易优惠资格及 CBP 裁定。采用这些数据前请与持牌报关行确认。",
     "disclaimerShort": "仅供估算 —— 申报前请与持牌报关行核实。",
     "cta": "获取准确报价"
+  },
+  "insurance": {
+    "eyebrow": "货物保险 · 海运 / 空运",
+    "title": "给每一票货，加一份保障。",
+    "sub": "NIEL COS 为向美国出口的全球贸易商安排货物保险——海运、空运、仓到仓全覆盖。经持牌保险代理出面办理。询价免费，出单之前不收任何费用。",
+    "covEyebrow": "我们可以安排",
+    "covTitle": "按你的出货方式配保障",
+    "coverages": [
+      {
+        "t": "海运货物险",
+        "d": "港到港或门到门，覆盖水渍、碰撞、沉没等海运风险。整柜、拼箱都能保。"
+      },
+      {
+        "t": "仓到仓",
+        "d": "从起运地仓库到目的地仓库全程覆盖，含中转仓储段。"
+      },
+      {
+        "t": "或有险",
+        "d": "承运人责任不够赔时补上，适合货代及其客户。"
+      },
+      {
+        "t": "库存险",
+        "d": "海外仓备货期间的库存保障——FBA、零售分拨、第三方仓都适用。"
+      }
+    ],
+    "bondTitle": "需要海关保证金（Customs Bond）？",
+    "bondDesc": "美国常规进口商的连续保证金，由 Niel Insurance Agency 办理。",
+    "bondCta": "去 nielinsurance.com",
+    "stepsEyebrow": "流程",
+    "stepsTitle": "三步，从询价到保障",
+    "steps": [
+      "提交询价：货值、起运地、目的地。",
+      "专人对接：持牌代理 1 个工作日内回复。",
+      "出单关联：保单自动关联到工作台里的货运单。"
+    ],
+    "formTitle": "免费询价",
+    "formSub": "持牌代理会在 1 个工作日内联系你。不做即时报价——每一票都由人工核保。",
+    "fName": "姓名",
+    "fCompany": "公司",
+    "fEmail": "邮箱",
+    "fPhone": "电话（选填）",
+    "fCargoValue": "货值",
+    "fCurrency": "币种",
+    "fOrigin": "起运地",
+    "fDestination": "目的地",
+    "fMode": "运输方式",
+    "modeOcean": "海运",
+    "modeAir": "空运",
+    "fCoverage": "险种",
+    "fMessage": "货物描述（选填）",
+    "submit": "提交询价",
+    "sending": "提交中…",
+    "done": "已收到！我们会在 1 个工作日内联系你。",
+    "fail": "提交失败，请稍后再试或直接联系我们。",
+    "credEyebrow": "持牌代理",
+    "credTitle": "经持牌保险代理办理",
+    "credBody": "Niel Insurance Agency LLC · Illinois License #3004050191 · New Jersey License #262024174779",
+    "credContact": "732-338-8098 · info@nielinsurance.com · 服务 Illinois / New Jersey",
+    "disclaimer": "保险由持牌代理安排，最终保障范围与条款以保单正本为准。",
+    "ctaTitle": "往美国出货？先把保障配好。",
+    "ctaSub": "告诉我们货值和路线，剩下的交给持牌代理。",
+    "ctaB1": "免费询价",
+    "ctaB2": "估算到岸成本"
+  },
+  "insuranceApp": {
+    "title": "保险",
+    "sub": "询价单处理与保单管理。",
+    "tabQuotes": "询价单",
+    "tabPolicies": "保单",
+    "statNew": "待处理询价",
+    "statActive": "有效保单",
+    "statCovered": "保障中货值",
+    "statExpiring": "30天内到期",
+    "thDate": "日期",
+    "thContact": "联系人",
+    "thCompany": "公司",
+    "thCargo": "货值",
+    "thRoute": "路线",
+    "thMode": "方式",
+    "thCoverage": "险种",
+    "thStatus": "状态",
+    "thActions": "操作",
+    "stNew": "待处理",
+    "stQuoted": "已报价",
+    "stDeclined": "已谢绝",
+    "claim": "认领",
+    "markQuoted": "标为已报价",
+    "markDeclined": "谢绝",
+    "toPolicy": "转保单",
+    "qTitle": "询价单详情",
+    "qPremium": "报价保费",
+    "qNote": "备注",
+    "save": "保存",
+    "cancel": "取消",
+    "saveFailed": "保存失败。",
+    "emptyQuotes": "还没有询价单。把公开保险页面分享出去即可收集询价。",
+    "emptyPolicies": "还没有保单。从询价单转入或手动新增。",
+    "addPolicy": "新增保单",
+    "thPolicyNo": "保单号",
+    "thInsurer": "承保公司",
+    "thPremium": "保费",
+    "thPeriod": "保障期",
+    "thGttid": "关联货运",
+    "pPending": "待生效",
+    "pActive": "有效",
+    "pExpired": "已到期",
+    "pCancelled": "已注销",
+    "fPolicyNo": "保单号",
+    "fInsurer": "承保公司",
+    "fCoverage": "险种",
+    "fCargoValue": "货值",
+    "fCurrency": "币种",
+    "fPremium": "保费",
+    "fEffective": "生效日期",
+    "fExpiry": "到期日期",
+    "fStatus": "状态",
+    "fGttid": "关联货运（GTTID / 提单号 / 柜号）",
+    "fNotes": "备注",
+    "covMarine": "海运货物险",
+    "covWarehouse": "仓到仓",
+    "covContingent": "或有险",
+    "covStock": "库存险",
+    "modeOcean": "海运",
+    "modeAir": "空运",
+    "edit": "编辑",
+    "delete": "删除",
+    "deleteConfirm": "删除这张保单？此操作不可撤销。",
+    "policyNoRequired": "保单号必填。",
+    "dupPolicyNo": "该保单号已存在。",
+    "claimedByYou": "已认领",
+    "unclaimed": "待认领"
   }
 }
