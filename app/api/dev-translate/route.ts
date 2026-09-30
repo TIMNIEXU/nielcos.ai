@@ -19,12 +19,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "bad_request" }, { status: 400 });
   }
   const params = new URLSearchParams();
-  params.set("auth_key", key);
   params.set("source_lang", "EN");
   params.set("target_lang", target);
   for (const t of texts) params.append("text", String(t));
   const res = await fetch("https://api-free.deepl.com/v2/translate", {
     method: "POST",
+    headers: { Authorization: `DeepL-Auth-Key ${key}` },
     body: params,
   });
   if (!res.ok) {
