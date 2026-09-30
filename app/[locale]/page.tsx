@@ -68,10 +68,10 @@ export default async function HomePage({
     desc: t(`entries.items.${i}.desc`),
     cta: t(`entries.items.${i}.cta`),
   }));
-  // GRI-001 V1: five customer entries. Check -> /app/customs for now; V3 re-points it to /classify.
+  // GRI-001 V1: five customer entries. Check -> public /classify (V3 HTS Intelligence).
   const ENTRY_APPS = [
     `/${locale}/landed-cost`,
-    `/${locale}/app/customs`,
+    `/${locale}/classify`,
     `/${locale}/app/logistics`,
     `/${locale}/bond`,
     `/${locale}/insurance`,

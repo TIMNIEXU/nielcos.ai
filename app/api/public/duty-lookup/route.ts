@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { suggestHts } from "@/lib/hts";
+import { suggestHts, matchPga } from "@/lib/hts";
 import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
 
 /* GET /api/public/duty-lookup?hts=95069100&origin=China&material=steel
@@ -35,8 +35,18 @@ export async function GET(req: NextRequest) {
     // MFN schedule is 8-digit; additional-duty rules may be 10-digit, so the
     // full input (up to 10 digits) goes to the duty matcher.
     const duty_suggestions = suggestAdditionalDuties(digits, origin, material, rules);
+    // GRI-001 V3: PGA flags for the public /classify page (same rule table as the workbench).
+    let pga_flags: { agency: string; agency_cn: string; note: string }[] = [];
+    try {
+      const { data: pgaRules } = await sb
+        .from("pga_rules")
+        .select("hts_prefix, agency, agency_cn, note");
+      pga_flags = matchPga(htsNo, (pgaRules ?? []) as any[]).map((r) => ({
+        agency: r.agency, agency_cn: r.agency_cn, note: r.note,
+      }));
+    } catch { /* PGA is advisory enrichment; never break the lookup */ }
     if (!row)
-      return NextResponse.json({ found: false, hts_no: htsNo, duty_suggestions });
+      return NextResponse.json({ found: false, hts_no: htsNo, duty_suggestions, pga_flags });
     return NextResponse.json({
       found: true,
       hts_no: row.hts_no,
@@ -45,6 +55,7 @@ export async function GET(req: NextRequest) {
       rate_text: row.rate_text,
       revision: row.revision,
       duty_suggestions,
+      pga_flags,
     });
   }
 

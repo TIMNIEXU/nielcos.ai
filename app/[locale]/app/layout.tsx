@@ -13,7 +13,7 @@ type Props = {
 const SHELL_KEYS = [
   "nav.dashboard", "nav.trades", "nav.shipments", "nav.customs",
   "nav.documents", "nav.products", "nav.suppliers", "nav.logistics",
-  "nav.finance", "nav.insurance", "nav.compliance", "nav.assistant", "nav.tower",
+  "nav.finance", "nav.insurance", "nav.quotes", "nav.compliance", "nav.assistant", "nav.tower",
   "nav.executive", "nav.integrations", "nav.team", "nav.settings",
   "collapse", "expand", "openMenu", "closeMenu", "workspace",
   "search.placeholder", "search.noResults", "search.searching",
@@ -36,6 +36,7 @@ const NAV_DEFS: { key: string; href: string; icon: string; ownerOnly?: boolean }
   { key: "logistics", href: "/app/logistics", icon: "logistics" },
   { key: "finance", href: "/app/finance", icon: "finance" },
   { key: "insurance", href: "/app/insurance", icon: "insurance" },
+  { key: "quotes", href: "/app/quotes", icon: "quotes" },
   { key: "compliance", href: "/app/compliance", icon: "compliance" },
   { key: "assistant", href: "/app/assistant", icon: "assistant" },
   { key: "tower", href: "/app/tower", icon: "tower" },

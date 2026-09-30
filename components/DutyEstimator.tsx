@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { isZhLocale } from "@/lib/locale";
+import FunnelCtas from "./FunnelCtas";
 
 /* Flexport-style US import duty simulator (public, no login).
    Left: calculator — product/HTS search, shipment value, origin, mode,
@@ -604,6 +605,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
         <p className="mt-6 rounded-xl bg-amber-50 p-4 text-[12.5px] leading-relaxed text-amber-800">
           {t.disclaimer}
         </p>
+        <FunnelCtas locale={locale} hts={hts} description={query} />
         <a
           href={`/${locale}/contact`}
           className="mt-4 inline-flex rounded-full bg-brand px-6 py-2.5 text-[14px] font-bold text-white hover:bg-brand-dark"
