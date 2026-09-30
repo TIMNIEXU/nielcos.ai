@@ -1634,7 +1634,7 @@
     "authSub": "Every /api/v1 request carries an API key.",
     "authP1": "Keys look like niel_sk_… and are issued in your workspace under Integrations → API keys. The raw key is shown once — only its SHA-256 hash is stored, and it can never be recovered later.",
     "authP2": "Send it as an Authorization: Bearer header on every request.",
-    "authP3": "Scopes are read and write. The public read endpoints below require the read scope.",
+    "authP3": "Scopes are read and write. The public read endpoints below require the read scope. Write endpoints are coming soon.",
     "authNote": "Create and revoke keys anytime in App → Integrations. Revoked keys stop working immediately.",
     "restTitle": "REST endpoints",
     "restSub": "Base URL: https://www.nielcos.ai",

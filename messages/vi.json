@@ -1659,7 +1659,7 @@
     "authSub": "Mỗi yêu cầu /api/v1 đều đi kèm với một khóa API.",
     "authP1": "Các khóa có dạng như niel_sk_… và được cấp trong không gian làm việc của bạn tại mục Tích hợp → Khóa API. Khóa gốc chỉ được hiển thị một lần — chỉ có giá trị băm SHA-256 của nó được lưu trữ, và không thể khôi phục lại sau này.",
     "authP2": "Gửi nó dưới dạng tiêu đề Authorization: Bearer trong mỗi yêu cầu.",
-    "authP3": "Phạm vi có thể là đọc hoặc ghi. Các điểm cuối đọc công khai dưới đây yêu cầu phạm vi đọc.",
+    "authP3": "Phạm vi có thể là đọc hoặc ghi. Các điểm cuối đọc công khai dưới đây yêu cầu phạm vi đọc. Các điểm cuối ghi sẽ sớm ra mắt.",
     "authNote": "Bạn có thể tạo và thu hồi khóa bất cứ lúc nào trong phần Ứng dụng → Tích hợp. Các khóa bị thu hồi sẽ ngừng hoạt động ngay lập tức.",
     "restTitle": "Các điểm cuối REST",
     "restSub": "URL cơ sở: https://www.nielcos.ai",

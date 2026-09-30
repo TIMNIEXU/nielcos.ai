@@ -1659,7 +1659,7 @@
     "authSub": "每個 /api/v1 請求都要帶 API Key。",
     "authP1": "Key 形如 niel_sk_…，在工作臺「集成 → API Key」中籤發。原始 Key 只顯示一次——服務器只存它的 SHA-256 哈希，之後無法找回。",
     "authP2": "每個請求都帶 Authorization: Bearer 請求頭。",
-    "authP3": "權限範圍有 read 和 write。下面公開的讀取介面需要 read 權限。",
+    "authP3": "權限範圍有 read 和 write。下面公開的讀取介面需要 read 權限。寫入介面即將開放。",
     "authNote": "隨時在工作臺 → 集成裏建立或吊銷 Key。吊銷後立即失效。",
     "restTitle": "REST 介面",
     "restSub": "Base URL：https://www.nielcos.ai",
