@@ -7,13 +7,6 @@
 --
 -- Run AFTER insurance_v1.sql in the Supabase SQL editor, once.
 -- Re-runnable: every step is guarded (IF NOT EXISTS / DO blocks).
---
--- Business facts behind this change (from the agency's surety partner):
--- Trade Risk Guaranty (TRG) places the bonds; Niel Insurance Agency LLC
--- takes a 10% commission split. $50,000 continuous-bond pricing on hand:
--- 1yr $325 (intro) / $413 (renewal), 2yr $563 / $678, 3yr $750 / $921,
--- 5yr $1,125 / $1,270. Bonds over $50,000 need upfront financials
--- (CPA-reviewed statements or tax return + YTD balance sheet & P&L).
 -- ============================================================
 
 -- VERIFY (before): expect zero bond_* columns
