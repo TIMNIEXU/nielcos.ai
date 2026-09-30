@@ -4,7 +4,7 @@ import { authV1 } from "@/lib/integrations/v1auth";
 
 const noAuth = () =>
   NextResponse.json(
-    { error: "unauthorized", hint: "Send Authorization: Bearer niel_sk_..." },
+    { error: "unauthorized", detail: "Send Authorization: Bearer niel_sk_..." },
     { status: 401 }
   );
 
