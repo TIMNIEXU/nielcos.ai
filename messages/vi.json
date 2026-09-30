@@ -370,7 +370,10 @@
     "login": "Đăng nhập",
     "workspace": "Không gian làm việc",
     "regulatory": "Quy định",
-    "landedCost": "Chi phí nhập khẩu"
+    "landedCost": "Chi phí nhập khẩu",
+    "developers": "Các nhà phát triển",
+    "insurance": "Bảo hiểm",
+    "resources": "Tài nguyên"
   },
   "platform": {
     "cta": {
@@ -1425,5 +1428,364 @@
     "cd_rest-api": "Truy cập các lô hàng và tài liệu bằng khóa API có phạm vi giới hạn. Phiên bản được định nghĩa tại /api/v1.",
     "cn_excel-import": "Nhập dữ liệu từ Excel",
     "cd_excel-import": "Mỗi mô-đun hiện đã hỗ trợ tải lên tệp Excel kèm tính năng phát hiện trùng lặp."
+  },
+  "ui": {
+    "toast": {
+      "close": "Bỏ qua thông báo"
+    },
+    "drawer": {
+      "close": "Đóng bảng điều khiển"
+    },
+    "confirm": {
+      "title": "Xin vui lòng xác nhận",
+      "deleteTitle": "Xóa mục này chứ?",
+      "deleteBody": "Xóa \"%NAME%\"? Thao tác này không thể hoàn tác.",
+      "confirm": "Xác nhận",
+      "delete": "Xóa",
+      "cancel": "Hủy"
+    },
+    "pagination": {
+      "prev": "Trước đó",
+      "next": "Tiếp theo",
+      "perPage": "Mỗi trang",
+      "page": "Trang",
+      "summary": "%A%–%B% trong %C%"
+    },
+    "empty": {
+      "noResults": "Không tìm thấy kết quả nào"
+    },
+    "commandbar": {
+      "searchPlaceholder": "Tìm kiếm…",
+      "clear": "Xóa kết quả tìm kiếm"
+    },
+    "form": {
+      "requiredMark": "(bắt buộc)"
+    }
+  },
+  "shell": {
+    "nav": {
+      "dashboard": "Bảng điều khiển",
+      "trades": "Ngành nghề",
+      "shipments": "Các lô hàng",
+      "customs": "Hải quan",
+      "documents": "Tài liệu",
+      "products": "Sản phẩm",
+      "suppliers": "Nhà cung cấp",
+      "logistics": "Hậu cần",
+      "finance": "Tài chính",
+      "compliance": "Tuân thủ",
+      "assistant": "Trợ lý AI",
+      "tower": "Tháp điều khiển",
+      "executive": "Giám đốc điều hành",
+      "integrations": "Tích hợp",
+      "team": "Đội",
+      "settings": "Cài đặt"
+    },
+    "collapse": "Thu gọn thanh bên",
+    "expand": "Mở rộng thanh bên",
+    "openMenu": "Mở thanh điều hướng",
+    "closeMenu": "Đóng thanh điều hướng",
+    "workspace": "Không gian làm việc",
+    "search": {
+      "placeholder": "Tìm kiếm các giao dịch, lô hàng, mục nhập, tài liệu… (⌘K)",
+      "noResults": "Không tìm thấy kết quả nào cho %Q%",
+      "searching": "Đang tìm kiếm…",
+      "groupTrade": "Ngành nghề",
+      "groupShipment": "Các lô hàng",
+      "groupEntry": "Tờ khai hải quan",
+      "groupDocument": "Tài liệu"
+    },
+    "quick": {
+      "title": "Các thao tác nhanh",
+      "newTrade": "Giao dịch mới",
+      "newShipment": "Lô hàng mới",
+      "uploadDocument": "Tải lên tài liệu",
+      "newEntry": "Tờ khai hải quan mới"
+    },
+    "bell": {
+      "title": "Thông báo",
+      "empty": "Bạn đã cập nhật đầy đủ thông tin — không có thông báo nào cả.",
+      "high": "Cao",
+      "medium": "Trung bình",
+      "low": "Thấp"
+    },
+    "menu": {
+      "signOut": "Đăng xuất",
+      "signedInAs": "Đã đăng nhập với tên người dùng %EMAIL%"
+    },
+    "crumbs": {
+      "dashboard": "Bảng điều khiển"
+    }
+  },
+  "dash": {
+    "kpiInTransit": "Các lô hàng đang trên đường vận chuyển",
+    "kpiPayables": "Các khoản phải trả đến hạn",
+    "kpiDutyExposure": "Mức độ tiếp xúc với rủi ro",
+    "kpiAttention": "Cần chú ý",
+    "secTrend": "Xu hướng chi tiêu cho các khoản chi phí bắt buộc",
+    "secStatus": "Tình trạng lô hàng",
+    "secAlerts": "Cảnh báo",
+    "secTasks": "Nhiệm vụ",
+    "secSummary": "Bản tin hàng ngày",
+    "secModules": "Các mô-đun",
+    "alertEmpty": "Mọi thứ đều ổn — hiện tại không có cảnh báo nào.",
+    "taskEmpty": "Không có việc gì phải lo — hãy tận hưởng sự yên bình.",
+    "viewAll": "Xem tất cả",
+    "noData": "Chưa có dữ liệu",
+    "summary1": "Bạn có %INTRANSIT% lô hàng đang vận chuyển, trong đó %ATTENTION% lô hàng cần được chú ý.",
+    "summary2": "Tổng số tiền phải trả đang chờ xử lý là %PAYABLE%; mức thuế dự kiến phải nộp là khoảng %DUTY%.",
+    "taskOverduePayable": "%PAYEE%: Số tiền %AMOUNT% đã quá hạn %DAYS% ngày",
+    "taskMissedAppt": "Bỏ lỡ cuộc hẹn tại %WAREHOUSE% (%CONTAINER%)",
+    "taskDocsMissing": "%GTTID% sắp đến — thiếu tài liệu",
+    "sevHigh": "Cao",
+    "sevMedium": "Trung bình",
+    "sevLow": "Thấp",
+    "alDemurrageT": "Rủi ro phí lưu kho",
+    "alDemurrageOverdueD": "Thời gian miễn phí của Container %CONTAINER% đã hết được %DAYS% ngày",
+    "alDemurrageSoonD": "Thời gian miễn phí của Container %CONTAINER% sẽ kết thúc sau %DAYS% ngày",
+    "alPayableT": "Các khoản phải trả quá hạn",
+    "alPayableOverdueD": "%PAYEE%: Số tiền %AMOUNT% đã quá hạn %DAYS% ngày",
+    "alApptT": "Bỏ lỡ cuộc hẹn",
+    "alApptMissedD": "Bỏ lỡ cuộc hẹn tại %WAREHOUSE% (%CONTAINER%)",
+    "alHoldT": "Lô hàng đang bị tạm giữ",
+    "alHoldD": "%GTTID% đang bị tạm giữ",
+    "alStaleT": "Chưa có bản cập nhật gần đây",
+    "alStaleD": "%GTTID% đã không có bản cập nhật nào trong %DAYS% ngày",
+    "mixedCurrencies": "các loại tiền tệ hỗn hợp"
+  },
+  "aig": {
+    "lookup": "Tra cứu dữ liệu",
+    "forecast": "Dự báo",
+    "recommendation": "Khuyến nghị",
+    "disclaimer": "Chỉ mang tính tham khảo — vui lòng kiểm tra lại trước khi nộp."
+  },
+  "htsrev": {
+    "cardTitle": "Đề xuất của HTS",
+    "confidence": "Sự tự tin",
+    "rationale": "Cơ sở",
+    "alternatives": "Các mã vùng lân cận",
+    "needsReview": "Cần xem xét lại",
+    "adopted": "Đã được thông qua",
+    "rejected": "Bị từ chối",
+    "adopt": "Nhận nuôi",
+    "reject": "Từ chối",
+    "notePh": "Ghi chú đánh giá…",
+    "submit": "Gửi đánh giá",
+    "rationaleRule": "Phù hợp với %RULE%",
+    "ruleKeyword": "phù hợp từ khóa · USITC HTS 2026 Bản sửa đổi 19",
+    "ruleExact10": "Khớp chính xác 10 chữ số · các quy định về thuế bổ sung",
+    "ruleExact8": "Khớp mã 8 chữ số · USITC HTS 2026 Bản sửa đổi 19",
+    "pendingMigration": "Đánh giá đang chờ chuyển đổi: bảng hts_review_decisions chưa được tạo.",
+    "reviewSaved": "Đánh giá đã được lưu.",
+    "reviewFailed": "Không thể lưu đánh giá.",
+    "noSuggestion": "Hiện chưa có đề xuất nào cho dòng này.",
+    "reviewerLabel": "Người đánh giá"
+  },
+  "mkt2": {
+    "workflowEyebrow": "Cách thức hoạt động",
+    "workflowTitle": "Một quy trình liền mạch, từ nhà máy đến khi giao hàng cuối cùng",
+    "workflowSub": "Mỗi lô hàng đều trải qua sáu giai đoạn giống nhau — mỗi giai đoạn đều liên kết với nhau và đều có thể theo dõi được.",
+    "wf": [
+      {
+        "t": "Nguồn",
+        "d": "Các sản phẩm và nhà cung cấp đã được đánh giá, chấm điểm và lập hồ sơ trước khi bạn mua hàng."
+      },
+      {
+        "t": "Tàu",
+        "d": "Vận chuyển đường biển, đường hàng không và vận chuyển nội địa được theo dõi thông qua container và vận đơn gốc."
+      },
+      {
+        "t": "Xóa",
+        "d": "Việc phân loại theo HTS, ước tính thuế nhập khẩu và kiểm tra PGA phải được thực hiện trước khi CBP yêu cầu."
+      },
+      {
+        "t": "Bảo vệ",
+        "d": "Các gói bảo hiểm hàng hóa cho mọi tuyến vận chuyển, được sắp xếp song song với việc vận chuyển hàng hóa."
+      },
+      {
+        "t": "Giao hàng",
+        "d": "Các chuyến vận chuyển nội địa, lịch hẹn tại kho và chứng từ xác nhận giao hàng được hiển thị trên cùng một giao diện."
+      },
+      {
+        "t": "Đối chiếu",
+        "d": "Chi phí nhập khẩu thực tế cho từng SKU, các khoản phải trả và dự báo thuế nhập khẩu được tổng hợp trong một sổ cái duy nhất."
+      }
+    ],
+    "demoEyebrow": "Hỏi NIEL AI",
+    "demoTitle": "Các câu hỏi về thương mại, được giải đáp kèm theo nguồn tham khảo",
+    "demoSub": "Chính trợ lý đó đang hoạt động ngay trong không gian làm việc của bạn — hãy thử đặt một câu hỏi dưới đây.",
+    "chips": [
+      {
+        "q": "Mức thuế áp dụng cho mã HTS 9506.91.00 từ Trung Quốc là bao nhiêu?",
+        "a": "Thêm 2 chữ số cuối cùng: 9506.91.0010 áp dụng mức thuế 7,5% theo Mục 301 (Danh mục 4A) đối với hàng hóa có xuất xứ từ Trung Quốc, ngoài mức thuế MFN. Hãy đối chiếu với bảng HTS hiện hành của USITC trước khi nộp hồ sơ."
+      },
+      {
+        "q": "Những quy định kiểm tra PGA nào áp dụng cho lô hàng của tôi?",
+        "a": "Mỗi lô hàng đều được rà soát dựa trên 9 cơ quan thuộc PGA — FDA, FSIS, APHIS, EPA, FCC, CPSC, DOT, ATF, TTB — theo 23 quy định, trước khi CBP tiến hành kiểm tra."
+      },
+      {
+        "q": "Rủi ro về thuế đối với hàng hóa đang trong quá trình vận chuyển của tôi nằm ở đâu?",
+        "a": "Chế độ xem “Executive” sắp xếp các lô hàng đang vận chuyển của bạn theo mức độ rủi ro về thuế, nhờ đó những rủi ro lớn nhất sẽ được hiển thị trước tiên."
+      }
+    ],
+    "demoCta": "Thực hiện ước tính chi phí nhập khẩu trọn gói",
+    "demoNote": "Các câu trả lời trong bản demo chỉ mang tính minh họa — không gian làm việc luôn trích dẫn các nguồn trực tiếp.",
+    "devEyebrow": "Các nhà phát triển",
+    "devTitle": "Hãy thêm NIEL COS vào bộ sưu tập của bạn",
+    "devSub": "REST API, webhooks và hộp thư đến EDI — được thiết kế dành riêng cho các hệ thống mà bạn đang vận hành.",
+    "devApiT": "Giao diện lập trình ứng dụng REST (REST API)",
+    "devApiD": "Gửi dữ liệu và tài liệu qua HTTPS, sử dụng các khóa API có phạm vi giới hạn.",
+    "devWhT": "Webhooks",
+    "devWhD": "Các sự kiện thời gian thực có chữ ký: quá trình phân tích đã hoàn tất, các nước đi được tạo và thay đổi.",
+    "devEdiT": "Hộp thư đến EDI",
+    "devEdiD": "Các tài liệu số 850, 856 và 810 đã được phân tích thành dữ liệu có cấu trúc.",
+    "devCta": "Đọc tài liệu API",
+    "resEyebrow": "Tài nguyên",
+    "resTitle": "Hãy bắt đầu từ những gì bạn cần",
+    "resSub": "Các công cụ và tài liệu tham khảo miễn phí — không cần đăng ký tài khoản.",
+    "resRegT": "Cập nhật về quy định",
+    "resRegD": "Các thông báo về thuế quan và thương mại trên Công báo Liên bang, được dịch tự động hàng tuần.",
+    "resLcT": "Công cụ ước tính chi phí nhập khẩu",
+    "resLcD": "MFN, 232, 301, MPF và HMF trên cùng một trang — mức thuế USITC 2026 hiện hành.",
+    "resDevT": "Tài liệu dành cho nhà phát triển",
+    "resDevD": "Khóa API, webhook và EDI — tích hợp chỉ trong một buổi chiều.",
+    "resOpen": "Mở"
+  },
+  "devdocs": {
+    "eyebrow": "Các nhà phát triển",
+    "title": "Tài liệu về API",
+    "sub": "Đọc thông tin lô hàng và tài liệu, nhận sự kiện và trao đổi dữ liệu EDI — qua HTTPS, bằng các khóa có phạm vi giới hạn.",
+    "authTitle": "Xác thực",
+    "authSub": "Mỗi yêu cầu /api/v1 đều đi kèm với một khóa API.",
+    "authP1": "Các khóa có dạng như niel_sk_… và được cấp trong không gian làm việc của bạn tại mục Tích hợp → Khóa API. Khóa gốc chỉ được hiển thị một lần — chỉ có giá trị băm SHA-256 của nó được lưu trữ, và không thể khôi phục lại sau này.",
+    "authP2": "Gửi nó dưới dạng tiêu đề Authorization: Bearer trong mỗi yêu cầu.",
+    "authP3": "Phạm vi có thể là đọc hoặc ghi. Các điểm cuối đọc công khai dưới đây yêu cầu phạm vi đọc.",
+    "authNote": "Bạn có thể tạo và thu hồi khóa bất cứ lúc nào trong phần Ứng dụng → Tích hợp. Các khóa bị thu hồi sẽ ngừng hoạt động ngay lập tức.",
+    "restTitle": "Các điểm cuối REST",
+    "restSub": "URL cơ sở: https://www.nielcos.ai",
+    "ep1m": "NHẬN",
+    "ep1p": "/api/v1/lô-hàng",
+    "ep1d": "Liệt kê các lô hàng của chủ sở hữu chính, bắt đầu từ lô hàng được cập nhật gần đây nhất.",
+    "ep2m": "NHẬN",
+    "ep2p": "/api/v1/shipments/'{id}'",
+    "ep2d": "Một lô hàng do GTTID vận chuyển, số vận đơn gốc (B/L) hoặc số container. Trả về mã lỗi 404 nếu không tìm thấy kết quả khớp nào.",
+    "ep3m": "NHẬN",
+    "ep3p": "/api/v1/tài-liệu",
+    "ep3d": "Siêu dữ liệu tài liệu của công ty chủ sở hữu khóa (100 bản gần nhất), bao gồm trạng thái phân tích. Các tệp tải xuống được lưu trữ trong không gian làm việc.",
+    "respNote": "Các phản hồi có định dạng JSON. Các đối tượng lô hàng bao gồm gttid, mbl_no, container_number, status, origin, destination, current_location, eta và updated_at. Các lỗi được biểu diễn dưới dạng { error, detail? } kèm theo mã trạng thái HTTP.",
+    "whTitle": "Webhooks",
+    "whSub": "Đăng ký một URL cho mỗi sự kiện trong Ứng dụng → Tích hợp → Webhooks. Các yêu cầu gửi dữ liệu JSON qua phương thức POST trong vòng vài giây, và mỗi yêu cầu đều được ghi lại theo từng điểm cuối.",
+    "ev1": "document.parsed",
+    "ev1d": "Một tài liệu đã hoàn tất quá trình phân tích bằng trí tuệ nhân tạo.",
+    "ev2": "drayage_move.được_tạo",
+    "ev2d": "Một chuyến vận chuyển hàng hóa bằng xe tải đã được tạo ra.",
+    "ev3": "drayage_move.trạng_thái_đã_thay_đổi",
+    "ev3d": "Một chuyến vận chuyển bằng xe tải đã thay đổi trạng thái.",
+    "sigTitle": "Xác minh chữ ký",
+    "sigP1": "Mỗi lần gửi dữ liệu đều chứa các trường X-Niel-Event (tên sự kiện) và X-Niel-Signature: sha256=<hex>. Chữ ký này là HMAC-SHA256 của nội dung yêu cầu thô, được tạo bằng khóa bí mật của điểm cuối (whsec_…).",
+    "sigP2": "So sánh trong thời gian hằng số và chỉ chấp nhận các đối tượng có chữ ký khớp — sau đó xử lý JSON { event, delivered_at, data }.",
+    "ediTitle": "Hộp thư đến EDI",
+    "ediSub": "Giao dịch EDI theo cách mà các đối tác của bạn đang sử dụng.",
+    "ediP1": "Dán hoặc tải lên tệp ANSI X12 trong Ứng dụng → Tích hợp → EDI. Hộp thư đến sẽ tự động nhận diện các loại 850 (đơn đặt hàng), 856 (thông báo vận chuyển / ASN) và 810 (hóa đơn), đồng thời phân tích từng loại thành dữ liệu có cấu trúc bao gồm tiêu đề, các dòng và tổng số.",
+    "ediP2": "Dung lượng tải lên tối đa là 2 MB cho mỗi tài liệu. Mọi tài liệu vượt quá giới hạn này sẽ được ghi nhận là “không xác định”, đồng thời văn bản gốc sẽ được giữ nguyên để xem xét.",
+    "rateTitle": "Giới hạn tốc độ",
+    "rateP1": "Không có giới hạn theo phút nào được công bố — nguyên tắc sử dụng hợp lý được áp dụng. Bạn đang có kế hoạch duy trì lưu lượng truy cập lớn trong thời gian dài? Hãy liên hệ với chúng tôi trước để chúng tôi có thể chuẩn bị nguồn lực phù hợp.",
+    "ctaTitle": "Nhận khóa API của bạn",
+    "ctaSub": "Các khóa được lưu trữ trong không gian làm việc của bạn — hãy tạo một khóa chỉ trong chưa đầy một phút.",
+    "ctaBtn": "Tích hợp mở"
+  },
+  "team": {
+    "title": "Đội",
+    "sub": "Ai là thành viên trong không gian làm việc của công ty bạn?",
+    "companyLabel": "Công ty",
+    "yourRole": "Vai trò của bạn",
+    "memberSince": "Thành viên từ",
+    "roleOwner": "Chủ sở hữu",
+    "roleMember": "Thành viên",
+    "membersTitle": "Thành viên",
+    "membersSub": "Tất cả những người có quyền truy cập vào không gian làm việc của công ty này.",
+    "membersNote": "Thông tin thành viên là riêng tư — bạn chỉ có thể xem mục thông tin của chính mình ở phía dưới.",
+    "thMember": "Thành viên",
+    "thRole": "Vai trò",
+    "thJoined": "Đã tham gia",
+    "you": "Bạn",
+    "inviteTitle": "Mời thành viên",
+    "inviteP1": "Mỗi tài khoản mới đăng ký sẽ tự động tạo không gian làm việc riêng cho công ty của mình — hiện tại chưa có cách nào để người dùng tự tham gia vào một công ty đã có sẵn.",
+    "inviteP2": "Để thêm một người vào công ty này, hãy liên hệ với chúng tôi và chúng tôi sẽ thực hiện thủ tục này cho bạn.",
+    "inviteCta": "Liên hệ với chúng tôi",
+    "rolesNote": "Việc thay đổi vai trò (chủ sở hữu ↔ thành viên) không khả dụng trong phiên bản hiện tại — chức năng quản trị nhóm chỉ cho phép xem.",
+    "navPill": "Đội"
+  },
+  "trades": {
+    "title": "Ngành nghề",
+    "sub": "Một mã giao dịch (Trade ID) liên kết các đơn đặt hàng (PO), hóa đơn, thanh toán, cước vận chuyển, thủ tục hải quan và chi phí lại với nhau.",
+    "new": "Giao dịch mới",
+    "tradeNo": "Mã giao dịch",
+    "status": "Tình trạng",
+    "route": "Tuyến đường",
+    "value": "Giá trị",
+    "updated": "Đã cập nhật",
+    "searchPh": "Tìm kiếm mã giao dịch hoặc tên…",
+    "allStatuses": "Tất cả các trạng thái",
+    "stDraft": "Bản nháp",
+    "stActive": "Hoạt động",
+    "stCompleted": "Đã hoàn thành",
+    "stCancelled": "Đã hủy",
+    "empty": "Chưa có giao dịch nào",
+    "emptySub": "Tạo giao dịch đầu tiên của bạn để gộp các lô hàng, tài liệu và chi phí vào một mã ID duy nhất.",
+    "shipments": "Các lô hàng",
+    "documents": "Tài liệu",
+    "wTitle": "Giao dịch mới",
+    "wSub": "Ba bước — kiến thức cơ bản, các buổi tiệc, ôn tập.",
+    "stepBasics": "Kiến thức cơ bản",
+    "stepParties": "Các bên",
+    "stepReview": "Đánh giá",
+    "fTitle": "Tiêu đề",
+    "fTitlePh": "Ví dụ: Quần áo mùa thu — Từ Thượng Hải đến Chicago",
+    "fIncoterm": "Incoterm",
+    "fOrigin": "Quốc gia xuất xứ",
+    "fDest": "Quốc gia đích",
+    "fBuyer": "Người mua",
+    "fSupplier": "Nhà cung cấp",
+    "fCurrency": "Đơn vị tiền tệ",
+    "fValue": "Tổng giá trị",
+    "fDesc": "Mô tả",
+    "fDescPh": "Hàng hóa, số lượng, ghi chú…",
+    "back": "Quay lại",
+    "next": "Tiếp theo",
+    "create": "Tạo giao dịch",
+    "creating": "Đang tạo…",
+    "errTitle": "Vui lòng đặt tên cho giao dịch này.",
+    "tabOverview": "Tổng quan",
+    "tabCommercial": "Thương mại",
+    "tabPayments": "Thanh toán",
+    "tabLogistics": "Hậu cần",
+    "tabCustoms": "Hải quan",
+    "tabDocuments": "Tài liệu",
+    "tabCosts": "Chi phí",
+    "tabActivity": "Hoạt động",
+    "linkShipment": "Liên kết lô hàng",
+    "gttidPh": "Nhập mã GTTID, ví dụ: NIEL-2026-000123",
+    "link": "Liên kết",
+    "unlink": "Hủy liên kết",
+    "linked": "Các lô hàng liên quan",
+    "noShipments": "Chưa có lô hàng nào được liên kết.",
+    "noDocuments": "Chưa có tài liệu nào được liên kết.",
+    "noEntries": "Chưa có tờ khai hải quan nào được liên kết.",
+    "noPayables": "Hiện tại chưa có khoản phải trả nào cho giao dịch này.",
+    "noSheets": "Hiện vẫn chưa có bảng chi phí cho giao dịch này.",
+    "noActivity": "Chưa có hoạt động nào.",
+    "commercialNote": "Các bên và điều khoản được áp dụng cho giao dịch, do đó mọi lô hàng được tạo ra trong khuôn khổ giao dịch đó đều kế thừa các điều khoản này.",
+    "deleteTrade": "Xóa giao dịch",
+    "confirmDelete": "Xóa giao dịch %NO%? Các lô hàng, tài liệu và chi phí liên quan vẫn được lưu giữ trong hệ thống; chỉ có nhóm giao dịch bị xóa.",
+    "deleted": "Giao dịch đã bị xóa.",
+    "activate": "Đánh dấu là đang hoạt động",
+    "complete": "Mark đã hoàn thành",
+    "migrationNeeded": "Các bàn giao dịch vẫn chưa được lắp đặt.",
+    "migrationSub": "Yêu cầu quản trị viên của bạn chạy tập lệnh `supabase/trades.sql`, sau đó làm mới trang.",
+    "linkFailed": "Không thể liên kết lô hàng đó — hãy kiểm tra mã GTTID.",
+    "overview": "Tổng quan về thương mại",
+    "terms": "Điều khoản",
+    "parties": "Các bên"
   }
 }

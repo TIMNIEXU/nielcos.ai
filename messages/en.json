@@ -1642,7 +1642,7 @@
     "ep1p": "/api/v1/shipments",
     "ep1d": "List the key owner's shipments, most recently updated first.",
     "ep2m": "GET",
-    "ep2p": "/api/v1/shipments/{id}",
+    "ep2p": "/api/v1/shipments/'{id}'",
     "ep2d": "One shipment by GTTID, master B/L number, or container number. Returns 404 when nothing matches.",
     "ep3m": "GET",
     "ep3p": "/api/v1/documents",

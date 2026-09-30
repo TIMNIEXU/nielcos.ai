@@ -370,7 +370,10 @@
     "login": "로그인",
     "workspace": "작업 공간",
     "regulatory": "규제",
-    "landedCost": "도착 가격"
+    "landedCost": "도착 가격",
+    "developers": "개발자",
+    "insurance": "보험",
+    "resources": "자료"
   },
   "platform": {
     "cta": {
@@ -1425,5 +1428,364 @@
     "cd_rest-api": "범위가 지정된 API 키를 사용하여 발송 내역 및 문서를 조회합니다. /api/v1에서 버전 관리됩니다.",
     "cn_excel-import": "Excel 가져오기",
     "cd_excel-import": "모든 모듈은 이미 중복 검사 기능이 포함된 Excel 파일 업로드를 지원합니다."
+  },
+  "ui": {
+    "toast": {
+      "close": "알림 닫기"
+    },
+    "drawer": {
+      "close": "패널 닫기"
+    },
+    "confirm": {
+      "title": "확인해 주세요",
+      "deleteTitle": "이 항목을 삭제하시겠습니까?",
+      "deleteBody": "\"%NAME%\"을(를) 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+      "confirm": "확인",
+      "delete": "삭제",
+      "cancel": "취소"
+    },
+    "pagination": {
+      "prev": "이전",
+      "next": "다음",
+      "perPage": "페이지당",
+      "page": "페이지",
+      "summary": "%C%의 %A%–%B%"
+    },
+    "empty": {
+      "noResults": "결과가 없습니다."
+    },
+    "commandbar": {
+      "searchPlaceholder": "검색…",
+      "clear": "검색 내용 지우기"
+    },
+    "form": {
+      "requiredMark": "(필수)"
+    }
+  },
+  "shell": {
+    "nav": {
+      "dashboard": "대시보드",
+      "trades": "거래",
+      "shipments": "출하량",
+      "customs": "관세",
+      "documents": "문서",
+      "products": "제품",
+      "suppliers": "공급업체",
+      "logistics": "물류",
+      "finance": "금융",
+      "compliance": "규정 준수",
+      "assistant": "AI 비서",
+      "tower": "관제탑",
+      "executive": "경영진",
+      "integrations": "연동 기능",
+      "team": "팀",
+      "settings": "설정"
+    },
+    "collapse": "사이드바 접기",
+    "expand": "사이드바 펼치기",
+    "openMenu": "탐색 메뉴 열기",
+    "closeMenu": "탐색 메뉴 닫기",
+    "workspace": "작업 공간",
+    "search": {
+      "placeholder": "거래 내역, 선적 내역, 입력 내역, 문서 등을 검색합니다… (⌘K)",
+      "noResults": "%Q%에 대한 검색 결과가 없습니다.",
+      "searching": "검색 중…",
+      "groupTrade": "거래",
+      "groupShipment": "출하량",
+      "groupEntry": "세관 신고서",
+      "groupDocument": "문서"
+    },
+    "quick": {
+      "title": "빠른 조치",
+      "newTrade": "새로운 거래",
+      "newShipment": "새로운 입고",
+      "uploadDocument": "문서 업로드",
+      "newEntry": "새로운 통관 신고"
+    },
+    "bell": {
+      "title": "알림",
+      "empty": "이제 모든 내용을 확인하셨습니다. 알림은 없습니다.",
+      "high": "높음",
+      "medium": "중간",
+      "low": "낮음"
+    },
+    "menu": {
+      "signOut": "로그아웃",
+      "signedInAs": "%EMAIL%으로 로그인했습니다."
+    },
+    "crumbs": {
+      "dashboard": "대시보드"
+    }
+  },
+  "dash": {
+    "kpiInTransit": "운송 중인 화물",
+    "kpiPayables": "지급 예정 채무",
+    "kpiDutyExposure": "직무 노출",
+    "kpiAttention": "주의가 필요함",
+    "secTrend": "관세 지출 동향",
+    "secStatus": "배송 현황",
+    "secAlerts": "알림",
+    "secTasks": "작업",
+    "secSummary": "일일 브리핑",
+    "secModules": "모듈",
+    "alertEmpty": "모든 상황이 정상입니다. 현재 경보가 발령된 상태는 아닙니다.",
+    "taskEmpty": "할 일이 없으니 — 평온한 시간을 만끽하세요.",
+    "viewAll": "모두 보기",
+    "noData": "아직 데이터가 없습니다",
+    "summary1": "%INTRANSIT%건의 배송 중인 화물이 있으며, 그중 %ATTENTION%건이 확인이 필요합니다.",
+    "summary2": "미지급금 총액은 %PAYABLE%이며, 예상 관세 부담액은 약 %DUTY%입니다.",
+    "taskOverduePayable": "%PAYEE%: %AMOUNT%이(가) %DAYS%일 연체되었습니다.",
+    "taskMissedAppt": "%WAREHOUSE% 예약 미이행 (%CONTAINER%)",
+    "taskDocsMissing": "%GTTID% 곧 도착 예정 — 서류가 누락되었습니다",
+    "sevHigh": "높음",
+    "sevMedium": "중간",
+    "sevLow": "낮음",
+    "alDemurrageT": "체선료 위험",
+    "alDemurrageOverdueD": "%CONTAINER% 컨테이너의 무료 사용 기간이 %DAYS%일 지났습니다.",
+    "alDemurrageSoonD": "%CONTAINER% 컨테이너의 무료 사용 기간은 %DAYS% 일 후에 종료됩니다.",
+    "alPayableT": "지급 기한이 지난 채무",
+    "alPayableOverdueD": "%PAYEE%: %AMOUNT%이(가) %DAYS%일 연체되었습니다.",
+    "alApptT": "예약 불참",
+    "alApptMissedD": "%WAREHOUSE% 예약 미이행 (%CONTAINER%)",
+    "alHoldT": "배송 보류 중",
+    "alHoldD": "%GTTID%는 보류 중입니다.",
+    "alStaleT": "최근 업데이트 없음",
+    "alStaleD": "%GTTID%는 %DAYS%일 동안 업데이트가 없었습니다.",
+    "mixedCurrencies": "혼합 통화"
+  },
+  "aig": {
+    "lookup": "데이터 조회",
+    "forecast": "예보",
+    "recommendation": "권장 사항",
+    "disclaimer": "단순 참고용입니다. 제출 전에 반드시 확인하시기 바랍니다."
+  },
+  "htsrev": {
+    "cardTitle": "HTS 제안",
+    "confidence": "자신감",
+    "rationale": "기초",
+    "alternatives": "인근 코드",
+    "needsReview": "검토 필요",
+    "adopted": "채택됨",
+    "rejected": "거절됨",
+    "adopt": "입양하기",
+    "reject": "거절",
+    "notePh": "리뷰 메모…",
+    "submit": "리뷰 작성하기",
+    "rationaleRule": "%RULE%와 일치함",
+    "ruleKeyword": "키워드 일치 · USITC HTS 2026 Rev 19",
+    "ruleExact10": "10자리 정확한 일치 · 추가 관세 규정",
+    "ruleExact8": "8자리 일정 일치 · USITC HTS 2026 Rev 19",
+    "pendingMigration": "리뷰가 마이그레이션 대기 중입니다: hts_review_decisions 테이블이 아직 생성되지 않았습니다.",
+    "reviewSaved": "리뷰가 저장되었습니다.",
+    "reviewFailed": "리뷰를 저장할 수 없습니다.",
+    "noSuggestion": "이 문장에 대한 제안은 아직 없습니다.",
+    "reviewerLabel": "리뷰어"
+  },
+  "mkt2": {
+    "workflowEyebrow": "작동 원리",
+    "workflowTitle": "공장에서 최종 배송까지 하나의 흐름",
+    "workflowSub": "모든 화물은 동일한 6단계의 과정을 거치며, 각 단계는 서로 연결되어 있고 투명하게 파악할 수 있습니다.",
+    "wf": [
+      {
+        "t": "출처",
+        "d": "구매 전에 제품과 공급업체에 대한 적격성 심사, 평가 및 문서화가 완료됩니다."
+      },
+      {
+        "t": "선박",
+        "d": "컨테이너 및 원본 선하증권(B/L)을 통해 해상, 항공 및 내륙 운송을 추적합니다."
+      },
+      {
+        "t": "지우기",
+        "d": "CBP에서 요청하기 전에 HTS 분류, 관세 추정액 및 PGA 확인을 완료합니다."
+      },
+      {
+        "t": "보호",
+        "d": "모든 노선에 대한 화물 보험 옵션을 화물 운송과 함께 마련해 드립니다."
+      },
+      {
+        "t": "전달",
+        "d": "운송 내역, 창고 입고 예약, 배송 확인서를 한 화면에서 확인할 수 있습니다."
+      },
+      {
+        "t": "조정",
+        "d": "SKU별 실제 입하 원가, 미지급금 및 관세 예상액을 단일 원장에 통합하여 관리합니다."
+      }
+    ],
+    "demoEyebrow": "NIEL AI에게 물어보세요",
+    "demoTitle": "무역 관련 질문에 출처를 바탕으로 답변합니다",
+    "demoSub": "여러분의 작업 공간 내에서 작동하는 바로 그 어시스턴트입니다. 아래에 질문을 남겨보세요.",
+    "chips": [
+      {
+        "q": "중국산 HTS 9506.91.00 품목에 대한 관세는 얼마인가요?",
+        "a": "마지막 두 자릿수를 더하십시오: 9506.91.0010은 최혜국 대우(MFN) 관세율에 더해 중국산 제품에 대해 7.5%의 제301조(목록 4A) 관세가 부과됩니다. 신고하기 전에 현재 미국국제무역위원회(USITC)의 HTS를 참조하여 확인하십시오."
+      },
+      {
+        "q": "제 발송물에는 어떤 PGA 검사가 적용되나요?",
+        "a": "모든 반입 물품은 CBP가 조회하기 전에 FDA, FSIS, APHIS, EPA, FCC, CPSC, DOT, ATF, TTB 등 9개 PGA 기관의 23개 규정에 따라 심사를 거칩니다."
+      },
+      {
+        "q": "운송 중인 화물에 대한 관세 위험은 어디에 있나요?",
+        "a": "‘Executive View’는 운송 중인 화물을 관세 노출 위험 순으로 정렬하여, 가장 큰 위험 요소가 가장 먼저 표시되도록 합니다."
+      }
+    ],
+    "demoCta": "총 입항 비용 산정을 수행하십시오",
+    "demoNote": "데모 답변은 예시일 뿐이며, 작업 공간에서는 항상 실제 출처를 인용합니다.",
+    "devEyebrow": "개발자",
+    "devTitle": "NIEL COS를 스택에 추가하세요",
+    "devSub": "REST API, 웹훅, EDI 수신함 — 귀사가 이미 운영 중인 시스템에 최적화되어 있습니다.",
+    "devApiT": "REST API",
+    "devApiD": "범위가 지정된 API 키를 사용하여 HTTPS를 통해 데이터와 문서를 전송합니다.",
+    "devWhT": "웹훅",
+    "devWhD": "서명된 실시간 이벤트: 구문 분석 완료, 이동 생성 및 변경.",
+    "devEdiT": "EDI 수신함",
+    "devEdiD": "850, 856, 810개의 문서를 구조화된 데이터로 파싱했습니다.",
+    "devCta": "API 문서를 읽어보세요",
+    "resEyebrow": "자료",
+    "resTitle": "필요한 것부터 시작하세요",
+    "resSub": "무료 도구 및 참고 자료 — 계정 등록이 필요하지 않습니다.",
+    "resRegT": "규제 관련 최신 정보",
+    "resRegD": "연방관보의 관세 및 무역 공고, 매주 기계 번역본.",
+    "resLcT": "도착 비용 산정기",
+    "resLcD": "한 장에 담긴 MFN, 232, 301, MPF 및 HMF — USITC 2026년 실시간 관세율.",
+    "resDevT": "개발자 문서",
+    "resDevD": "API 키, 웹훅, EDI — 단 하루 만에 연동하세요.",
+    "resOpen": "열기"
+  },
+  "devdocs": {
+    "eyebrow": "개발자",
+    "title": "API 문서",
+    "sub": "HTTPS를 통해 범위 지정 키를 사용하여 선적 정보 및 문서를 조회하고, 이벤트를 수신하며, EDI를 주고받습니다.",
+    "authTitle": "인증",
+    "authSub": "모든 /api/v1 요청에는 API 키가 포함됩니다.",
+    "authP1": "키의 형식은 niel_sk_…와 같으며, 작업 공간의 ‘통합 → API 키’에서 발급됩니다. 원본 키는 한 번만 표시되며, SHA-256 해시값만 저장되므로 나중에 다시 복구할 수 없습니다.",
+    "authP2": "모든 요청에 ‘Authorization: Bearer’ 헤더로 전송하십시오.",
+    "authP3": "범위는 읽기 및 쓰기입니다. 아래의 공개 읽기 엔드포인트는 읽기 범위가 필요합니다.",
+    "authNote": "‘앱’ → ‘연동’에서 언제든지 키를 생성하거나 취소할 수 있습니다. 취소된 키는 즉시 사용이 중지됩니다.",
+    "restTitle": "REST 엔드포인트",
+    "restSub": "기본 URL: https://www.nielcos.ai",
+    "ep1m": "GET",
+    "ep1p": "/api/v1/shipments",
+    "ep1d": "주요 소유자의 선적 내역을 가장 최근에 업데이트된 순서대로 나열하십시오.",
+    "ep2m": "GET",
+    "ep2p": "/api/v1/shipments/'{id}'",
+    "ep2d": "GTTID당 1건의 선적, 주 선하증권 번호 또는 컨테이너 번호. 일치하는 항목이 없을 경우 404 오류를 반환합니다.",
+    "ep3m": "GET",
+    "ep3p": "/api/v1/문서",
+    "ep3d": "키 소유자 소속 회사의 문서 메타데이터(최근 100건) 및 파싱 상태. 파일 다운로드는 워크스페이스 내에서만 이루어집니다.",
+    "respNote": "응답은 JSON 형식입니다. Shipment 객체에는 gttid, mbl_no, container_number, status, origin, destination, current_location, eta 및 updated_at이 포함됩니다. 오류는 HTTP 상태 코드와 함께 { error, detail? } 형식으로 반환됩니다.",
+    "whTitle": "웹훅",
+    "whSub": "앱의 [통합] → [웹훅]에서 이벤트별로 URL을 등록하세요. 전송 시 몇 초 내에 JSON이 POST되며, 모든 전송 내역은 엔드포인트별로 기록됩니다.",
+    "ev1": "document.parsed",
+    "ev1d": "문서의 AI 분석이 완료되었습니다.",
+    "ev2": "drayage_move.created",
+    "ev2d": "운송 작업이 생성되었습니다.",
+    "ev3": "drayage_move.status_changed",
+    "ev3d": "운송 건의 상태가 변경되었습니다.",
+    "sigTitle": "서명 확인",
+    "sigP1": "모든 전송에는 X-Niel-Event(이벤트 이름)와 X-Niel-Signature: sha256=<hex>가 포함됩니다. 이 서명은 원시 요청 본문에 대해 HMAC-SHA256 알고리즘을 적용하여 생성된 것으로, 사용자의 엔드포인트 시크릿(whsec_…)을 키로 사용합니다.",
+    "sigP2": "상수 시간 내에 비교하고, 시그니처가 일치하는 바디만 수신한 다음, JSON { event, delivered_at, data }를 처리합니다.",
+    "ediTitle": "EDI 수신함",
+    "ediSub": "거래처가 이미 사용하고 있는 방식대로 EDI를 주고받으세요.",
+    "ediP1": "앱 → 통합 → EDI에서 ANSI X12 파일을 붙여넣거나 업로드하세요. 수신함은 850(구매 주문서), 856(선적 통지서/ASN), 810(청구서)를 자동으로 식별하여, 각각을 헤더, 항목, 합계로 구성된 구조화된 데이터로 파싱합니다.",
+    "ediP2": "문서당 업로드 용량은 2MB로 제한됩니다. 이 용량을 초과하는 파일은 “알 수 없음”으로 처리되며, 검토를 위해 원본 텍스트는 그대로 보존됩니다.",
+    "rateTitle": "요율 한도",
+    "rateP1": "분당 사용량 제한은 별도로 공지되어 있지 않습니다. 공정 사용 원칙이 적용됩니다. 장기간 대용량 트래픽이 예상되시나요? 미리 당사에 문의해 주시면 이에 대비해 준비해 드리겠습니다.",
+    "ctaTitle": "API 키를 발급받으세요",
+    "ctaSub": "키(Keys)는 작업 공간에 저장됩니다. 1분도 채 걸리지 않는 시간에 하나 만들어 보세요.",
+    "ctaBtn": "오픈 통합"
+  },
+  "team": {
+    "title": "팀",
+    "sub": "귀사의 업무 공간에 누가 속해 있나요?",
+    "companyLabel": "회사",
+    "yourRole": "귀하의 역할",
+    "memberSince": "회원 가입일:",
+    "roleOwner": "소유자",
+    "roleMember": "회원",
+    "membersTitle": "회원",
+    "membersSub": "이 회사 작업 공간에 접근 권한이 있는 모든 사람.",
+    "membersNote": "회원 기록은 비공개입니다. 아래에서는 본인의 기록만 확인할 수 있습니다.",
+    "thMember": "회원",
+    "thRole": "역할",
+    "thJoined": "가입일",
+    "you": "당신",
+    "inviteTitle": "회원 초대하기",
+    "inviteP1": "새로 가입하는 모든 사용자는 자동으로 자신만의 회사 워크스페이스를 생성하게 됩니다. 현재 기존 회사에 직접 가입할 수 있는 방법은 없습니다.",
+    "inviteP2": "이 회사에 직원을 추가하려면 당사에 문의해 주시면 저희가 대신 처리해 드리겠습니다.",
+    "inviteCta": "문의하기",
+    "rolesNote": "현재 버전에서는 역할 변경(소유자 ↔ 구성원) 기능을 사용할 수 없습니다. 팀 관리 기능은 읽기 전용입니다.",
+    "navPill": "팀"
+  },
+  "trades": {
+    "title": "거래",
+    "sub": "단일 거래 ID 하나로 구매 주문서, 청구서, 대금 결제, 운송비, 통관 및 비용을 통합 관리할 수 있습니다.",
+    "new": "새로운 거래",
+    "tradeNo": "거래 ID",
+    "status": "상태",
+    "route": "경로",
+    "value": "값",
+    "updated": "업데이트됨",
+    "searchPh": "거래 ID 또는 제목을 검색하세요…",
+    "allStatuses": "모든 상태",
+    "stDraft": "초안",
+    "stActive": "활성",
+    "stCompleted": "완료됨",
+    "stCancelled": "취소됨",
+    "empty": "아직 거래가 없습니다",
+    "emptySub": "첫 거래를 생성하여 발송물, 서류 및 비용을 하나의 ID로 묶으세요.",
+    "shipments": "출하량",
+    "documents": "문서",
+    "wTitle": "새로운 거래",
+    "wSub": "세 단계 — 기초, 실전, 복습.",
+    "stepBasics": "기본 사항",
+    "stepParties": "당사자",
+    "stepReview": "리뷰",
+    "fTitle": "제목",
+    "fTitlePh": "예: 가을 의류 — 상하이에서 시카고로",
+    "fIncoterm": "인코텀스",
+    "fOrigin": "원산지",
+    "fDest": "목적지 국가",
+    "fBuyer": "구매자",
+    "fSupplier": "공급업체",
+    "fCurrency": "통화",
+    "fValue": "총액",
+    "fDesc": "설명",
+    "fDescPh": "상품, 수량, 비고…",
+    "back": "뒤로",
+    "next": "다음",
+    "create": "거래 생성",
+    "creating": "생성 중…",
+    "errTitle": "이 거래에 제목을 지정해 주세요.",
+    "tabOverview": "개요",
+    "tabCommercial": "상업용",
+    "tabPayments": "결제",
+    "tabLogistics": "물류",
+    "tabCustoms": "관세",
+    "tabDocuments": "문서",
+    "tabCosts": "비용",
+    "tabActivity": "활동",
+    "linkShipment": "발송 건 연결하기",
+    "gttidPh": "GTTID를 입력하세요(예: NIEL-2026-000123).",
+    "link": "링크",
+    "unlink": "연결 해제",
+    "linked": "연계된 화물",
+    "noShipments": "아직 연결된 배송 내역이 없습니다.",
+    "noDocuments": "아직 연결된 문서가 없습니다.",
+    "noEntries": "아직 연결된 통관 내역이 없습니다.",
+    "noPayables": "이 거래에 대해서는 아직 지급해야 할 금액이 없습니다.",
+    "noSheets": "이 거래에 대한 비용 명세서는 아직 없습니다.",
+    "noActivity": "아직 활동이 없습니다.",
+    "commercialNote": "거래에는 당사자와 조건이 적용되므로, 해당 거래 하에 생성된 모든 선적 건은 이를 상속받습니다.",
+    "deleteTrade": "거래 삭제",
+    "confirmDelete": "%NO% 거래를 삭제하시겠습니까? 연결된 선적 내역, 서류 및 비용은 시스템에 그대로 유지되며, 거래 그룹만 제거됩니다.",
+    "deleted": "거래가 삭제되었습니다.",
+    "activate": "활성화 표시",
+    "complete": "마크가 완료했습니다",
+    "migrationNeeded": "거래 테이블은 아직 설치되지 않았습니다.",
+    "migrationSub": "관리자에게 supabase/trades.sql을 실행해 달라고 요청한 다음, 페이지를 새로 고침하세요.",
+    "linkFailed": "해당 발송물을 연결할 수 없습니다. GTTID를 확인해 주세요.",
+    "overview": "무역 개요",
+    "terms": "용어",
+    "parties": "당사자들"
   }
 }

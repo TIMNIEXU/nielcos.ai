@@ -1667,7 +1667,7 @@
     "ep1p": "/api/v1/shipments",
     "ep1d": "列出該 Key 所屬公司的貨運，按最近更新排序。",
     "ep2m": "GET",
-    "ep2p": "/api/v1/shipments/{id}",
+    "ep2p": "/api/v1/shipments/'{id}'",
     "ep2d": "按 GTTID、主提單號或櫃號查一票貨。查不到返回 404。",
     "ep3m": "GET",
     "ep3p": "/api/v1/documents",

@@ -370,7 +370,10 @@
     "login": "ログイン",
     "workspace": "ワークスペース",
     "regulatory": "規制",
-    "landedCost": "着荷価格"
+    "landedCost": "着荷価格",
+    "developers": "開発者",
+    "insurance": "保険",
+    "resources": "リソース"
   },
   "platform": {
     "cta": {
@@ -1425,5 +1428,364 @@
     "cd_rest-api": "スコープ指定済みのAPIキーを使用して、出荷情報や書類を確認します。バージョンは /api/v1 です。",
     "cn_excel-import": "Excelからのインポート",
     "cd_excel-import": "すべてのモジュールでは、重複チェック機能付きのExcelファイルのアップロードがすでに可能です。"
+  },
+  "ui": {
+    "toast": {
+      "close": "通知を閉じる"
+    },
+    "drawer": {
+      "close": "パネルを閉じる"
+    },
+    "confirm": {
+      "title": "ご確認ください",
+      "deleteTitle": "この項目を削除しますか？",
+      "deleteBody": "「%NAME%」を削除しますか？この操作は元に戻せません。",
+      "confirm": "確認",
+      "delete": "削除",
+      "cancel": "キャンセル"
+    },
+    "pagination": {
+      "prev": "前へ",
+      "next": "次へ",
+      "perPage": "1ページあたり",
+      "page": "ページ",
+      "summary": "%C%の%A%–%B%"
+    },
+    "empty": {
+      "noResults": "結果が見つかりませんでした"
+    },
+    "commandbar": {
+      "searchPlaceholder": "検索…",
+      "clear": "検索をクリア"
+    },
+    "form": {
+      "requiredMark": "(必須)"
+    }
+  },
+  "shell": {
+    "nav": {
+      "dashboard": "ダッシュボード",
+      "trades": "取引",
+      "shipments": "出荷",
+      "customs": "税関",
+      "documents": "文書",
+      "products": "製品",
+      "suppliers": "サプライヤー",
+      "logistics": "物流",
+      "finance": "金融",
+      "compliance": "コンプライアンス",
+      "assistant": "AIアシスタント",
+      "tower": "管制塔",
+      "executive": "経営陣",
+      "integrations": "連携機能",
+      "team": "チーム",
+      "settings": "設定"
+    },
+    "collapse": "サイドバーを折りたたむ",
+    "expand": "サイドバーを展開する",
+    "openMenu": "ナビゲーションを開く",
+    "closeMenu": "ナビゲーションを閉じる",
+    "workspace": "ワークスペース",
+    "search": {
+      "placeholder": "取引、出荷、仕訳、書類などを検索… (⌘K)",
+      "noResults": "%Q% の検索結果は見つかりませんでした",
+      "searching": "検索中…",
+      "groupTrade": "取引",
+      "groupShipment": "出荷",
+      "groupEntry": "税関申告書",
+      "groupDocument": "文書"
+    },
+    "quick": {
+      "title": "クイックアクション",
+      "newTrade": "新規取引",
+      "newShipment": "新規入荷",
+      "uploadDocument": "書類をアップロードする",
+      "newEntry": "新しい通関申告"
+    },
+    "bell": {
+      "title": "通知",
+      "empty": "最新情報まですべて確認済みです。通知はありません。",
+      "high": "高い",
+      "medium": "中",
+      "low": "低"
+    },
+    "menu": {
+      "signOut": "ログアウト",
+      "signedInAs": "%EMAIL% としてログインしました"
+    },
+    "crumbs": {
+      "dashboard": "ダッシュボード"
+    }
+  },
+  "dash": {
+    "kpiInTransit": "輸送中の貨物",
+    "kpiPayables": "支払期日が到来した未払金",
+    "kpiDutyExposure": "職務上の曝露",
+    "kpiAttention": "注意が必要",
+    "secTrend": "業務費の支出動向",
+    "secStatus": "発送状況",
+    "secAlerts": "アラート",
+    "secTasks": "タスク",
+    "secSummary": "デイリーブリーフィング",
+    "secModules": "モジュール",
+    "alertEmpty": "異常なし — 現時点でアラートは発生していません。",
+    "taskEmpty": "やるべきことは何もない――この静けさを満喫しよう。",
+    "viewAll": "すべて表示",
+    "noData": "まだデータがありません",
+    "summary1": "輸送中の出荷は %INTRANSIT% 件あり、そのうち %ATTENTION% 件が対応を必要としています。",
+    "summary2": "未払金の総額は %PAYABLE% です。予測される関税負担額は約 %DUTY% です。",
+    "taskOverduePayable": "%PAYEE%様：%AMOUNT%が%DAYS%日間延滞しています",
+    "taskMissedAppt": "%WAREHOUSE% の予約を欠席しました (%CONTAINER%)",
+    "taskDocsMissing": "%GTTID% がまもなく到着予定 — 書類が不足しています",
+    "sevHigh": "高い",
+    "sevMedium": "中",
+    "sevLow": "低",
+    "alDemurrageT": "滞船料リスク",
+    "alDemurrageOverdueD": "コンテナ %CONTAINER% は、無料期間が終了してから %DAYS% 日が経過しています",
+    "alDemurrageSoonD": "コンテナ %CONTAINER% の利用可能期間は、あと %DAYS% 日で終了します",
+    "alPayableT": "支払期限を過ぎた",
+    "alPayableOverdueD": "%PAYEE%様：%AMOUNT%が%DAYS%日間延滞しています",
+    "alApptT": "予約をすっぽかした",
+    "alApptMissedD": "%WAREHOUSE% の予約を欠席しました (%CONTAINER%)",
+    "alHoldT": "出荷保留中",
+    "alHoldD": "%GTTID% は保留中です",
+    "alStaleT": "最近の更新はありません",
+    "alStaleD": "%GTTID% には、%DAYS% 日間、更新がありません",
+    "mixedCurrencies": "複数の通貨"
+  },
+  "aig": {
+    "lookup": "データの検索",
+    "forecast": "予報",
+    "recommendation": "推奨事項",
+    "disclaimer": "あくまで参考情報です。提出前に必ずご確認ください。"
+  },
+  "htsrev": {
+    "cardTitle": "HTSの提案",
+    "confidence": "自信",
+    "rationale": "基礎",
+    "alternatives": "近くのコード",
+    "needsReview": "確認が必要",
+    "adopted": "採択された",
+    "rejected": "却下",
+    "adopt": "「採用」",
+    "reject": "却下",
+    "notePh": "レビューのメモ…",
+    "submit": "レビューを投稿する",
+    "rationaleRule": "%RULE% に一致しました",
+    "ruleKeyword": "キーワード一致 · USITC HTS 2026 Rev 19",
+    "ruleExact10": "10桁の完全一致 · 追加関税の規則",
+    "ruleExact8": "8桁のスケジュール照合 · USITC HTS 2026 Rev 19",
+    "pendingMigration": "レビューは移行待ちです：hts_review_decisions テーブルはまだ作成されていません。",
+    "reviewSaved": "レビューが保存されました。",
+    "reviewFailed": "レビューを保存できませんでした。",
+    "noSuggestion": "この行に関する提案はまだありません。",
+    "reviewerLabel": "レビュアー"
+  },
+  "mkt2": {
+    "workflowEyebrow": "仕組み",
+    "workflowTitle": "工場から最終納品までの一貫した流れ",
+    "workflowSub": "すべての出荷は、同じ6つの段階を経ます。各段階は相互に関連しており、そのすべてが可視化されています。",
+    "wf": [
+      {
+        "t": "出典",
+        "d": "購入前に、製品やサプライヤーの適格性を確認し、評価を行い、記録を残します。"
+      },
+      {
+        "t": "船",
+        "d": "海上輸送、航空輸送、および陸上輸送は、コンテナおよびマスター船荷証券ごとに追跡されます。"
+      },
+      {
+        "t": "クリア",
+        "d": "CBPから求められる前に、HTS分類、関税見積もり、およびPGAチェックを完了しておく。"
+      },
+      {
+        "t": "保護する",
+        "d": "すべての輸送ルートに対応した貨物保険のオプションを、貨物輸送と併せて手配いたします。"
+      },
+      {
+        "t": "配達する",
+        "d": "輸送状況、倉庫での予約、配達証明を1つの画面で確認できます。"
+      },
+      {
+        "t": "照合する",
+        "d": "SKUごとの実際の着荷原価、未払金、および関税の予測を1つの元帳に集約。"
+      }
+    ],
+    "demoEyebrow": "NIEL AIに質問する",
+    "demoTitle": "貿易に関する質問に、出典を明記して回答",
+    "demoSub": "あなたのワークスペース内で動作しているそのアシスタント――以下の質問を試してみてください。",
+    "chips": [
+      {
+        "q": "中国からのHTS 9506.91.00の関税率はいくらですか？",
+        "a": "最後の2桁を追加してください：9506.91.0010は、中国原産品に対し、最恵国待遇（MFN）税率に加えて、第301条（リスト4A）に基づく7.5％の関税が課されます。申告前に、最新のUSITC HTSと照合して確認してください。"
+      },
+      {
+        "q": "私の出荷物には、どのPGAチェックが適用されますか？",
+        "a": "CBPが照会を行う前に、すべての申告内容は、FDA、FSIS、APHIS、EPA、FCC、CPSC、DOT、ATF、TTBの9つのPGA機関が定める23の規則に基づき審査されます。"
+      },
+      {
+        "q": "輸送中の関税リスクはどこにあるのでしょうか？",
+        "a": "「エグゼクティブ・ビュー」では、輸送中の貨物を関税リスクの大きさ順にランク付けするため、リスクが最も高いものが最初に表示されます。"
+      }
+    ],
+    "demoCta": "総着陸コストの見積もりを作成する",
+    "demoNote": "デモの解答はあくまで一例です。ワークスペースでは常に実際の情報源が引用されています。",
+    "devEyebrow": "開発者",
+    "devTitle": "NIEL COSをスタックに組み込んでください",
+    "devSub": "REST API、Webhook、EDI受信ボックス — お客様がすでに運用しているシステムに合わせて構築されています。",
+    "devApiT": "REST API",
+    "devApiD": "HTTPS 経由での送信およびドキュメントのやり取り。スコープ指定された API キーを使用します。",
+    "devWhT": "Webhooks",
+    "devWhD": "署名付きリアルタイムイベント：解析完了、移動の作成および変更。",
+    "devEdiT": "EDI受信トレイ",
+    "devEdiD": "850、856、および810件の文書が構造化データとして解析されました。",
+    "devCta": "APIドキュメントを読む",
+    "resEyebrow": "リソース",
+    "resTitle": "必要なものから始めましょう",
+    "resSub": "無料のツールや参考資料 — アカウント登録は不要です。",
+    "resRegT": "規制に関する最新情報",
+    "resRegD": "連邦官報に掲載される関税および貿易に関する公告を、機械翻訳により毎週配信しています。",
+    "resLcT": "着陸コスト見積もりツール",
+    "resLcD": "1枚のシートにMFN、232、301、MPF、HMFを掲載 — USITC 2026年の最新関税率。",
+    "resDevT": "開発者向けドキュメント",
+    "resDevD": "APIキー、Webhook、EDI――たった半日で連携できます。",
+    "resOpen": "開く"
+  },
+  "devdocs": {
+    "eyebrow": "開発者",
+    "title": "APIドキュメント",
+    "sub": "HTTPS 経由で、スコープ指定された鍵を使用して、出荷情報や書類の読み取り、イベントの受信、EDI のやり取りを行います。",
+    "authTitle": "認証",
+    "authSub": "すべての /api/v1 リクエストには、API キーが含まれています。",
+    "authP1": "キーは「niel_sk_…」のような形式で、ワークスペースの [統合] → [API キー] から発行されます。生のキーは一度だけ表示され、SHA-256 ハッシュのみが保存されるため、後から復元することはできません。",
+    "authP2": "すべてのリクエストにおいて、「Authorization: Bearer」ヘッダーとして送信してください。",
+    "authP3": "スコープには「読み取り」と「書き込み」があります。以下のパブリックな読み取り用エンドポイントでは、「読み取り」スコープが必要です。",
+    "authNote": "「アプリ」→「連携」で、いつでもキーを作成・無効化できます。無効化されたキーは直ちに使用できなくなります。",
+    "restTitle": "RESTエンドポイント",
+    "restSub": "ベースURL：https://www.nielcos.ai",
+    "ep1m": "GET",
+    "ep1p": "/api/v1/shipments",
+    "ep1d": "主要な所有者の出荷履歴を、最新のものが先になるように一覧表示してください。",
+    "ep2m": "GET",
+    "ep2p": "/api/v1/shipments/'{id}'",
+    "ep2d": "GTTID、マスターB/L番号、またはコンテナ番号ごとの1件の出荷。一致するものがなければ404を返す。",
+    "ep3m": "GET",
+    "ep3p": "/api/v1/documents",
+    "ep3d": "キー所有者の会社に関するドキュメントのメタデータ（直近100件）と、その解析ステータス。ファイルのダウンロードはワークスペース内にとどまります。",
+    "respNote": "応答はJSON形式です。出荷オブジェクトには、gttid、mbl_no、container_number、status、origin、destination、current_location、eta、およびupdated_atが含まれます。エラーの場合は、HTTPステータスコードとともに { error, detail? } が使用されます。",
+    "whTitle": "Webhook",
+    "whSub": "アプリ内の「App」→「Integrations」→「Webhooks」で、イベントごとにURLを登録します。配信は数秒以内にJSONをPOSTで送信され、各エンドポイントごとにすべての配信がログに記録されます。",
+    "ev1": "document.parsed",
+    "ev1d": "AIによる解析が完了した文書。",
+    "ev2": "drayage_move.created",
+    "ev2d": "陸上輸送の輸送計画が作成されました。",
+    "ev3": "drayage_move.status_changed",
+    "ev3d": "陸上輸送のステータスが変更されました。",
+    "sigTitle": "署名の検証",
+    "sigP1": "すべての配信には、X-Niel-Event（イベント名）および X-Niel-Signature: sha256=<hex> が含まれます。この署名は、生のリクエスト本文に対して、エンドポイントのシークレット（whsec_…）を鍵としてHMAC-SHA256を適用して生成されたものです。",
+    "sigP2": "定数時間で比較を行い、シグネチャが一致するボディのみを受け入れ、その後、JSON { event, delivered_at, data } を処理する。",
+    "ediTitle": "EDI受信ボックス",
+    "ediSub": "取引先がすでに採用している形式でEDI取引を行ってください。",
+    "ediP1": "「アプリ」→「連携」→「EDI」で、ANSI X12を貼り付けるかアップロードしてください。 受信トレイでは、850（発注書）、856（出荷通知／ASN）、810（請求書）が自動的に識別され、それぞれがヘッダー、明細行、合計を含む構造化データとして解析されます。",
+    "ediP2": "1つのドキュメントあたりのアップロード上限は2 MBです。これを超える場合は「不明」として処理され、確認用に元のテキストが保存されます。",
+    "rateTitle": "レート制限",
+    "rateP1": "1分あたりの利用制限は公表されていません。フェアユースが適用されます。継続的な大容量利用をご計画の場合は、事前に弊社までご相談ください。必要な準備を整えておきます。",
+    "ctaTitle": "APIキーを取得する",
+    "ctaSub": "キーはワークスペース内に保存されます。1分もかからずに作成できます。",
+    "ctaBtn": "オープン・インテグレーションズ"
+  },
+  "team": {
+    "title": "チーム",
+    "sub": "御社のワークスペースには誰が所属していますか。",
+    "companyLabel": "会社",
+    "yourRole": "あなたの役割",
+    "memberSince": "会員登録日：",
+    "roleOwner": "オーナー",
+    "roleMember": "会員",
+    "membersTitle": "メンバー",
+    "membersSub": "この会社のワークスペースにアクセス権を持つ全員。",
+    "membersNote": "メンバーの記録は非公開です。以下に表示されるのは、ご自身の登録内容のみです。",
+    "thMember": "会員",
+    "thRole": "役割",
+    "thJoined": "参加しました",
+    "you": "あなた",
+    "inviteTitle": "メンバーを招待する",
+    "inviteP1": "新規登録を行うたびに、自動的にそのユーザー専用の企業ワークスペースが作成されます。現時点では、既存の企業に自ら参加する方法はありません。",
+    "inviteP2": "この会社にメンバーを追加するには、弊社までご連絡ください。弊社で設定いたします。",
+    "inviteCta": "お問い合わせ",
+    "rolesNote": "現在のバージョンでは、役割の変更（オーナー ↔ メンバー）は利用できません。チーム管理機能は読み取り専用となっています。",
+    "navPill": "チーム"
+  },
+  "trades": {
+    "title": "取引",
+    "sub": "1つの取引IDで、発注書、請求書、支払、運賃、通関手続き、および諸費用を統合管理できます。",
+    "new": "新規取引",
+    "tradeNo": "取引ID",
+    "status": "ステータス",
+    "route": "ルート",
+    "value": "値",
+    "updated": "更新されました",
+    "searchPh": "取引IDまたは銘柄名を検索…",
+    "allStatuses": "すべてのステータス",
+    "stDraft": "草案",
+    "stActive": "アクティブ",
+    "stCompleted": "完了",
+    "stCancelled": "中止",
+    "empty": "まだ取引はありません",
+    "emptySub": "最初の取引を作成して、出荷、書類、費用を1つのIDにまとめて管理しましょう。",
+    "shipments": "出荷",
+    "documents": "文書",
+    "wTitle": "新規取引",
+    "wSub": "3つのステップ――基礎、実践、復習。",
+    "stepBasics": "基本",
+    "stepParties": "当事者",
+    "stepReview": "レビュー",
+    "fTitle": "タイトル",
+    "fTitlePh": "例：秋物衣料 — 上海からシカゴへ",
+    "fIncoterm": "インコタームズ",
+    "fOrigin": "原産国",
+    "fDest": "渡航先国",
+    "fBuyer": "購入者",
+    "fSupplier": "サプライヤー",
+    "fCurrency": "通貨",
+    "fValue": "総額",
+    "fDesc": "説明",
+    "fDescPh": "商品、数量、備考…",
+    "back": "戻る",
+    "next": "次へ",
+    "create": "取引を作成する",
+    "creating": "作成中…",
+    "errTitle": "この取引にタイトルを付けてください。",
+    "tabOverview": "概要",
+    "tabCommercial": "コマーシャル",
+    "tabPayments": "お支払い",
+    "tabLogistics": "物流",
+    "tabCustoms": "税関",
+    "tabDocuments": "文書",
+    "tabCosts": "費用",
+    "tabActivity": "アクティビティ",
+    "linkShipment": "出荷情報をリンクする",
+    "gttidPh": "GTTIDを入力してください（例：NIEL-2026-000123）",
+    "link": "リンク",
+    "unlink": "リンクを解除",
+    "linked": "関連する出荷",
+    "noShipments": "まだ関連付けられている出荷はありません。",
+    "noDocuments": "まだ関連付けられているドキュメントはありません。",
+    "noEntries": "まだ関連付けられている通関申告はありません。",
+    "noPayables": "この取引に関する未払いはまだありません。",
+    "noSheets": "この取引に関するコストシートはまだありません。",
+    "noActivity": "まだ活動はありません。",
+    "commercialNote": "取引には当事者と条件が設定されており、その取引に基づいて作成されるすべての出荷はそれらを継承します。",
+    "deleteTrade": "取引を削除する",
+    "confirmDelete": "取引 %NO% を削除しますか？関連する出荷、書類、および費用はシステム内に残りますが、取引グループのみが削除されます。",
+    "deleted": "取引が削除されました。",
+    "activate": "アクティブにする",
+    "complete": "マークが完了しました",
+    "migrationNeeded": "取引用テーブルはまだ設置されていません。",
+    "migrationSub": "管理者に supabase/trades.sql を実行してもらうよう依頼し、その後ページを更新してください。",
+    "linkFailed": "その出荷をリンクできませんでした。GTTIDを確認してください。",
+    "overview": "貿易の概要",
+    "terms": "利用規約",
+    "parties": "当事者"
   }
 }
