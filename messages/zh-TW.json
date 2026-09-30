@@ -370,7 +370,10 @@
     "login": "登入",
     "workspace": "工作臺",
     "regulatory": "法規動態",
-    "landedCost": "到岸成本"
+    "landedCost": "到岸成本",
+    "developers": "開發者",
+    "insurance": "保險",
+    "resources": "資源"
   },
   "platform": {
     "cta": {
@@ -1425,5 +1428,364 @@
     "cd_rest-api": "用帶權限範圍的 API 密鑰讀取貨運與單證，版本化介面 /api/v1。",
     "cn_excel-import": "Excel 導入",
     "cd_excel-import": "各模組均已支持 Excel 上傳，自動去重。"
+  },
+  "ui": {
+    "toast": {
+      "close": "關閉通知"
+    },
+    "drawer": {
+      "close": "關閉面板"
+    },
+    "confirm": {
+      "title": "請確認",
+      "deleteTitle": "刪除此項？",
+      "deleteBody": "刪除“%NAME%”？此操作不可撤銷。",
+      "confirm": "確認",
+      "delete": "刪除",
+      "cancel": "取消"
+    },
+    "pagination": {
+      "prev": "上一頁",
+      "next": "下一頁",
+      "perPage": "每頁",
+      "page": "頁",
+      "summary": "第 %A%–%B% 條，共 %C% 條"
+    },
+    "empty": {
+      "noResults": "暫無結果"
+    },
+    "commandbar": {
+      "searchPlaceholder": "搜尋…",
+      "clear": "清除搜尋"
+    },
+    "form": {
+      "requiredMark": "（必填）"
+    }
+  },
+  "shell": {
+    "nav": {
+      "dashboard": "工作臺",
+      "trades": "貿易",
+      "shipments": "貨運",
+      "customs": "報關",
+      "documents": "單證",
+      "products": "產品",
+      "suppliers": "供應商",
+      "logistics": "物流",
+      "finance": "財務",
+      "compliance": "合規",
+      "assistant": "AI 助手",
+      "tower": "指揮塔",
+      "executive": "高管",
+      "integrations": "集成",
+      "team": "團隊",
+      "settings": "設置"
+    },
+    "collapse": "收起側邊欄",
+    "expand": "展開側邊欄",
+    "openMenu": "打開導航",
+    "closeMenu": "關閉導航",
+    "workspace": "工作區",
+    "search": {
+      "placeholder": "搜尋貿易、貨運、報關單、單證… (⌘K)",
+      "noResults": "沒有與 %Q% 相關的結果",
+      "searching": "搜尋中…",
+      "groupTrade": "貿易",
+      "groupShipment": "貨運",
+      "groupEntry": "報關單",
+      "groupDocument": "單證"
+    },
+    "quick": {
+      "title": "快捷操作",
+      "newTrade": "新建貿易",
+      "newShipment": "新建貨運",
+      "uploadDocument": "上傳單證",
+      "newEntry": "新建報關單"
+    },
+    "bell": {
+      "title": "通知",
+      "empty": "暫無告警。",
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    },
+    "menu": {
+      "signOut": "登出",
+      "signedInAs": "當前登入：%EMAIL%"
+    },
+    "crumbs": {
+      "dashboard": "工作臺"
+    }
+  },
+  "dash": {
+    "kpiInTransit": "在途貨運",
+    "kpiPayables": "待付應付",
+    "kpiDutyExposure": "關稅敞口",
+    "kpiAttention": "需關注",
+    "secTrend": "關稅支出趨勢",
+    "secStatus": "貨運狀態分佈",
+    "secAlerts": "告警",
+    "secTasks": "待辦",
+    "secSummary": "AI 每日摘要",
+    "secModules": "功能模組",
+    "alertEmpty": "暫無告警，一切正常。",
+    "taskEmpty": "暫無待辦。",
+    "viewAll": "查看全部",
+    "noData": "暫無資料",
+    "summary1": "當前在途 %INTRANSIT% 票，其中 %ATTENTION% 票需關注。",
+    "summary2": "待付應付 %PAYABLE%，關稅敞口約 %DUTY%。",
+    "taskOverduePayable": "%PAYEE%：%AMOUNT% 已逾期 %DAYS% 天",
+    "taskMissedAppt": "%WAREHOUSE% 預約未到（%CONTAINER%）",
+    "taskDocsMissing": "%GTTID% 即將到港，缺少單證",
+    "sevHigh": "高",
+    "sevMedium": "中",
+    "sevLow": "低",
+    "alDemurrageT": "滯期風險",
+    "alDemurrageOverdueD": "櫃 %CONTAINER% 已超免費期 %DAYS% 天",
+    "alDemurrageSoonD": "櫃 %CONTAINER% 免費期還剩 %DAYS% 天",
+    "alPayableT": "應付逾期",
+    "alPayableOverdueD": "%PAYEE%：%AMOUNT% 已逾期 %DAYS% 天",
+    "alApptT": "預約未到",
+    "alApptMissedD": "%WAREHOUSE% 預約未到（%CONTAINER%）",
+    "alHoldT": "貨運暫扣",
+    "alHoldD": "%GTTID% 處於暫扣狀態",
+    "alStaleT": "長時間無更新",
+    "alStaleD": "%GTTID% 已 %DAYS% 天無更新",
+    "mixedCurrencies": "多幣種"
+  },
+  "aig": {
+    "lookup": "資料檢索",
+    "forecast": "預測",
+    "recommendation": "建議",
+    "disclaimer": "僅供參考，申報前請覈實。"
+  },
+  "htsrev": {
+    "cardTitle": "HTS 建議卡",
+    "confidence": "置信度",
+    "rationale": "依據",
+    "alternatives": "相鄰稅號",
+    "needsReview": "待審覈",
+    "adopted": "已採用",
+    "rejected": "已駁回",
+    "adopt": "採用",
+    "reject": "駁回",
+    "notePh": "審覈備註…",
+    "submit": "提交審覈",
+    "rationaleRule": "命中 %RULE%",
+    "ruleKeyword": "關鍵詞匹配 · USITC HTS 2026 Rev 19",
+    "ruleExact10": "十位精確匹配 · 附加稅規則",
+    "ruleExact8": "八位稅則匹配 · USITC HTS 2026 Rev 19",
+    "pendingMigration": "審覈功能待遷移：hts_review_decisions 表尚未建立。",
+    "reviewSaved": "審覈已保存。",
+    "reviewFailed": "審覈保存失敗。",
+    "noSuggestion": "該行暫無建議。",
+    "reviewerLabel": "審覈人"
+  },
+  "mkt2": {
+    "workflowEyebrow": "運作方式",
+    "workflowTitle": "一條流程，從工廠到最終交付",
+    "workflowSub": "每一票貨都經過相同的六個階段——環環相扣，全程可見。",
+    "wf": [
+      {
+        "t": "尋源",
+        "d": "採購前完成產品與供應商的資質審覈、評分與單證歸檔。"
+      },
+      {
+        "t": "運輸",
+        "d": "海運、空運、拖車按櫃號與主提單全程追蹤。"
+      },
+      {
+        "t": "清關",
+        "d": "在 CBP 問起之前，先做好 HTS 歸類、稅費測算與 PGA 檢查。"
+      },
+      {
+        "t": "保障",
+        "d": "每條航線可選貨物保險，與貨運一併安排。"
+      },
+      {
+        "t": "交付",
+        "d": "拖車任務、倉庫預約與簽收證明，一個視圖全覽。"
+      },
+      {
+        "t": "對賬",
+        "d": "每個 SKU 的真實到岸成本、應付賬款與關稅預測，一本賬算清。"
+      }
+    ],
+    "demoEyebrow": "問 NIEL AI",
+    "demoTitle": "貿易問題，有據可查的回答",
+    "demoSub": "和工作臺裏同一個 AI 助手——點下面的問題試試。",
+    "chips": [
+      {
+        "q": "從中國進口 HTS 9506.91.00，關稅多少？",
+        "a": "補齊最後兩位：9506.91.0010 對中國原產加徵 7.5% Section 301（List 4A），在 MFN 稅率之上。申報前請以現行 USITC HTS 爲準。"
+      },
+      {
+        "q": "我的貨要過哪些 PGA 檢查？",
+        "a": "每一票報關都會經過 9 個 PGA 機構篩查——FDA、FSIS、APHIS、EPA、FCC、CPSC、DOT、ATF、TTB，共 23 條規則，在 CBP 問起之前完成。"
+      },
+      {
+        "q": "在途貨物的關稅敞口在哪看？",
+        "a": "高管視圖按關稅敞口金額給在途貨物排序，最大的風險最先浮現。"
+      }
+    ],
+    "demoCta": "做一次完整到岸成本測算",
+    "demoNote": "演示回答爲示例——工作臺內的回答始終引用即時來源。",
+    "devEyebrow": "開發者",
+    "devTitle": "把 NIEL COS 接入你的系統",
+    "devSub": "REST API、Webhook 與 EDI 收件箱——爲你現有的系統而建。",
+    "devApiT": "REST API",
+    "devApiD": "通過 HTTPS 訪問貨運與單證，按權限範圍簽發 API Key。",
+    "devWhT": "Webhook",
+    "devWhD": "簽名即時事件：解析完成、拖車任務建立與狀態變更。",
+    "devEdiT": "EDI 收件箱",
+    "devEdiD": "850、856、810 單證自動解析爲結構化資料。",
+    "devCta": "查看 API 文檔",
+    "resEyebrow": "資源",
+    "resTitle": "從你需要的開始",
+    "resSub": "免費工具與參考資料——無需註冊。",
+    "resRegT": "法規動態",
+    "resRegD": "聯邦公報關稅與貿易公告，每週機器翻譯更新。",
+    "resLcT": "到岸成本測算",
+    "resLcD": "MFN、232、301、MPF 與 HMF 一張表算清——即時 USITC 2026 稅率。",
+    "resDevT": "開發者文檔",
+    "resDevD": "API Key、Webhook 與 EDI——一個下午即可集成。",
+    "resOpen": "打開"
+  },
+  "devdocs": {
+    "eyebrow": "開發者",
+    "title": "API 文檔",
+    "sub": "讀取貨運與單證、接收事件、交換 EDI——全部走 HTTPS，Key 按權限範圍簽發。",
+    "authTitle": "認證",
+    "authSub": "每個 /api/v1 請求都要帶 API Key。",
+    "authP1": "Key 形如 niel_sk_…，在工作臺「集成 → API Key」中籤發。原始 Key 只顯示一次——服務器只存它的 SHA-256 哈希，之後無法找回。",
+    "authP2": "每個請求都帶 Authorization: Bearer 請求頭。",
+    "authP3": "權限範圍有 read 和 write。下面公開的讀取介面需要 read 權限。",
+    "authNote": "隨時在工作臺 → 集成裏建立或吊銷 Key。吊銷後立即失效。",
+    "restTitle": "REST 介面",
+    "restSub": "Base URL：https://www.nielcos.ai",
+    "ep1m": "GET",
+    "ep1p": "/api/v1/shipments",
+    "ep1d": "列出該 Key 所屬公司的貨運，按最近更新排序。",
+    "ep2m": "GET",
+    "ep2p": "/api/v1/shipments/{id}",
+    "ep2d": "按 GTTID、主提單號或櫃號查一票貨。查不到返回 404。",
+    "ep3m": "GET",
+    "ep3p": "/api/v1/documents",
+    "ep3d": "該公司單證元資料（最近 100 條），含解析狀態。原檔案下載只能在工作臺內進行。",
+    "respNote": "返回都是 JSON。貨運對象包含 gttid、mbl_no、container_number、status、origin、destination、current_location、eta、updated_at。錯誤用 { error, detail? } 並帶 HTTP 狀態碼。",
+    "whTitle": "Webhook",
+    "whSub": "在工作臺 → 集成 → Webhook 裏按事件訂閱 URL。事件發生後幾秒內 POST JSON，每次投遞都有日誌。",
+    "ev1": "document.parsed",
+    "ev1d": "單證 AI 解析完成。",
+    "ev2": "drayage_move.created",
+    "ev2d": "拖車任務已建立。",
+    "ev3": "drayage_move.status_changed",
+    "ev3d": "拖車任務狀態變更。",
+    "sigTitle": "驗籤",
+    "sigP1": "每次投遞都帶 X-Niel-Event（事件名）和 X-Niel-Signature: sha256=<hex>。簽名是用你的端點密鑰（whsec_…）對原始請求體算的 HMAC-SHA256。",
+    "sigP2": "用 constant-time 比較，只接受簽名匹配的請求體——再處理 JSON { event, delivered_at, data }。",
+    "ediTitle": "EDI 收件箱",
+    "ediSub": "按你的合作伙伴本來就在用的方式收 EDI。",
+    "ediP1": "在工作臺 → 集成 → EDI 裏貼上或上傳 ANSI X12。收件箱自動識別 850（採購訂單）、856（發貨通知 ASN）、810（發票），解析爲含頭、行、合計的結構化資料。",
+    "ediP2": "單個檔案上限 2 MB。識別不了的會標爲 unknown，原文保留待人工查看。",
+    "rateTitle": "限流",
+    "rateP1": "沒有公佈的每分鐘限額——按 fair use 使用。如果你預計有持續大流量，先跟我們打個招呼，我們來做容量準備。",
+    "ctaTitle": "獲取你的 API Key",
+    "ctaSub": "Key 就在你的工作臺裏——一分鐘簽發。",
+    "ctaBtn": "打開集成"
+  },
+  "team": {
+    "title": "團隊",
+    "sub": "誰在使用這個公司工作臺。",
+    "companyLabel": "公司",
+    "yourRole": "你的角色",
+    "memberSince": "加入時間",
+    "roleOwner": "所有者",
+    "roleMember": "成員",
+    "membersTitle": "成員",
+    "membersSub": "所有能訪問這個公司工作臺的人。",
+    "membersNote": "成員記錄是隱私隔離的——你只能看到自己的條目。",
+    "thMember": "成員",
+    "thRole": "角色",
+    "thJoined": "加入時間",
+    "you": "你",
+    "inviteTitle": "邀請成員",
+    "inviteP1": "每次新註冊都會自動建立一個屬於自己的公司工作臺——目前還沒有自助加入已有公司的方式。",
+    "inviteP2": "要把某人加到這個公司，請聯繫我們，我們來幫你設置。",
+    "inviteCta": "聯繫我們",
+    "rolesNote": "當前版本不支持改角色（所有者 ↔ 成員）——團隊管理爲只讀。",
+    "navPill": "團隊"
+  },
+  "trades": {
+    "title": "貿易",
+    "sub": "一個 Trade ID 把訂單、發票、付款、貨運、報關、費用串在一起。",
+    "new": "新建貿易",
+    "tradeNo": "貿易編號",
+    "status": "狀態",
+    "route": "路線",
+    "value": "貨值",
+    "updated": "更新時間",
+    "searchPh": "搜尋貿易編號或標題…",
+    "allStatuses": "全部狀態",
+    "stDraft": "草稿",
+    "stActive": "進行中",
+    "stCompleted": "已完成",
+    "stCancelled": "已取消",
+    "empty": "還沒有貿易",
+    "emptySub": "建立第一筆貿易，把貨運、單證、費用掛到同一個 ID 下。",
+    "shipments": "貨運",
+    "documents": "單證",
+    "wTitle": "新建貿易",
+    "wSub": "三步：基本資訊、參與方、確認。",
+    "stepBasics": "基本資訊",
+    "stepParties": "參與方",
+    "stepReview": "確認",
+    "fTitle": "標題",
+    "fTitlePh": "如：秋季服裝 — 上海到芝加哥",
+    "fIncoterm": "貿易術語",
+    "fOrigin": "起運國",
+    "fDest": "目的國",
+    "fBuyer": "買方",
+    "fSupplier": "供應商",
+    "fCurrency": "幣種",
+    "fValue": "總貨值",
+    "fDesc": "描述",
+    "fDescPh": "品名、數量、備註…",
+    "back": "上一步",
+    "next": "下一步",
+    "create": "建立貿易",
+    "creating": "建立中…",
+    "errTitle": "請填寫貿易標題。",
+    "tabOverview": "總覽",
+    "tabCommercial": "商務",
+    "tabPayments": "付款",
+    "tabLogistics": "物流",
+    "tabCustoms": "報關",
+    "tabDocuments": "單證",
+    "tabCosts": "費用",
+    "tabActivity": "動態",
+    "linkShipment": "關聯貨運",
+    "gttidPh": "輸入 GTTID，如 NIEL-2026-000123",
+    "link": "關聯",
+    "unlink": "解綁",
+    "linked": "已關聯貨運",
+    "noShipments": "還沒有關聯貨運。",
+    "noDocuments": "還沒有關聯單證。",
+    "noEntries": "還沒有關聯報關單。",
+    "noPayables": "這筆貿易還沒有應付。",
+    "noSheets": "這筆貿易還沒有成本表。",
+    "noActivity": "暫無動態。",
+    "commercialNote": "參與方與條款掛在貿易上，其下建立的貨運自動繼承。",
+    "deleteTrade": "刪除貿易",
+    "confirmDelete": "刪除貿易 %NO%？關聯的貨運、單證、費用保留在系統中，只刪除貿易分組。",
+    "deleted": "貿易已刪除。",
+    "activate": "標記爲進行中",
+    "complete": "標記爲已完成",
+    "migrationNeeded": "貿易資料表尚未安裝。",
+    "migrationSub": "請管理員運行 supabase/trades.sql 後刷新。",
+    "linkFailed": "關聯失敗 — 請檢查 GTTID 是否正確。",
+    "overview": "貿易總覽",
+    "terms": "條款",
+    "parties": "參與方"
   }
 }

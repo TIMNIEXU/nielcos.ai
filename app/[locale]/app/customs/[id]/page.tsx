@@ -41,6 +41,16 @@ export default async function EntryPage({ params }: Props) {
   ];
   const labels = Object.fromEntries(keys.map((k) => [k, t(k)]));
 
+  // HTS review card labels (htsrev.* at message root).
+  const tr = await getTranslations({ locale, namespace: "htsrev" });
+  const revKeys = [
+    "cardTitle", "confidence", "rationale", "alternatives", "needsReview",
+    "adopted", "rejected", "adopt", "reject", "notePh", "submit",
+    "rationaleRule", "ruleKeyword", "ruleExact10", "ruleExact8",
+    "pendingMigration", "reviewSaved", "reviewFailed", "noSuggestion", "reviewerLabel",
+  ];
+  const revLabels = Object.fromEntries(revKeys.map((k) => [k, tr(k)]));
+
   return (
     <section className="min-h-[75vh] bg-brand-tint-soft">
       <div className="mx-auto max-w-6xl px-5 py-10 lg:px-8">
@@ -51,6 +61,7 @@ export default async function EntryPage({ params }: Props) {
           pgaRules={rules ?? []}
           shipments={shipments ?? []}
           labels={labels}
+          revLabels={revLabels}
         />
       </div>
     </section>

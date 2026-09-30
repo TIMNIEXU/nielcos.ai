@@ -58,6 +58,22 @@ export default async function ShipmentDetail({ params }: Props) {
     );
   }
 
+  let tradeNo: string | null = null;
+  let tradeId: string | null = null;
+  try {
+    const { data: tr } = await sb
+      .from("trades")
+      .select("id, trade_no")
+      .eq("id", (shipment as any).trade_id ?? "")
+      .maybeSingle();
+    if (tr) {
+      tradeNo = tr.trade_no;
+      tradeId = tr.id;
+    }
+  } catch {
+    /* trades.sql not run yet — no trade chip */
+  }
+
   const { data: docs } = await sb
     .from("documents")
     .select("*")
@@ -108,6 +124,14 @@ export default async function ShipmentDetail({ params }: Props) {
               <h1 className="font-mono text-2xl font-bold text-ink sm:text-3xl">
                 {shipment.gttid}
               </h1>
+              {tradeNo && tradeId && (
+                <Link
+                  href={`/${locale}/app/trades/${tradeId}`}
+                  className="mt-2 inline-block rounded-full bg-brand-tint px-3 py-1 font-mono text-xs font-semibold text-brand hover:underline"
+                >
+                  {tradeNo}
+                </Link>
+              )}
               <p className="mt-1 text-ink-soft">
                 {t("container")}: <span className="font-semibold text-ink">{shipment.container_number}</span>
               </p>

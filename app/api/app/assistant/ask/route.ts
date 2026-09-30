@@ -68,5 +68,6 @@ export async function POST(req: NextRequest) {
     is_new: isNew,
     answer: answer.text,
     sources: answer.sources,
+    kind: answer.kind,
   });
 }

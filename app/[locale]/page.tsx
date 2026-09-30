@@ -4,6 +4,7 @@ import { routing } from "@/i18n/routing";
 import Reveal from "@/components/Reveal";
 import DashboardMock from "@/components/DashboardMock";
 import DutyEstimator from "@/components/DutyEstimator";
+import AiDemo from "@/components/AiDemo";
 import { SectionHead, CtaBand } from "@/components/Section";
 import RegulatoryFeed from "@/components/RegulatoryFeed";
 
@@ -62,6 +63,7 @@ export default async function HomePage({
   const tm = await getTranslations({ locale, namespace: "modulesPage" });
   const te = await getTranslations({ locale, namespace: "estimator" });
   const tl = await getTranslations({ locale, namespace: "landedCost" });
+  const t2 = await getTranslations({ locale, namespace: "mkt2" });
   const estimatorLabels: Record<string, string> = Object.fromEntries(
     ["eyebrow","title","sub","importBtn","importHint","importing","importOk","importFail","importNoText","importTooBig","productName","productNamePh","material","materialPh","intendedUse","intendedUsePh","hts","htsPh","origin","originPh","lookup","lookingUp","needInput","pickCandidate","htsTooShort","notFound","compoundNote","lookupFailed","usitcRate","suggestFL","suggest232","capNote","apply","invValue","mfn","rate301orig","rate301fl","rate232","ocean","colItem","colRate","colAmount","rowBase","row301orig","row301fl","row232","rowDutyTotal","rowMpf","rowHmf","rowGrand","mpfFy26","mpfFy27","disclaimer","cta"].map((k) => [k, te(k)])
   );
@@ -87,6 +89,24 @@ export default async function HomePage({
     n: t(`network.cities.${i}.n`),
     d: t(`network.cities.${i}.d`),
   }));
+  const wfSteps = [0, 1, 2, 3, 4, 5].map((i) => ({
+    t: t2(`wf.${i}.t`),
+    d: t2(`wf.${i}.d`),
+  }));
+  const demoChips = [0, 1, 2].map((i) => ({
+    q: t2(`chips.${i}.q`),
+    a: t2(`chips.${i}.a`),
+  }));
+  const resCards = [
+    { t: t2("resRegT"), d: t2("resRegD"), href: `/${locale}/regulatory` },
+    { t: t2("resLcT"), d: t2("resLcD"), href: `/${locale}/landed-cost` },
+    { t: t2("resDevT"), d: t2("resDevD"), href: `/${locale}/developers` },
+  ];
+  const devPoints = [
+    { t: t2("devApiT"), d: t2("devApiD") },
+    { t: t2("devWhT"), d: t2("devWhD") },
+    { t: t2("devEdiT"), d: t2("devEdiD") },
+  ];
 
   const riskTones = ["bg-risk-tint text-risk", "bg-warn-tint text-warn", "bg-vio-tint text-vio"];
 
@@ -241,6 +261,37 @@ export default async function HomePage({
         </Reveal>
       </section>
 
+      {/* ============ WORKFLOW ============ */}
+      <section className="border-y border-line bg-white">
+        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+          <SectionHead
+            eyebrow={t2("workflowEyebrow")}
+            title={t2("workflowTitle")}
+            sub={t2("workflowSub")}
+          />
+          <div className="mt-12">
+            <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+              {wfSteps.map((s, i) => (
+                <Reveal key={s.t} delay={i * 70}>
+                  <li className="dash-card dash-card-hover relative h-full p-5">
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-tint text-[14px] font-bold text-brand">
+                      {i + 1}
+                    </span>
+                    <p className="mt-4 text-[15px] font-bold text-ink">{s.t}</p>
+                    <p className="mt-2 text-[13px] leading-relaxed text-muted">{s.d}</p>
+                    {i < wfSteps.length - 1 && (
+                      <span aria-hidden="true" className="absolute top-1/2 -right-3 hidden text-faint lg:block">
+                        →
+                      </span>
+                    )}
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
       {/* ============ AI INTELLIGENCE ============ */}
       <section className="border-y border-line bg-white">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8 lg:py-24">
@@ -300,6 +351,23 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* ============ AI DEMO ============ */}
+      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+        <SectionHead
+          eyebrow={t2("demoEyebrow")}
+          title={t2("demoTitle")}
+          sub={t2("demoSub")}
+        />
+        <Reveal className="mx-auto mt-12 max-w-3xl">
+          <AiDemo
+            messages={{ chips: demoChips }}
+            ctaLabel={t2("demoCta")}
+            ctaHref={`/${locale}/landed-cost`}
+            note={t2("demoNote")}
+          />
+        </Reveal>
+      </section>
+
       {/* ============ COMPLIANCE ============ */}
       <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
@@ -342,6 +410,44 @@ export default async function HomePage({
             />
           </div>
         </div>
+      </section>
+
+      {/* ============ DEVELOPERS BANNER ============ */}
+      <section className="mx-auto max-w-7xl px-5 pb-20 lg:px-8 lg:pb-24">
+        <Reveal>
+          <div className="dash-card p-8 sm:p-10 lg:p-12">
+            <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]">
+              <div>
+                <p className="eyebrow">{t2("devEyebrow")}</p>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+                  {t2("devTitle")}
+                </h2>
+                <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted">
+                  {t2("devSub")}
+                </p>
+                <Link
+                  href={`/${locale}/developers`}
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3 text-[14.5px] font-bold text-white shadow-[0_10px_24px_-8px_rgba(29,78,216,0.8)] transition-all hover:-translate-y-0.5 hover:bg-brand-deep"
+                >
+                  {t2("devCta")} →
+                </Link>
+              </div>
+              <ul className="space-y-3">
+                {devPoints.map((p) => (
+                  <li key={p.t} className="flex items-start gap-3 rounded-2xl border border-line-soft bg-white/70 p-4">
+                    <svg viewBox="0 0 16 16" className="mt-0.5 h-4 w-4 shrink-0 text-ok" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 8.5l3.2 3.2L13 5" />
+                    </svg>
+                    <div>
+                      <p className="text-[14.5px] font-bold text-ink">{p.t}</p>
+                      <p className="mt-0.5 text-[13px] text-muted">{p.d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* ============ REGULATORY FEED ============ */}
@@ -429,6 +535,31 @@ export default async function HomePage({
               </div>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ============ RESOURCES ============ */}
+      <section id="resources" className="mx-auto max-w-7xl scroll-mt-24 px-5 py-20 lg:px-8 lg:py-24">
+        <SectionHead
+          eyebrow={t2("resEyebrow")}
+          title={t2("resTitle")}
+          sub={t2("resSub")}
+        />
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {resCards.map((c, i) => (
+            <Reveal key={c.t} delay={i * 90}>
+              <Link
+                href={c.href}
+                className="dash-card dash-card-hover flex h-full flex-col p-6"
+              >
+                <p className="text-[16px] font-bold text-ink">{c.t}</p>
+                <p className="mt-2 flex-1 text-[13.5px] leading-relaxed text-muted">{c.d}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-bold text-brand">
+                  {t2("resOpen")} →
+                </span>
+              </Link>
+            </Reveal>
+          ))}
         </div>
       </section>
 

@@ -3,7 +3,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type Thread = { id: string; title: string; updated_at: string };
-type Msg = { id: string; role: string; content: string; sources: { label: string; detail?: string }[] };
+type Msg = { id: string; role: string; content: string; sources: { label: string; detail?: string }[]; kind?: "lookup" | "forecast" | "recommendation" };
+
+const KIND_TONE: Record<string, string> = {
+  lookup: "bg-sky-tint text-sky ring-sky/25",
+  forecast: "bg-warn-tint text-warn ring-warn/25",
+  recommendation: "bg-vio-tint text-vio ring-vio/25",
+};
 
 export default function AssistantBoard({ messages, locale }: { messages: Record<string, string>; locale: string }) {
   const t = (k: string) => messages[k] ?? k;
@@ -72,7 +78,7 @@ export default function AssistantBoard({ messages, locale }: { messages: Record<
         setActiveId(d.thread_id);
         loadThreads();
       }
-      setMsgs((m) => [...m, { id: "tmp-a-" + Date.now(), role: "assistant", content: d.answer, sources: d.sources ?? [] }]);
+      setMsgs((m) => [...m, { id: "tmp-a-" + Date.now(), role: "assistant", content: d.answer, sources: d.sources ?? [], kind: d.kind ?? "lookup" }]);
     } catch {
       setMsgs((m) => [...m, { id: "tmp-e-" + Date.now(), role: "assistant", content: t("sendFailed"), sources: [] }]);
     }
@@ -134,6 +140,11 @@ export default function AssistantBoard({ messages, locale }: { messages: Record<
                   <div className={`max-w-[85%] rounded-2xl px-4 py-3 ${
                     m.role === "user" ? "bg-brand text-white" : "bg-brand-tint-soft/70 text-ink ring-1 ring-line"
                   }`}>
+                    {m.role === "assistant" && m.kind && (
+                      <span className={`mb-2 inline-block rounded-full px-2.5 py-0.5 text-[11px] font-bold ring-1 ${KIND_TONE[m.kind] ?? KIND_TONE.lookup}`}>
+                        {t(`aig.${m.kind}`)}
+                      </span>
+                    )}
                     <p className="whitespace-pre-wrap text-sm leading-relaxed">{m.content}</p>
                     {m.role === "assistant" && m.sources.length > 0 && (
                       <div className="mt-3 border-t border-line pt-2">
@@ -147,6 +158,9 @@ export default function AssistantBoard({ messages, locale }: { messages: Record<
                           ))}
                         </ul>
                       </div>
+                    )}
+                    {m.role === "assistant" && m.kind && (
+                      <p className="mt-2 text-[11px] italic text-ink-soft/80">ⓘ {t("aig.disclaimer")}</p>
                     )}
                   </div>
                 </div>

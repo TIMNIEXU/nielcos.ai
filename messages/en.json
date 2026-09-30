@@ -370,7 +370,10 @@
     "login": "Sign in",
     "workspace": "Workspace",
     "regulatory": "Regulatory",
-    "landedCost": "Landed cost"
+    "landedCost": "Landed cost",
+    "developers": "Developers",
+    "insurance": "Insurance",
+    "resources": "Resources"
   },
   "platform": {
     "cta": {
@@ -1425,5 +1428,364 @@
     "cd_rest-api": "Read shipments and documents with a scoped API key. Versioned at /api/v1.",
     "cn_excel-import": "Excel import",
     "cd_excel-import": "Every module already accepts Excel uploads with duplicate detection."
+  },
+  "trades": {
+    "title": "Trades",
+    "sub": "One Trade ID ties POs, invoices, payments, freight, customs and costs together.",
+    "new": "New Trade",
+    "tradeNo": "Trade ID",
+    "status": "Status",
+    "route": "Route",
+    "value": "Value",
+    "updated": "Updated",
+    "searchPh": "Search Trade ID or title…",
+    "allStatuses": "All statuses",
+    "stDraft": "Draft",
+    "stActive": "Active",
+    "stCompleted": "Completed",
+    "stCancelled": "Cancelled",
+    "empty": "No trades yet",
+    "emptySub": "Create your first trade to group shipments, documents and costs under one ID.",
+    "shipments": "Shipments",
+    "documents": "Documents",
+    "wTitle": "New trade",
+    "wSub": "Three steps — basics, parties, review.",
+    "stepBasics": "Basics",
+    "stepParties": "Parties",
+    "stepReview": "Review",
+    "fTitle": "Title",
+    "fTitlePh": "e.g. Fall apparel — Shanghai to Chicago",
+    "fIncoterm": "Incoterm",
+    "fOrigin": "Origin country",
+    "fDest": "Destination country",
+    "fBuyer": "Buyer",
+    "fSupplier": "Supplier",
+    "fCurrency": "Currency",
+    "fValue": "Total value",
+    "fDesc": "Description",
+    "fDescPh": "Commodity, quantity, notes…",
+    "back": "Back",
+    "next": "Next",
+    "create": "Create trade",
+    "creating": "Creating…",
+    "errTitle": "Please give the trade a title.",
+    "tabOverview": "Overview",
+    "tabCommercial": "Commercial",
+    "tabPayments": "Payments",
+    "tabLogistics": "Logistics",
+    "tabCustoms": "Customs",
+    "tabDocuments": "Documents",
+    "tabCosts": "Costs",
+    "tabActivity": "Activity",
+    "linkShipment": "Link a shipment",
+    "gttidPh": "Enter GTTID, e.g. NIEL-2026-000123",
+    "link": "Link",
+    "unlink": "Unlink",
+    "linked": "Linked shipments",
+    "noShipments": "No shipments linked yet.",
+    "noDocuments": "No documents linked yet.",
+    "noEntries": "No customs entries linked yet.",
+    "noPayables": "No payables for this trade yet.",
+    "noSheets": "No cost sheets for this trade yet.",
+    "noActivity": "No activity yet.",
+    "commercialNote": "Parties and terms live on the trade so every shipment created under it inherits them.",
+    "deleteTrade": "Delete trade",
+    "confirmDelete": "Delete trade %NO%? Linked shipments, documents and costs stay in the system, only the trade grouping is removed.",
+    "deleted": "Trade deleted.",
+    "activate": "Mark active",
+    "complete": "Mark completed",
+    "migrationNeeded": "Trade tables are not installed yet.",
+    "migrationSub": "Ask your admin to run supabase/trades.sql, then refresh.",
+    "linkFailed": "Could not link that shipment — check the GTTID.",
+    "overview": "Trade overview",
+    "terms": "Terms",
+    "parties": "Parties"
+  },
+  "shell": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "trades": "Trades",
+      "shipments": "Shipments",
+      "customs": "Customs",
+      "documents": "Documents",
+      "products": "Products",
+      "suppliers": "Suppliers",
+      "logistics": "Logistics",
+      "finance": "Finance",
+      "compliance": "Compliance",
+      "assistant": "AI Assistant",
+      "tower": "Control Tower",
+      "executive": "Executive",
+      "integrations": "Integrations",
+      "team": "Team",
+      "settings": "Settings"
+    },
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar",
+    "openMenu": "Open navigation",
+    "closeMenu": "Close navigation",
+    "workspace": "Workspace",
+    "search": {
+      "placeholder": "Search trades, shipments, entries, documents… (⌘K)",
+      "noResults": "No results for %Q%",
+      "searching": "Searching…",
+      "groupTrade": "Trades",
+      "groupShipment": "Shipments",
+      "groupEntry": "Customs entries",
+      "groupDocument": "Documents"
+    },
+    "quick": {
+      "title": "Quick actions",
+      "newTrade": "New trade",
+      "newShipment": "New shipment",
+      "uploadDocument": "Upload document",
+      "newEntry": "New customs entry"
+    },
+    "bell": {
+      "title": "Notifications",
+      "empty": "You're all caught up — no alerts.",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "menu": {
+      "signOut": "Sign out",
+      "signedInAs": "Signed in as %EMAIL%"
+    },
+    "crumbs": {
+      "dashboard": "Dashboard"
+    }
+  },
+  "mkt2": {
+    "workflowEyebrow": "How it works",
+    "workflowTitle": "One flow, from factory to final delivery",
+    "workflowSub": "Every shipment moves through the same six stages — each one connected, each one visible.",
+    "wf": [
+      {
+        "t": "Source",
+        "d": "Products and suppliers qualified, scored, and documented before you buy."
+      },
+      {
+        "t": "Ship",
+        "d": "Ocean, air, and drayage tracked by container and master bill of lading."
+      },
+      {
+        "t": "Clear",
+        "d": "HTS classification, duty estimates, and PGA checks done before CBP asks."
+      },
+      {
+        "t": "Protect",
+        "d": "Cargo insurance options for every lane, arranged alongside the freight."
+      },
+      {
+        "t": "Deliver",
+        "d": "Drayage moves, warehouse appointments, and proof of delivery in one view."
+      },
+      {
+        "t": "Reconcile",
+        "d": "True landed cost per SKU, payables, and duty forecasts in a single ledger."
+      }
+    ],
+    "demoEyebrow": "Ask NIEL AI",
+    "demoTitle": "Trade questions, answered with sources",
+    "demoSub": "The same assistant that runs inside your workspace — try a question below.",
+    "chips": [
+      {
+        "q": "What duty for HTS 9506.91.00 from China?",
+        "a": "Add the final 2 digits: 9506.91.0010 carries 7.5% Section 301 (List 4A) for China origin, on top of the MFN rate. Verify against the current USITC HTS before filing."
+      },
+      {
+        "q": "Which PGA checks apply to my shipment?",
+        "a": "Every entry is screened against 9 PGA agencies — FDA, FSIS, APHIS, EPA, FCC, CPSC, DOT, ATF, TTB — across 23 rules, before CBP asks."
+      },
+      {
+        "q": "Where is my in-transit duty exposure?",
+        "a": "The Executive view ranks your in-transit shipments by duty exposure, so the biggest risks surface first."
+      }
+    ],
+    "demoCta": "Run a full landed-cost estimate",
+    "demoNote": "Demo answers are illustrative — the workspace always cites live sources.",
+    "devEyebrow": "Developers",
+    "devTitle": "Plug NIEL COS into your stack",
+    "devSub": "REST API, webhooks, and EDI inbox — built for the systems you already run.",
+    "devApiT": "REST API",
+    "devApiD": "Shipments and documents over HTTPS, with scoped API keys.",
+    "devWhT": "Webhooks",
+    "devWhD": "Signed real-time events: parse finished, moves created and changed.",
+    "devEdiT": "EDI inbox",
+    "devEdiD": "850, 856, and 810 documents parsed into structured data.",
+    "devCta": "Read the API docs",
+    "resEyebrow": "Resources",
+    "resTitle": "Start with what you need",
+    "resSub": "Free tools and references — no account required.",
+    "resRegT": "Regulatory updates",
+    "resRegD": "Federal Register tariff and trade notices, machine-translated weekly.",
+    "resLcT": "Landed-cost estimator",
+    "resLcD": "MFN, 232, 301, MPF, and HMF on one sheet — live USITC 2026 rates.",
+    "resDevT": "Developer docs",
+    "resDevD": "API keys, webhooks, and EDI — integrate in an afternoon.",
+    "resOpen": "Open"
+  },
+  "devdocs": {
+    "eyebrow": "Developers",
+    "title": "API documentation",
+    "sub": "Read shipments and documents, receive events, and exchange EDI — over HTTPS, with scoped keys.",
+    "authTitle": "Authentication",
+    "authSub": "Every /api/v1 request carries an API key.",
+    "authP1": "Keys look like niel_sk_… and are issued in your workspace under Integrations → API keys. The raw key is shown once — only its SHA-256 hash is stored, and it can never be recovered later.",
+    "authP2": "Send it as an Authorization: Bearer header on every request.",
+    "authP3": "Scopes are read and write. The public read endpoints below require the read scope.",
+    "authNote": "Create and revoke keys anytime in App → Integrations. Revoked keys stop working immediately.",
+    "restTitle": "REST endpoints",
+    "restSub": "Base URL: https://www.nielcos.ai",
+    "ep1m": "GET",
+    "ep1p": "/api/v1/shipments",
+    "ep1d": "List the key owner's shipments, most recently updated first.",
+    "ep2m": "GET",
+    "ep2p": "/api/v1/shipments/{id}",
+    "ep2d": "One shipment by GTTID, master B/L number, or container number. Returns 404 when nothing matches.",
+    "ep3m": "GET",
+    "ep3p": "/api/v1/documents",
+    "ep3d": "Document metadata for the key owner's company (latest 100), including parse status. File downloads stay inside the workspace.",
+    "respNote": "Responses are JSON. Shipment objects include gttid, mbl_no, container_number, status, origin, destination, current_location, eta, and updated_at. Errors use { error, detail? } with HTTP status codes.",
+    "whTitle": "Webhooks",
+    "whSub": "Subscribe a URL per event in App → Integrations → Webhooks. Deliveries POST JSON within seconds, and every delivery is logged per endpoint.",
+    "ev1": "document.parsed",
+    "ev1d": "A document finished AI parsing.",
+    "ev2": "drayage_move.created",
+    "ev2d": "A drayage move was created.",
+    "ev3": "drayage_move.status_changed",
+    "ev3d": "A drayage move changed status.",
+    "sigTitle": "Verifying signatures",
+    "sigP1": "Every delivery carries X-Niel-Event (the event name) and X-Niel-Signature: sha256=<hex>. The signature is HMAC-SHA256 of the raw request body, keyed with your endpoint secret (whsec_…).",
+    "sigP2": "Compare in constant time and only accept bodies whose signature matches — then process the JSON { event, delivered_at, data }.",
+    "ediTitle": "EDI inbox",
+    "ediSub": "Trade EDI the way your partners already send it.",
+    "ediP1": "Paste or upload ANSI X12 in App → Integrations → EDI. The inbox auto-identifies 850 (purchase order), 856 (ship notice / ASN), and 810 (invoice), and parses each into structured data with header, lines, and totals.",
+    "ediP2": "Uploads are capped at 2 MB per document. Anything else lands as “unknown” with the raw text preserved for review.",
+    "rateTitle": "Rate limits",
+    "rateP1": "No published per-minute limits — fair use applies. Planning sustained high volume? Talk to us first so we can provision for it.",
+    "ctaTitle": "Get your API key",
+    "ctaSub": "Keys live in your workspace — create one in under a minute.",
+    "ctaBtn": "Open Integrations"
+  },
+  "team": {
+    "title": "Team",
+    "sub": "Who belongs to your company workspace.",
+    "companyLabel": "Company",
+    "yourRole": "Your role",
+    "memberSince": "Member since",
+    "roleOwner": "Owner",
+    "roleMember": "Member",
+    "membersTitle": "Members",
+    "membersSub": "Everyone with access to this company workspace.",
+    "membersNote": "Member records are private — you can only see your own entry below.",
+    "thMember": "Member",
+    "thRole": "Role",
+    "thJoined": "Joined",
+    "you": "You",
+    "inviteTitle": "Invite members",
+    "inviteP1": "Every new signup creates their own company workspace automatically — there is currently no self-serve way to join an existing company.",
+    "inviteP2": "To add someone to this company, contact us and we'll set it up for you.",
+    "inviteCta": "Contact us",
+    "rolesNote": "Role changes (owner ↔ member) aren't available in the current version — team administration is read-only.",
+    "navPill": "Team"
+  },
+  "ui": {
+    "toast": {
+      "close": "Dismiss notification"
+    },
+    "drawer": {
+      "close": "Close panel"
+    },
+    "confirm": {
+      "title": "Please confirm",
+      "deleteTitle": "Delete this item?",
+      "deleteBody": "Delete \"%NAME%\"? This action cannot be undone.",
+      "confirm": "Confirm",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    },
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next",
+      "perPage": "Per page",
+      "page": "Page",
+      "summary": "%A%–%B% of %C%"
+    },
+    "empty": {
+      "noResults": "No results found"
+    },
+    "commandbar": {
+      "searchPlaceholder": "Search…",
+      "clear": "Clear search"
+    },
+    "form": {
+      "requiredMark": "(required)"
+    }
+  },
+  "dash": {
+    "kpiInTransit": "In-transit shipments",
+    "kpiPayables": "Payables due",
+    "kpiDutyExposure": "Duty exposure",
+    "kpiAttention": "Needs attention",
+    "secTrend": "Duty spend trend",
+    "secStatus": "Shipment status",
+    "secAlerts": "Alerts",
+    "secTasks": "Tasks",
+    "secSummary": "Daily briefing",
+    "secModules": "Modules",
+    "alertEmpty": "All clear — no alerts right now.",
+    "taskEmpty": "Nothing due — enjoy the calm.",
+    "viewAll": "View all",
+    "noData": "No data yet",
+    "summary1": "You have %INTRANSIT% in-transit shipments, %ATTENTION% of them need attention.",
+    "summary2": "Pending payables total %PAYABLE%; forecast duty exposure is about %DUTY%.",
+    "taskOverduePayable": "%PAYEE%: %AMOUNT% overdue by %DAYS% days",
+    "taskMissedAppt": "%WAREHOUSE% appointment missed (%CONTAINER%)",
+    "taskDocsMissing": "%GTTID% arriving soon — documents missing",
+    "sevHigh": "High",
+    "sevMedium": "Medium",
+    "sevLow": "Low",
+    "alDemurrageT": "Demurrage risk",
+    "alDemurrageOverdueD": "Container %CONTAINER% is %DAYS% days past free time",
+    "alDemurrageSoonD": "Container %CONTAINER% free time ends in %DAYS% days",
+    "alPayableT": "Payable overdue",
+    "alPayableOverdueD": "%PAYEE%: %AMOUNT% overdue by %DAYS% days",
+    "alApptT": "Appointment missed",
+    "alApptMissedD": "%WAREHOUSE% appointment missed (%CONTAINER%)",
+    "alHoldT": "Shipment on hold",
+    "alHoldD": "%GTTID% is on hold",
+    "alStaleT": "No recent update",
+    "alStaleD": "%GTTID% has no update for %DAYS% days",
+    "mixedCurrencies": "mixed currencies"
+  },
+  "aig": {
+    "lookup": "Data lookup",
+    "forecast": "Forecast",
+    "recommendation": "Recommendation",
+    "disclaimer": "For reference only — verify before filing."
+  },
+  "htsrev": {
+    "cardTitle": "HTS suggestion",
+    "confidence": "Confidence",
+    "rationale": "Basis",
+    "alternatives": "Nearby codes",
+    "needsReview": "Needs review",
+    "adopted": "Adopted",
+    "rejected": "Rejected",
+    "adopt": "Adopt",
+    "reject": "Reject",
+    "notePh": "Review note…",
+    "submit": "Submit review",
+    "rationaleRule": "Matched %RULE%",
+    "ruleKeyword": "keyword match · USITC HTS 2026 Rev 19",
+    "ruleExact10": "10-digit exact match · additional-duty rules",
+    "ruleExact8": "8-digit schedule match · USITC HTS 2026 Rev 19",
+    "pendingMigration": "Review is pending migration: the hts_review_decisions table is not created yet.",
+    "reviewSaved": "Review saved.",
+    "reviewFailed": "Could not save the review.",
+    "noSuggestion": "No suggestion for this line yet.",
+    "reviewerLabel": "Reviewer"
   }
 }

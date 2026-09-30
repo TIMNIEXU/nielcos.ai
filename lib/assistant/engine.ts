@@ -11,7 +11,8 @@ import { isZhLocale } from "@/lib/locale";
 
 export type Source = { label: string; detail?: string };
 export type ThreadCtx = { lastHts?: string; lastOrigin?: string; lastGttid?: string };
-export type Answer = { text: string; sources: Source[]; context: ThreadCtx };
+export type AiKind = "lookup" | "forecast" | "recommendation";
+export type Answer = { text: string; sources: Source[]; context: ThreadCtx; kind: AiKind };
 
 type Sb = {
   from: (t: string) => any;
@@ -152,7 +153,7 @@ async function dutyAnswer(sb: Sb, htsNo: string, origin: string, zh: boolean, ct
       text: zh
         ? `税库里没找到 ${htsNo}。检查下编码对不对（6–10 位数字），或者换个相近的编码再问我。`
         : `No match for ${htsNo} in the tariff library. Double-check the code (6–10 digits) or try a nearby one.`,
-      sources: [], context: { ...ctx, lastHts: htsNo, lastOrigin: origin },
+      sources: [], kind: "lookup", context: { ...ctx, lastHts: htsNo, lastOrigin: origin },
     };
   }
 
@@ -174,7 +175,7 @@ async function dutyAnswer(sb: Sb, htsNo: string, origin: string, zh: boolean, ct
   if (row.description) lines.splice(1, 0, zh ? `品名：${row.description}` : `Description: ${row.description}`);
   for (const w of warnings) lines.push(zh ? `⚠️ 注意：${w.text_zh ?? w.text}` : `⚠️ Note: ${w.text}`);
 
-  return { text: lines.join("\n"), sources, context: { ...ctx, lastHts: htsNo, lastOrigin: origin } };
+  return { text: lines.join("\n"), sources, kind: "lookup", context: { ...ctx, lastHts: htsNo, lastOrigin: origin } };
 }
 
 async function htsKeywordAnswer(sb: Sb, kw: string, origin: string, zh: boolean, ctx: ThreadCtx): Promise<Answer> {
@@ -192,7 +193,7 @@ async function htsKeywordAnswer(sb: Sb, kw: string, origin: string, zh: boolean,
     : `Tell me which one (e.g. the 1st) and I'll compute the full rate for ${origin}.`);
   return {
     text: lines.join("\n"),
-    sources: [{ label: "USITC HTS 2026 Rev 19", detail: zh ? "关键词匹配" : "keyword match" }],
+    sources: [{ label: "USITC HTS 2026 Rev 19", detail: zh ? "关键词匹配" : "keyword match" }], kind: "lookup",
     context: ctx,
   };
 }
@@ -202,7 +203,7 @@ function needHts(zh: boolean, ctx: ThreadCtx): Answer {
     text: zh
       ? `想查哪个产品的税率？给我 HTS 编码（比如 9506.91.00）+ 原产国（比如 中国），我直接调税率库给你算。`
       : `Which product's duty rate? Give me the HTS code (e.g. 9506.91.00) + origin country and I'll look it up live.`,
-    sources: [], context: ctx,
+    sources: [], kind: "lookup", context: ctx,
   };
 }
 
@@ -228,7 +229,7 @@ async function shipmentAnswer(sb: Sb, key: string, zh: boolean, ctx: ThreadCtx):
   if (!list.length) {
     return {
       text: zh ? `没找到 ${k}。确认下柜号/GTTID 对不对，或者它是不是在别的公司名下。` : `No shipment found for ${k}. Check the number or whether it belongs to another company.`,
-      sources: [], context: ctx,
+      sources: [], kind: "lookup", context: ctx,
     };
   }
   const s = list[0];
@@ -251,7 +252,7 @@ async function shipmentAnswer(sb: Sb, key: string, zh: boolean, ctx: ThreadCtx):
   ];
   return {
     text: lines.join("\n"),
-    sources: [{ label: zh ? "货运模块" : "Freight module", detail: s.gttid ?? k }],
+    sources: [{ label: zh ? "货运模块" : "Freight module", detail: s.gttid ?? k }], kind: "lookup",
     context: { ...ctx, lastGttid: s.gttid ?? undefined },
   };
 }
@@ -261,7 +262,7 @@ function shipmentHint(zh: boolean, ctx: ThreadCtx): Answer {
     text: zh
       ? `把柜号（比如 CWNU2262061）或 GTTID（比如 NIEL-2026-000001）发我，我查这票货的状态、位置和节点。`
       : `Send me a container number (e.g. CWNU2262061) or GTTID (e.g. NIEL-2026-000001) and I'll pull its status, location and milestones.`,
-    sources: [], context: ctx,
+    sources: [], kind: "lookup", context: ctx,
   };
 }
 
@@ -288,7 +289,7 @@ async function regulationAnswer(sb: Sb, q: string, zh: boolean, ctx: ThreadCtx):
       text: zh
         ? `法规库里没找到相关的。换个关键词试试（比如"232 钢铝"、"301 附加税"、"OFAC 制裁"），或者去合规模块看完整列表。`
         : `Nothing matching in the regulation library. Try another keyword (e.g. "232 steel", "301 additional", "OFAC sanctions") or browse the Compliance module.`,
-      sources: [], context: ctx,
+      sources: [], kind: "lookup", context: ctx,
     };
   }
   const lines: string[] = zh ? [`找到 ${scored.length} 条相关法规：`] : [`${scored.length} matching regulations:`];
@@ -300,7 +301,7 @@ async function regulationAnswer(sb: Sb, q: string, zh: boolean, ctx: ThreadCtx):
     sources.push({ label: title, detail: r.source ?? (zh ? "联邦公报同步" : "Federal Register sync") });
   });
   lines.push(zh ? `\n以上为库内摘要，正式引用以原文为准。` : `\nSummaries from the library; refer to the original text for formal citation.`);
-  return { text: lines.join("\n"), sources, context: ctx };
+  return { text: lines.join("\n"), sources, kind: "lookup", context: ctx };
 }
 
 /* ================= product ================= */
@@ -309,7 +310,7 @@ async function productAnswer(sb: Sb, q: string, zh: boolean, ctx: ThreadCtx): Pr
   if (kw.length < 2) {
     return {
       text: zh ? `告诉我 SKU 或产品名关键词，我查你产品库里的 HTS 和原产国。` : `Give me a SKU or product name keyword and I'll look up its HTS and origin in your catalog.`,
-      sources: [], context: ctx,
+      sources: [], kind: "lookup", context: ctx,
     };
   }
   const { data } = await sb.from("products")
@@ -320,7 +321,7 @@ async function productAnswer(sb: Sb, q: string, zh: boolean, ctx: ThreadCtx): Pr
   if (!rows.length) {
     return {
       text: zh ? `产品库里没找到“${kw}”。去产品模块确认下 SKU 或名称。` : `No product matching "${kw}" in your catalog. Check the SKU or name in the Products module.`,
-      sources: [], context: ctx,
+      sources: [], kind: "lookup", context: ctx,
     };
   }
   const lines: string[] = zh ? [`找到 ${rows.length} 个产品：`] : [`${rows.length} products found:`];
@@ -336,7 +337,7 @@ async function productAnswer(sb: Sb, q: string, zh: boolean, ctx: ThreadCtx): Pr
   }
   return {
     text: lines.join("\n"),
-    sources: [{ label: zh ? "产品模块" : "Products module", detail: zh ? "自有产品库" : "own catalog" }],
+    sources: [{ label: zh ? "产品模块" : "Products module", detail: zh ? "自有产品库" : "own catalog" }], kind: "lookup",
     context: { ...ctx, lastHts: first?.hts_code ?? ctx.lastHts, lastOrigin: first?.origin_country ?? ctx.lastOrigin },
   };
 }
@@ -359,7 +360,7 @@ function help(zh: boolean): Answer {
       `• Products: "look up product 9506910030"`,
       `Every answer comes with sources. Follow-ups like "and from Vietnam?" work too.`,
     ].join("\n"),
-    sources: [], context: {},
+    sources: [], kind: "lookup", context: {},
   };
 }
 
@@ -368,6 +369,6 @@ function fallback(zh: boolean, ctx: ThreadCtx): Answer {
     text: zh
       ? `这个问题我暂时答不上来。我现在能做的是：查税率（HTS+原产国）、查货运（柜号/GTTID）、查法规（关键词）、查产品（SKU）。换个问法试试？`
       : `I can't answer that yet. What I do now: duty rates (HTS + origin), tracking (container/GTTID), regulations (keywords), products (SKU). Try rephrasing?`,
-    sources: [], context: ctx,
+    sources: [], kind: "lookup", context: ctx,
   };
 }

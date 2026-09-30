@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { matchPga, type PgaRule } from "@/lib/hts";
 import { isZhLocale } from "@/lib/locale";
+import HtsReviewCard from "./HtsReviewCard";
 
 type Entry = {
   id: string;
@@ -52,11 +53,12 @@ type Props = {
   pgaRules: PgaRule[];
   shipments: { id: string; gttid: string | null; container_number: string }[];
   labels: Record<string, string>;
+  revLabels: Record<string, string>;
 };
 
 const STATUS_OPTS = ["draft", "classifying", "packet_ready", "filed", "released"];
 
-export default function EntryDetail({ locale, initialEntry, initialLines, pgaRules, shipments, labels: t }: Props) {
+export default function EntryDetail({ locale, initialEntry, initialLines, pgaRules, shipments, labels: t, revLabels }: Props) {
   const router = useRouter();
   const [entry, setEntry] = useState<Entry>(initialEntry);
   const [lines, setLines] = useState<Line[]>(initialLines);
@@ -466,6 +468,15 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
                     ))}
                     <p className="text-[11px] text-ink-soft">({t.ruleBased})</p>
                   </div>
+                )}
+                {/* HTS suggestion review card (CUS-04) */}
+                {(l.confirmed_hts || (l.suggested_hts?.length ?? 0) > 0) && (
+                  <HtsReviewCard
+                    hts={l.confirmed_hts ?? l.suggested_hts[0].hts_no}
+                    origin={l.origin_country ?? ""}
+                    candidates={l.suggested_hts ?? []}
+                    rev={revLabels}
+                  />
                 )}
                 {l.suggested_hts && l.suggested_hts.length === 0 && suggesting === null && (
                   <p className="mt-2 hidden text-xs text-ink-soft">{t.noCandidates}</p>

@@ -30,6 +30,12 @@ export default async function AssistantPage({
   const dict: Record<string, string> = {};
   for (const k of keys) dict[k] = t(k);
 
+  // AI guardrail labels (aig.* at message root) — kind chips + disclaimer.
+  const ta = await getTranslations({ locale, namespace: "aig" });
+  for (const k of ["lookup", "forecast", "recommendation", "disclaimer"]) {
+    dict[`aig.${k}`] = ta(k);
+  }
+
   return (
     <main className="min-h-screen bg-page pb-16 pt-8">
       <div className="mx-auto max-w-6xl px-4 md:px-8">

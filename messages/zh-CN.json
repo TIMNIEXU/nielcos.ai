@@ -370,7 +370,10 @@
     "login": "登录",
     "workspace": "工作台",
     "regulatory": "法规动态",
-    "landedCost": "到岸成本"
+    "landedCost": "到岸成本",
+    "developers": "开发者",
+    "insurance": "保险",
+    "resources": "资源"
   },
   "platform": {
     "cta": {
@@ -1425,5 +1428,364 @@
     "cd_rest-api": "用带权限范围的 API 密钥读取货运与单证，版本化接口 /api/v1。",
     "cn_excel-import": "Excel 导入",
     "cd_excel-import": "各模块均已支持 Excel 上传，自动去重。"
+  },
+  "trades": {
+    "title": "贸易",
+    "sub": "一个 Trade ID 把订单、发票、付款、货运、报关、费用串在一起。",
+    "new": "新建贸易",
+    "tradeNo": "贸易编号",
+    "status": "状态",
+    "route": "路线",
+    "value": "货值",
+    "updated": "更新时间",
+    "searchPh": "搜索贸易编号或标题…",
+    "allStatuses": "全部状态",
+    "stDraft": "草稿",
+    "stActive": "进行中",
+    "stCompleted": "已完成",
+    "stCancelled": "已取消",
+    "empty": "还没有贸易",
+    "emptySub": "创建第一笔贸易，把货运、单证、费用挂到同一个 ID 下。",
+    "shipments": "货运",
+    "documents": "单证",
+    "wTitle": "新建贸易",
+    "wSub": "三步：基本信息、参与方、确认。",
+    "stepBasics": "基本信息",
+    "stepParties": "参与方",
+    "stepReview": "确认",
+    "fTitle": "标题",
+    "fTitlePh": "如：秋季服装 — 上海到芝加哥",
+    "fIncoterm": "贸易术语",
+    "fOrigin": "起运国",
+    "fDest": "目的国",
+    "fBuyer": "买方",
+    "fSupplier": "供应商",
+    "fCurrency": "币种",
+    "fValue": "总货值",
+    "fDesc": "描述",
+    "fDescPh": "品名、数量、备注…",
+    "back": "上一步",
+    "next": "下一步",
+    "create": "创建贸易",
+    "creating": "创建中…",
+    "errTitle": "请填写贸易标题。",
+    "tabOverview": "总览",
+    "tabCommercial": "商务",
+    "tabPayments": "付款",
+    "tabLogistics": "物流",
+    "tabCustoms": "报关",
+    "tabDocuments": "单证",
+    "tabCosts": "费用",
+    "tabActivity": "动态",
+    "linkShipment": "关联货运",
+    "gttidPh": "输入 GTTID，如 NIEL-2026-000123",
+    "link": "关联",
+    "unlink": "解绑",
+    "linked": "已关联货运",
+    "noShipments": "还没有关联货运。",
+    "noDocuments": "还没有关联单证。",
+    "noEntries": "还没有关联报关单。",
+    "noPayables": "这笔贸易还没有应付。",
+    "noSheets": "这笔贸易还没有成本表。",
+    "noActivity": "暂无动态。",
+    "commercialNote": "参与方与条款挂在贸易上，其下创建的货运自动继承。",
+    "deleteTrade": "删除贸易",
+    "confirmDelete": "删除贸易 %NO%？关联的货运、单证、费用保留在系统中，只删除贸易分组。",
+    "deleted": "贸易已删除。",
+    "activate": "标记为进行中",
+    "complete": "标记为已完成",
+    "migrationNeeded": "贸易数据表尚未安装。",
+    "migrationSub": "请管理员运行 supabase/trades.sql 后刷新。",
+    "linkFailed": "关联失败 — 请检查 GTTID 是否正确。",
+    "overview": "贸易总览",
+    "terms": "条款",
+    "parties": "参与方"
+  },
+  "shell": {
+    "nav": {
+      "dashboard": "工作台",
+      "trades": "贸易",
+      "shipments": "货运",
+      "customs": "报关",
+      "documents": "单证",
+      "products": "产品",
+      "suppliers": "供应商",
+      "logistics": "物流",
+      "finance": "财务",
+      "compliance": "合规",
+      "assistant": "AI 助手",
+      "tower": "指挥塔",
+      "executive": "高管",
+      "integrations": "集成",
+      "team": "团队",
+      "settings": "设置"
+    },
+    "collapse": "收起侧边栏",
+    "expand": "展开侧边栏",
+    "openMenu": "打开导航",
+    "closeMenu": "关闭导航",
+    "workspace": "工作区",
+    "search": {
+      "placeholder": "搜索贸易、货运、报关单、单证… (⌘K)",
+      "noResults": "没有与 %Q% 相关的结果",
+      "searching": "搜索中…",
+      "groupTrade": "贸易",
+      "groupShipment": "货运",
+      "groupEntry": "报关单",
+      "groupDocument": "单证"
+    },
+    "quick": {
+      "title": "快捷操作",
+      "newTrade": "新建贸易",
+      "newShipment": "新建货运",
+      "uploadDocument": "上传单证",
+      "newEntry": "新建报关单"
+    },
+    "bell": {
+      "title": "通知",
+      "empty": "暂无告警。",
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    },
+    "menu": {
+      "signOut": "退出登录",
+      "signedInAs": "当前登录：%EMAIL%"
+    },
+    "crumbs": {
+      "dashboard": "工作台"
+    }
+  },
+  "mkt2": {
+    "workflowEyebrow": "运作方式",
+    "workflowTitle": "一条流程，从工厂到最终交付",
+    "workflowSub": "每一票货都经过相同的六个阶段——环环相扣，全程可见。",
+    "wf": [
+      {
+        "t": "寻源",
+        "d": "采购前完成产品与供应商的资质审核、评分与单证归档。"
+      },
+      {
+        "t": "运输",
+        "d": "海运、空运、拖车按柜号与主提单全程追踪。"
+      },
+      {
+        "t": "清关",
+        "d": "在 CBP 问起之前，先做好 HTS 归类、税费测算与 PGA 检查。"
+      },
+      {
+        "t": "保障",
+        "d": "每条航线可选货物保险，与货运一并安排。"
+      },
+      {
+        "t": "交付",
+        "d": "拖车任务、仓库预约与签收证明，一个视图全览。"
+      },
+      {
+        "t": "对账",
+        "d": "每个 SKU 的真实到岸成本、应付账款与关税预测，一本账算清。"
+      }
+    ],
+    "demoEyebrow": "问 NIEL AI",
+    "demoTitle": "贸易问题，有据可查的回答",
+    "demoSub": "和工作台里同一个 AI 助手——点下面的问题试试。",
+    "chips": [
+      {
+        "q": "从中国进口 HTS 9506.91.00，关税多少？",
+        "a": "补齐最后两位：9506.91.0010 对中国原产加征 7.5% Section 301（List 4A），在 MFN 税率之上。申报前请以现行 USITC HTS 为准。"
+      },
+      {
+        "q": "我的货要过哪些 PGA 检查？",
+        "a": "每一票报关都会经过 9 个 PGA 机构筛查——FDA、FSIS、APHIS、EPA、FCC、CPSC、DOT、ATF、TTB，共 23 条规则，在 CBP 问起之前完成。"
+      },
+      {
+        "q": "在途货物的关税敞口在哪看？",
+        "a": "高管视图按关税敞口金额给在途货物排序，最大的风险最先浮现。"
+      }
+    ],
+    "demoCta": "做一次完整到岸成本测算",
+    "demoNote": "演示回答为示例——工作台内的回答始终引用实时来源。",
+    "devEyebrow": "开发者",
+    "devTitle": "把 NIEL COS 接入你的系统",
+    "devSub": "REST API、Webhook 与 EDI 收件箱——为你现有的系统而建。",
+    "devApiT": "REST API",
+    "devApiD": "通过 HTTPS 访问货运与单证，按权限范围签发 API Key。",
+    "devWhT": "Webhook",
+    "devWhD": "签名实时事件：解析完成、拖车任务创建与状态变更。",
+    "devEdiT": "EDI 收件箱",
+    "devEdiD": "850、856、810 单证自动解析为结构化数据。",
+    "devCta": "查看 API 文档",
+    "resEyebrow": "资源",
+    "resTitle": "从你需要的开始",
+    "resSub": "免费工具与参考资料——无需注册。",
+    "resRegT": "法规动态",
+    "resRegD": "联邦公报关税与贸易公告，每周机器翻译更新。",
+    "resLcT": "到岸成本测算",
+    "resLcD": "MFN、232、301、MPF 与 HMF 一张表算清——实时 USITC 2026 税率。",
+    "resDevT": "开发者文档",
+    "resDevD": "API Key、Webhook 与 EDI——一个下午即可集成。",
+    "resOpen": "打开"
+  },
+  "devdocs": {
+    "eyebrow": "开发者",
+    "title": "API 文档",
+    "sub": "读取货运与单证、接收事件、交换 EDI——全部走 HTTPS，Key 按权限范围签发。",
+    "authTitle": "认证",
+    "authSub": "每个 /api/v1 请求都要带 API Key。",
+    "authP1": "Key 形如 niel_sk_…，在工作台「集成 → API Key」中签发。原始 Key 只显示一次——服务器只存它的 SHA-256 哈希，之后无法找回。",
+    "authP2": "每个请求都带 Authorization: Bearer 请求头。",
+    "authP3": "权限范围有 read 和 write。下面公开的读取接口需要 read 权限。",
+    "authNote": "随时在工作台 → 集成里创建或吊销 Key。吊销后立即失效。",
+    "restTitle": "REST 接口",
+    "restSub": "Base URL：https://www.nielcos.ai",
+    "ep1m": "GET",
+    "ep1p": "/api/v1/shipments",
+    "ep1d": "列出该 Key 所属公司的货运，按最近更新排序。",
+    "ep2m": "GET",
+    "ep2p": "/api/v1/shipments/{id}",
+    "ep2d": "按 GTTID、主提单号或柜号查一票货。查不到返回 404。",
+    "ep3m": "GET",
+    "ep3p": "/api/v1/documents",
+    "ep3d": "该公司单证元数据（最近 100 条），含解析状态。原文件下载只能在工作台内进行。",
+    "respNote": "返回都是 JSON。货运对象包含 gttid、mbl_no、container_number、status、origin、destination、current_location、eta、updated_at。错误用 { error, detail? } 并带 HTTP 状态码。",
+    "whTitle": "Webhook",
+    "whSub": "在工作台 → 集成 → Webhook 里按事件订阅 URL。事件发生后几秒内 POST JSON，每次投递都有日志。",
+    "ev1": "document.parsed",
+    "ev1d": "单证 AI 解析完成。",
+    "ev2": "drayage_move.created",
+    "ev2d": "拖车任务已创建。",
+    "ev3": "drayage_move.status_changed",
+    "ev3d": "拖车任务状态变更。",
+    "sigTitle": "验签",
+    "sigP1": "每次投递都带 X-Niel-Event（事件名）和 X-Niel-Signature: sha256=<hex>。签名是用你的端点密钥（whsec_…）对原始请求体算的 HMAC-SHA256。",
+    "sigP2": "用 constant-time 比较，只接受签名匹配的请求体——再处理 JSON { event, delivered_at, data }。",
+    "ediTitle": "EDI 收件箱",
+    "ediSub": "按你的合作伙伴本来就在用的方式收 EDI。",
+    "ediP1": "在工作台 → 集成 → EDI 里粘贴或上传 ANSI X12。收件箱自动识别 850（采购订单）、856（发货通知 ASN）、810（发票），解析为含头、行、合计的结构化数据。",
+    "ediP2": "单个文件上限 2 MB。识别不了的会标为 unknown，原文保留待人工查看。",
+    "rateTitle": "限流",
+    "rateP1": "没有公布的每分钟限额——按 fair use 使用。如果你预计有持续大流量，先跟我们打个招呼，我们来做容量准备。",
+    "ctaTitle": "获取你的 API Key",
+    "ctaSub": "Key 就在你的工作台里——一分钟签发。",
+    "ctaBtn": "打开集成"
+  },
+  "team": {
+    "title": "团队",
+    "sub": "谁在使用这个公司工作台。",
+    "companyLabel": "公司",
+    "yourRole": "你的角色",
+    "memberSince": "加入时间",
+    "roleOwner": "所有者",
+    "roleMember": "成员",
+    "membersTitle": "成员",
+    "membersSub": "所有能访问这个公司工作台的人。",
+    "membersNote": "成员记录是隐私隔离的——你只能看到自己的条目。",
+    "thMember": "成员",
+    "thRole": "角色",
+    "thJoined": "加入时间",
+    "you": "你",
+    "inviteTitle": "邀请成员",
+    "inviteP1": "每次新注册都会自动创建一个属于自己的公司工作台——目前还没有自助加入已有公司的方式。",
+    "inviteP2": "要把某人加到这个公司，请联系我们，我们来帮你设置。",
+    "inviteCta": "联系我们",
+    "rolesNote": "当前版本不支持改角色（所有者 ↔ 成员）——团队管理为只读。",
+    "navPill": "团队"
+  },
+  "ui": {
+    "toast": {
+      "close": "关闭通知"
+    },
+    "drawer": {
+      "close": "关闭面板"
+    },
+    "confirm": {
+      "title": "请确认",
+      "deleteTitle": "删除此项？",
+      "deleteBody": "删除“%NAME%”？此操作不可撤销。",
+      "confirm": "确认",
+      "delete": "删除",
+      "cancel": "取消"
+    },
+    "pagination": {
+      "prev": "上一页",
+      "next": "下一页",
+      "perPage": "每页",
+      "page": "页",
+      "summary": "第 %A%–%B% 条，共 %C% 条"
+    },
+    "empty": {
+      "noResults": "暂无结果"
+    },
+    "commandbar": {
+      "searchPlaceholder": "搜索…",
+      "clear": "清除搜索"
+    },
+    "form": {
+      "requiredMark": "（必填）"
+    }
+  },
+  "dash": {
+    "kpiInTransit": "在途货运",
+    "kpiPayables": "待付应付",
+    "kpiDutyExposure": "关税敞口",
+    "kpiAttention": "需关注",
+    "secTrend": "关税支出趋势",
+    "secStatus": "货运状态分布",
+    "secAlerts": "告警",
+    "secTasks": "待办",
+    "secSummary": "AI 每日摘要",
+    "secModules": "功能模块",
+    "alertEmpty": "暂无告警，一切正常。",
+    "taskEmpty": "暂无待办。",
+    "viewAll": "查看全部",
+    "noData": "暂无数据",
+    "summary1": "当前在途 %INTRANSIT% 票，其中 %ATTENTION% 票需关注。",
+    "summary2": "待付应付 %PAYABLE%，关税敞口约 %DUTY%。",
+    "taskOverduePayable": "%PAYEE%：%AMOUNT% 已逾期 %DAYS% 天",
+    "taskMissedAppt": "%WAREHOUSE% 预约未到（%CONTAINER%）",
+    "taskDocsMissing": "%GTTID% 即将到港，缺少单证",
+    "sevHigh": "高",
+    "sevMedium": "中",
+    "sevLow": "低",
+    "alDemurrageT": "滞期风险",
+    "alDemurrageOverdueD": "柜 %CONTAINER% 已超免费期 %DAYS% 天",
+    "alDemurrageSoonD": "柜 %CONTAINER% 免费期还剩 %DAYS% 天",
+    "alPayableT": "应付逾期",
+    "alPayableOverdueD": "%PAYEE%：%AMOUNT% 已逾期 %DAYS% 天",
+    "alApptT": "预约未到",
+    "alApptMissedD": "%WAREHOUSE% 预约未到（%CONTAINER%）",
+    "alHoldT": "货运暂扣",
+    "alHoldD": "%GTTID% 处于暂扣状态",
+    "alStaleT": "长时间无更新",
+    "alStaleD": "%GTTID% 已 %DAYS% 天无更新",
+    "mixedCurrencies": "多币种"
+  },
+  "aig": {
+    "lookup": "数据检索",
+    "forecast": "预测",
+    "recommendation": "建议",
+    "disclaimer": "仅供参考，申报前请核实。"
+  },
+  "htsrev": {
+    "cardTitle": "HTS 建议卡",
+    "confidence": "置信度",
+    "rationale": "依据",
+    "alternatives": "相邻税号",
+    "needsReview": "待审核",
+    "adopted": "已采用",
+    "rejected": "已驳回",
+    "adopt": "采用",
+    "reject": "驳回",
+    "notePh": "审核备注…",
+    "submit": "提交审核",
+    "rationaleRule": "命中 %RULE%",
+    "ruleKeyword": "关键词匹配 · USITC HTS 2026 Rev 19",
+    "ruleExact10": "十位精确匹配 · 附加税规则",
+    "ruleExact8": "八位税则匹配 · USITC HTS 2026 Rev 19",
+    "pendingMigration": "审核功能待迁移：hts_review_decisions 表尚未创建。",
+    "reviewSaved": "审核已保存。",
+    "reviewFailed": "审核保存失败。",
+    "noSuggestion": "该行暂无建议。",
+    "reviewerLabel": "审核人"
   }
 }

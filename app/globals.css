@@ -4,8 +4,8 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 
-  /* Canvas & surfaces */
-  --color-canvas: #f2f5fa;
+  /* Canvas & surfaces (7.0 spec §5) */
+  --color-canvas: #f5f7fb;
   --color-card: #ffffff;
   --color-card-soft: #f7f9fd;
   --color-line: #e3e9f3;
@@ -13,33 +13,48 @@
 
   /* Ink */
   --color-ink: #0e1e38;
+  --color-navy: #071a38;
   --color-ink-soft: #33475f;
   --color-muted: #5d6f89;
   --color-faint: #8ba0bb;
 
-  /* Brand */
-  --color-brand: #1d4ed8;
+  /* Brand — Niel Blue (7.0 spec §5). Class names unchanged: bg-brand,
+     text-brand, border-brand, bg-brand-tint(-soft), text-brand-deep keep working. */
+  --color-brand: #0b4db8;
   --color-brand-deep: #1e40af;
   --color-brand-ink: #173a8f;
   --color-brand-tint: #e8effe;
   --color-brand-tint-soft: #f2f6ff;
 
-  /* Signal colors */
-  --color-ok: #16a34a;
+  /* Signal colors (7.0 spec §5). Legacy ok/warn/risk names kept for existing
+     classes (bg-ok, text-warn, text-risk, *-tint); spec names added as aliases
+     for new code (bg-success, text-warning, bg-danger). */
+  --color-ok: #16a05d;
   --color-ok-tint: #e6f6ec;
   --color-warn: #d97706;
   --color-warn-tint: #fdf1e0;
-  --color-risk: #dc2626;
+  --color-risk: #d83a3a;
   --color-risk-tint: #fdeaea;
+  --color-success: #16a05d;
+  --color-success-tint: #e6f6ec;
+  --color-warning: #d97706;
+  --color-warning-tint: #fdf1e0;
+  --color-danger: #d83a3a;
+  --color-danger-tint: #fdeaea;
   --color-vio: #7c3aed;
   --color-vio-tint: #f0e9fd;
   --color-sky: #0284c7;
   --color-sky-tint: #e3f3fc;
 
+  /* Radius (7.0 spec §5) → rounded-card / rounded-control */
+  --radius-card: 12px;
+  --radius-control: 10px;
+
+  /* Shadows: L1 card, L2 pop (7.0 spec §5) */
   --shadow-card: 0 1px 2px rgba(14, 30, 56, 0.05),
     0 8px 24px -12px rgba(14, 30, 56, 0.12);
   --shadow-card-hover: 0 2px 4px rgba(14, 30, 56, 0.06),
-    0 16px 40px -12px rgba(29, 78, 216, 0.18);
+    0 16px 40px -12px rgba(11, 77, 184, 0.18);
   --shadow-pop: 0 24px 64px -16px rgba(14, 30, 56, 0.28);
 }
 
@@ -75,6 +90,43 @@ body {
   transform: translateY(-3px);
   box-shadow: var(--shadow-card-hover);
   border-color: #c9d8f8;
+}
+
+/* ---------- type scale (7.0 spec §5; Inter stays the base font) ---------- */
+.type-display {
+  font-size: clamp(2.5rem, 5vw, 3rem); /* 40–48 */
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.type-h1 {
+  font-size: 1.875rem; /* 30 */
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.type-h2 {
+  font-size: 1.5rem; /* 24 */
+  line-height: 1.25;
+  font-weight: 700;
+}
+.type-kpi {
+  font-size: clamp(1.5rem, 2.5vw, 2rem); /* 24–32 */
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.type-body {
+  font-size: 0.875rem; /* 14 */
+  line-height: 1.6;
+}
+.type-table {
+  font-size: 0.8125rem; /* 13 */
+  line-height: 1.5;
+}
+.type-caption {
+  font-size: 0.75rem; /* 12 */
+  line-height: 1.5;
 }
 
 /* ---------- section eyebrow ---------- */
@@ -162,7 +214,7 @@ body {
 .dotgrid {
   background-image: radial-gradient(
     circle,
-    rgba(29, 78, 216, 0.16) 1.1px,
+    rgba(11, 77, 184, 0.16) 1.1px,
     transparent 1.1px
   );
   background-size: 22px 22px;

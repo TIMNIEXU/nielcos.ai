@@ -46,6 +46,13 @@ export async function POST(req: NextRequest) {
     if (!row)
       return NextResponse.json({ hts_no: htsNo, found: false, duty_suggestions });
     const pga = matchPga(row.hts_no, rules ?? []);
+    // Nearby codes: same 4-digit heading, excluding self (for the HTS review card).
+    const { data: neighbors } = await sb
+      .from("hts_schedule")
+      .select("hts_no, description, general_rate")
+      .like("hts_no", `${row.hts_no.slice(0, 4)}%`)
+      .neq("hts_no", row.hts_no)
+      .limit(6);
     return NextResponse.json({
       hts_no: row.hts_no,
       found: true,
@@ -54,6 +61,7 @@ export async function POST(req: NextRequest) {
       rate_text: row.rate_text,
       revision: row.revision,
       pga,
+      neighbors: neighbors ?? [],
       duty_suggestions,
     });
   }
