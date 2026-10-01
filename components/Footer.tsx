@@ -10,6 +10,7 @@ export default function Footer() {
   const platform = [
     { href: `/${locale}/platform`, label: tn("platform") },
     { href: `/${locale}/modules`, label: tn("modules") },
+    { href: `/${locale}/import-from-china`, label: t("chinaDesk") },
     { href: `/${locale}/contact`, label: t("contact") },
   ];
   const company = [

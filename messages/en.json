@@ -31,7 +31,8 @@
     "group": "Part of the Niel Group — alongside Joma Logistics Inc (est. 2008), Niel Supply Chain LLC, and Niel Insurance Agency LLC.",
     "platform": "Platform",
     "rights": "© 2026 NIEL COS. All rights reserved.",
-    "tag": "The AI Global Trade Operating System. One group. One global trade solution."
+    "tag": "The AI Global Trade Operating System. One group. One global trade solution.",
+    "chinaDesk": "China Import Desk"
   },
   "home": {
     "ai": {
@@ -2227,5 +2228,95 @@
     "totalCol": "Total duty rate",
     "note": "MFN + additional duties on the full shipment value. Estimates only — verify before filing.",
     "loading": "Comparing…"
+  },
+  "china": {
+    "metaTitle": "China to USA Import Guide | NIEL",
+    "metaDesc": "Importing from China to the USA? Follow NIEL's 14-step checklist: HTS classification, duty calculation, Section 301/232, AD/CVD screening, PGA requirements, freight, insurance, customs bond, drayage and landed cost — every step linked to a free tool.",
+    "eyebrow": "China → USA Import Desk",
+    "title": "Importing from China? Start here.",
+    "sub": "Fourteen steps from product idea to cleared, delivered goods. Every step links to a free NIEL tool — no account needed until you're ready to book.",
+    "heroSteps": "Start the checklist",
+    "heroBook": "Book with NIEL",
+    "stepsEyebrow": "The checklist",
+    "stepsTitle": "14 steps to a cleared shipment",
+    "stepsSub": "Work top to bottom. Each step hands off to the next.",
+    "stepsNote": "Duty figures are estimates from official 2026 sources — confirm with a licensed customs broker before filing.",
+    "steps": {
+      "0": {
+        "t": "List what you're importing",
+        "d": "Drop your commercial invoice or packing list into the Import Box. It reads the line items — SKUs, quantities, values, origins — so every later step works from real data.",
+        "c": "Analyze my documents"
+      },
+      "1": {
+        "t": "Classify your HTS codes",
+        "d": "Get the top-3 HTS candidates for each product with a confidence score and a plain-language reason. HTS decides everything downstream — duty, 301, PGA.",
+        "c": "Classify my products"
+      },
+      "2": {
+        "t": "Calculate the MFN duty",
+        "d": "Look up the official 2026 USITC duty rate for your HTS — the base tariff every China shipment pays before surtaxes.",
+        "c": "Estimate duty"
+      },
+      "3": {
+        "t": "Add Section 301 tariffs",
+        "d": "Most China-origin goods carry an extra 25% (Lists 1–3) or 7.5% (List 4A) under Section 301. See exactly which list your HTS falls on.",
+        "c": "Check Section 301"
+      },
+      "4": {
+        "t": "Add Section 232 tariffs",
+        "d": "Steel, aluminum and copper derivatives face an additional 50% under Section 232. The estimator flags it automatically.",
+        "c": "Check Section 232"
+      },
+      "5": {
+        "t": "Screen for AD/CVD orders",
+        "d": "Anti-dumping and countervailing duties can exceed 100% on high-risk corridors like tires, solar panels and furniture. Screen against our curated watchlist.",
+        "c": "Screen AD/CVD risk"
+      },
+      "6": {
+        "t": "Check PGA requirements",
+        "d": "FDA, EPA, FCC, CPSC and other agencies hold certain HTS codes at the border. Know your flags before you ship, not after.",
+        "c": "Check PGA flags"
+      },
+      "7": {
+        "t": "Watch regulatory changes",
+        "d": "Tariffs and CBP rules move fast. Follow the live regulatory feed — in English and Chinese — so a new proclamation never surprises you.",
+        "c": "Follow regulations"
+      },
+      "8": {
+        "t": "Book ocean or air freight",
+        "d": "Request a freight quote for your lane. Tell us origin, destination and volume — a real person replies with a real rate.",
+        "c": "Get a freight quote"
+      },
+      "9": {
+        "t": "Insure your cargo",
+        "d": "Ocean marine and warehouse-to-warehouse coverage from a licensed agency. Get covered before the container sails.",
+        "c": "Get insured"
+      },
+      "10": {
+        "t": "Secure your customs bond",
+        "d": "Every US importer needs a customs bond. Apply for a continuous bond online in minutes through our surety partner.",
+        "c": "Apply for a bond"
+      },
+      "11": {
+        "t": "Arrange drayage",
+        "d": "Port-to-warehouse trucking, including heavy-weight containers. Request a drayage quote for LA/Long Beach, NY/NJ, Savannah or Chicago.",
+        "c": "Get a drayage quote"
+      },
+      "12": {
+        "t": "Line up warehousing",
+        "d": "Short-term storage, transloading and fulfillment near major ports. Reserve warehouse space for your arrival window.",
+        "c": "Request warehousing"
+      },
+      "13": {
+        "t": "Lock your landed cost",
+        "d": "Put it all together — product value, duty, 301/232, HMF, MPF — into one landed-cost number you can price against.",
+        "c": "Calculate landed cost"
+      }
+    },
+    "ctaTitle": "Ready to import with NIEL?",
+    "ctaSub": "Create a free account to save products, track shipments and book every service above from one workspace.",
+    "ctaB1": "Book with NIEL — sign up free",
+    "ctaB2": "Talk to a specialist",
+    "ctaNote": "Free to start · No credit card required"
   }
 }

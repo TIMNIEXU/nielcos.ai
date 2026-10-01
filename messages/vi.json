@@ -31,7 +31,8 @@
     "group": "Là một thành viên của Tập đoàn Niel — cùng với Joma Logistics Inc (thành lập năm 2008), Niel Supply Chain LLC và Niel Insurance Agency LLC.",
     "platform": "Nền tảng",
     "rights": "© 2026 NIEL COS. Mọi quyền được bảo lưu.",
-    "tag": "Hệ điều hành Thương mại Toàn cầu Trí tuệ Nhân tạo. Một tập đoàn. Một giải pháp thương mại toàn cầu."
+    "tag": "Hệ điều hành Thương mại Toàn cầu Trí tuệ Nhân tạo. Một tập đoàn. Một giải pháp thương mại toàn cầu.",
+    "chinaDesk": "Bàn Nhập Khẩu Trung Quốc"
   },
   "home": {
     "ai": {
@@ -2227,5 +2228,95 @@
     "totalCol": "Tổng thuế suất",
     "note": "Thuế MFN + thuế bổ sung trên toàn bộ trị giá. Chỉ ước tính — kiểm tra trước khi khai.",
     "loading": "Đang so sánh…"
+  },
+  "china": {
+    "metaTitle": "Hướng Dẫn Nhập Khẩu Trung Quốc → Hoa Kỳ | NIEL",
+    "metaDesc": "Nhập khẩu từ Trung Quốc vào Hoa Kỳ? Theo dõi danh sách 14 bước của NIEL: phân loại HTS, tính thuế, Section 301/232, sàng lọc AD/CVD, yêu cầu PGA, cước biển, bảo hiểm, bond, drayage và landed cost — mỗi bước đều có công cụ miễn phí.",
+    "eyebrow": "Bàn Hỗ Trợ Nhập Khẩu Trung Quốc → Hoa Kỳ",
+    "title": "Nhập khẩu từ Trung Quốc? Bắt đầu tại đây.",
+    "sub": "14 bước từ ý tưởng sản phẩm đến hàng hóa thông quan và giao nhận. Mỗi bước liên kết tới một công cụ NIEL miễn phí — không cần tài khoản cho đến khi bạn sẵn sàng đặt dịch vụ.",
+    "heroSteps": "Xem danh sách",
+    "heroBook": "Book with NIEL",
+    "stepsEyebrow": "Danh sách kiểm tra",
+    "stepsTitle": "14 bước để thông quan một lô hàng",
+    "stepsSub": "Làm từ trên xuống dưới. Mỗi bước nối tiếp bước sau.",
+    "stepsNote": "Số liệu thuế từ nguồn chính thức năm 2026, chỉ mang tính ước tính — hãy xác nhận với customs broker được cấp phép trước khi khai báo.",
+    "steps": {
+      "0": {
+        "t": "Liệt kê sản phẩm bạn nhập khẩu",
+        "d": "Kéo commercial invoice hoặc packing list vào Import Box. Công cụ sẽ đọc các dòng hàng — SKU, số lượng, trị giá, xuất xứ — để mọi bước sau dùng dữ liệu thật.",
+        "c": "Phân tích chứng từ của tôi"
+      },
+      "1": {
+        "t": "Phân loại mã HTS",
+        "d": "Nhận 3 mã HTS phù hợp nhất cho mỗi sản phẩm kèm điểm tin cậy và giải thích dễ hiểu. HTS quyết định mọi thứ tiếp theo — thuế, 301, PGA.",
+        "c": "Phân loại sản phẩm của tôi"
+      },
+      "2": {
+        "t": "Tính thuế MFN",
+        "d": "Tra cứu thuế suất chính thức USITC 2026 cho mã HTS của bạn — mức thuế cơ bản mọi lô hàng từ Trung Quốc đều phải nộp trước các loại thuế bổ sung.",
+        "c": "Ước tính thuế"
+      },
+      "3": {
+        "t": "Cộng thuế Section 301",
+        "d": "Hầu hết hàng hóa xuất xứ Trung Quốc chịu thêm thuế 301: 25% (Danh sách 1–3) hoặc 7,5% (Danh sách 4A). Xem mã HTS của bạn thuộc danh sách nào.",
+        "c": "Kiểm tra thuế 301"
+      },
+      "4": {
+        "t": "Cộng thuế Section 232",
+        "d": "Các sản phẩm phái sinh từ thép, nhôm và đồng chịu thêm 50% theo Section 232. Công cụ ước tính sẽ tự động cảnh báo.",
+        "c": "Kiểm tra thuế 232"
+      },
+      "5": {
+        "t": "Sàng lọc AD/CVD",
+        "d": "Thuế chống bán phá giá và thuế đối kháng có thể vượt 100% với các mặt hàng rủi ro cao như lốp xe, tấm pin mặt trời và đồ nội thất. Sàng lọc bằng danh sách theo dõi của chúng tôi.",
+        "c": "Sàng lọc rủi ro AD/CVD"
+      },
+      "6": {
+        "t": "Kiểm tra yêu cầu PGA",
+        "d": "FDA, EPA, FCC, CPSC và các cơ quan khác có thể giữ hàng của một số mã HTS tại biên giới. Hãy biết trước khi gửi hàng.",
+        "c": "Kiểm tra yêu cầu PGA"
+      },
+      "7": {
+        "t": "Theo dõi thay đổi quy định",
+        "d": "Thuế quan và quy định của CBP thay đổi rất nhanh. Theo dõi bản tin quy định trực tiếp — song ngữ Anh–Trung — để không bị bất ngờ.",
+        "c": "Theo dõi quy định"
+      },
+      "8": {
+        "t": "Đặt cước biển hoặc hàng không",
+        "d": "Yêu cầu báo giá cước cho tuyến của bạn. Cho chúng tôi biết nơi đi, nơi đến và khối lượng — nhân viên thật sẽ trả lời với giá thật.",
+        "c": "Nhận báo giá cước"
+      },
+      "9": {
+        "t": "Mua bảo hiểm hàng hóa",
+        "d": "Bảo hiểm hàng hải và bảo hiểm kho-tới-kho từ đại lý được cấp phép. Hãy mua bảo hiểm trước khi container rời cảng.",
+        "c": "Nhận báo giá bảo hiểm"
+      },
+      "10": {
+        "t": "Chuẩn bị customs bond",
+        "d": "Mọi nhà nhập khẩu Hoa Kỳ đều cần customs bond. Đăng ký continuous bond trực tuyến trong vài phút qua đối tác bảo lãnh của chúng tôi.",
+        "c": "Đăng ký bond"
+      },
+      "11": {
+        "t": "Sắp xếp vận chuyển đường bộ",
+        "d": "Xe kéo container từ cảng về kho, kể cả container nặng. Báo giá cho LA/Long Beach, NY/NJ, Savannah hoặc Chicago.",
+        "c": "Nhận báo giá drayage"
+      },
+      "12": {
+        "t": "Chuẩn bị kho bãi",
+        "d": "Lưu kho ngắn hạn, dỡ container và fulfillment gần các cảng lớn. Đặt chỗ kho theo thời gian hàng đến của bạn.",
+        "c": "Yêu cầu báo giá kho"
+      },
+      "13": {
+        "t": "Chốt chi phí landed cost",
+        "d": "Tổng hợp tất cả — trị giá hàng, thuế, 301/232, HMF, MPF — thành một con số landed cost để bạn định giá bán.",
+        "c": "Tính landed cost"
+      }
+    },
+    "ctaTitle": "Sẵn sàng nhập khẩu cùng NIEL?",
+    "ctaSub": "Tạo tài khoản miễn phí để lưu sản phẩm, theo dõi lô hàng và đặt mọi dịch vụ trên trong một workspace.",
+    "ctaB1": "Book with NIEL — đăng ký miễn phí",
+    "ctaB2": "Nói chuyện với chuyên gia",
+    "ctaNote": "Bắt đầu miễn phí · Không cần thẻ tín dụng"
   }
 }
