@@ -65,7 +65,11 @@ export async function POST(req: NextRequest) {
     intake.hazmat ? "HAZMAT" : null,
   ].filter(Boolean).join(" · ").slice(0, 1000);
 
-  const { data: quote, error: qErr } = await sb.from("service_quotes").insert({
+  // NOTE: no .select() after insert — under RLS the anon role can insert
+  // (public lead capture) but cannot SELECT the row back. Ids are minted here.
+  const quoteId = crypto.randomUUID();
+  const { error: qErr } = await sb.from("service_quotes").insert({
+    id: quoteId,
     company_id,
     service: "drayage",
     name, company: company || null, email, phone: phone || null,
@@ -79,26 +83,28 @@ export async function POST(req: NextRequest) {
       intake.notes ? `Notes: ${intake.notes}` : null,
     ].filter(Boolean).join("\n").slice(0, 2000) || null,
     status: "new",
-  }).select("id").single();
-  if (qErr || !quote) {
-    console.error("service-order quote insert failed:", qErr?.message);
+  });
+  if (qErr) {
+    console.error("service-order quote insert failed:", qErr.message);
     return NextResponse.json({ ok: false, error: "db_error" }, { status: 500 });
   }
 
   const { data: soNo } = await sb.rpc("next_so_no");
-  const { data: so, error: soErr } = await sb.from("service_orders").insert({
-    so_no: soNo ?? `SO-${Date.now()}`,
+  const finalSoNo = soNo ?? `SO-${Date.now()}`;
+  const { error: soErr } = await sb.from("service_orders").insert({
+    id: crypto.randomUUID(),
+    so_no: finalSoNo,
     company_id,
     created_by: user?.id ?? null,
     service_type: "drayage",
     status: "quote_requested",
     gttid: null,
-    quote_id: quote.id,
+    quote_id: quoteId,
     intake,
-  }).select("id, so_no").single();
-  if (soErr || !so) {
-    console.error("service-order insert failed:", soErr?.message);
+  });
+  if (soErr) {
+    console.error("service-order insert failed:", soErr.message);
     return NextResponse.json({ ok: false, error: "db_error" }, { status: 500 });
   }
-  return NextResponse.json({ ok: true, so_no: so.so_no });
+  return NextResponse.json({ ok: true, so_no: finalSoNo });
 }
