@@ -18,7 +18,7 @@ type HtsCandidate = {
 };
 type CostLine = { label?: string; rate_pct?: number | null; amount_usd?: number };
 type NextStep = { label?: string; href?: string; why?: string };
-type Plan = {
+export type ImportPlan = {
   summary?: string;
   product?: {
     name?: string; material?: string; intended_use?: string; origin?: string;
@@ -32,13 +32,15 @@ type Plan = {
   next_steps?: NextStep[];
   disclaimer?: string;
 };
+// Back-compat alias used inside this file.
+type Plan = ImportPlan;
 
 const usd = (n: unknown) =>
   typeof n === "number" && Number.isFinite(n)
     ? n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })
     : "—";
 
-export default function ImportBox({ locale }: { locale: string }) {
+export default function ImportBox({ locale, onPlan }: { locale: string; onPlan?: (plan: ImportPlan | null) => void }) {
   const t = useTranslations("importbox");
   const [text, setText] = useState("");
   const [working, setWorking] = useState(false);
@@ -73,12 +75,16 @@ export default function ImportBox({ locale }: { locale: string }) {
       const data = await res.json();
       if (data.ok && data.plan) {
         setPlan(data.plan as Plan);
+        onPlan?.(data.plan as Plan);
       } else if (data.error === "not_configured") {
         setErr("not_configured");
+        onPlan?.(null);
       } else if (data.error === "rate_limited") {
         setErr("rate_limited");
+        onPlan?.(null);
       } else {
         setErr("planError");
+        onPlan?.(null);
       }
     } catch {
       setErr("planError");
@@ -97,6 +103,7 @@ export default function ImportBox({ locale }: { locale: string }) {
     setPlan(null);
     setErr("");
     setText("");
+    onPlan?.(null);
   };
 
   const cands = plan?.product?.hts_candidates ?? [];

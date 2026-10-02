@@ -135,13 +135,13 @@ export default async function HomePage({
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
-                href="#duty-estimator"
+                href={`/${locale}/import`}
                 className="rounded-full bg-brand px-8 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_-8px_rgba(29,78,216,0.8)] transition-all hover:-translate-y-0.5 hover:bg-brand-deep"
               >
                 {t("hero.cta1")}
               </Link>
               <Link
-                href="#import-box"
+                href={`/${locale}/platform`}
                 className="rounded-full border border-line bg-white px-8 py-3.5 text-[15px] font-semibold text-ink shadow-card transition-all hover:-translate-y-0.5 hover:border-brand"
               >
                 {t("hero.cta2")}
