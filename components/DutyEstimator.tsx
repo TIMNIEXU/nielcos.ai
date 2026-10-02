@@ -4,6 +4,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { isZhLocale } from "@/lib/locale";
 import FunnelCtas from "./FunnelCtas";
+import { parseSpecificRate, unitLabel, type SpecificRate } from "@/lib/specificDuty";
 
 /* Flexport-style US import duty simulator (public, no login).
    Left: calculator — product/HTS search, shipment value, origin, mode,
@@ -103,6 +104,8 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [mfnRate, setMfnRate] = useState<number | null>(null);
   const [mfnText, setMfnText] = useState("");
+  const [mfnSpecific, setMfnSpecific] = useState<SpecificRate | null>(null);
+  const [qty, setQty] = useState("");
   const [importing, setImporting] = useState(false);
   const [importMsg, setImportMsg] = useState("");
   const [copied, setCopied] = useState(false);
@@ -142,16 +145,27 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
 
     if (hts) {
       const m = mfnRate ?? 0;
-      const amt = (v * m) / 100;
+      let amt = (v * m) / 100;
+      let effRate: number | null = mfnRate;
+      let rateText: string | undefined;
+      if (mfnRate == null && mfnSpecific) {
+        // specific (per-unit) MFN rate, e.g. 31.4¢/kg — auto-detected
+        amt = mfnSpecific.perUnitUsd * num(qty);
+        if (mfnSpecific.adValoremPct != null) amt += (v * mfnSpecific.adValoremPct) / 100;
+        effRate = v > 0 ? (amt / v) * 100 : 0;
+        rateText = mfnSpecific.raw;
+      } else if (mfnRate == null && mfnText) {
+        rateText = mfnText;
+      }
       lines.push({
         code: hts,
         label: htsDesc || t.mfnName,
         sub: mfnText || undefined,
-        rate: mfnRate,
-        rateText: mfnRate == null && mfnText ? mfnText : undefined,
+        rate: effRate,
+        rateText,
         amount: amt,
       });
-      totalRate += m;
+      totalRate += effRate ?? 0;
       duties += amt;
     }
     for (const s of rateSuggestions) {
@@ -188,10 +202,14 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
       if (data.general_rate != null) {
         setMfnRate(Number(data.general_rate));
         setMfnText("");
+        setMfnSpecific(null);
       } else {
         setMfnRate(null);
         setMfnText(data.rate_text ?? "");
+        // auto-detect specific (per-unit) rates like 31.4¢/kg
+        setMfnSpecific(parseSpecificRate(data.rate_text ?? ""));
       }
+      setQty("");
       setLookupMsg(
         `${data.hts_no}${data.revision ? ` (${data.revision})` : ""}`
       );
@@ -297,7 +315,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     setQuery(""); setHts(""); setHtsDesc(""); setValue("");
     setOrigin("China"); setMode("ocean"); setEntryDate(todayStr());
     setExclDonation(false); setLookupMsg(""); setCandidates([]);
-    setSuggestions([]); setMfnRate(null); setMfnText("");
+    setSuggestions([]); setMfnRate(null); setMfnText(""); setMfnSpecific(null); setQty("");
     setImportMsg(""); setCopied(false);
   };
 
@@ -432,6 +450,24 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
               className={inputCls}
             />
           </div>
+
+          {mfnSpecific && (
+            <div>
+              <label className={lblCls}>
+                {t.qtyLabel} ({unitLabel(mfnSpecific.unit)})
+              </label>
+              <input
+                value={qty}
+                onChange={(e) => setQty(e.target.value)}
+                placeholder={t.qtyPh}
+                inputMode="decimal"
+                className={inputCls}
+              />
+              <p className="mt-1.5 text-[12px] text-faint">
+                {t.qtyHint.replace("%RATE%", mfnSpecific.raw)}
+              </p>
+            </div>
+          )}
 
           {/* origin */}
           <div>
