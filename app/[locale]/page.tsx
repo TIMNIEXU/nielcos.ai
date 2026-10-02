@@ -184,7 +184,7 @@ export default async function HomePage({
           {[
             { k: "c1", href: `/${locale}/import`, live: false, path: "M6 2h9l5 5v15H6zM14 2v6h6" },
             { k: "c2", href: `/${locale}/services/drayage`, live: true, path: "M1 5h13v11H1zM14 9h4l4 4v3h-8zM5.5 19a1.8 1.8 0 1 0 0 .01M17.5 19a1.8 1.8 0 1 0 0 .01" },
-            { k: "c3", href: `/${locale}/quote?service=customs`, live: false, path: "M12 2 4 5.5V12c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10V5.5z" },
+            { k: "c3", href: `/${locale}/services/customs`, live: true, path: "M12 2 4 5.5V12c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10V5.5z" },
             { k: "c4", href: `/${locale}/landed-cost`, live: false, path: "M3 3v18h18M8 17v-6M13 17V7M18 17v-3" },
             { k: "c5", href: `/${locale}/ad-cvd-checker`, live: false, path: "M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6zM9 12l2 2 4-4" },
             { k: "c6", href: `/${locale}/login`, live: false, path: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM2 12h20M12 2c3 3.5 3 16.5 0 20-3-3.5-3-16.5 0-20z" },

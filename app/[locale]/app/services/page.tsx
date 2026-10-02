@@ -21,6 +21,9 @@ const KEYS = [
   "detailTitle", "close",
   "dContainer", "dPickup", "dDelivery", "dLfd", "dContact", "dQuoted",
   "dGttid", "dNoGttid", "loadFailed",
+  "f_entry_port", "f_bl_awb", "f_product", "f_arrival", "f_bond",
+  "f_location", "f_inbound", "f_receiving", "f_units",
+  "bondYes", "bondNeeded",
 ];
 
 const APP_KEYS = ["back"];

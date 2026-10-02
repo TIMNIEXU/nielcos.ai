@@ -55,6 +55,41 @@ export default function ServicesBoard({
 
   const intake = (o: Order, k: string) => String(o.intake?.[k] ?? "");
 
+  /* Per-service detail rows: required fields are service-dependent,
+     so the detail view is too. */
+  const detailRows = (o: Order): [string, string][] => {
+    const rows: [string, string][] = [];
+    if (o.service_type === "drayage") {
+      rows.push(
+        [t("dContainer"), intake(o, "container_no")],
+        [t("dPickup"), intake(o, "pickup")],
+        [t("dDelivery"), intake(o, "delivery")],
+        [t("dLfd"), intake(o, "lfd")],
+      );
+    } else if (o.service_type === "customs") {
+      rows.push(
+        [t("f_entry_port"), intake(o, "entry_port")],
+        [t("f_bl_awb"), intake(o, "bl_awb_no")],
+        [t("f_product"), intake(o, "product_desc")],
+        [t("f_arrival"), intake(o, "arrival_date")],
+      );
+      if (o.intake?.has_bond) rows.push([t("f_bond"), t("bondYes")]);
+      else if (o.intake?.needs_bond) rows.push([t("f_bond"), t("bondNeeded")]);
+    } else if (o.service_type === "warehouse") {
+      rows.push(
+        [t("f_location"), intake(o, "warehouse_location")],
+        [t("f_inbound"), `${intake(o, "inbound_type")}: ${intake(o, "inbound_ref")}`.replace(/^: /, "")],
+        [t("f_receiving"), intake(o, "receiving_date")],
+      );
+      const units = [
+        intake(o, "pallets") ? `${intake(o, "pallets")} pallets` : "",
+        intake(o, "cartons") ? `${intake(o, "cartons")} cartons` : "",
+      ].filter(Boolean).join(" · ");
+      if (units) rows.push([t("f_units"), units]);
+    }
+    return rows.filter(([, v]) => !!v);
+  };
+
   return (
     <div>
       {/* Add a service */}
@@ -65,15 +100,15 @@ export default function ServicesBoard({
           <p className="mt-1 text-[13px] text-ink-soft">{t("drayageDesc")}</p>
           <span className="mt-3 inline-block rounded-lg bg-brand px-4 py-1.5 text-[13px] font-bold text-white">{t("orderNow")}</span>
         </Link>
-        <Link href={`/${locale}/quote?service=customs`} className="dash-card dash-card-hover block p-5">
+        <Link href={`/${locale}/services/customs`} className="dash-card dash-card-hover block p-5">
           <p className="text-[15px] font-bold text-ink">{t("customsName")}</p>
           <p className="mt-1 text-[13px] text-ink-soft">{t("customsDesc")}</p>
-          <span className="mt-3 inline-block rounded-lg border border-line px-4 py-1.5 text-[13px] font-bold text-brand">{t("requestQuote")}</span>
+          <span className="mt-3 inline-block rounded-lg bg-brand px-4 py-1.5 text-[13px] font-bold text-white">{t("orderNow")}</span>
         </Link>
-        <Link href={`/${locale}/quote?service=warehouse`} className="dash-card dash-card-hover block p-5">
+        <Link href={`/${locale}/services/warehouse`} className="dash-card dash-card-hover block p-5">
           <p className="text-[15px] font-bold text-ink">{t("warehouseName")}</p>
           <p className="mt-1 text-[13px] text-ink-soft">{t("warehouseDesc")}</p>
-          <span className="mt-3 inline-block rounded-lg border border-line px-4 py-1.5 text-[13px] font-bold text-brand">{t("requestQuote")}</span>
+          <span className="mt-3 inline-block rounded-lg bg-brand px-4 py-1.5 text-[13px] font-bold text-white">{t("orderNow")}</span>
         </Link>
       </div>
 
@@ -121,10 +156,7 @@ export default function ServicesBoard({
             <h3 className="text-[17px] font-bold text-ink">{t("detailTitle")} · <span className="font-mono text-brand">{detail.so_no}</span></h3>
             <dl className="mt-4 space-y-2.5 text-[13.5px]">
               {[
-                [t("dContainer"), intake(detail, "container_no")],
-                [t("dPickup"), intake(detail, "pickup")],
-                [t("dDelivery"), intake(detail, "delivery")],
-                [t("dLfd"), intake(detail, "lfd")],
+                ...detailRows(detail),
                 [t("dQuoted"), detail.quoted_amount != null ? `USD ${Number(detail.quoted_amount).toLocaleString()}` : "—"],
                 [t("dGttid"), detail.gttid ?? t("dNoGttid")],
               ].map(([k, v]) => (
