@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { fetchRefTable } from "@/lib/dutyData";
 import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
 
 /** Normalize "95069100" -> "9506.91.00" for hts_schedule lookups. */
@@ -57,13 +58,13 @@ export async function GET(
   let htsFound = false;
   let addl: { duty_type: string; rate: number; source: string }[] = [];
   if (htsNo) {
-    const [{ data: htsRow }, { data: rules }] = await Promise.all([
+    const [{ data: htsRow }, rules] = await Promise.all([
       sb
         .from("hts_schedule")
         .select("hts_no, general_rate, rate_text")
         .eq("hts_no", htsNo)
         .maybeSingle(),
-      sb.from("additional_duties").select("*"),
+      fetchRefTable(sb, "additional_duties", "*"),
     ]);
     if (htsRow) {
       htsFound = true;

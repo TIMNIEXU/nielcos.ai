@@ -8,6 +8,7 @@ import {
 import { IMPORT_BOX_TOOLS, runTool } from "@/lib/ai/tools";
 import { suggestHts, matchPga } from "@/lib/hts";
 import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
+import { fetchRefTable } from "@/lib/dutyData";
 
 /* POST /api/ai/import-box — GRI-001 V2, public, no login.
    Body: JSON { text, locale } or multipart { text?, locale?, file? }.
@@ -271,13 +272,13 @@ async function buildRulePlan(text: string, docCtx: string, locale: string) {
 
   const { createClient } = await import("@/lib/supabase/server");
   const sb = await createClient();
-  const [{ data: htsRows }, { data: dutyRules }, { data: pgaRules }] = await Promise.all([
-    sb.from("hts_schedule").select("hts_no, description, general_rate, keywords, rate_text"),
-    sb.from("additional_duties").select("*"),
-    sb.from("pga_rules").select("hts_prefix, agency, agency_cn, note"),
+  const [htsRows, dutyRules, pgaRules] = await Promise.all([
+    fetchRefTable(sb, "hts_schedule", "hts_no, description, general_rate, keywords, rate_text"),
+    fetchRefTable(sb, "additional_duties", "*"),
+    fetchRefTable(sb, "pga_rules", "hts_prefix, agency, agency_cn, note"),
   ]);
 
-  const cands = suggestHts(q, ((htsRows ?? []) as any[]).slice(0, 20000), 3);
+  const cands = suggestHts(q, (htsRows ?? []) as any[], 3);
   const top = cands[0] ?? null;
   const digits = top ? top.hts_no.replace(/[^0-9]/g, "") : "";
   const dutySugs = suggestAdditionalDuties(digits || null, origin, "", (dutyRules ?? []) as DutyRule[]);

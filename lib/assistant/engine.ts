@@ -7,6 +7,7 @@
 
 import { suggestHts } from "@/lib/hts";
 import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
+import { fetchRefTable } from "@/lib/dutyData";
 import { isZhLocale } from "@/lib/locale";
 
 export type Source = { label: string; detail?: string };
@@ -142,7 +143,7 @@ async function dutyAnswer(sb: Sb, htsNo: string, origin: string, zh: boolean, ct
   const { data: row } = await sb.from("hts_schedule")
     .select("hts_no, description, general_rate, rate_text, revision")
     .eq("hts_no", hts8).maybeSingle();
-  const { data: rules } = await sb.from("additional_duties").select("*");
+  const rules = await fetchRefTable(sb, "additional_duties", "*");
   const allSugg = suggestAdditionalDuties(htsNo, origin, "", (rules ?? []) as DutyRule[]);
   const suggestions = allSugg.filter((s) => s.kind === "rate") as { duty_type: string; rate: number; source: string }[];
   const warnings = allSugg.filter((s) => s.kind === "warning") as { text: string; text_zh?: string }[];
@@ -189,7 +190,7 @@ async function dutyAnswer(sb: Sb, htsNo: string, origin: string, zh: boolean, ct
 }
 
 async function htsKeywordAnswer(sb: Sb, kw: string, origin: string, zh: boolean, ctx: ThreadCtx): Promise<Answer> {
-  const { data: rows } = await sb.from("hts_schedule").select("hts_no, description, general_rate, keywords, rate_text");
+  const rows = await fetchRefTable(sb, "hts_schedule", "hts_no, description, general_rate, keywords, rate_text");
   const cands = suggestHts(kw, (rows ?? []) as any[]).slice(0, 3);
   if (!cands.length) return fallback(zh, ctx);
   const lines: string[] = zh

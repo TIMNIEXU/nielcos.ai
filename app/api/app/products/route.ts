@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { fetchRefTable } from "@/lib/dutyData";
 import { matchPga, type PgaRule } from "@/lib/hts";
 import {
   suggestAdditionalDuties,
@@ -67,12 +68,12 @@ export async function GET(req: NextRequest) {
   const products = rows ?? [];
   const htsNos = [...new Set(products.map((p) => normHts(p.hts_code)).filter(Boolean))] as string[];
 
-  const [{ data: htsRows }, { data: pgaRules }, { data: dutyRules }] = await Promise.all([
+  const [{ data: htsRows }, { data: pgaRules }, dutyRules] = await Promise.all([
     htsNos.length
       ? sb.from("hts_schedule").select("hts_no, description, general_rate, rate_text").in("hts_no", htsNos)
       : Promise.resolve({ data: [] as any[] }),
     sb.from("pga_rules").select("hts_prefix, agency, agency_cn, note"),
-    sb.from("additional_duties").select("*"),
+    fetchRefTable(sb, "additional_duties", "*"),
   ]);
   const htsMap = new Map((htsRows ?? []).map((r: any) => [r.hts_no, r]));
   const rules = (pgaRules ?? []) as PgaRule[];

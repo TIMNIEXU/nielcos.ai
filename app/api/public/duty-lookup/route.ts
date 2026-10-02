@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { suggestHts, matchPga } from "@/lib/hts";
 import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
+import { fetchRefTable } from "@/lib/dutyData";
 
 /* GET /api/public/duty-lookup?hts=95069100&origin=China&material=steel
    GET /api/public/duty-lookup?description=horizontal+bar+steel&origin=China
@@ -18,7 +19,7 @@ export async function GET(req: NextRequest) {
   const digits = (q.get("hts") ?? "").replace(/[^0-9]/g, "");
   const bare = digits.slice(0, 8);
 
-  const { data: dutyRules } = await sb.from("additional_duties").select("*");
+  const dutyRules = await fetchRefTable(sb, "additional_duties", "*");
   const rules = (dutyRules ?? []) as DutyRule[];
 
   /* ---- direct HTS mode ---- */
@@ -61,9 +62,7 @@ export async function GET(req: NextRequest) {
 
   /* ---- keyword candidate mode ---- */
   if (description) {
-    const { data: rows } = await sb
-      .from("hts_schedule")
-      .select("hts_no, description, general_rate, keywords, rate_text");
+    const rows = await fetchRefTable(sb, "hts_schedule", "hts_no, description, general_rate, keywords, rate_text");
     const candidates = suggestHts(description, (rows ?? []) as any[]).map((c: any) => {
       const row = (rows ?? []).find((r: any) => r.hts_no === c.hts_no) as any;
       return { ...c, rate_text: row?.rate_text ?? null };

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { fetchRefTable } from "@/lib/dutyData";
 import { suggestHts, matchPga } from "@/lib/hts";
 import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
 
@@ -39,7 +40,7 @@ export async function POST(req: NextRequest) {
       .select("hts_no, description, general_rate, rate_text, revision")
       .eq("hts_no", htsNo)
       .maybeSingle();
-    const { data: dutyRules } = await sb.from("additional_duties").select("*");
+    const dutyRules = await fetchRefTable(sb, "additional_duties", "*");
     // MFN schedule is 8-digit (htsNo); duty rules may be 10-digit, so pass
     // the raw input through instead of the truncated 8-digit code.
     const duty_suggestions = suggestAdditionalDuties(hts, origin, material, (dutyRules ?? []) as DutyRule[]);

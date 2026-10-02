@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { fetchRefTable } from "@/lib/dutyData";
 import { extractLineItems, extractSheetRows, type ImportLine } from "@/lib/invoiceLines";
 import { suggestHts } from "@/lib/hts";
 import { suggestAdditionalDuties, type DutyRule, type DutySuggestion } from "@/lib/additionalDuties";
@@ -153,7 +154,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     .select("hts_no, description, general_rate, keywords, rate_text");
   const rows = schedule ?? [];
   const byHts = new Map(rows.map((r) => [r.hts_no, r]));
-  const { data: dutyRules } = await sb.from("additional_duties").select("*");
+  const dutyRules = await fetchRefTable(sb, "additional_duties", "*");
 
   const preview: PreviewLine[] = baseLines.map((l) => {
     let hts_rate: number | null = null;
