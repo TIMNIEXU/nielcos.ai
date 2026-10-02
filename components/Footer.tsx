@@ -6,6 +6,14 @@ export default function Footer() {
   const t = useTranslations("footer");
   const tn = useTranslations("nav");
   const locale = useLocale();
+  const UTM = "utm_source=www-nielcos.ai&utm_medium=group_footer";
+  const groupBrands = [
+    { name: "Niel Supply Chain", href: `https://www.nielsc.com?${UTM}` },
+    { name: "Niel Customs", href: `https://www.nielcustoms.ai?${UTM}` },
+    { name: "JOMA Logistics", href: `https://www.jomaus.com?${UTM}` },
+    { name: "Niel Insurance", href: `https://nielinsurance.com?${UTM}` },
+    { name: "NIEL COS", href: `/${locale}` },
+  ];
 
   const platform = [
     { href: `/${locale}/platform`, label: tn("platform") },
@@ -20,15 +28,44 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0c1a33] text-white">
+      {/* NIEL GROUP standard strip — identical on every group site (v1.0 section 4) */}
+      <div className="border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-5 py-6 lg:px-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8fb4ff]">
+            {t("groupEyebrow")}
+          </p>
+          <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+            {groupBrands.map((b) =>
+              b.href.startsWith("http") ? (
+                <a
+                  key={b.name}
+                  href={b.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[14px] font-semibold text-white transition-colors hover:text-[#8fb4ff]"
+                >
+                  {b.name}
+                </a>
+              ) : (
+                <Link
+                  key={b.name}
+                  href={b.href}
+                  className="text-[14px] font-semibold text-white transition-colors hover:text-[#8fb4ff]"
+                >
+                  {b.name}
+                </Link>
+              )
+            )}
+          </div>
+          <p className="mt-2 text-[12.5px] text-white/40">{t("groupNote")}</p>
+        </div>
+      </div>
       <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Logo dark />
             <p className="mt-4 max-w-xs text-[13.5px] leading-relaxed text-white/60">
               {t("tag")}
-            </p>
-            <p className="mt-4 max-w-xs text-[12.5px] leading-relaxed text-white/40">
-              {t("group")}
             </p>
           </div>
           <div>
@@ -92,6 +129,9 @@ export default function Footer() {
             Trade Further Together
           </span>
         </div>
+        <p className="mt-4 text-[11.5px] leading-relaxed text-white/40">
+          {t("operatedBy")} {t("entityNote")}
+        </p>
       </div>
     </footer>
   );

@@ -7,6 +7,7 @@ import localFont from "next/font/local";
 import { routing } from "@/i18n/routing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GroupBar from "@/components/GroupBar";
 import { ToastProvider } from "@/components/ui/Toast";
 import "../globals.css";
 
@@ -72,6 +73,7 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider>
           <ToastProvider>
+            <GroupBar />
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
