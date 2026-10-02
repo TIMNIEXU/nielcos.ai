@@ -326,9 +326,9 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
   const lblCls = "mb-1.5 block text-[13.5px] font-semibold text-ink";
 
   return (
-    <div className="grid items-start gap-6 lg:grid-cols-[1.05fr_1fr]">
+    <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
       {/* ================= Calculator ================= */}
-      <div className="rounded-2xl bg-slate-50/80 p-6 sm:p-8">
+      <div className="min-w-0 rounded-2xl bg-slate-50/80 p-6 sm:p-8">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-[17px] font-bold text-ink">{t.calcTitle}</h2>
           <button
@@ -504,7 +504,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
       </div>
 
       {/* ================= Results ================= */}
-      <div className="rounded-2xl bg-slate-50/80 p-6 sm:p-8">
+      <div className="min-w-0 rounded-2xl bg-slate-50/80 p-6 sm:p-8">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-[17px] font-bold text-ink">{t.resultsTitle}</h2>
           <button
