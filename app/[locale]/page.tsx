@@ -173,6 +173,44 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* ============ WHAT DO YOU NEED TODAY (Mode B service entry) ============ */}
+      <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
+        <SectionHead
+          eyebrow={t("services.eyebrow")}
+          title={t("services.title")}
+          sub={t("services.sub")}
+        />
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { k: "c1", href: `/${locale}/import`, live: false, path: "M6 2h9l5 5v15H6zM14 2v6h6" },
+            { k: "c2", href: `/${locale}/services/drayage`, live: true, path: "M1 5h13v11H1zM14 9h4l4 4v3h-8zM5.5 19a1.8 1.8 0 1 0 0 .01M17.5 19a1.8 1.8 0 1 0 0 .01" },
+            { k: "c3", href: `/${locale}/quote?service=customs`, live: false, path: "M12 2 4 5.5V12c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10V5.5z" },
+            { k: "c4", href: `/${locale}/landed-cost`, live: false, path: "M3 3v18h18M8 17v-6M13 17V7M18 17v-3" },
+            { k: "c5", href: `/${locale}/ad-cvd-checker`, live: false, path: "M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6zM9 12l2 2 4-4" },
+            { k: "c6", href: `/${locale}/login`, live: false, path: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM2 12h20M12 2c3 3.5 3 16.5 0 20-3-3.5-3-16.5 0-20z" },
+          ].map((c) => (
+            <Reveal key={c.k}>
+              <Link href={c.href} className="dash-card dash-card-hover group flex h-full items-start gap-4 p-5">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-tint text-brand">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                    <path d={c.path} />
+                  </svg>
+                </span>
+                <span>
+                  <span className="flex items-center gap-2 text-[15px] font-bold text-ink">
+                    {t(`services.${c.k}t`)}
+                    {c.live && (
+                      <span className="rounded-full bg-ok-tint px-2 py-0.5 text-[11px] font-bold text-ok">{t("services.live")}</span>
+                    )}
+                  </span>
+                  <span className="mt-1 block text-[13px] text-ink-soft">{t(`services.${c.k}d`)}</span>
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* ============ KPI STRIP ============ */}
       <section className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">

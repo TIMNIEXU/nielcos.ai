@@ -62,5 +62,35 @@ export async function PATCH(req: NextRequest) {
     .maybeSingle();
   if (error) return NextResponse.json({ error: "db_error", detail: error.message }, { status: 500 });
   if (!data) return NextResponse.json({ error: "not_found" }, { status: 404 });
+
+  /* Mode B — keep linked Service Orders in sync with the triage decision.
+     Best-effort under RLS (ops triage works the unclaimed lead pool). */
+  if (body.status !== undefined) {
+    try {
+      const soPatch: Record<string, unknown> = { updated_at: new Date().toISOString() };
+      if (body.status === "quoted") {
+        soPatch.status = "quoted";
+        if (patch.quoted_amount !== undefined) soPatch.quoted_amount = patch.quoted_amount;
+        if (patch.quoted_note !== undefined) soPatch.quoted_note = patch.quoted_note;
+      } else if (body.status === "won") {
+        soPatch.status = "confirmed";
+        const { data: soRow } = await sb
+          .from("service_orders")
+          .select("id, gttid")
+          .eq("quote_id", id)
+          .maybeSingle();
+        if (soRow && !soRow.gttid) {
+          const { data: gttid } = await sb.rpc("next_gttid");
+          if (gttid) soPatch.gttid = gttid;
+        }
+      } else if (body.status === "lost" || body.status === "declined") {
+        soPatch.status = "cancelled";
+      }
+      if (soPatch.status) {
+        await sb.from("service_orders").update(soPatch).eq("quote_id", id);
+      }
+    } catch { /* table may not exist yet; triage still succeeds */ }
+  }
+
   return NextResponse.json({ quote: data });
 }
