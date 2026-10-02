@@ -1,5 +1,5 @@
 -- ============================================================
--- customs_v13_fix.sql — backfill the 6 rows missed due to case_type ordering
+-- customs_v13_fix.sql - backfill the 6 rows missed due to case_type ordering
 -- + merge the hardwood plywood 2018 orders + 2026 investigation into one row.
 -- Guarded / re-runnable. Run once in Supabase SQL Editor as owner.
 -- ============================================================
@@ -7,15 +7,15 @@
 -- 6. passenger vehicle tires | Vietnam | C-552-829
 update public.ad_cvd_watch set
   case_numbers = 'C-552-829',
-  scope_summary = 'PVLT tires. 2021 CVD order (first-ever CVD based on currency undervaluation). The concurrent AD investigation (A-552-828) was terminated after ITC negative injury — no AD order exists.',
-  exclusions = 'AD duties do not apply — CVD only',
+  scope_summary = 'PVLT tires. 2021 CVD order (first-ever CVD based on currency undervaluation). The concurrent AD investigation (A-552-828) was terminated after ITC negative injury - no AD order exists.',
+  exclusions = 'AD duties do not apply - CVD only',
   last_verified = '2026-10-02'
 where product_keyword = 'passenger vehicle tires' and origin = 'Vietnam';
 
 -- 12. mattresses | China | A-570-092 / C-570-128
 update public.ad_cvd_watch set
   case_numbers = 'A-570-092 / C-570-128',
-  scope_summary = 'All youth and adult mattresses (adult = width >35″, length >72″, depth >3″). AD continued 2025-05-28; CVD first sunset final 2026-07-24, five-year reviews underway.',
+  scope_summary = 'All youth and adult mattresses (adult = width >35", length >72", depth >3"). AD continued 2025-05-28; CVD first sunset final 2026-07-24, five-year reviews underway.',
   exclusions = 'Futon mattresses; airbeds/inflatables; waterbeds; convertible multifunctional furniture; uncovered innerspring units',
   last_verified = '2026-10-02'
 where product_keyword = 'mattresses' and origin = 'China';
@@ -39,7 +39,7 @@ where product_keyword = 'stainless steel flanges' and origin = 'China';
 -- 25. steel propane cylinders | China | A-570-086 / C-570-087
 update public.ad_cvd_watch set
   case_numbers = 'A-570-086 / C-570-087',
-  scope_summary = 'Steel propane cylinders meeting DOT 4B/4BA/4BW, TC 4BM/4BAM/4BWM, or ISO 4706; 2.5–42 lb nominal capacity. Orders eff. 2019-08-15; continued 2025-07-10.',
+  scope_summary = 'Steel propane cylinders meeting DOT 4B/4BA/4BW, TC 4BM/4BAM/4BWM, or ISO 4706; 2.5-42 lb nominal capacity. Orders eff. 2019-08-15; continued 2025-07-10.',
   exclusions = 'Do not confuse with High Pressure Steel Cylinders (A-570-977/C-570-978) or Non-Refillable Steel Cylinders (A-570-126/C-570-127)',
   last_verified = '2026-10-02'
 where product_keyword = 'steel propane cylinders' and origin = 'China';
@@ -58,7 +58,7 @@ update public.ad_cvd_watch set
   status = 'order_in_place',
   note = '2018 AD/CVD orders in place; NEW 2026 investigation A-570-211/C-570-212 (final affirmative determination 2026-07-21, ITC injury pending) explicitly carves out merchandise covered by the 2018 orders.',
   scope_summary = 'Hardwood and decorative plywood: multilayered veneered panels with non-coniferous/bamboo face-back veneer. 2018 orders continued; 2023 scope/circumvention rulings active.',
-  exclusions = 'Extensive scope rulings (esp. 2-ply panels) — check per SKU. The 2026 investigation excludes plywood covered by the 2018 orders; structural plywood (PS 1/PS 2); cork face/back; wood flooring orders; solid bamboo; RTA/finished furniture.',
+  exclusions = 'Extensive scope rulings (esp. 2-ply panels) - check per SKU. The 2026 investigation excludes plywood covered by the 2018 orders; structural plywood (PS 1/PS 2); cork face/back; wood flooring orders; solid bamboo; RTA/finished furniture.',
   last_verified = '2026-10-02'
 where product_keyword = 'hardwood plywood' and origin = 'China';
 
