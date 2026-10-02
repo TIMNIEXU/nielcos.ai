@@ -187,7 +187,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     const landed = v + duties + mpf + hmf;
     return { v, lines, totalRate, duties, mpf, hmf, landed };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, hts, htsDesc, mfnRate, mfnText, rateSuggestions, exclDonation, mode, entryDate, origin]);
+  }, [value, hts, htsDesc, mfnRate, mfnText, mfnSpecific, qty, rateSuggestions, exclDonation, mode, entryDate, origin]);
 
   const applyDirectResult = (data: any) => {
     if (data.found) {
