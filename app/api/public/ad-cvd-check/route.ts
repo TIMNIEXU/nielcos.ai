@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { checkRate, clientIpHash } from "@/lib/rateLimit";
 import { fetchWatchEntries } from "@/lib/adcvdData";
+import { fetchRegistryEvidence } from "@/lib/adcvdRegistry";
 import { checkAdCvdRisk } from "@/lib/adcvd";
 
 /* GET /api/public/ad-cvd-check?product=aluminum+heat+sink&origin=China&hts=761699&manufacturer=X&exporter=Y
@@ -28,19 +29,25 @@ export async function GET(req: NextRequest) {
   } catch {
     return NextResponse.json({ ok: false, error: "db_error" }, { status: 500 });
   }
+  const registry = await fetchRegistryEvidence(300);
 
-  const result = checkAdCvdRisk(rows, {
-    product,
-    origin,
-    hts,
-    manufacturer,
-    exporter,
-  });
+  const result = checkAdCvdRisk(
+    rows,
+    {
+      product,
+      origin,
+      hts,
+      manufacturer,
+      exporter,
+    },
+    registry
+  );
 
   return NextResponse.json({
     ok: true,
     ...result,
+    checked_at: new Date().toISOString(),
     notice:
-      "Screening result only — HTS is a screening signal, not the determinant. Scope is order-specific: verify the current scope, exclusions, and exporter cash-deposit rate at IA ACCESS (access.trade.gov) or with a licensed customs broker before entry.",
+      "Screening result only — never a scope determination. HTS is a screening signal, not the determinant. Scope is order-specific: verify the current scope, exclusions, and exporter cash-deposit rate at IA ACCESS (access.trade.gov) or with a licensed customs broker before entry.",
   });
 }

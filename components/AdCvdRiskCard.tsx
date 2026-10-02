@@ -6,18 +6,21 @@ import { useTranslations } from "next-intl";
 
 /* Compact AD/CVD risk strip shown inside the ImportBox plan, right after
    the compliance section. Runs the same deterministic screening as the
-   standalone /ad-cvd-checker page. */
+   standalone /ad-cvd-checker page. Evidence scale:
+   no_case → possible → potential → high_risk (human review). */
 
 type Mini = {
   ok: boolean;
-  risk: "high" | "medium" | "low";
+  risk: "no_case" | "possible" | "potential" | "high_risk";
+  human_review_required: boolean;
   matches: { product_keyword: string; case_numbers: string | null; case_type: string }[];
 };
 
 const DOT: Record<string, string> = {
-  high: "bg-red-500",
-  medium: "bg-amber-500",
-  low: "bg-emerald-500",
+  high_risk: "bg-red-500",
+  potential: "bg-amber-500",
+  possible: "bg-amber-400",
+  no_case: "bg-emerald-500",
 };
 
 export default function AdCvdRiskCard({
@@ -51,8 +54,12 @@ export default function AdCvdRiskCard({
 
   if (!mini) return null;
 
-  const riskKey = `adcvd${mini.risk[0].toUpperCase()}${mini.risk.slice(1)}` as
-    | "adcvdHigh" | "adcvdMedium" | "adcvdLow";
+  const riskKey = {
+    high_risk: "adcvdHighRisk",
+    potential: "adcvdPotential",
+    possible: "adcvdPossible",
+    no_case: "adcvdNoCase",
+  }[mini.risk] as "adcvdHighRisk" | "adcvdPotential" | "adcvdPossible" | "adcvdNoCase";
 
   return (
     <div className="mt-6">
@@ -81,7 +88,7 @@ export default function AdCvdRiskCard({
             ))}
           </p>
         )}
-        {mini.risk === "high" && (
+        {mini.human_review_required && (
           <p className="mt-2 text-[12.5px] leading-relaxed text-red-700">{t("adcvdHighNote")}</p>
         )}
       </div>
