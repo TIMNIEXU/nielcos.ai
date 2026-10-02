@@ -377,7 +377,8 @@
     "developers": "개발자",
     "insurance": "보험",
     "resources": "자료",
-    "classify": "HTS 확인"
+    "classify": "HTS 확인",
+    "adcvd": "AD/CVD"
   },
   "platform": {
     "cta": {
@@ -2403,5 +2404,22 @@
     "bookError": "예약 실패 — 다시 시도해주세요.",
     "enterpriseNote": "물량이 많거나 시스템 연동이 필요하신가요?",
     "enterpriseLink": "기업용 NIEL COS 살펴보기 →"
+  },
+  "adcvd": {
+    "eyebrow": "AD/CVD 관찰 목록",
+    "title": "미국 반덤핑·상계관세 적용 품목",
+    "sub": "AD/CVD 명령이 발효 중인 고위험 품목–원산지 조합 선별 목록입니다. 무료, 로그인 불필요.",
+    "searchPh": "품목 또는 HTS 검색…",
+    "originAll": "모든 원산지",
+    "typeAll": "AD & CVD",
+    "colProduct": "품목",
+    "colHts": "HTS",
+    "colOrigin": "원산지",
+    "colType": "사건 유형",
+    "colStatus": "상태",
+    "empty": "필터에 맞는 항목이 없습니다.",
+    "count": "관찰 목록 %N%개 품목",
+    "disclaimer": "알려진 고위험군 선별 목록이며 완전한 AD/CVD 데이터베이스가 아닙니다. 적용 범위·세율·면제는 변경될 수 있으니 견적 전 IA ACCESS(access.trade.gov) 또는 관세사와 현행 범위를 반드시 확인하세요.",
+    "checkRate": "내 품목의 관세율 확인 →"
   }
 }

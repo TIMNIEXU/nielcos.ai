@@ -377,7 +377,8 @@
     "developers": "開發者",
     "insurance": "保險",
     "resources": "資源",
-    "classify": "HTS 核查"
+    "classify": "HTS 核查",
+    "adcvd": "反傾銷/反補貼"
   },
   "platform": {
     "cta": {
@@ -2403,5 +2404,22 @@
     "bookError": "預訂失敗，請重試。",
     "enterpriseNote": "貨量大，或需要系統對接系統？",
     "enterpriseLink": "了解企業版 NIEL COS →"
+  },
+  "adcvd": {
+    "eyebrow": "反傾銷/反補貼觀察清單",
+    "title": "受美國反傾銷與反補貼稅影響的產品",
+    "sub": "精選高風險產品–原產地組合清單，這些產品已有 AD/CVD 稅令在執行。免費，無需登錄。",
+    "searchPh": "搜尋產品或 HTS…",
+    "originAll": "全部原產國",
+    "typeAll": "反傾銷 & 反補貼",
+    "colProduct": "產品",
+    "colHts": "HTS",
+    "colOrigin": "原產國",
+    "colType": "案件類型",
+    "colStatus": "狀態",
+    "empty": "沒有符合篩選條件的條目。",
+    "count": "觀察清單共 %N% 項產品",
+    "disclaimer": "本清單為精選高風險觀察名單，並非完整的 AD/CVD 資料庫。適用範圍、稅率與排除條款會變化；報價前請務必在 IA ACCESS（access.trade.gov）或諮詢持牌報關行核實最新範圍。",
+    "checkRate": "查詢您的產品稅率 →"
   }
 }

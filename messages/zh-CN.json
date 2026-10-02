@@ -377,7 +377,8 @@
     "developers": "开发者",
     "insurance": "保险",
     "resources": "资源",
-    "classify": "HTS 核查"
+    "classify": "HTS 核查",
+    "adcvd": "反倾销/反补贴"
   },
   "platform": {
     "cta": {
@@ -2403,5 +2404,22 @@
     "bookError": "预订失败，请重试。",
     "enterpriseNote": "货量大，或需要系统对接系统？",
     "enterpriseLink": "了解企业版 NIEL COS →"
+  },
+  "adcvd": {
+    "eyebrow": "反倾销/反补贴观察清单",
+    "title": "受美国反倾销与反补贴税影响的产品",
+    "sub": "精选高风险产品–原产地组合清单，这些产品已有 AD/CVD 税令在执行。免费，无需登录。",
+    "searchPh": "搜索产品或 HTS…",
+    "originAll": "全部原产国",
+    "typeAll": "反倾销 & 反补贴",
+    "colProduct": "产品",
+    "colHts": "HTS",
+    "colOrigin": "原产国",
+    "colType": "案件类型",
+    "colStatus": "状态",
+    "empty": "没有符合筛选条件的条目。",
+    "count": "观察清单共 %N% 项产品",
+    "disclaimer": "本清单为精选高风险观察名单，并非完整的 AD/CVD 数据库。适用范围、税率与排除条款会变化；报价前请务必在 IA ACCESS（access.trade.gov）或咨询持牌报关行核实最新范围。",
+    "checkRate": "查询您的产品税率 →"
   }
 }

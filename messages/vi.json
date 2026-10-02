@@ -377,7 +377,8 @@
     "developers": "Các nhà phát triển",
     "insurance": "Bảo hiểm",
     "resources": "Tài nguyên",
-    "classify": "Kiểm tra HTS"
+    "classify": "Kiểm tra HTS",
+    "adcvd": "AD/CVD"
   },
   "platform": {
     "cta": {
@@ -2403,5 +2404,22 @@
     "bookError": "Đặt hàng thất bại — vui lòng thử lại.",
     "enterpriseNote": "Khối lượng lớn hoặc cần hệ thống kết nối hệ thống?",
     "enterpriseLink": "Khám phá NIEL COS cho doanh nghiệp →"
+  },
+  "adcvd": {
+    "eyebrow": "Danh sách theo dõi AD/CVD",
+    "title": "Sản phẩm chịu thuế chống bán phá giá & chống trợ cấp của Hoa Kỳ.",
+    "sub": "Danh sách chọn lọc các cặp sản phẩm–xuất xứ rủi ro cao đang có lệnh AD/CVD. Miễn phí, không cần đăng nhập.",
+    "searchPh": "Tìm sản phẩm hoặc HTS…",
+    "originAll": "Mọi xuất xứ",
+    "typeAll": "AD & CVD",
+    "colProduct": "Sản phẩm",
+    "colHts": "HTS",
+    "colOrigin": "Xuất xứ",
+    "colType": "Loại vụ",
+    "colStatus": "Trạng thái",
+    "empty": "Không có mục nào khớp bộ lọc.",
+    "count": "%N% sản phẩm trong danh sách theo dõi",
+    "disclaimer": "Đây là danh sách chọn lọc các nhóm rủi ro cao đã biết — không phải cơ sở dữ liệu AD/CVD đầy đủ. Phạm vi, thuế suất và miễn trừ thay đổi; luôn kiểm tra phạm vi hiện hành tại IA ACCESS (access.trade.gov) hoặc với môi giới hải quan trước khi báo giá.",
+    "checkRate": "Tra thuế suất cho sản phẩm của bạn →"
   }
 }

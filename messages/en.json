@@ -377,7 +377,8 @@
     "developers": "Developers",
     "insurance": "Insurance",
     "resources": "Resources",
-    "classify": "HTS Check"
+    "classify": "HTS Check",
+    "adcvd": "AD/CVD"
   },
   "platform": {
     "cta": {
@@ -2403,5 +2404,22 @@
     "bookError": "Booking failed — please try again.",
     "enterpriseNote": "Moving real volume or need systems talking to systems?",
     "enterpriseLink": "Explore NIEL COS for enterprise →"
+  },
+  "adcvd": {
+    "eyebrow": "AD/CVD watchlist",
+    "title": "Products under U.S. anti-dumping & countervailing duties.",
+    "sub": "A curated watchlist of high-risk product–origin corridors with AD/CVD orders in place. Free, no login required.",
+    "searchPh": "Search product or HTS…",
+    "originAll": "All origins",
+    "typeAll": "AD & CVD",
+    "colProduct": "Product",
+    "colHts": "HTS",
+    "colOrigin": "Origin",
+    "colType": "Case type",
+    "colStatus": "Status",
+    "empty": "No entries match your filters.",
+    "count": "%N% products on the watchlist",
+    "disclaimer": "Curated watchlist of known high-risk corridors — not a complete AD/CVD database. Scope, rates and exclusions change; always verify the current scope at IA ACCESS (access.trade.gov) or with a licensed customs broker before quoting.",
+    "checkRate": "Check duty rates for your product →"
   }
 }

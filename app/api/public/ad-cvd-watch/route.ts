@@ -14,6 +14,7 @@ export async function GET(req: NextRequest) {
   const q = req.nextUrl.searchParams;
   const keyword = (q.get("keyword") ?? "").trim().slice(0, 80);
   const origin = (q.get("origin") ?? "").trim().slice(0, 40);
+  const limit = Math.min(Math.max(parseInt(q.get("limit") ?? "20", 10) || 20, 1), 100);
 
   const sb = await createClient();
   let query = sb
@@ -22,7 +23,7 @@ export async function GET(req: NextRequest) {
     .order("product_keyword");
   if (keyword) query = query.ilike("product_keyword", `%${keyword.replace(/[%_]/g, "")}%`);
   if (origin) query = query.eq("origin", origin);
-  const { data, error } = await query.limit(20);
+  const { data, error } = await query.limit(limit);
   if (error) return NextResponse.json({ ok: false, error: "db_error" }, { status: 500 });
   return NextResponse.json({
     ok: true,

@@ -103,6 +103,7 @@ export default function Header() {
     { href: `/${locale}/modules`, label: t("modules") },
     { href: `/${locale}/landed-cost`, label: t("landedCost") },
     { href: `/${locale}/regulatory`, label: t("regulatory") },
+    { href: `/${locale}/ad-cvd`, label: t("adcvd") },
     { href: `/${locale}/developers`, label: t("developers") },
     { href: `/${locale}/#resources`, label: t("resources") },
     { href: `/${locale}/insurance`, label: t("insurance") },

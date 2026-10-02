@@ -377,7 +377,8 @@
     "developers": "開発者",
     "insurance": "保険",
     "resources": "リソース",
-    "classify": "HTSチェック"
+    "classify": "HTSチェック",
+    "adcvd": "AD/CVD"
   },
   "platform": {
     "cta": {
@@ -2403,5 +2404,22 @@
     "bookError": "予約に失敗しました — もう一度お試しください。",
     "enterpriseNote": "大口貨物やシステム連携が必要ですか？",
     "enterpriseLink": "企業向けNIEL COSを見る →"
+  },
+  "adcvd": {
+    "eyebrow": "AD/CVD ウォッチリスト",
+    "title": "米アンチダンピング・相殺関税の対象品目",
+    "sub": "AD/CVD 命令が発動中の高リスク品目–原産地コンビの選別リスト。無料、ログイン不要。",
+    "searchPh": "品目またはHTSを検索…",
+    "originAll": "すべての原産国",
+    "typeAll": "AD & CVD",
+    "colProduct": "品目",
+    "colHts": "HTS",
+    "colOrigin": "原産国",
+    "colType": "案件種別",
+    "colStatus": "ステータス",
+    "empty": "条件に合う項目がありません。",
+    "count": "ウォッチリスト %N% 品目",
+    "disclaimer": "既知の高リスク群の選別リストであり、完全なAD/CVDデータベースではありません。対象範囲・税率・除外は変更されるため、見積前にIA ACCESS（access.trade.gov）または通関業者に現行範囲を必ずご確認ください。",
+    "checkRate": "品目の関税率を確認 →"
   }
 }
