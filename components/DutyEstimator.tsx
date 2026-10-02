@@ -147,12 +147,15 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
       const m = mfnRate ?? 0;
       let amt = (v * m) / 100;
       let effRate: number | null = mfnRate;
+      let lineRate: number | null = mfnRate; // what the line displays
       let rateText: string | undefined;
       if (mfnRate == null && mfnSpecific) {
-        // specific (per-unit) MFN rate, e.g. 31.4¢/kg — auto-detected
+        // specific (per-unit) MFN rate, e.g. 31.4¢/kg — auto-detected.
+        // The line shows the rate text; the headline % uses the effective rate.
         amt = mfnSpecific.perUnitUsd * num(qty);
         if (mfnSpecific.adValoremPct != null) amt += (v * mfnSpecific.adValoremPct) / 100;
         effRate = v > 0 ? (amt / v) * 100 : 0;
+        lineRate = null;
         rateText = mfnSpecific.raw;
       } else if (mfnRate == null && mfnText) {
         rateText = mfnText;
@@ -161,7 +164,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
         code: hts,
         label: htsDesc || t.mfnName,
         sub: mfnText || undefined,
-        rate: effRate,
+        rate: lineRate,
         rateText,
         amount: amt,
       });
