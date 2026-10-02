@@ -630,7 +630,9 @@
     "assistantNav": "AI 助手",
     "towerNav": "指挥塔",
     "executiveNav": "AI 高管智能",
-    "integrationsNav": "系统集成"
+    "integrationsNav": "系统集成",
+    "skuLink": "SKU",
+    "skuHint": "关联产品目录 SKU——确认的行会自动写入产品护照。"
   },
   "estimator": {
     "eyebrow": "免费工具",
@@ -888,7 +890,8 @@
     "importFailed": "导入失败——请检查文件格式。",
     "skuRequired": "SKU 为必填项。",
     "dupSku": "该 SKU 已存在。",
-    "saveFailed": "保存失败——请重试。"
+    "saveFailed": "保存失败——请重试。",
+    "passportLink": "护照"
   },
   "suppliers": {
     "title": "供应商",
@@ -2318,5 +2321,35 @@
     "ctaB1": "Book with NIEL——免费注册",
     "ctaB2": "联系专家",
     "ctaNote": "免费开始 · 无需信用卡"
+  },
+  "passport": {
+    "title": "产品护照",
+    "sub": "该 SKU 的进口历史与关税情报。报关单行确认后自动记录。",
+    "loading": "护照加载中…",
+    "loadFailed": "护照加载失败。",
+    "profileTitle": "SKU 档案",
+    "fHts": "HTS",
+    "fOrigin": "原产国",
+    "fMaterial": "材质",
+    "fNotes": "备注",
+    "bannerTitle": "检测到税率变动",
+    "bannerBody": "上次确认 %LAST%% → 当前 %CUR%%。预计影响 %IMPACT%（%BASIS%）。",
+    "bannerNote": "当前税率 = 实时 USITC MFN + 确定性附加税（232/301）。申报前请与持牌报关行确认。",
+    "basisYear": "基于过去 12 个月申报货值",
+    "basisPartial": "基于现有 %N% 票数据——尚不满一年",
+    "statsImports": "进口票数",
+    "statsValue": "申报货值",
+    "statsAvgRate": "平均税率",
+    "statsLast": "最近进口",
+    "chartTitle": "税率历史",
+    "chartEmpty": "暂无进口记录——首票确认后显示曲线。",
+    "eventsTitle": "进口事件",
+    "thDate": "日期",
+    "thHts": "HTS",
+    "thRate": "税率",
+    "thValue": "货值",
+    "emptyTitle": "暂无进口历史",
+    "emptyBody": "在报关单行上关联此 SKU 并确认 HTS——每条确认的行会自动记录在这里。",
+    "goCustoms": "打开报关工作台"
   }
 }

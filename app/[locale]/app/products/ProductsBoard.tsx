@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { preferDbZh, isZhLocale } from "@/lib/locale";
 
 type Duty = {
@@ -24,7 +25,8 @@ const AGENCIES = ["FDA", "EPA", "CPSC", "FCC", "APHIS", "FSIS", "TTB", "DOT", "A
 
 function pct(r: number | null) {
   if (r == null) return "—";
-  return `${(r * 100).toFixed(r < 0.01 ? 2 : 1).replace(/\.0$/, "")}%`;
+  // rates are percent units everywhere (hts_schedule.general_rate, additional_duties.rate)
+  return `${Number(Number(r).toFixed(2))}%`;
 }
 
 export default function ProductsBoard({ messages, locale }: { messages: Record<string, string>; locale: string }) {
@@ -151,6 +153,9 @@ export default function ProductsBoard({ messages, locale }: { messages: Record<s
                   ))}
                 </div>
                 <div className="col-span-12 md:col-span-1 flex md:justify-end gap-2">
+                  <Link href={`/${locale}/app/products/${p.id}`} className="text-xs font-bold text-brand-deep hover:underline">
+                    {t("passportLink")}
+                  </Link>
                   <button onClick={() => setExpanded(expanded === p.id ? null : p.id)} className="text-xs font-bold text-brand-deep hover:underline">
                     {t("dutyDetail")}
                   </button>

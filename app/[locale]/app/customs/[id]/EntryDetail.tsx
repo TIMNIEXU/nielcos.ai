@@ -29,6 +29,7 @@ type Line = {
   material?: string | null;
   origin_country?: string | null;
   hts_source?: string | null;
+  sku?: string | null;
 };
 
 type PreviewRow = {
@@ -563,7 +564,7 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
                     </div>
                   )}
                 </div>
-                <div className="mt-3 grid grid-cols-2 gap-3">
+                <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
                   <div>
                     <label className={lblCls}>{t.material}</label>
                     <input
@@ -582,6 +583,17 @@ export default function EntryDetail({ locale, initialEntry, initialLines, pgaRul
                       onBlur={(e) => { if (e.target.value.trim() !== (l.origin_country ?? "")) patchLine(l.id, { origin_country: e.target.value.trim() || null }); }}
                       placeholder="CHINA"
                       className={inputCls}
+                    />
+                  </div>
+                  <div>
+                    <label className={lblCls}>{t.skuLink}</label>
+                    <input
+                      defaultValue={l.sku ?? ""}
+                      key={`${l.id}-sku-${l.sku}`}
+                      onBlur={(e) => { if (e.target.value.trim() !== (l.sku ?? "")) patchLine(l.id, { sku: e.target.value.trim() || null }); }}
+                      placeholder="SKU-001"
+                      title={t.skuHint}
+                      className={`${inputCls} font-mono`}
                     />
                   </div>
                 </div>

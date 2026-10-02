@@ -630,7 +630,9 @@
     "assistantNav": "AIアシスタント",
     "towerNav": "管制塔",
     "executiveNav": "エグゼクティブAI",
-    "integrationsNav": "連携機能"
+    "integrationsNav": "連携機能",
+    "skuLink": "SKU",
+    "skuHint": "カタログSKUを紐付け — 確定したラインがプロダクトパスポートに自動記録されます."
   },
   "estimator": {
     "eyebrow": "無料ツール",
@@ -888,7 +890,8 @@
     "importFailed": "インポートに失敗しました — ファイル形式を確認してください。",
     "skuRequired": "SKUの入力が必要です。",
     "dupSku": "このSKUはすでに存在します。",
-    "saveFailed": "保存に失敗しました。もう一度お試しください。"
+    "saveFailed": "保存に失敗しました。もう一度お試しください。",
+    "passportLink": "パスポート"
   },
   "suppliers": {
     "title": "サプライヤー",
@@ -2318,5 +2321,35 @@
     "ctaB1": "Book with NIEL — 無料登録",
     "ctaB2": "専門家に相談",
     "ctaNote": "無料で開始 · クレジットカード不要"
+  },
+  "passport": {
+    "title": "プロダクトパスポート",
+    "sub": "このSKUの輸入履歴と関税インテリジェンス。税関申告ラインの確定時に自動記録されます。",
+    "loading": "パスポートを読み込み中…",
+    "loadFailed": "パスポートを読み込めませんでした。",
+    "profileTitle": "SKUプロフィール",
+    "fHts": "HTS",
+    "fOrigin": "原産国",
+    "fMaterial": "材質",
+    "fNotes": "備考",
+    "bannerTitle": "税率変更を検出",
+    "bannerBody": "前回確定 %LAST%% → 現在 %CUR%%。推定影響 %IMPACT%（%BASIS%）。",
+    "bannerNote": "現在税率 = リアルタイムUSITC MFN + 確定的追加関税（232/301）。申告前に必ずlicensed customs brokerにご確認ください。",
+    "basisYear": "直近12ヶ月の申告価額ベース",
+    "basisPartial": "既存%N%件のデータベース — 1年未満",
+    "statsImports": "輸入件数",
+    "statsValue": "申告価額",
+    "statsAvgRate": "平均税率",
+    "statsLast": "最終輸入",
+    "chartTitle": "税率履歴",
+    "chartEmpty": "輸入記録なし — 初回確定後にチャートが表示されます。",
+    "eventsTitle": "輸入イベント",
+    "thDate": "日付",
+    "thHts": "HTS",
+    "thRate": "税率",
+    "thValue": "価額",
+    "emptyTitle": "輸入履歴がありません",
+    "emptyBody": "税関申告ラインにこのSKUを紐付けてHTSを確定してください — 確定したラインは自動的にここに記録されます。",
+    "goCustoms": "税関ワークベンチを開く"
   }
 }

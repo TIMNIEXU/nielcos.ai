@@ -11,7 +11,7 @@ const KEYS = [
   "thDuties","thPga","thActions","empty","fSku","fNameEn","fNameZh","fHts","fOrigin",
   "fMaterial","fPgaManual","fNotes","save","cancel","edit","delete","editTitle",
   "addTitle","htsSearch","htsSearchPh","htsSearching","officialDesc","htsNoMatch",
-  "dutyDetail","pgaManualLabel","noPga","noHts","copyHts","deleteConfirm",
+  "dutyDetail","pgaManualLabel","noPga","noHts","copyHts","deleteConfirm","passportLink",
   "importTitle","importHint","chooseFile","importRun","importDone","importFailed",
   "skuRequired","dupSku","saveFailed",
 ];

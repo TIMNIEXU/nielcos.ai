@@ -630,7 +630,9 @@
     "assistantNav": "Trợ lý AI",
     "towerNav": "Tháp điều khiển",
     "executiveNav": "Trí tuệ nhân tạo dành cho lãnh đạo",
-    "integrationsNav": "Tích hợp"
+    "integrationsNav": "Tích hợp",
+    "skuLink": "SKU",
+    "skuHint": "Gắn SKU trong danh mục — các dòng được xác nhận sẽ tự động đưa vào Hộ chiếu sản phẩm."
   },
   "estimator": {
     "eyebrow": "Công cụ miễn phí",
@@ -888,7 +890,8 @@
     "importFailed": "Không nhập được — hãy kiểm tra định dạng tệp.",
     "skuRequired": "Phải điền mã SKU.",
     "dupSku": "Mã SKU này đã tồn tại.",
-    "saveFailed": "Lỗi lưu — vui lòng thử lại."
+    "saveFailed": "Lỗi lưu — vui lòng thử lại.",
+    "passportLink": "Hộ chiếu"
   },
   "suppliers": {
     "title": "Nhà cung cấp",
@@ -2318,5 +2321,35 @@
     "ctaB1": "Book with NIEL — đăng ký miễn phí",
     "ctaB2": "Nói chuyện với chuyên gia",
     "ctaNote": "Bắt đầu miễn phí · Không cần thẻ tín dụng"
+  },
+  "passport": {
+    "title": "Hộ chiếu sản phẩm",
+    "sub": "Lịch sử nhập khẩu và thông tin thuế quan của SKU này. Các dòng tờ khai được xác nhận sẽ tự động ghi nhận.",
+    "loading": "Đang tải hộ chiếu…",
+    "loadFailed": "Không tải được hộ chiếu.",
+    "profileTitle": "Hồ sơ SKU",
+    "fHts": "HTS",
+    "fOrigin": "Xuất xứ",
+    "fMaterial": "Chất liệu",
+    "fNotes": "Ghi chú",
+    "bannerTitle": "Phát hiện thay đổi thuế suất",
+    "bannerBody": "Lần xác nhận trước %LAST%% → hiện tại %CUR%%. Tác động ước tính %IMPACT% (%BASIS%).",
+    "bannerNote": "Thuế suất hiện tại = MFN USITC trực tiếp + thuế bổ sung xác định (232/301). Hãy xác nhận với customs broker được cấp phép trước khi khai báo.",
+    "basisYear": "dựa trên trị giá khai báo 12 tháng gần nhất",
+    "basisPartial": "dựa trên %N% lô hàng hiện có — chưa đủ một năm",
+    "statsImports": "Số lô nhập",
+    "statsValue": "Trị giá khai báo",
+    "statsAvgRate": "Thuế suất BQ",
+    "statsLast": "Lần nhập gần nhất",
+    "chartTitle": "Lịch sử thuế suất",
+    "chartEmpty": "Chưa có lô nhập nào — biểu đồ sẽ hiện sau lần xác nhận đầu tiên.",
+    "eventsTitle": "Các lần nhập khẩu",
+    "thDate": "Ngày",
+    "thHts": "HTS",
+    "thRate": "Thuế suất",
+    "thValue": "Trị giá",
+    "emptyTitle": "Chưa có lịch sử nhập khẩu",
+    "emptyBody": "Gắn SKU này vào dòng tờ khai hải quan và xác nhận HTS — mỗi dòng được xác nhận sẽ tự động ghi nhận tại đây.",
+    "goCustoms": "Mở bàn làm việc hải quan"
   }
 }

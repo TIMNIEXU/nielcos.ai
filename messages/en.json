@@ -630,7 +630,9 @@
     "assistantNav": "AI Assistant",
     "towerNav": "Control Tower",
     "executiveNav": "Executive AI",
-    "integrationsNav": "Integrations"
+    "integrationsNav": "Integrations",
+    "skuLink": "SKU",
+    "skuHint": "Link a catalog SKU — confirmed lines feed the Product Passport."
   },
   "estimator": {
     "eyebrow": "Free tool",
@@ -888,7 +890,8 @@
     "importFailed": "Import failed — check the file format.",
     "skuRequired": "SKU is required.",
     "dupSku": "This SKU already exists.",
-    "saveFailed": "Save failed — please try again."
+    "saveFailed": "Save failed — please try again.",
+    "passportLink": "Passport"
   },
   "suppliers": {
     "title": "Suppliers",
@@ -2318,5 +2321,35 @@
     "ctaB1": "Book with NIEL — sign up free",
     "ctaB2": "Talk to a specialist",
     "ctaNote": "Free to start · No credit card required"
+  },
+  "passport": {
+    "title": "Product Passport",
+    "sub": "Import history and duty intelligence for this SKU. Events are recorded automatically when customs entry lines are confirmed.",
+    "loading": "Loading passport…",
+    "loadFailed": "Could not load this passport.",
+    "profileTitle": "SKU profile",
+    "fHts": "HTS",
+    "fOrigin": "Origin",
+    "fMaterial": "Material",
+    "fNotes": "Notes",
+    "bannerTitle": "Tariff change detected",
+    "bannerBody": "Last confirmed %LAST%% → current %CUR%%. Estimated impact %IMPACT% (%BASIS%).",
+    "bannerNote": "Current rate = live USITC MFN + deterministic additional duties (232/301). Confirm with a licensed customs broker before filing.",
+    "basisYear": "on trailing-12-month entered value",
+    "basisPartial": "on %N% shipment(s) on file — early data, not a full year",
+    "statsImports": "Imports",
+    "statsValue": "Entered value",
+    "statsAvgRate": "Avg duty rate",
+    "statsLast": "Last import",
+    "chartTitle": "Duty rate history",
+    "chartEmpty": "No imports yet — the chart appears after the first confirmed entry.",
+    "eventsTitle": "Import events",
+    "thDate": "Date",
+    "thHts": "HTS",
+    "thRate": "Duty rate",
+    "thValue": "Value",
+    "emptyTitle": "No import history yet",
+    "emptyBody": "Link this SKU on a customs entry line and confirm the HTS — each confirmed line is recorded here automatically.",
+    "goCustoms": "Open customs workbench"
   }
 }

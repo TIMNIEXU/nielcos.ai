@@ -37,7 +37,7 @@ export default async function EntryPage({ params }: Props) {
     "confirmedHts","dutyRate","addlPct","estDuty","totalValue","totalDuty","pgaFlags",
     "noPga","rateNote","milestones","addMilestone","milestoneLabel","milestoneNote",
     "notes","save","delete","back","confirmDeleteEntry","confirmDeleteLine","created",
-    "matchScore","noCandidates","ruleBased","cancel","importDoc","importing","importFormats","importPreview","importHint","confirmImport","material","originCountry","detectedHts","docHts","noLinesFound","docType","linesFound","confidence","importFailed","fileNotPdf","scannedPdf","docInvoice","docPacking","docBl","docArrival","docOther","unsupportedType","lookupRate","lookingUp","fillRate","adopt","verifyDuty","usitcNotFound","dutySuggest","derivativeCheck",
+    "matchScore","noCandidates","ruleBased","cancel","importDoc","importing","importFormats","importPreview","importHint","confirmImport","material","originCountry","detectedHts","docHts","noLinesFound","docType","linesFound","confidence","importFailed","fileNotPdf","scannedPdf","docInvoice","docPacking","docBl","docArrival","docOther","unsupportedType","lookupRate","lookingUp","fillRate","adopt","verifyDuty","usitcNotFound","dutySuggest","derivativeCheck","skuLink","skuHint",
   ];
   const labels = Object.fromEntries(keys.map((k) => [k, t(k)]));
 

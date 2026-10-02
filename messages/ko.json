@@ -630,7 +630,9 @@
     "assistantNav": "AI 비서",
     "towerNav": "관제탑",
     "executiveNav": "경영용 AI",
-    "integrationsNav": "연동 기능"
+    "integrationsNav": "연동 기능",
+    "skuLink": "SKU",
+    "skuHint": "카탈로그 SKU 연결 — 확정된 라인이 제품 패스포트에 자동 기록됩니다."
   },
   "estimator": {
     "eyebrow": "무료 도구",
@@ -888,7 +890,8 @@
     "importFailed": "가져오기에 실패했습니다. 파일 형식을 확인해 주세요.",
     "skuRequired": "SKU를 입력해야 합니다.",
     "dupSku": "이 SKU는 이미 존재합니다.",
-    "saveFailed": "저장에 실패했습니다. 다시 시도해 주세요."
+    "saveFailed": "저장에 실패했습니다. 다시 시도해 주세요.",
+    "passportLink": "패스포트"
   },
   "suppliers": {
     "title": "공급업체",
@@ -2318,5 +2321,35 @@
     "ctaB1": "Book with NIEL — 무료 가입",
     "ctaB2": "전문가와 상담",
     "ctaNote": "무료로 시작 · 신용카드 불필요"
+  },
+  "passport": {
+    "title": "제품 패스포트",
+    "sub": "이 SKU의 수입 이력과 관세 인텔리전스. 세관 신고 라인 확정 시 자동으로 기록됩니다.",
+    "loading": "패스포트 로딩 중…",
+    "loadFailed": "패스포트를 불러오지 못했습니다.",
+    "profileTitle": "SKU 프로필",
+    "fHts": "HTS",
+    "fOrigin": "원산지",
+    "fMaterial": "재질",
+    "fNotes": "비고",
+    "bannerTitle": "세율 변경 감지",
+    "bannerBody": "최근 확정 %LAST%% → 현재 %CUR%%. 예상 영향 %IMPACT%(%BASIS%).",
+    "bannerNote": "현재 세율 = 실시간 USITC MFN + 확정적 추가 관세(232/301). 신고 전 반드시 licensed customs broker와 확인하세요.",
+    "basisYear": "최근 12개월 신고 가액 기준",
+    "basisPartial": "현재 %N%건 데이터 기준 — 1년 미달",
+    "statsImports": "수입 건수",
+    "statsValue": "신고 가액",
+    "statsAvgRate": "평균 세율",
+    "statsLast": "최근 수입",
+    "chartTitle": "세율 히스토리",
+    "chartEmpty": "수입 기록 없음 — 첫 확정 후 차트가 표시됩니다.",
+    "eventsTitle": "수입 이벤트",
+    "thDate": "날짜",
+    "thHts": "HTS",
+    "thRate": "세율",
+    "thValue": "가액",
+    "emptyTitle": "수입 이력 없음",
+    "emptyBody": "세관 신고 라인에 이 SKU를 연결하고 HTS를 확정하세요 — 확정된 라인은 자동으로 여기에 기록됩니다.",
+    "goCustoms": "세관 워크벤치 열기"
   }
 }
