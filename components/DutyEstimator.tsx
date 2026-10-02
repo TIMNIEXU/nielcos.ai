@@ -68,7 +68,7 @@ const ORIGINS = [
   "China", "Vietnam", "Mexico", "Canada", "India", "Germany", "Japan",
   "South Korea", "United Kingdom", "Taiwan", "Thailand", "Brazil",
   "Malaysia", "Indonesia", "Italy", "France", "Cambodia", "Bangladesh",
-  "Turkey", "Argentina",
+  "Turkey", "Argentina", "Macau",
 ];
 
 /* Pull a chapter-99 code out of a rule's note/source when our data has one
