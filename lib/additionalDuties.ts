@@ -65,11 +65,27 @@ export function suggestAdditionalDuties(
         : htsNo || bare;
 
   // 1) HTS-prefix rules (e.g. Section 232 steel/aluminum/copper articles)
+  // A later modification of the SAME duty type supersedes the earlier rate
+  // (e.g. the 2024 Section 301 review raised semiconductors 25% -> 50% —
+  // it replaces the classic List 3 rate, it does not stack with it).
+  // Across different duty types, longest prefix still wins (unchanged).
   let best: DutyRule | null = null;
   for (const r of rules) {
     if (!r.hts_prefix) continue; // blanket rules handled below
     if (!bare.startsWith(r.hts_prefix)) continue;
-    if (!best || r.hts_prefix.length > best.hts_prefix.length) best = r;
+    if (!best) {
+      best = r;
+      continue;
+    }
+    const sameType = r.duty_type === best.duty_type;
+    const rDate = r.effective_from ?? "";
+    const bDate = best.effective_from ?? "";
+    if (sameType && rDate > bDate) {
+      best = r;
+      continue;
+    }
+    if (sameType && bDate > rDate) continue;
+    if (r.hts_prefix.length > best.hts_prefix.length) best = r;
   }
   if (best) {
     out.push({
