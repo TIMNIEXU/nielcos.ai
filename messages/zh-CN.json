@@ -1849,6 +1849,7 @@
     "lineValue": "货值：%V%",
     "mfnName": "基础关税 (MFN)",
     "flName": "Section 301“强迫劳动”",
+    "flExclName": "Section 301“强迫劳动”——232 豁免",
     "c301Name": "Section 301",
     "r232Name": "Section 232",
     "free": "免税",

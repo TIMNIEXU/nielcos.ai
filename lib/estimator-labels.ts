@@ -117,6 +117,7 @@ export const FXEST_LABEL_KEYS = [
   "lineValue",
   "mfnName",
   "flName",
+  "flExclName",
   "c301Name",
   "r232Name",
   "free",

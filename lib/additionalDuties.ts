@@ -64,30 +64,36 @@ export function suggestAdditionalDuties(
         ? `${bare.slice(0, 4)}.${bare.slice(4, 6)}.${bare.slice(6, 8)}`
         : htsNo || bare;
 
-  // 1) HTS-prefix rules (e.g. Section 232 steel/aluminum/copper articles)
-  // A later modification of the SAME duty type supersedes the earlier rate
-  // (e.g. the 2024 Section 301 review raised semiconductors 25% -> 50% —
-  // it replaces the classic List 3 rate, it does not stack with it).
-  // Across different duty types, longest prefix still wins (unchanged).
-  let best: DutyRule | null = null;
+  // 1) HTS-prefix rules (e.g. Section 232 steel/aluminum/copper articles,
+  // classic Section 301 lists). One best match PER duty type — different
+  // duties stack (232 50% + 301 25%), they must not knock each other out.
+  // Within one duty type: a later modification supersedes the earlier rate
+  // (e.g. the 2024 Section 301 review raised semiconductors 25% -> 50% and
+  // steel/aluminum to 25% — it replaces the classic list rate, not stacks).
+  // A rule only applies when its origin matches (empty origin = universal,
+  // e.g. Section 232).
+  const matchesOrigin = (r: DutyRule) =>
+    !r.origin_country || normOrigin(r.origin_country) === org;
+  const byType = new Map<string, DutyRule>();
   for (const r of rules) {
     if (!r.hts_prefix) continue; // blanket rules handled below
     if (!bare.startsWith(r.hts_prefix)) continue;
-    if (!best) {
-      best = r;
+    if (!matchesOrigin(r)) continue;
+    const cur = byType.get(r.duty_type);
+    if (!cur) {
+      byType.set(r.duty_type, r);
       continue;
     }
-    const sameType = r.duty_type === best.duty_type;
     const rDate = r.effective_from ?? "";
-    const bDate = best.effective_from ?? "";
-    if (sameType && rDate > bDate) {
-      best = r;
+    const cDate = cur.effective_from ?? "";
+    if (rDate > cDate) {
+      byType.set(r.duty_type, r);
       continue;
     }
-    if (sameType && bDate > rDate) continue;
-    if (r.hts_prefix.length > best.hts_prefix.length) best = r;
+    if (cDate > rDate) continue;
+    if (r.hts_prefix.length > cur.hts_prefix.length) byType.set(r.duty_type, r);
   }
-  if (best) {
+  for (const best of byType.values()) {
     out.push({
       kind: "rate",
       duty_type: best.duty_type,
@@ -102,7 +108,7 @@ export function suggestAdditionalDuties(
   // but the rate only exists at 10 digits). Never guess a list rate from a
   // shorter code — ask for the 10-digit HTS instead.
   let needTenDigit = false;
-  if (!best && bare.length < 10) {
+  if (byType.size === 0 && bare.length < 10) {
     needTenDigit = rules.some(
       (r) =>
         r.duty_type === "301-CN" &&
@@ -120,19 +126,31 @@ export function suggestAdditionalDuties(
     }
   }
 
-  // 2) Blanket origin-based rules (e.g. Section 301 forced labor, all HTS)
+  // 2) Blanket origin-based rules (e.g. Section 301 forced labor, all HTS).
+  // 232-covered products are excepted from the forced-labor 301
+  // (9903.05.90): show the exclusion as a $0 line instead of charging it.
   const has232 = out.some((s) => s.kind === "rate" && s.duty_type === "232");
   for (const r of rules) {
     if (r.hts_prefix) continue;
     if (!r.origin_country) continue;
     if (normOrigin(r.origin_country) !== org) continue;
+    if (r.duty_type === "301-FL" && has232) {
+      out.push({
+        kind: "rate",
+        duty_type: "301-FL-EXCL",
+        rate: 0,
+        source: r.source,
+        note: "Section 301 Forced Labor exclusion for Section 232-covered products (9903.05.90)",
+        basis: r.basis,
+      });
+      continue;
+    }
     out.push({
       kind: "rate",
       duty_type: r.duty_type,
       rate: Number(r.rate),
       source: r.source,
-      // 232-covered products are excepted from the forced-labor 301
-      note: has232 ? `${r.note}（232 适用产品除外 — 若 232 适用则不叠加）` : r.note,
+      note: r.note,
       basis: r.basis,
     });
   }

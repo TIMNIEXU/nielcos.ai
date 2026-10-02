@@ -80,6 +80,7 @@ function extract9903(s: Suggestion): string | null {
 
 function dutyLabel(s: Suggestion, t: T, origin: string): string {
   const dt = s.duty_type ?? "";
+  if (dt === "301-FL-EXCL") return t.flExclName;
   if (dt === "301-FL") return `${t.flName}${origin ? ` — ${origin}` : ""}`;
   if (dt.startsWith("232")) return t.r232Name;
   if (dt === "301" || dt.startsWith("301")) return t.c301Name;
@@ -135,7 +136,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     () => suggestions.filter((s) => s.kind === "warning"),
     [suggestions]
   );
-  const has301FL = rateSuggestions.some((s) => s.duty_type === "301-FL");
+  const has301FL = rateSuggestions.some((s) => s.duty_type === "301-FL" && Number(s.rate) > 0);
 
   const calc = useMemo(() => {
     const v = num(value);
