@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
 import { checkRate, clientIpHash } from "@/lib/rateLimit";
+import { fetchWatchEntries } from "@/lib/adcvdData";
 
 /* GET /api/public/ad-cvd-watch?keyword=aluminum&origin=China — public, no login.
    Curated high-risk corridor watchlist. This is NOT a complete AD/CVD
@@ -16,15 +16,19 @@ export async function GET(req: NextRequest) {
   const origin = (q.get("origin") ?? "").trim().slice(0, 40);
   const limit = Math.min(Math.max(parseInt(q.get("limit") ?? "20", 10) || 20, 1), 100);
 
-  const sb = await createClient();
-  let query = sb
-    .from("ad_cvd_watch")
-    .select("product_keyword, hts_prefix, origin, case_type, status, note")
-    .order("product_keyword");
-  if (keyword) query = query.ilike("product_keyword", `%${keyword.replace(/[%_]/g, "")}%`);
-  if (origin) query = query.eq("origin", origin);
-  const { data, error } = await query.limit(limit);
-  if (error) return NextResponse.json({ ok: false, error: "db_error" }, { status: 500 });
+  let rows;
+  try {
+    rows = await fetchWatchEntries(200);
+  } catch {
+    return NextResponse.json({ ok: false, error: "db_error" }, { status: 500 });
+  }
+  let matches = [...rows].sort((a, b) => a.product_keyword.localeCompare(b.product_keyword));
+  if (keyword) {
+    const k = keyword.toLowerCase();
+    matches = matches.filter((r) => r.product_keyword.toLowerCase().includes(k));
+  }
+  if (origin) matches = matches.filter((r) => r.origin === origin);
+  const data = matches.slice(0, limit);
   return NextResponse.json({
     ok: true,
     matches: data ?? [],

@@ -64,12 +64,7 @@ type DutyLine = {
   amount: number;
 };
 
-const ORIGINS = [
-  "China", "Vietnam", "Mexico", "Canada", "India", "Germany", "Japan",
-  "South Korea", "United Kingdom", "Taiwan", "Thailand", "Brazil",
-  "Malaysia", "Indonesia", "Italy", "France", "Cambodia", "Bangladesh",
-  "Turkey", "Argentina", "Macau",
-];
+import { ORIGIN_OPTIONS as ORIGINS } from "@/lib/countries";
 
 /* Pull a chapter-99 code out of a rule's note/source when our data has one
    (e.g. "…List 4A (9903.88.15)"). Never invent one. */

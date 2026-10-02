@@ -9,6 +9,7 @@ type Entry = {
   case_type: string;
   status: string;
   note: string | null;
+  case_numbers: string | null;
 };
 
 type Labels = {
@@ -128,6 +129,9 @@ export default function AdCvdList({ t, locale }: { t: Labels; locale: string }) 
                 <tr key={idx} className="border-b border-line-soft last:border-0 hover:bg-slate-50/60">
                   <td className="px-5 py-3.5">
                     <p className="font-semibold capitalize text-ink">{i.product_keyword}</p>
+                    {i.case_numbers && (
+                      <p className="mt-0.5 font-mono text-[12px] font-bold text-brand">{i.case_numbers}</p>
+                    )}
                     {i.note && (
                       <p className="mt-0.5 text-[12.5px] text-ink-soft">{i.note}</p>
                     )}

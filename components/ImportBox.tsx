@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import AdCvdRiskCard from "./AdCvdRiskCard";
 
 /* GRI-001 V2 — Universal Import Box (full).
    Free-text import description + document upload -> POST /api/ai/import-box
@@ -276,6 +277,15 @@ export default function ImportBox({ locale, onPlan }: { locale: string; onPlan?:
                 {(plan.compliance.regulatory_notes ?? []).map((f, i) => <li key={`r${i}`}>• {f}</li>)}
               </ul>
             </div>
+          )}
+
+          {plan.product?.name && (
+            <AdCvdRiskCard
+              product={plan.product.name}
+              origin={plan.product.origin}
+              hts={cands[0]?.hts_no}
+              locale={locale}
+            />
           )}
 
           {steps.length > 0 && (
