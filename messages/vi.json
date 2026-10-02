@@ -122,7 +122,7 @@
     },
     "kpis": [
       {
-        "value": "11",
+        "value": "13",
         "label": "Các mô-đun không gian làm việc",
         "delta": "trong suốt vòng đời thương mại"
       },
@@ -240,7 +240,7 @@
     "hero": {
       "eyebrow": "Các mô-đun",
       "sub": "Hãy bắt đầu với mô-đun mà bạn cần ngay hôm nay. Các mô-đun còn lại sẽ được kết nối ngay khi bạn sẵn sàng.",
-      "titleA": "Mười hai mô-đun.",
+      "titleA": "Mười ba mô-đun.",
       "titleB": "Không có điểm mù."
     },
     "items": [

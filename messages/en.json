@@ -122,7 +122,7 @@
     },
     "kpis": [
       {
-        "value": "11",
+        "value": "13",
         "label": "Workspace modules",
         "delta": "across the trade lifecycle"
       },
@@ -240,7 +240,7 @@
     "hero": {
       "eyebrow": "Modules",
       "sub": "Start with the module you need today. The rest are already connected when you're ready.",
-      "titleA": "Twelve modules.",
+      "titleA": "Thirteen modules.",
       "titleB": "Zero blind spots."
     },
     "items": [
