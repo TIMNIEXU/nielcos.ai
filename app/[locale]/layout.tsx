@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GroupBar from "@/components/GroupBar";
+import PwaRegister from "@/components/PwaRegister";
 import { ToastProvider } from "@/components/ui/Toast";
 import "../globals.css";
 
@@ -26,6 +27,12 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+export const viewport: Viewport = {
+  themeColor: "#1d4ed8",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -38,6 +45,15 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     metadataBase: new URL("https://www.nielcos.ai"),
+    appleWebApp: {
+      capable: true,
+      title: "NIEL COS",
+      statusBarStyle: "default",
+    },
+    icons: {
+      icon: "/icons/icon-192.png",
+      apple: "/apple-touch-icon.png",
+    },
     openGraph: {
       title: t("title"),
       description: t("description"),
@@ -72,6 +88,7 @@ export default async function LocaleLayout({
         className={`${inter.variable} flex min-h-screen flex-col bg-canvas text-ink antialiased`}
       >
         <NextIntlClientProvider>
+          <PwaRegister />
           <ToastProvider>
             <GroupBar />
             <Header />
