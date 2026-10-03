@@ -1813,7 +1813,9 @@
     "alHoldD": "%GTTID% is on hold",
     "alStaleT": "No recent update",
     "alStaleD": "%GTTID% has no update for %DAYS% days",
-    "mixedCurrencies": "mixed currencies"
+    "mixedCurrencies": "mixed currencies",
+    "kpiActiveCases": "Active cases",
+    "kpiOpenQuotes": "Open quotes"
   },
   "aig": {
     "lookup": "Data lookup",
@@ -2283,7 +2285,8 @@
     "svc_drayage": "Drayage & trucking",
     "svc_warehouse": "Warehousing",
     "svc_insurance": "Cargo insurance",
-    "svc_bond": "Customs bond"
+    "svc_bond": "Customs bond",
+    "fAll": "All"
   },
   "sourcing": {
     "title": "Compare sourcing origins",

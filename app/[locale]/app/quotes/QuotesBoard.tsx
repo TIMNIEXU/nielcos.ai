@@ -31,6 +31,19 @@ const SVC_KEY: Record<string, string> = {
   warehouse: "svc_warehouse", insurance: "svc_insurance", bond: "svc_bond",
 };
 
+/* Service → operating entity routing (NIEL GROUP DIGITAL ARCHITECTURE).
+   The triage queue is one pool; these badges + filters route each lead
+   to the entity that fulfills it. */
+const SVCS = ["customs", "freight", "drayage", "warehouse", "insurance", "bond"] as const;
+const ENTITY: Record<string, string> = {
+  customs: "Niel Customs",
+  freight: "Niel Supply Chain",
+  drayage: "JOMA Logistics",
+  warehouse: "Niel Supply Chain",
+  insurance: "Niel Insurance",
+  bond: "Niel Insurance",
+};
+
 const Q_TONE: Record<string, string> = {
   new: "bg-warn-tint text-warn",
   quoted: "bg-brand-tint/60 text-brand",
@@ -48,6 +61,7 @@ function fmtMoney(v: number | null) {
 export default function QuotesBoard({ messages }: { messages: Record<string, string> }) {
   const t = (k: string) => messages[k] ?? k;
   const [tab, setTab] = useState<"quotes" | "verify">("quotes");
+  const [svcFilter, setSvcFilter] = useState<string>("all");
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [verifies, setVerifies] = useState<Verify[]>([]);
   const [loading, setLoading] = useState(true);
@@ -107,6 +121,9 @@ export default function QuotesBoard({ messages }: { messages: Record<string, str
   };
 
   const svcLabel = (s: string) => t(SVC_KEY[s] ?? s);
+  const entityOf = (s: string) => ENTITY[s] ?? "";
+  const visibleQuotes = svcFilter === "all" ? quotes : quotes.filter((q) => q.service === svcFilter);
+  const svcCount = (s: string) => quotes.filter((q) => q.service === s).length;
   const qStatusLabel = (s: string) =>
     ({ new: t("stNew"), quoted: t("stQuoted"), won: t("stWon"), lost: t("stLost"), declined: t("stDeclined") } as Record<string, string>)[s] ?? s;
   const vStatusLabel = (s: string) =>
@@ -190,10 +207,32 @@ export default function QuotesBoard({ messages }: { messages: Record<string, str
 
       {err && <p className="mt-3 text-[13px] font-semibold text-risk">{err}</p>}
 
+      {/* service routing filter — one queue, routed per entity */}
+      {tab === "quotes" && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          <button
+            onClick={() => setSvcFilter("all")}
+            className={`rounded-full px-4 py-1.5 text-[12.5px] font-bold ${svcFilter === "all" ? "bg-ink text-white" : "border border-line text-ink-soft hover:border-brand"}`}
+          >
+            {t("fAll")} ({quotes.length})
+          </button>
+          {SVCS.map((s) => (
+            <button
+              key={s}
+              onClick={() => setSvcFilter(s)}
+              title={entityOf(s)}
+              className={`rounded-full px-4 py-1.5 text-[12.5px] font-bold ${svcFilter === s ? "bg-ink text-white" : "border border-line text-ink-soft hover:border-brand"}`}
+            >
+              {svcLabel(s)} ({svcCount(s)})
+            </button>
+          ))}
+        </div>
+      )}
+
       {loading ? (
         <p className="mt-6 text-[14px] text-muted">…</p>
       ) : tab === "quotes" ? (
-        quotes.length === 0 ? (
+        visibleQuotes.length === 0 ? (
           <p className="mt-6 rounded-2xl border border-line bg-white p-8 text-center text-[14px] text-muted">{t("emptyQuotes")}</p>
         ) : (
           <div className="mt-4 overflow-x-auto rounded-2xl border border-line bg-white">
@@ -207,10 +246,15 @@ export default function QuotesBoard({ messages }: { messages: Record<string, str
                 </tr>
               </thead>
               <tbody>
-                {quotes.map((q) => (
+                {visibleQuotes.map((q) => (
                   <tr key={q.id} className="border-b border-line last:border-0">
                     <td className={td}>{fmtDate(q.created_at)}</td>
-                    <td className={td}><span className="font-bold text-ink">{svcLabel(q.service)}</span></td>
+                    <td className={td}>
+                      <span className="font-bold text-ink">{svcLabel(q.service)}</span>
+                      {entityOf(q.service) && (
+                        <p className="mt-0.5 text-[11px] font-semibold text-brand-deep">→ {entityOf(q.service)}</p>
+                      )}
+                    </td>
                     <td className={td}>
                       <p className="font-semibold text-ink">{q.name ?? "—"}</p>
                       <p className="text-[12px] text-muted">{q.company ?? ""}</p>

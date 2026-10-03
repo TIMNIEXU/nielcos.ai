@@ -1587,7 +1587,9 @@
     "alHoldD": "%GTTID% は保留中です",
     "alStaleT": "最近の更新はありません",
     "alStaleD": "%GTTID% には、%DAYS% 日間、更新がありません",
-    "mixedCurrencies": "複数の通貨"
+    "mixedCurrencies": "複数の通貨",
+    "kpiActiveCases": "進行中のケース",
+    "kpiOpenQuotes": "未処理の見積り"
   },
   "aig": {
     "lookup": "データの検索",
@@ -2283,7 +2285,8 @@
     "svc_drayage": "ドレージ・トラック",
     "svc_warehouse": "倉庫",
     "svc_insurance": "貨物保険",
-    "svc_bond": "関税ボンド"
+    "svc_bond": "関税ボンド",
+    "fAll": "すべて"
   },
   "sourcing": {
     "title": "原産国を比較",

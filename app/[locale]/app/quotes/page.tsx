@@ -7,7 +7,7 @@ import QuotesBoard from "./QuotesBoard";
 /* GRI-001 V4a — unified quote + HTS-verification triage (login required). */
 
 const KEYS = [
-  "title","sub","tabQuotes","tabVerify",
+  "title","sub","tabQuotes","tabVerify","fAll",
   "statNew","statQuoted","statVerify",
   "thDate","thService","thContact","thRoute","thCargo","thStatus","thActions",
   "stNew","stQuoted","stWon","stLost","stDeclined",

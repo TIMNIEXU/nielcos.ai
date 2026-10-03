@@ -64,6 +64,7 @@ export default async function AppHome({ params }: Props) {
 
   // --- Trade cases (GTTID spine) -------------------------------------------
   let tradeCases: any[] = [];
+  let activeCases = 0;
   try {
     const { data: trRaw } = await sb
       .from("trades")
@@ -72,7 +73,23 @@ export default async function AppHome({ params }: Props) {
       .order("updated_at", { ascending: false })
       .limit(6);
     tradeCases = trRaw ?? [];
+    const { count: ac } = await sb
+      .from("trades")
+      .select("id", { count: "exact", head: true })
+      .eq("company_id", companyId)
+      .eq("status", "active");
+    activeCases = ac ?? 0;
   } catch { /* trades table may not exist yet */ }
+
+  // --- Open quotes (triage pipeline) -----------------------------------------
+  let openQuotes = 0;
+  try {
+    const { count: oq } = await sb
+      .from("service_quotes")
+      .select("id", { count: "exact", head: true })
+      .in("status", ["new", "quoted"]);
+    openQuotes = oq ?? 0;
+  } catch { /* quotes table may not exist yet */ }
 
   // --- Payables --------------------------------------------------------------
   const { data: payRaw } = await sb
@@ -233,6 +250,8 @@ export default async function AppHome({ params }: Props) {
     s === "high" ? td("sevHigh") : s === "medium" ? td("sevMedium") : td("sevLow");
 
   const kpis = [
+    { label: td("kpiActiveCases"), value: String(activeCases), href: `${base}/trades`, tone: "text-brand" },
+    { label: td("kpiOpenQuotes"), value: String(openQuotes), href: `${base}/quotes`, tone: "text-brand" },
     { label: td("kpiInTransit"), value: String(inTransit), href: `${base}/freight`, tone: "text-brand" },
     { label: td("kpiPayables"), value: payLabel, href: `${base}/finance`, tone: "text-warn" },
     { label: td("kpiDutyExposure"), value: money(dutyExposure), href: `${base}/finance`, tone: "text-vio" },
@@ -285,7 +304,7 @@ export default async function AppHome({ params }: Props) {
         </div>
 
         {/* KPI row */}
-        <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {kpis.map((k) => (
             <Link
               key={k.label}
@@ -297,6 +316,36 @@ export default async function AppHome({ params }: Props) {
             </Link>
           ))}
         </div>
+
+        {/* trade cases — the GTTID transaction spine, ahead of module lists */}
+        {tradeCases.length > 0 && (
+          <div className="mt-10">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-xl font-bold text-ink">{t("myCases")}</h2>
+              <Link
+                href={`/${locale}/app/trades`}
+                className="text-sm font-semibold text-brand hover:underline"
+              >
+                {t("viewAll")} →
+              </Link>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {tradeCases.map((tr) => (
+                <Link
+                  key={tr.id}
+                  href={`/${locale}/app/trades/${tr.id}`}
+                  className="rounded-2xl border border-line bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand/40"
+                >
+                  <p className="font-mono text-[12px] font-semibold text-brand">
+                    {tr.gttid ?? tr.trade_no}
+                  </p>
+                  <p className="mt-1 truncate text-[14px] font-bold text-ink">{tr.title}</p>
+                  <p className="mt-1 text-[12px] capitalize text-ink-soft">{tr.status}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* trend + donut */}
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
@@ -431,36 +480,6 @@ export default async function AppHome({ params }: Props) {
             ))}
           </div>
         </div>
-
-        {/* trade cases — the GTTID transaction spine */}
-        {tradeCases.length > 0 && (
-          <div className="mt-10">
-            <div className="flex items-baseline justify-between">
-              <h2 className="text-xl font-bold text-ink">{t("myCases")}</h2>
-              <Link
-                href={`/${locale}/app/trades`}
-                className="text-sm font-semibold text-brand hover:underline"
-              >
-                {t("viewAll")} →
-              </Link>
-            </div>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {tradeCases.map((tr) => (
-                <Link
-                  key={tr.id}
-                  href={`/${locale}/app/trades/${tr.id}`}
-                  className="rounded-2xl border border-line bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand/40"
-                >
-                  <p className="font-mono text-[12px] font-semibold text-brand">
-                    {tr.gttid ?? tr.trade_no}
-                  </p>
-                  <p className="mt-1 truncate text-[14px] font-bold text-ink">{tr.title}</p>
-                  <p className="mt-1 text-[12px] capitalize text-ink-soft">{tr.status}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* recent shipments */}
         <div className="mt-10">

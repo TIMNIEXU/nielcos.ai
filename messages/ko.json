@@ -1587,7 +1587,9 @@
     "alHoldD": "%GTTID%는 보류 중입니다.",
     "alStaleT": "최근 업데이트 없음",
     "alStaleD": "%GTTID%는 %DAYS%일 동안 업데이트가 없었습니다.",
-    "mixedCurrencies": "혼합 통화"
+    "mixedCurrencies": "혼합 통화",
+    "kpiActiveCases": "진행 중 케이스",
+    "kpiOpenQuotes": "미처리 견적"
   },
   "aig": {
     "lookup": "데이터 조회",
@@ -2283,7 +2285,8 @@
     "svc_drayage": "드레이지·트럭킹",
     "svc_warehouse": "창고",
     "svc_insurance": "적하보험",
-    "svc_bond": "관세 보증"
+    "svc_bond": "관세 보증",
+    "fAll": "전체"
   },
   "sourcing": {
     "title": "원산지 비교",

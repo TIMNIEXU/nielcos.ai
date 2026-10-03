@@ -1587,7 +1587,9 @@
     "alHoldD": "%GTTID% đang bị tạm giữ",
     "alStaleT": "Chưa có bản cập nhật gần đây",
     "alStaleD": "%GTTID% đã không có bản cập nhật nào trong %DAYS% ngày",
-    "mixedCurrencies": "các loại tiền tệ hỗn hợp"
+    "mixedCurrencies": "các loại tiền tệ hỗn hợp",
+    "kpiActiveCases": "Case đang xử lý",
+    "kpiOpenQuotes": "Báo giá đang mở"
   },
   "aig": {
     "lookup": "Tra cứu dữ liệu",
@@ -2283,7 +2285,8 @@
     "svc_drayage": "Kéo container",
     "svc_warehouse": "Kho bãi",
     "svc_insurance": "Bảo hiểm hàng hóa",
-    "svc_bond": "Bảo lãnh hải quan"
+    "svc_bond": "Bảo lãnh hải quan",
+    "fAll": "Tất cả"
   },
   "sourcing": {
     "title": "So sánh xuất xứ",

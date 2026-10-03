@@ -1813,7 +1813,9 @@
     "alHoldD": "%GTTID% 处于暂扣状态",
     "alStaleT": "长时间无更新",
     "alStaleD": "%GTTID% 已 %DAYS% 天无更新",
-    "mixedCurrencies": "多币种"
+    "mixedCurrencies": "多币种",
+    "kpiActiveCases": "进行中案件",
+    "kpiOpenQuotes": "待处理询价"
   },
   "aig": {
     "lookup": "数据检索",
@@ -2283,7 +2285,8 @@
     "svc_drayage": "拖车运输",
     "svc_warehouse": "仓储",
     "svc_insurance": "货物保险",
-    "svc_bond": "海关保证金"
+    "svc_bond": "海关保证金",
+    "fAll": "全部"
   },
   "sourcing": {
     "title": "对比采购原产国",

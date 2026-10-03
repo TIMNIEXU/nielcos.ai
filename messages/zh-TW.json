@@ -1587,7 +1587,9 @@
     "alHoldD": "%GTTID% 處於暫扣狀態",
     "alStaleT": "長時間無更新",
     "alStaleD": "%GTTID% 已 %DAYS% 天無更新",
-    "mixedCurrencies": "多幣種"
+    "mixedCurrencies": "多幣種",
+    "kpiActiveCases": "進行中案件",
+    "kpiOpenQuotes": "待處理詢價"
   },
   "aig": {
     "lookup": "資料檢索",
@@ -2283,7 +2285,8 @@
     "svc_drayage": "拖車運輸",
     "svc_warehouse": "倉儲",
     "svc_insurance": "貨物保險",
-    "svc_bond": "海關保證金"
+    "svc_bond": "海關保證金",
+    "fAll": "全部"
   },
   "sourcing": {
     "title": "對比採購原產國",
