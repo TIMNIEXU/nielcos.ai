@@ -13,6 +13,7 @@ type Props = {
 const TABS = [
   "tabOverview",
   "tabServices",
+  "tabIntel",
   "tabCommercial",
   "tabPayments",
   "tabLogistics",
@@ -35,6 +36,10 @@ const KEYS = [
   "linkShipment", "gttidPh", "link", "unlink", "linkFailed", "linked", "fBuyer", "fSupplier",
   "noShipments", "noDocuments", "noEntries", "noPayables", "noSheets", "noActivity",
   "noServiceOrders",
+  "intelTitle", "intelSub", "intelNoData", "intelCandidates", "intelConfidence",
+  "intelDuties", "intelPga", "intelNone", "intelAdCvd", "intelWatchNote",
+  "intelDisclaimer", "intelBrokerReview", "intelStartClearance", "intelAskAi",
+  "intelMfn",
   "commercialNote", "overview", "deleteTrade", "confirmDelete", "deleted",
   "activate", "complete", "migrationNeeded", "migrationSub",
   ...TABS,
@@ -85,7 +90,7 @@ export default async function TradeDetail({ params, searchParams }: Props) {
       if (trade?.gttid) {
         const { data: so } = await sb
           .from("service_orders")
-          .select("id, so_no, service_type, status, quoted_amount, created_at")
+          .select("id, so_no, service_type, status, quoted_amount, created_at, intake")
           .eq("gttid", trade.gttid)
           .order("created_at", { ascending: true });
         serviceOrders = so ?? [];
@@ -220,6 +225,22 @@ export default async function TradeDetail({ params, searchParams }: Props) {
   const card = "rounded-card bg-white p-5 shadow-card";
   const h2 = "text-sm font-bold uppercase tracking-wide text-ink-soft";
   const empty = "rounded-card bg-white p-8 text-center text-sm text-ink-soft shadow-card";
+
+  /* ---- Trade intelligence: deterministic analysis of the case cargo ---- */
+  let intel: import("@/lib/tradeIntel").TradeIntel | null = null;
+  if (tab === "tabIntel") {
+    const intakes = serviceOrders.map((o) => (o.intake as any) ?? {});
+    const intelDesc =
+      intakes.map((i) => i.cargo).find(Boolean) ??
+      intakes.map((i) => i.notes).find(Boolean) ??
+      trade.description ??
+      trade.title ??
+      "";
+    const intelOrigin =
+      trade.origin_country ?? intakes.map((i) => i.origin).find(Boolean) ?? "";
+    const { analyzeTradeCase } = await import("@/lib/tradeIntel");
+    intel = await analyzeTradeCase(String(intelDesc), String(intelOrigin));
+  }
 
   return (
     <section className="min-h-[75vh] bg-brand-tint-soft">
@@ -365,6 +386,146 @@ export default async function TradeDetail({ params, searchParams }: Props) {
                     </li>
                   ))}
                 </ul>
+              )}
+            </div>
+          )}
+
+          {tab === "tabIntel" && (
+            <div className="space-y-4">
+              <div className={card}>
+                <h2 className={h2}>{tt("intelTitle")}</h2>
+                <p className="mt-1 text-[13px] text-ink-soft">{tt("intelSub")}</p>
+                {intel && (
+                  <p className="mt-2 text-[13px] text-ink-soft">
+                    <span className="font-semibold text-ink">{intel.description || "—"}</span>
+                    {intel.origin && <span> · {intel.origin}</span>}
+                  </p>
+                )}
+              </div>
+
+              {!intel?.ok ? (
+                <div className={empty}>
+                  <p>{tt("intelNoData")}</p>
+                </div>
+              ) : (
+                <>
+                  {/* HTS candidates */}
+                  <div className={card}>
+                    <h2 className={h2}>{tt("intelCandidates")}</h2>
+                    {intel.candidates.length === 0 ? (
+                      <p className="mt-2 text-sm text-ink-soft">{tt("intelNone")}</p>
+                    ) : (
+                      <ul className="mt-3 space-y-2">
+                        {intel.candidates.map((c) => (
+                          <li
+                            key={c.hts_no}
+                            className="flex items-center justify-between gap-3 rounded-xl bg-slate-50 px-4 py-3"
+                          >
+                            <div className="min-w-0">
+                              <p className="font-mono text-sm font-bold text-ink">{c.hts_no}</p>
+                              <p className="truncate text-[13px] text-ink-soft">{c.description}</p>
+                            </div>
+                            <span className="shrink-0 rounded-full bg-brand-tint px-3 py-0.5 text-[12px] font-bold text-brand-deep">
+                              {c.score}% {tt("intelConfidence")}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+
+                  {/* duties */}
+                  {intel.top && (
+                    <div className={card}>
+                      <h2 className={h2}>
+                        {tt("intelDuties")} · <span className="font-mono">{intel.top.hts_no}</span>
+                      </h2>
+                      <div className="mt-3 divide-y divide-slate-100">
+                        <div className="flex items-center justify-between py-2 text-sm">
+                          <span className="text-ink-soft">{tt("intelMfn")}</span>
+                          <span className="font-bold text-ink">
+                            {intel.top.general_rate != null
+                              ? `${intel.top.general_rate}%`
+                              : (intel.top.rate_text ?? "—")}
+                          </span>
+                        </div>
+                        {intel.top.duties.map((d, i) => (
+                          <div key={i} className="flex items-center justify-between gap-3 py-2 text-sm">
+                            <span className="text-ink-soft">{d.duty_type}</span>
+                            <span className="font-bold text-risk">{d.rate}%</span>
+                          </div>
+                        ))}
+                        {intel.top.duties.length === 0 && (
+                          <p className="py-2 text-sm text-ink-soft">{tt("intelNone")}</p>
+                        )}
+                      </div>
+
+                      {intel.top.pga.length > 0 && (
+                        <>
+                          <h2 className={`${h2} mt-5`}>{tt("intelPga")}</h2>
+                          <ul className="mt-2 space-y-1.5">
+                            {intel.top.pga.map((p, i) => (
+                              <li key={i} className="rounded-xl bg-brand-tint/40 px-4 py-2.5 text-[13px] text-ink">
+                                <span className="font-bold">{p.agency}</span>
+                                {p.note && <span className="text-ink-soft"> — {p.note}</span>}
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                    </div>
+                  )}
+
+                  {/* AD/CVD watch */}
+                  <div className={card}>
+                    <h2 className={h2}>{tt("intelAdCvd")}</h2>
+                    {intel.watch.length === 0 ? (
+                      <p className="mt-2 text-sm text-ink-soft">{tt("intelNone")}</p>
+                    ) : (
+                      <ul className="mt-2 space-y-1.5">
+                        {intel.watch.map((w, i) => (
+                          <li key={i} className="rounded-xl bg-risk-tint/50 px-4 py-2.5 text-[13px] text-ink">
+                            <span className="font-bold">{w.product_keyword}</span>
+                            <span className="ml-2 rounded-full bg-risk px-2 py-0.5 text-[11px] font-bold text-white">
+                              {w.case_type}
+                            </span>
+                            <span className="text-ink-soft"> · {w.origin}</span>
+                            {w.note && <span className="block text-[12px] text-ink-soft">{w.note}</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    <p className="mt-2 text-[12px] leading-relaxed text-faint">{tt("intelWatchNote")}</p>
+                  </div>
+
+                  <p className="rounded-xl bg-amber-50 p-4 text-[12.5px] leading-relaxed text-amber-800">
+                    {tt("intelDisclaimer")}
+                  </p>
+
+                  {/* next actions */}
+                  <div className="flex flex-wrap gap-2.5">
+                    <Link
+                      href={`/${locale}/quote?service=customs&cargo=${encodeURIComponent(
+                        [intel.top?.hts_no, intel.description].filter(Boolean).join(" — ").slice(0, 140)
+                      )}`}
+                      className="rounded-full bg-brand px-5 py-2.5 text-[13.5px] font-bold text-white hover:bg-brand-deep"
+                    >
+                      {tt("intelBrokerReview")} →
+                    </Link>
+                    <Link
+                      href={`/${locale}/services/customs`}
+                      className="rounded-full bg-brand px-5 py-2.5 text-[13.5px] font-bold text-white hover:bg-brand-deep"
+                    >
+                      {tt("intelStartClearance")} →
+                    </Link>
+                    <Link
+                      href={`/${locale}/app/assistant`}
+                      className="rounded-full border border-brand/40 bg-white px-5 py-2.5 text-[13.5px] font-bold text-brand hover:bg-brand-tint/50"
+                    >
+                      {tt("intelAskAi")} →
+                    </Link>
+                  </div>
+                </>
               )}
             </div>
           )}

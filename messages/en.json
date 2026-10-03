@@ -1535,7 +1535,23 @@
     "parties": "Parties",
     "tabServices": "Service Orders",
     "noServiceOrders": "No service orders linked to this case yet.",
-    "gttid": "GTTID"
+    "gttid": "GTTID",
+    "tabIntel": "Intelligence",
+    "intelTitle": "Trade intelligence",
+    "intelSub": "Deterministic analysis from the same reference data as our free tools — candidates and risk flags, never a legal classification.",
+    "intelNoData": "Add a cargo description to a service order to unlock trade intelligence.",
+    "intelCandidates": "HTS candidates",
+    "intelConfidence": "confidence",
+    "intelDuties": "Duties",
+    "intelMfn": "MFN",
+    "intelPga": "PGA flags",
+    "intelNone": "None flagged",
+    "intelAdCvd": "AD/CVD watch",
+    "intelWatchNote": "Curated watchlist of known high-risk corridors — not a complete AD/CVD database. Always verify current scope at access.trade.gov or with a licensed customs broker.",
+    "intelDisclaimer": "Advisory only. Verify classification and rates with a licensed customs broker before filing.",
+    "intelBrokerReview": "Broker Review",
+    "intelStartClearance": "Start Customs Clearance",
+    "intelAskAi": "Ask NIEL AI"
   },
   "shell": {
     "nav": {

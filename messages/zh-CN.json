@@ -1535,7 +1535,23 @@
     "parties": "参与方",
     "tabServices": "服务订单",
     "noServiceOrders": "该案件暂无关联服务订单。",
-    "gttid": "GTTID"
+    "gttid": "GTTID",
+    "tabIntel": "智能分析",
+    "intelTitle": "贸易智能分析",
+    "intelSub": "与免费工具同一参考数据的确定性分析——只给候选和风险提示，不做法律意义上的归类。",
+    "intelNoData": "给服务订单补上货物描述即可解锁贸易智能分析。",
+    "intelCandidates": "HTS 候选",
+    "intelConfidence": "置信度",
+    "intelDuties": "税率",
+    "intelMfn": "最惠国税率",
+    "intelPga": "PGA 标记",
+    "intelNone": "无标记",
+    "intelAdCvd": "AD/CVD 观察",
+    "intelWatchNote": "高风险走廊精选观察名单，非完整 AD/CVD 数据库。请以 access.trade.gov 或持牌报关行为准核实 scope。",
+    "intelDisclaimer": "仅供参考。申报前请与持牌报关行核实归类和税率。",
+    "intelBrokerReview": "报关行审核",
+    "intelStartClearance": "开始清关",
+    "intelAskAi": "问 NIEL AI"
   },
   "shell": {
     "nav": {
