@@ -114,10 +114,18 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@nielcustoms.ai"
+                  href="mailto:sales@nielcos.ai"
                   className="transition-colors hover:text-white"
                 >
-                  info@nielcustoms.ai
+                  sales@nielcos.ai
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:support@nielcos.ai"
+                  className="transition-colors hover:text-white"
+                >
+                  support@nielcos.ai
                 </a>
               </li>
             </ul>
