@@ -2723,5 +2723,14 @@
     "errRequired": "請填寫必填項。",
     "errEmail": "請輸入有效信箱。",
     "errFailed": "提交失敗，請重試。"
+  },
+  "sso": {
+    "consentTitle": "前往 {name}？",
+    "consentSub": "一個 NIEL 帳號，在 NIEL Group 各站點通用。",
+    "consentAs": "將以此身份繼續",
+    "consentAllow": "繼續",
+    "consentCancel": "取消",
+    "consentSecure": "nielcos.ai 不會把你的密碼告訴 {name}。",
+    "badClient": "未知的登入請求。"
   }
 }

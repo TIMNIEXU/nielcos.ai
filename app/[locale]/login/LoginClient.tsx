@@ -62,7 +62,7 @@ export function configured() {
   );
 }
 
-export default function LoginClient() {
+export default function LoginClient({ next }: { next?: string }) {
   const t = useTranslations("auth");
   const locale = useLocale();
   const router = useRouter();
@@ -70,6 +70,8 @@ export default function LoginClient() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
+  // Only allow same-origin relative targets (SSO authorize flow passes one).
+  const safeNext = next && next.startsWith("/") && !next.startsWith("//") ? next : "/app";
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -79,7 +81,7 @@ export default function LoginClient() {
       const sb = createClient();
       const { error } = await sb.auth.signInWithPassword({ email, password });
       if (error) setError(true);
-      else router.push(`/app`);
+      else router.push(safeNext);
     } catch {
       setError(true);
     }

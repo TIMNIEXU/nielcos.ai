@@ -2723,5 +2723,14 @@
     "errRequired": "Vui lòng điền các trường bắt buộc.",
     "errEmail": "Vui lòng nhập email hợp lệ.",
     "errFailed": "Gửi thất bại. Vui lòng thử lại."
+  },
+  "sso": {
+    "consentTitle": "Tiếp tục tới {name}?",
+    "consentSub": "Một Tài khoản NIEL dùng chung cho các trang NIEL Group.",
+    "consentAs": "Tiếp tục với tư cách",
+    "consentAllow": "Tiếp tục",
+    "consentCancel": "Hủy",
+    "consentSecure": "nielcos.ai không bao giờ chia sẻ mật khẩu của bạn với {name}.",
+    "badClient": "Yêu cầu đăng nhập không xác định."
   }
 }

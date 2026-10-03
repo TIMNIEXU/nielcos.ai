@@ -2723,5 +2723,14 @@
     "errRequired": "必須項目を入力してください。",
     "errEmail": "有効なメールアドレスを入力してください。",
     "errFailed": "送信に失敗しました。もう一度お試しください。"
+  },
+  "sso": {
+    "consentTitle": "{name} に進みますか？",
+    "consentSub": "1つのNIELアカウントでNIEL Groupの各サイトを利用できます。",
+    "consentAs": "次として続行",
+    "consentAllow": "続行",
+    "consentCancel": "キャンセル",
+    "consentSecure": "nielcos.aiが{name}にパスワードを共有することはありません。",
+    "badClient": "不明なサインイン要求です。"
   }
 }
