@@ -75,6 +75,7 @@ export function suggestAdditionalDuties(
   const matchesOrigin = (r: DutyRule) =>
     !r.origin_country || normOrigin(r.origin_country) === org;
   const byType = new Map<string, DutyRule>();
+  const suppressedTypes = new Set<string>();
   for (const r of rules) {
     if (!r.hts_prefix) continue; // blanket rules handled below
     if (!bare.startsWith(r.hts_prefix)) continue;
@@ -94,6 +95,16 @@ export function suggestAdditionalDuties(
     if (r.hts_prefix.length > cur.hts_prefix.length) byType.set(r.duty_type, r);
   }
   for (const best of byType.values()) {
+    // Carve-out rules (rate 0 with "[NOT SUBJECT]" in the note) exist only
+    // to knock an over-broad blanket rule out for one specific HTS — e.g.
+    // ferroalloys carved out of the chapter-72 2024 steel/aluminum increase.
+    // They correspond to no filing line, so don't display them; but remember
+    // the type was deliberately considered (so the "may be understated"
+    // warning below doesn't fire on a verified-no-rate HTS).
+    if (Number(best.rate) === 0 && best.note.includes("[NOT SUBJECT]")) {
+      suppressedTypes.add(best.duty_type);
+      continue;
+    }
     out.push({
       kind: "rate",
       duty_type: best.duty_type,
@@ -169,7 +180,7 @@ export function suggestAdditionalDuties(
   // 2018-2019 actions, still in effect) are only partially in the rule table.
   // Never silently under-report a China-origin estimate.
   const has301cn = out.some((s) => s.kind === "rate" && s.duty_type === "301-CN");
-  if (org === "CHINA" && !has301cn && !needTenDigit) {
+  if (org === "CHINA" && !has301cn && !suppressedTypes.has("301-CN") && !needTenDigit) {
     out.push({
       kind: "warning",
       text: "Classic Section 301 China tariffs (Lists 1/2/3: 25%, List 4A: 7.5% — 9903.88 provisions) are not fully in the rate library yet, so this estimate may be understated. Verify your product's list membership before quoting.",
