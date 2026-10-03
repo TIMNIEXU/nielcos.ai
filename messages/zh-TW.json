@@ -2179,12 +2179,14 @@
     "error": "出錯了——請重試。"
   },
   "funnel": {
-    "title": "想讓我們來辦？",
-    "sub": "找我們團隊要個真實報價——絕不編價格。",
-    "qCustoms": "報關詢價",
+    "title": "接下來想做什麼？",
+    "sub": "把這次結果變成下一步行動——每個請求都會到達真人。",
+    "askAi": "問 NIEL AI",
+    "brokerReview": "報關行審核",
+    "startClearance": "開始清關",
+    "qBond": "辦海關保證金",
     "qFreight": "運費詢價",
-    "qInsurance": "給這批貨投保",
-    "qBond": "辦海關保證金"
+    "saveNiel": "存到我的 NIEL"
   },
   "quotes": {
     "title": "獲取報價",

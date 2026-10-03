@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { htsReason, confidenceBand } from "@/lib/htsReason";
 import { isZhLocale } from "@/lib/locale";
 import SourcingCompare from "@/components/SourcingCompare";
+import FunnelCtas from "@/components/FunnelCtas";
 
 /* GRI-001 V3 — HTS Intelligence agent (public, no login).
    Describe a product -> HTS candidates with confidence + deterministic "why",
@@ -306,6 +307,11 @@ export default function HtsAgent({ locale }: { locale: string }) {
             </>
           )}
         </div>
+      )}
+
+      {/* next best action — free tool → lead → case → service → revenue */}
+      {sel && !loadingDetail && (
+        <FunnelCtas locale={locale} hts={sel.hts_no} description={desc} />
       )}
 
       <p className="mt-6 rounded-xl bg-amber-50 p-4 text-[12.5px] leading-relaxed text-amber-800">

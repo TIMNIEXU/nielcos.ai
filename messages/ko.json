@@ -2179,12 +2179,14 @@
     "error": "오류가 발생했습니다 — 다시 시도하세요."
   },
   "funnel": {
-    "title": "맡기시겠습니까?",
-    "sub": "팀에게 실제 견적을 받으세요 — 가격을 지어내지 않습니다.",
-    "qCustoms": "통관 견적",
+    "title": "다음으로 무엇을 하시겠습니까?",
+    "sub": "이 결과를 다음 단계로 이어가세요 — 모든 요청은 실제 담당자에게 전달됩니다.",
+    "askAi": "NIEL AI에게 묻기",
+    "brokerReview": "브로커 검토",
+    "startClearance": "통관 시작",
+    "qBond": "관세 보증",
     "qFreight": "운임 견적",
-    "qInsurance": "이 화물 보험 가입",
-    "qBond": "관세 보증"
+    "saveNiel": "My NIEL에 저장"
   },
   "quotes": {
     "title": "견적 받기",

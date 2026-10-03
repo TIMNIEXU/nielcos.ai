@@ -2179,12 +2179,14 @@
     "error": "Something went wrong — please try again."
   },
   "funnel": {
-    "title": "Want us to handle it?",
-    "sub": "Get a real quote from our team — no invented prices.",
-    "qCustoms": "Get customs quote",
+    "title": "What would you like to do?",
+    "sub": "Turn this result into your next step — every request reaches a real person.",
+    "askAi": "Ask NIEL AI",
+    "brokerReview": "Broker Review",
+    "startClearance": "Start Customs Clearance",
+    "qBond": "Get customs bond",
     "qFreight": "Get freight quote",
-    "qInsurance": "Insure this cargo",
-    "qBond": "Get customs bond"
+    "saveNiel": "Save to My NIEL"
   },
   "quotes": {
     "title": "Get a quote",

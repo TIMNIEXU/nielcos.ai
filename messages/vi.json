@@ -2179,12 +2179,14 @@
     "error": "Đã xảy ra lỗi — vui lòng thử lại."
   },
   "funnel": {
-    "title": "Muốn chúng tôi lo?",
-    "sub": "Nhận báo giá thật từ đội ngũ — không bịa giá.",
-    "qCustoms": "Báo giá thông quan",
+    "title": "Bạn muốn làm gì tiếp theo?",
+    "sub": "Biến kết quả này thành bước tiếp theo — mọi yêu cầu đều đến tay người thật.",
+    "askAi": "Hỏi NIEL AI",
+    "brokerReview": "Nhờ broker xem xét",
+    "startClearance": "Bắt đầu làm thủ tục hải quan",
+    "qBond": "Bảo lãnh hải quan",
     "qFreight": "Báo giá cước",
-    "qInsurance": "Bảo hiểm lô hàng",
-    "qBond": "Bảo lãnh hải quan"
+    "saveNiel": "Lưu vào My NIEL"
   },
   "quotes": {
     "title": "Nhận báo giá",

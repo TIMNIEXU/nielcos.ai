@@ -2179,12 +2179,14 @@
     "error": "エラーが発生しました — 再試行してください。"
   },
   "funnel": {
-    "title": "おまかせしますか？",
-    "sub": "チームから実際の見積りを取得 — 価格の捏造なし。",
-    "qCustoms": "通関の見積り",
+    "title": "次に何をしますか？",
+    "sub": "この結果を次のステップへ — すべてのリクエストは担当者に届きます。",
+    "askAi": "NIEL AIに聞く",
+    "brokerReview": "ブローカー審査",
+    "startClearance": "通関を開始",
+    "qBond": "関税ボンド",
     "qFreight": "運賃の見積り",
-    "qInsurance": "この貨物に保険",
-    "qBond": "関税ボンド"
+    "saveNiel": "My NIELに保存"
   },
   "quotes": {
     "title": "見積りを取得",

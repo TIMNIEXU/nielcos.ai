@@ -2179,12 +2179,14 @@
     "error": "出错了——请重试。"
   },
   "funnel": {
-    "title": "想让我们来办？",
-    "sub": "找我们团队要个真实报价——绝不编价格。",
-    "qCustoms": "报关询价",
+    "title": "接下来想做什么？",
+    "sub": "把这次结果变成下一步行动——每个请求都会到达真人。",
+    "askAi": "问 NIEL AI",
+    "brokerReview": "报关行审核",
+    "startClearance": "开始清关",
+    "qBond": "办海关保证金",
     "qFreight": "运费询价",
-    "qInsurance": "给这批货投保",
-    "qBond": "办海关保证金"
+    "saveNiel": "存到我的 NIEL"
   },
   "quotes": {
     "title": "获取报价",
