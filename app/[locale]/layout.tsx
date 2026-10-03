@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GroupBar from "@/components/GroupBar";
 import PwaRegister from "@/components/PwaRegister";
+import PwaInstallPrompt from "@/components/PwaInstallPrompt";
 import { ToastProvider } from "@/components/ui/Toast";
 import "../globals.css";
 
@@ -89,6 +90,7 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider>
           <PwaRegister />
+          <PwaInstallPrompt />
           <ToastProvider>
             <GroupBar />
             <Header />

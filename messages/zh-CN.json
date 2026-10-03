@@ -2732,5 +2732,12 @@
     "consentCancel": "取消",
     "consentSecure": "nielcos.ai 不会把你的密码告诉 {name}。",
     "badClient": "未知的登录请求。"
+  },
+  "pwa": {
+    "installTitle": "安装 NIEL COS 应用",
+    "installSub": "从主屏幕一键进入，全屏工作台，打开更快。",
+    "installCta": "安装",
+    "installLater": "暂不",
+    "iosHint": "点击分享，然后选择「添加到主屏幕」。"
   }
 }

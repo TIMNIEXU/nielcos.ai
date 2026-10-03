@@ -2732,5 +2732,12 @@
     "consentCancel": "Cancel",
     "consentSecure": "nielcos.ai never shares your password with {name}.",
     "badClient": "Unknown sign-in request."
+  },
+  "pwa": {
+    "installTitle": "Install the NIEL COS app",
+    "installSub": "Faster access, fullscreen workspace, right from your home screen.",
+    "installCta": "Install",
+    "installLater": "Not now",
+    "iosHint": "Tap Share, then \"Add to Home Screen\"."
   }
 }

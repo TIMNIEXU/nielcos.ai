@@ -2732,5 +2732,12 @@
     "consentCancel": "Hủy",
     "consentSecure": "nielcos.ai không bao giờ chia sẻ mật khẩu của bạn với {name}.",
     "badClient": "Yêu cầu đăng nhập không xác định."
+  },
+  "pwa": {
+    "installTitle": "Cài đặt ứng dụng NIEL COS",
+    "installSub": "Truy cập nhanh hơn, toàn màn hình, ngay từ màn hình chính.",
+    "installCta": "Cài đặt",
+    "installLater": "Để sau",
+    "iosHint": "Nhấn Chia sẻ, rồi chọn \"Thêm vào Màn hình chính\"."
   }
 }

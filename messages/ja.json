@@ -2732,5 +2732,12 @@
     "consentCancel": "キャンセル",
     "consentSecure": "nielcos.aiが{name}にパスワードを共有することはありません。",
     "badClient": "不明なサインイン要求です。"
+  },
+  "pwa": {
+    "installTitle": "NIEL COSアプリをインストール",
+    "installSub": "ホーム画面からすぐ起動、フルスクリーンのワークスペース。",
+    "installCta": "インストール",
+    "installLater": "後で",
+    "iosHint": "共有をタップし、「ホーム画面に追加」を選択してください。"
   }
 }
