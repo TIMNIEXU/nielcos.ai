@@ -35,6 +35,8 @@ const UNIT_ALIASES: Record<string, string> = {
   tonnes: "t",
   each: "each",
   "1000": "1000",
+  gross: "gross",
+  grl: "gross",
 };
 
 function normUnit(u: string): string {
@@ -44,7 +46,9 @@ function normUnit(u: string): string {
 
 export function parseSpecificRate(rateText: string | null | undefined): SpecificRate | null {
   if (!rateText) return null;
-  const t = rateText.trim();
+  // HTSUS sometimes writes the unit as "¢/line/ gross" (e.g. 9606 buttons) —
+  // the "/line/" is statistical noise; the dutiable unit is the gross.
+  const t = rateText.trim().replace(/\/\s*line\s*\//gi, "/");
   if (/%$/.test(t) && !/[¢$]/.test(t)) return null; // pure ad valorem
   if (/^free$/i.test(t)) return null;
 
