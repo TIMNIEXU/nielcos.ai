@@ -625,7 +625,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
                   </div>
                   <div className="flex shrink-0 items-center gap-5">
                     <span className="text-[13.5px] font-semibold text-ink">
-                      {l.rate != null ? `${l.rate}%` : l.rateText ?? t.free}
+                      {l.rate != null ? (l.rate === 0 ? t.free : `${l.rate}%`) : l.rateText ?? t.free}
                     </span>
                     <span className="w-20 text-right text-[13.5px] font-bold text-ink">
                       {usd(l.amount)}
