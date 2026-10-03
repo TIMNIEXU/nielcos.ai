@@ -156,6 +156,20 @@ export function suggestAdditionalDuties(
       });
       continue;
     }
+    if (r.duty_type === "301-FL" && suppressedTypes.has("301-FL")) {
+      // HTS-specific Note 52(b) exclusion (e.g. 7202.80 ferrotungsten):
+      // the [NOT SUBJECT] carve-out won its contest in (1) and was hidden
+      // from display — show the $0 exclusion line instead of charging FL.
+      out.push({
+        kind: "rate",
+        duty_type: "301-FL-EXCL",
+        rate: 0,
+        source: r.source,
+        note: 'Section 301 "Forced Labor" Note 52(b) exclusion (9903.05.86)',
+        basis: r.basis,
+      });
+      continue;
+    }
     out.push({
       kind: "rate",
       duty_type: r.duty_type,
