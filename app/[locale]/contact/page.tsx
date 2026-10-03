@@ -27,7 +27,7 @@ export default async function ContactPage({
       label: "Email",
       value: t("info.email"),
       sub: t("info.hours"),
-      href: "mailto:info@nielcustoms.ai",
+      href: "mailto:sales@nielcos.ai",
     },
     {
       label: "Locations",

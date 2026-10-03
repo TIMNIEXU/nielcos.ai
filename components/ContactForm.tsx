@@ -16,7 +16,7 @@ export default function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${fd.get("name")}\nCompany: ${fd.get("company")}\nEmail: ${fd.get("email")}\n\n${fd.get("message")}`
     );
-    window.location.href = `mailto:info@nielcustoms.ai?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:sales@nielcos.ai?subject=${subject}&body=${body}`;
     setSent(true);
   }
 
