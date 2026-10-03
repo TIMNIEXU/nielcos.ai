@@ -656,7 +656,9 @@
     "executiveNav": "Executive AI",
     "integrationsNav": "Integrations",
     "skuLink": "SKU",
-    "skuHint": "Link a catalog SKU — confirmed lines feed the Product Passport."
+    "skuHint": "Link a catalog SKU — confirmed lines feed the Product Passport.",
+    "myCases": "Trade cases",
+    "viewAll": "View all"
   },
   "estimator": {
     "eyebrow": "Free tool",
@@ -1530,7 +1532,10 @@
     "linkFailed": "Could not link that shipment — check the GTTID.",
     "overview": "Trade overview",
     "terms": "Terms",
-    "parties": "Parties"
+    "parties": "Parties",
+    "tabServices": "Service Orders",
+    "noServiceOrders": "No service orders linked to this case yet.",
+    "gttid": "GTTID"
   },
   "shell": {
     "nav": {

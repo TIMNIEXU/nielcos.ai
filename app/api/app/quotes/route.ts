@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { ensureTradeCase } from "@/lib/tradeCase";
 
 /* /api/app/quotes — GRI-001 V4a workbench triage for unified service RFQs.
    GET: visible rows (own claimed + unclaimed pool for triage-enabled companies).
@@ -76,12 +77,24 @@ export async function PATCH(req: NextRequest) {
         soPatch.status = "confirmed";
         const { data: soRow } = await sb
           .from("service_orders")
-          .select("id, gttid")
+          .select("id, gttid, case_id, so_no, service_type")
           .eq("quote_id", id)
           .maybeSingle();
         if (soRow && !soRow.gttid) {
-          const { data: gttid } = await sb.rpc("next_gttid");
-          if (gttid) soPatch.gttid = gttid;
+          /* One GTTID per trade case: an SC-2026-XXXXX with N service orders
+             becomes exactly one trade; every won sibling joins the same case. */
+          try {
+            const trade = await ensureTradeCase(sb as any, {
+              companyId: cid,
+              sourceCaseId: (soRow.case_id as string | null) ?? null,
+              title: (soRow.case_id as string | null)
+                ? `Supply Chain Case ${(soRow.case_id as string)}`
+                : `Service order ${(soRow.so_no as string)} (${(soRow.service_type as string)})`,
+            });
+            if (trade.gttid) soPatch.gttid = trade.gttid;
+          } catch {
+            /* trade table not migrated yet — triage still succeeds */
+          }
         }
       } else if (body.status === "lost" || body.status === "declined") {
         soPatch.status = "cancelled";

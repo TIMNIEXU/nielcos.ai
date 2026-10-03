@@ -62,6 +62,18 @@ export default async function AppHome({ params }: Props) {
   const inTransit = shipments.filter((s) => ACTIVE.has(s.status)).length;
   const onHold = shipments.filter((s) => s.status === "on_hold").length;
 
+  // --- Trade cases (GTTID spine) -------------------------------------------
+  let tradeCases: any[] = [];
+  try {
+    const { data: trRaw } = await sb
+      .from("trades")
+      .select("id, gttid, trade_no, title, status, updated_at")
+      .eq("company_id", companyId)
+      .order("updated_at", { ascending: false })
+      .limit(6);
+    tradeCases = trRaw ?? [];
+  } catch { /* trades table may not exist yet */ }
+
   // --- Payables --------------------------------------------------------------
   const { data: payRaw } = await sb
     .from("finance_payables")
@@ -419,6 +431,36 @@ export default async function AppHome({ params }: Props) {
             ))}
           </div>
         </div>
+
+        {/* trade cases — the GTTID transaction spine */}
+        {tradeCases.length > 0 && (
+          <div className="mt-10">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-xl font-bold text-ink">{t("myCases")}</h2>
+              <Link
+                href={`/${locale}/app/trades`}
+                className="text-sm font-semibold text-brand hover:underline"
+              >
+                {t("viewAll")} →
+              </Link>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {tradeCases.map((tr) => (
+                <Link
+                  key={tr.id}
+                  href={`/${locale}/app/trades/${tr.id}`}
+                  className="rounded-2xl border border-line bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand/40"
+                >
+                  <p className="font-mono text-[12px] font-semibold text-brand">
+                    {tr.gttid ?? tr.trade_no}
+                  </p>
+                  <p className="mt-1 truncate text-[14px] font-bold text-ink">{tr.title}</p>
+                  <p className="mt-1 text-[12px] capitalize text-ink-soft">{tr.status}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* recent shipments */}
         <div className="mt-10">

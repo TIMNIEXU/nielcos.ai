@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { ensureTradeCase } from "@/lib/tradeCase";
 
 /* /api/app/service-orders — Mode B workspace APIs (authenticated).
    GET: list my company's service orders (newest first), with linked quote info.
@@ -63,8 +64,24 @@ export async function PATCH(req: NextRequest) {
     patch.quoted_note = String(body.quoted_note ?? "").slice(0, 2000) || null;
   if (body.gttid !== undefined) {
     if (body.gttid === "auto") {
-      const { data: gttid } = await sb.rpc("next_gttid");
-      patch.gttid = gttid ?? null;
+      /* One GTTID per trade case — never a bare per-SO mint. */
+      try {
+        const { data: soRow } = await sb
+          .from("service_orders")
+          .select("case_id, so_no, service_type")
+          .eq("id", id)
+          .maybeSingle();
+        const trade = await ensureTradeCase(sb as any, {
+          companyId: cid,
+          sourceCaseId: (soRow?.case_id as string | null) ?? null,
+          title: (soRow?.case_id as string | null)
+            ? `Supply Chain Case ${soRow?.case_id as string}`
+            : `Service order ${(soRow?.so_no as string) ?? id} (${(soRow?.service_type as string) ?? "service"})`,
+        });
+        patch.gttid = trade.gttid ?? null;
+      } catch {
+        patch.gttid = null;
+      }
     } else {
       patch.gttid = String(body.gttid ?? "").slice(0, 40) || null;
     }

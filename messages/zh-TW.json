@@ -656,7 +656,9 @@
     "executiveNav": "AI 高管智慧",
     "integrationsNav": "系統集成",
     "skuLink": "SKU",
-    "skuHint": "關聯產品目錄 SKU——確認的行會自動寫入產品護照。"
+    "skuHint": "關聯產品目錄 SKU——確認的行會自動寫入產品護照。",
+    "myCases": "貿易案件",
+    "viewAll": "查看全部"
   },
   "estimator": {
     "eyebrow": "免費工具",
@@ -1820,7 +1822,10 @@
     "linkFailed": "關聯失敗 — 請檢查 GTTID 是否正確。",
     "overview": "貿易總覽",
     "terms": "條款",
-    "parties": "參與方"
+    "parties": "參與方",
+    "tabServices": "服務訂單",
+    "noServiceOrders": "該案件暫無關聯服務訂單。",
+    "gttid": "GTTID"
   },
   "fxest": {
     "eyebrow": "免費工具",

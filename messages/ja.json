@@ -656,7 +656,9 @@
     "executiveNav": "エグゼクティブAI",
     "integrationsNav": "連携機能",
     "skuLink": "SKU",
-    "skuHint": "カタログSKUを紐付け — 確定したラインがプロダクトパスポートに自動記録されます."
+    "skuHint": "カタログSKUを紐付け — 確定したラインがプロダクトパスポートに自動記録されます.",
+    "myCases": "貿易ケース",
+    "viewAll": "すべて見る"
   },
   "estimator": {
     "eyebrow": "無料ツール",
@@ -1820,7 +1822,10 @@
     "linkFailed": "その出荷をリンクできませんでした。GTTIDを確認してください。",
     "overview": "貿易の概要",
     "terms": "利用規約",
-    "parties": "当事者"
+    "parties": "当事者",
+    "tabServices": "サービス注文",
+    "noServiceOrders": "このケースに紐づくサービス注文はまだありません。",
+    "gttid": "GTTID"
   },
   "fxest": {
     "eyebrow": "無料ツール",

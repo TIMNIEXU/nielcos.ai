@@ -656,7 +656,9 @@
     "executiveNav": "Trí tuệ nhân tạo dành cho lãnh đạo",
     "integrationsNav": "Tích hợp",
     "skuLink": "SKU",
-    "skuHint": "Gắn SKU trong danh mục — các dòng được xác nhận sẽ tự động đưa vào Hộ chiếu sản phẩm."
+    "skuHint": "Gắn SKU trong danh mục — các dòng được xác nhận sẽ tự động đưa vào Hộ chiếu sản phẩm.",
+    "myCases": "Hồ sơ thương mại",
+    "viewAll": "Xem tất cả"
   },
   "estimator": {
     "eyebrow": "Công cụ miễn phí",
@@ -1820,7 +1822,10 @@
     "linkFailed": "Không thể liên kết lô hàng đó — hãy kiểm tra mã GTTID.",
     "overview": "Tổng quan về thương mại",
     "terms": "Điều khoản",
-    "parties": "Các bên"
+    "parties": "Các bên",
+    "tabServices": "Đơn dịch vụ",
+    "noServiceOrders": "Chưa có đơn dịch vụ nào liên kết với case này.",
+    "gttid": "GTTID"
   },
   "fxest": {
     "eyebrow": "Công cụ miễn phí",

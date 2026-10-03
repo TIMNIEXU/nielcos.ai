@@ -12,6 +12,7 @@ type Props = {
 
 const TABS = [
   "tabOverview",
+  "tabServices",
   "tabCommercial",
   "tabPayments",
   "tabLogistics",
@@ -29,10 +30,11 @@ const ST_TONE: Record<string, string> = {
 };
 
 const KEYS = [
-  "tradeNo", "status", "route", "value", "updated", "terms", "parties", "fTitle",
+  "tradeNo", "gttid", "status", "route", "value", "updated", "terms", "parties", "fTitle",
   "stDraft", "stActive", "stCompleted", "stCancelled",
   "linkShipment", "gttidPh", "link", "unlink", "linkFailed", "linked", "fBuyer", "fSupplier",
   "noShipments", "noDocuments", "noEntries", "noPayables", "noSheets", "noActivity",
+  "noServiceOrders",
   "commercialNote", "overview", "deleteTrade", "confirmDelete", "deleted",
   "activate", "complete", "migrationNeeded", "migrationSub",
   ...TABS,
@@ -62,6 +64,7 @@ export default async function TradeDetail({ params, searchParams }: Props) {
   let entries: any[] = [];
   let sheets: any[] = [];
   let payables: any[] = [];
+  let serviceOrders: any[] = [];
   try {
     const { data: tr, error } = await sb.from("trades").select("*").eq("id", id).single();
     if (error) throw error;
@@ -76,6 +79,18 @@ export default async function TradeDetail({ params, searchParams }: Props) {
     shipments = sh ?? [];
     const shipIds = shipments.map((s) => s.id);
     const gttids = shipments.map((s) => s.gttid).filter(Boolean);
+
+    /* Service orders hang off the trade's GTTID — the transaction spine. */
+    try {
+      if (trade?.gttid) {
+        const { data: so } = await sb
+          .from("service_orders")
+          .select("id, so_no, service_type, status, quoted_amount, created_at")
+          .eq("gttid", trade.gttid)
+          .order("created_at", { ascending: true });
+        serviceOrders = so ?? [];
+      }
+    } catch { /* service_orders table may not exist yet */ }
 
     if (shipIds.length > 0) {
       const idList = shipIds.join(",");
@@ -215,6 +230,11 @@ export default async function TradeDetail({ params, searchParams }: Props) {
         <div className="mt-2 flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="font-mono text-sm font-semibold text-brand">{trade.trade_no}</p>
+            {trade.gttid && (
+              <p className="mt-0.5 font-mono text-[13px] font-semibold text-ink-soft">
+                {tt("gttid")}: {trade.gttid}
+              </p>
+            )}
             <h1 className="mt-1 text-3xl font-bold tracking-tight text-ink">{trade.title}</h1>
             <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-ink-soft">
               <span
@@ -266,6 +286,10 @@ export default async function TradeDetail({ params, searchParams }: Props) {
                     <dd className="font-mono">{trade.trade_no}</dd>
                   </div>
                   <div className="flex justify-between">
+                    <dt className="text-ink-soft">{tt("gttid")}</dt>
+                    <dd className="font-mono">{trade.gttid ?? "—"}</dd>
+                  </div>
+                  <div className="flex justify-between">
                     <dt className="text-ink-soft">{tt("fTitle")}</dt>
                     <dd>{trade.title}</dd>
                   </div>
@@ -292,9 +316,10 @@ export default async function TradeDetail({ params, searchParams }: Props) {
                     <dd>{trade.supplier_name ?? "—"}</dd>
                   </div>
                 </dl>
-                <div className="mt-4 grid grid-cols-3 gap-3 text-center">
+                <div className="mt-4 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
                   {[
                     [shipments.length, "tabLogistics"],
+                    [serviceOrders.length, "tabServices"],
                     [documents.length, "tabDocuments"],
                     [entries.length, "tabCustoms"],
                   ].map(([n, tb]) => (
@@ -305,6 +330,42 @@ export default async function TradeDetail({ params, searchParams }: Props) {
                   ))}
                 </div>
               </div>
+            </div>
+          )}
+
+          {tab === "tabServices" && (
+            <div className={card}>
+              <h2 className={h2}>{tt("tabServices")}</h2>
+              {serviceOrders.length === 0 ? (
+                <p className="mt-3 text-sm text-ink-soft">{tt("noServiceOrders")}</p>
+              ) : (
+                <ul className="mt-3 divide-y divide-slate-100">
+                  {serviceOrders.map((o) => (
+                    <li key={o.id} className="flex items-center justify-between gap-3 py-3">
+                      <div className="min-w-0">
+                        <p className="font-mono text-sm font-bold text-ink">{o.so_no}</p>
+                        <p className="text-[13px] capitalize text-ink-soft">{o.service_type}</p>
+                      </div>
+                      <div className="flex shrink-0 items-center gap-3">
+                        {o.quoted_amount != null && (
+                          <span className="text-sm font-semibold tabular-nums text-ink">
+                            ${Number(o.quoted_amount).toLocaleString()}
+                          </span>
+                        )}
+                        <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">
+                          {o.status}
+                        </span>
+                        <Link
+                          href={`/${locale}/app/quotes`}
+                          className="text-sm font-semibold text-brand hover:underline"
+                        >
+                          →
+                        </Link>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
 

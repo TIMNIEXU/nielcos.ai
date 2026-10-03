@@ -656,7 +656,9 @@
     "executiveNav": "경영용 AI",
     "integrationsNav": "연동 기능",
     "skuLink": "SKU",
-    "skuHint": "카탈로그 SKU 연결 — 확정된 라인이 제품 패스포트에 자동 기록됩니다."
+    "skuHint": "카탈로그 SKU 연결 — 확정된 라인이 제품 패스포트에 자동 기록됩니다.",
+    "myCases": "무역 케이스",
+    "viewAll": "전체 보기"
   },
   "estimator": {
     "eyebrow": "무료 도구",
@@ -1820,7 +1822,10 @@
     "linkFailed": "해당 발송물을 연결할 수 없습니다. GTTID를 확인해 주세요.",
     "overview": "무역 개요",
     "terms": "용어",
-    "parties": "당사자들"
+    "parties": "당사자들",
+    "tabServices": "서비스 주문",
+    "noServiceOrders": "이 케이스에 연결된 서비스 주문이 없습니다.",
+    "gttid": "GTTID"
   },
   "fxest": {
     "eyebrow": "무료 도구",

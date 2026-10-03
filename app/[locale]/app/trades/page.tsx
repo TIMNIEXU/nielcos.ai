@@ -38,7 +38,7 @@ export default async function TradesList({ params, searchParams }: Props) {
   let total = 0;
   try {
     let query = sb.from("trades").select("*", { count: "exact" });
-    if (q) query = query.or(`trade_no.ilike.%${q}%,title.ilike.%${q}%`);
+    if (q) query = query.or(`trade_no.ilike.%${q}%,gttid.ilike.%${q}%,title.ilike.%${q}%`);
     if (status) query = query.eq("status", status);
     const from = (page - 1) * per;
     const { data, count, error } = await query
@@ -147,6 +147,9 @@ export default async function TradesList({ params, searchParams }: Props) {
                           >
                             {tr.trade_no}
                           </Link>
+                          {tr.gttid && (
+                            <p className="font-mono text-[11px] text-ink-soft">{tr.gttid}</p>
+                          )}
                         </td>
                         <td className="px-4 py-3 font-medium text-ink">{tr.title}</td>
                         <td className="px-4 py-3">

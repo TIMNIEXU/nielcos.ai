@@ -656,7 +656,9 @@
     "executiveNav": "AI 高管智能",
     "integrationsNav": "系统集成",
     "skuLink": "SKU",
-    "skuHint": "关联产品目录 SKU——确认的行会自动写入产品护照。"
+    "skuHint": "关联产品目录 SKU——确认的行会自动写入产品护照。",
+    "myCases": "贸易案件",
+    "viewAll": "查看全部"
   },
   "estimator": {
     "eyebrow": "免费工具",
@@ -1530,7 +1532,10 @@
     "linkFailed": "关联失败 — 请检查 GTTID 是否正确。",
     "overview": "贸易总览",
     "terms": "条款",
-    "parties": "参与方"
+    "parties": "参与方",
+    "tabServices": "服务订单",
+    "noServiceOrders": "该案件暂无关联服务订单。",
+    "gttid": "GTTID"
   },
   "shell": {
     "nav": {
