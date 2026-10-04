@@ -63,7 +63,9 @@ export async function POST(req: NextRequest) {
 
   const contact = s(body?.contact, 80);
   const email = s(body?.email, 120);
-  if (!contact || !EMAIL_RE.test(email)) {
+  const phoneEarly = s(body?.phone, 40);
+  // Email OR phone is required (China leads are WeChat/phone-first).
+  if (!contact || (email ? !EMAIL_RE.test(email) : !phoneEarly)) {
     return NextResponse.json({ ok: false, error: "missing_required" }, { status: 400, headers });
   }
 
@@ -134,7 +136,7 @@ export async function POST(req: NextRequest) {
       service: t,
       name: contact,
       company: company || null,
-      email,
+      email: email || null,
       phone: phone || null,
       origin: origin || null,
       destination: destination || null,
