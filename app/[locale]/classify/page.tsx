@@ -19,7 +19,7 @@ export default async function ClassifyPage({ params }: { params: Promise<{ local
   const t = await getTranslations({ locale, namespace: "classify" });
   return (
     <main className="mx-auto max-w-5xl px-5 pt-14 pb-20 lg:px-8">
-      <SectionHead eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} align="center" />
+      <SectionHead eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} align="center" image="/images/heroes/classify.jpg" />
       <div className="mt-8">
         <HtsAgent locale={locale} />
       </div>

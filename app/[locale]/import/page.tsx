@@ -25,6 +25,9 @@ export default async function ImportPage({ params }: { params: Promise<{ locale:
             <p className="eyebrow justify-center text-brand">{t("eyebrow")}</p>
             <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">{t("title")}</h1>
             <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-soft">{t("sub")}</p>
+            <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-2xl shadow-lg">
+              <img src="/images/heroes/import.jpg" alt="" className="h-64 w-full object-cover sm:h-80" loading="lazy" />
+            </div>
           </div>
         </Reveal>
       </section>

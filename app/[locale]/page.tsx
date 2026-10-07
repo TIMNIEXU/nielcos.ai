@@ -327,7 +327,7 @@ export default async function HomePage({
             <Reveal delay={100} className="mt-8">
               <div className="overflow-hidden rounded-2xl border border-line shadow-card">
                 <img
-                  src="/images/ai-risks.png"
+                  src="/images/ai-risks.jpg"
                   alt={t("ai.title")}
                   loading="lazy"
                   className="aspect-[16/10] w-full object-cover"
@@ -498,7 +498,7 @@ export default async function HomePage({
                 <div className="dash-card dash-card-hover relative h-full overflow-hidden">
                   <div className="relative h-44 overflow-hidden bg-brand-tint/40">
                     <img
-                      src={`/images/network/${CITY_IMGS[i]}.png`}
+                      src={`/images/network/${CITY_IMGS[i]}.jpg`}
                       alt={c.n}
                       loading="lazy"
                       className="h-full w-full object-cover"

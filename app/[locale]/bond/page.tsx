@@ -57,6 +57,9 @@ export default async function BondPage({
             {t("title")}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-[16px] text-ink-soft">{t("sub")}</p>
+          <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-2xl shadow-lg">
+            <img src="/images/heroes/bond.jpg" alt="" className="h-64 w-full object-cover sm:h-80" loading="lazy" />
+          </div>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
             {[t("trust1"), t("trust2"), t("trust3")].map((x) => (
               <span

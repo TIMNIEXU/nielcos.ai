@@ -66,6 +66,7 @@ export default async function ImportFromChinaPage({
             eyebrow={t("eyebrow")}
             title={t("title")}
             sub={t("sub")}
+            image="/images/heroes/import-from-china.jpg"
           />
           <Reveal delay={120}>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

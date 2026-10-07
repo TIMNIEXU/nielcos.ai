@@ -23,7 +23,7 @@ export default async function QuotePage({
   const service = SERVICES.includes(sp.service ?? "") ? sp.service : undefined;
   return (
     <main className="mx-auto max-w-3xl px-5 pt-14 pb-20 lg:px-8">
-      <SectionHead eyebrow={t("title")} title={t("title")} sub={t("sub")} align="center" />
+      <SectionHead eyebrow={t("title")} title={t("title")} sub={t("sub")} align="center" image="/images/heroes/quote.jpg" />
       <div className="mt-8">
         <QuoteForm locale={locale} defaultService={service} defaultCargo={sp.cargo} />
       </div>

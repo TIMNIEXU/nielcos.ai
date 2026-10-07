@@ -53,7 +53,7 @@ export default async function TowerPage({
             <p className="mt-1 text-sm text-ink-soft">{dict.sub}</p>
           </div>
           <img
-            src="/images/modules/tower.png"
+            src="/images/modules/tower.jpg"
             alt={dict.title}
             className="hidden h-20 w-32 rounded-2xl object-cover ring-1 ring-line md:block"
           />

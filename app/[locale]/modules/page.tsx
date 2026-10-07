@@ -62,7 +62,7 @@ export default async function ModulesPage({
               <div className="dash-card dash-card-hover flex h-full flex-col overflow-hidden">
                 <div className="relative h-44 shrink-0 overflow-hidden bg-brand-tint/40">
                   <img
-                    src={`/images/modules/${IMGS[i]}.png`}
+                    src={`/images/modules/${IMGS[i]}.jpg`}
                     alt={m.n}
                     loading="lazy"
                     className="h-full w-full object-cover"

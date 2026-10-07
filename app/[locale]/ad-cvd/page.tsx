@@ -42,6 +42,7 @@ export default async function AdCvdPage({
             eyebrow={t("eyebrow")}
             title={t("title")}
             sub={t("sub")}
+            image="/images/heroes/ad-cvd.jpg"
           />
         </div>
       </section>

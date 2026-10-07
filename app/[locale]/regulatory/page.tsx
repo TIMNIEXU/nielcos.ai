@@ -37,6 +37,7 @@ export default async function RegulatoryPage({
             eyebrow={t("eyebrow")}
             title={t("title")}
             sub={t("sub")}
+            image="/images/heroes/regulatory.jpg"
           />
         </div>
       </section>

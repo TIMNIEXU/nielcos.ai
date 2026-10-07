@@ -34,7 +34,7 @@ export default async function LandedCostPage({
         <div className="dotgrid absolute inset-0 opacity-60" />
         <div className="absolute -top-32 left-1/2 h-80 w-[52rem] -translate-x-1/2 rounded-full bg-brand-tint blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-5 pt-16 pb-4 text-center lg:px-8 lg:pt-24">
-          <SectionHead eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} />
+          <SectionHead eyebrow={t("eyebrow")} title={t("title")} sub={t("sub")} image="/images/heroes/landed-cost.jpg" />
           <Reveal delay={120}>
             <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
               {steps.map((s, i) => (

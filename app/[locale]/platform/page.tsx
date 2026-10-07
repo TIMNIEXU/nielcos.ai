@@ -59,7 +59,7 @@ export default async function PlatformPage({
                 index={i}
                 title={f.t}
                 description={f.d}
-                image={`/images/platform/${IMGS[i]}.png`}
+                image={`/images/platform/${IMGS[i]}.jpg`}
               />
             </Reveal>
           ))}

@@ -7,11 +7,15 @@ export function SectionHead({
   title,
   sub,
   align = "center",
+  image,
+  imageAlt = "",
 }: {
   eyebrow: string;
   title: ReactNode;
   sub?: string;
   align?: "center" | "left";
+  image?: string;
+  imageAlt?: string;
 }) {
   const alignCls = align === "center" ? "items-center text-center" : "items-start text-left";
   return (
@@ -24,6 +28,11 @@ export function SectionHead({
         <p className={`max-w-2xl text-[15.5px] leading-relaxed text-muted ${align === "center" ? "mx-auto" : ""}`}>
           {sub}
         </p>
+      )}
+      {image && (
+        <div className="mt-6 w-full overflow-hidden rounded-2xl shadow-lg">
+          <img src={image} alt={imageAlt} className="h-64 w-full object-cover sm:h-80 lg:h-96" loading="lazy" />
+        </div>
       )}
     </Reveal>
   );

@@ -57,7 +57,7 @@ export default async function DevelopersPage({
       <div className="mx-auto max-w-4xl space-y-16 px-5 pb-10 lg:px-8">
         {/* AUTH */}
         <section>
-          <SectionHead align="left" eyebrow="01" title={t("authTitle")} sub={t("authSub")} />
+          <SectionHead align="left" eyebrow="01" title={t("authTitle")} sub={t("authSub")} image="/images/heroes/developers.jpg" />
           <Reveal className="mt-8">
             <div className="dash-card space-y-3 p-6 sm:p-8">
               {[1, 2, 3].map((i) => (

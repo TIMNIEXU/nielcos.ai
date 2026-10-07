@@ -30,7 +30,7 @@ export default async function WarehousePage({
   for (const k of KEYS) dict[k] = t(k);
   return (
     <main className="mx-auto max-w-3xl px-5 pt-14 pb-20 lg:px-8">
-      <SectionHead eyebrow={t("title")} title={t("title")} sub={t("sub")} align="center" />
+      <SectionHead eyebrow={t("title")} title={t("title")} sub={t("sub")} align="center" image="/images/modules/products.jpg" />
       <div className="mt-8">
         <WarehouseForm messages={dict} />
       </div>

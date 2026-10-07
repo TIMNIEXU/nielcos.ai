@@ -53,6 +53,9 @@ export default async function ContactPage({
             <p className="mx-auto mt-6 max-w-2xl text-[16px] leading-relaxed text-muted">
               {t("hero.sub")}
             </p>
+            <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-2xl shadow-lg">
+              <img src="/images/heroes/contact.jpg" alt="" className="h-64 w-full object-cover sm:h-80" loading="lazy" />
+            </div>
           </Reveal>
         </div>
       </section>
