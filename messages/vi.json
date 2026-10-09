@@ -231,6 +231,11 @@
       "c6t": "Mở workspace",
       "c6d": "Theo dõi đơn, hàng & chứng từ",
       "live": "Đã mở"
+    },
+    "dutyCard": {
+      "title": "Ước tính thuế nhập khẩu Hoa Kỳ",
+      "sub": "Ước tính thuế quan, MPF, HMF và tổng chi phí trong vài giây.",
+      "cta": "Dùng miễn phí"
     }
   },
   "meta": {

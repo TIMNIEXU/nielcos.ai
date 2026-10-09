@@ -231,6 +231,11 @@
       "c6t": "Open Workspace",
       "c6d": "Track orders, shipments & documents",
       "live": "Live now"
+    },
+    "dutyCard": {
+      "title": "US Import Duty Estimator",
+      "sub": "Estimate duties, MPF, HMF and total landed cost in seconds.",
+      "cta": "Try it free"
     }
   },
   "meta": {

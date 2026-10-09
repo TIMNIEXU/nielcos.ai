@@ -121,6 +121,34 @@ export default async function HomePage({
               {t("hero.badge")}
             </span>
           </Reveal>
+          {/* ============ DUTY ESTIMATOR LINK CARD (standalone, top) ============ */}
+          <Reveal delay={45}>
+            <Link
+              href={`/${locale}/landed-cost`}
+              className="group mx-auto mt-6 flex max-w-2xl items-center gap-4 rounded-2xl border border-brand/25 bg-white p-5 text-left shadow-card transition-all hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg"
+            >
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand text-white">
+                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 3v18h18M8 17v-6M13 17V7M18 17v-3" />
+                </svg>
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="inline-flex items-center gap-1.5 text-[12px] font-bold text-brand">
+                  <span className="h-px w-4 bg-brand" />
+                  {tl("eyebrow")}
+                </span>
+                <span className="mt-1 block text-[17px] font-bold text-ink">
+                  {t("dutyCard.title")}
+                </span>
+                <span className="mt-0.5 block text-[13.5px] leading-snug text-muted">
+                  {t("dutyCard.sub")}
+                </span>
+              </span>
+              <span className="shrink-0 rounded-full bg-brand px-5 py-2.5 text-[14px] font-bold whitespace-nowrap text-white transition-all group-hover:bg-brand-deep">
+                {t("dutyCard.cta")}
+              </span>
+            </Link>
+          </Reveal>
           <Reveal delay={90}>
             <p className="eyebrow mt-6 justify-center">{t("hero.eyebrow")}</p>
             <h1 className="mx-auto mt-4 max-w-4xl text-[2.6rem] leading-[1.05] font-bold tracking-tight text-ink sm:text-6xl lg:text-[4.2rem]">
