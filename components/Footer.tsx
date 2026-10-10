@@ -34,16 +34,18 @@ export default function Footer() {
           <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8fb4ff]">
             {t("groupEyebrow")}
           </p>
-          <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-3">
             {groupBrands.map((b) => {
               const inner = (
-                <span className="grid h-11 place-items-center rounded-lg bg-white px-2.5 transition-opacity hover:opacity-85">
+                <span className="flex h-11 items-center gap-2.5 rounded-lg bg-white px-3 transition-opacity hover:opacity-85">
                   <img
                     src={b.logo}
                     alt={b.name}
-                    title={b.name}
-                    className="h-8 w-auto max-w-[110px] object-contain"
+                    className="h-8 w-auto max-w-[84px] object-contain"
                   />
+                  <span className="whitespace-nowrap text-[13px] font-bold text-[#0c1a33]">
+                    {b.name}
+                  </span>
                 </span>
               );
               return b.href.startsWith("http") ? (
