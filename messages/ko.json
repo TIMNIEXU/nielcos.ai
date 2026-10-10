@@ -2055,7 +2055,8 @@
     "modeBond": "—",
     "bondHint": "Bond 리드: 고객이 DocuSign 양식을 제출한 뒤 회사명과 함께 Page Fossum(Page.Fossum@TradeRiskGuaranty.com)에게 이메일로 알려 Niel Insurance 실적으로 인정받으세요. 또는 신청서의 브로커 항목 옆에 (Niel Insurance)라고 적도록 안내하세요.",
     "recContShort": "연간",
-    "recStbShort": "단건"
+    "recStbShort": "단건",
+    "deleteQuoteConfirm": "이 견적 요청을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
   },
   "bond": {
     "eyebrow": "관세 보증금 스마트 진단",

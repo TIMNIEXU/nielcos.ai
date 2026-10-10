@@ -2055,7 +2055,8 @@
     "modeBond": "—",
     "bondHint": "Lead bond: sau khi khách nộp đơn DocuSign, hãy email cho Page Fossum (Page.Fossum@TradeRiskGuaranty.com) kèm tên công ty để hồ sơ được ghi nhận cho Niel Insurance — hoặc yêu cầu khách ghi (Niel Insurance) cạnh mục broker trên đơn.",
     "recContShort": "Bond năm",
-    "recStbShort": "Theo chuyến"
+    "recStbShort": "Theo chuyến",
+    "deleteQuoteConfirm": "Xóa yêu cầu báo giá này? Hành động này không thể hoàn tác."
   },
   "bond": {
     "eyebrow": "Đánh giá thông minh về Customs Bond",

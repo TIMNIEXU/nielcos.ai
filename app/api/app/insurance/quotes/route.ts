@@ -5,7 +5,8 @@ import { createClient } from "@/lib/supabase/server";
    GET: quotes visible to the caller (own claimed + unclaimed lead pool for
    triage-enabled agency companies only).
    PATCH: { id, status?, quoted_premium?, quoted_note?, claim?: true }
-   Claiming pins company_id to the caller's company (RLS with-check). */
+   Claiming pins company_id to the caller's company (RLS with-check).
+   DELETE: ?id= — hard-delete a quote (RLS tenant-delete policy applies). */
 
 const FIELDS =
   "id, created_at, name, company, email, phone, cargo_value, currency, origin, destination, mode, coverage, message, status, company_id, quoted_premium, quoted_note, updated_at, bond_recommendation, bond_amount_est, annual_import_value, entries_per_year, duties_paid";
@@ -63,4 +64,15 @@ export async function PATCH(req: NextRequest) {
   if (error) return NextResponse.json({ error: "db_error", detail: error.message }, { status: 500 });
   if (!data) return NextResponse.json({ error: "not_found" }, { status: 404 });
   return NextResponse.json({ quote: data });
+}
+
+export async function DELETE(req: NextRequest) {
+  const sb = await createClient();
+  const cid = await companyId(sb);
+  if (!cid) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  const id = req.nextUrl.searchParams.get("id") ?? "";
+  if (!id) return NextResponse.json({ error: "bad_request" }, { status: 400 });
+  const { error } = await sb.from("insurance_quotes").delete().eq("id", id);
+  if (error) return NextResponse.json({ error: "db_error", detail: error.message }, { status: 500 });
+  return NextResponse.json({ ok: true });
 }

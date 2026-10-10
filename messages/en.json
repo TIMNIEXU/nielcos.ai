@@ -2055,7 +2055,8 @@
     "modeBond": "—",
     "bondHint": "Bond lead: after the client submits the DocuSign form, email Page Fossum (Page.Fossum@TradeRiskGuaranty.com) with the company name so the submission is attributed to Niel Insurance — or have the client write (Niel Insurance) next to the broker field on the form.",
     "recContShort": "Continuous",
-    "recStbShort": "Single TX"
+    "recStbShort": "Single TX",
+    "deleteQuoteConfirm": "Delete this quote request? This cannot be undone."
   },
   "bond": {
     "eyebrow": "Customs Bond Intelligence",

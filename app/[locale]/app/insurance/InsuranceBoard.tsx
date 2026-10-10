@@ -143,6 +143,12 @@ export default function InsuranceBoard({ messages }: { messages: Record<string, 
     load();
   }
 
+  async function delQuote(q: Quote) {
+    if (!window.confirm(t("deleteQuoteConfirm"))) return;
+    await fetch(`/api/app/insurance/quotes?id=${q.id}`, { method: "DELETE" });
+    load();
+  }
+
   const inputCls =
     "w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-[14px] text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20";
   const labelCls = "mb-1 block text-[12px] font-bold text-ink-soft";
@@ -272,6 +278,7 @@ export default function InsuranceBoard({ messages }: { messages: Record<string, 
                             className="text-vio hover:underline"
                           >{t("toPolicy")}</button>
                           )}
+                          <button onClick={() => delQuote(q)} className="text-red-600 hover:underline">{t("delete")}</button>
                         </div>
                       </td>
                     </tr>                    {expanded === q.id && (

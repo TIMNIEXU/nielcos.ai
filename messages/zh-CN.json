@@ -2055,7 +2055,8 @@
     "modeBond": "—",
     "bondHint": "Bond 线索：客户提交 DocuSign 表单后，请邮件通知 Page Fossum（Page.Fossum@TradeRiskGuaranty.com）并注明公司名称，以便申请归属到 Niel Insurance；或让客户在表单报关行一栏备注 (Niel Insurance) 。",
     "recContShort": "年度保证金",
-    "recStbShort": "单票"
+    "recStbShort": "单票",
+    "deleteQuoteConfirm": "删除这条询价单？此操作不可撤销。"
   },
   "bond": {
     "eyebrow": "海关保证金智能评估",

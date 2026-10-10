@@ -2055,7 +2055,8 @@
     "modeBond": "—",
     "bondHint": "Bond リード：顧客が DocuSign を提出したら、会社名を添えて Page Fossum（Page.Fossum@TradeRiskGuaranty.com）にメールし、Niel Insurance への帰属を確保してください。または申請書の broker 欄に (Niel Insurance) と追記してもらってください。",
     "recContShort": "年間",
-    "recStbShort": "単発"
+    "recStbShort": "単発",
+    "deleteQuoteConfirm": "この見積依頼を削除しますか？この操作は元に戻せません。"
   },
   "bond": {
     "eyebrow": "関税ボンド スマート診断",
