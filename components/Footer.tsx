@@ -8,11 +8,11 @@ export default function Footer() {
   const locale = useLocale();
   const UTM = "utm_source=www-nielcos.ai&utm_medium=group_footer";
   const groupBrands = [
-    { name: "Niel Supply Chain", href: `https://www.nielsc.com?${UTM}` },
-    { name: "Niel Customs", href: `https://www.nielcustoms.ai?${UTM}` },
-    { name: "JOMA Logistics", href: `https://www.jomaus.com?${UTM}` },
-    { name: "Niel Insurance", href: `https://nielinsurance.com?${UTM}` },
-    { name: "NIEL COS", href: `/${locale}` },
+    { name: "Niel Supply Chain", href: `https://www.nielsc.com?${UTM}`, logo: "/logo-niel-badge.png" },
+    { name: "Niel Customs", href: `https://www.nielcustoms.ai?${UTM}`, logo: "/logo-niel-badge.png" },
+    { name: "JOMA Logistics", href: `https://www.jomaus.com?${UTM}`, logo: "/logo-joma-logistics.png" },
+    { name: "Niel Insurance", href: `https://nielinsurance.com?${UTM}`, logo: "/logo-niel-insurance.png" },
+    { name: "NIEL COS", href: `/${locale}`, logo: "/logo-niel-badge.png" },
   ];
 
   const platform = [
@@ -34,28 +34,28 @@ export default function Footer() {
           <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8fb4ff]">
             {t("groupEyebrow")}
           </p>
-          <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
-            {groupBrands.map((b) =>
-              b.href.startsWith("http") ? (
-                <a
-                  key={b.name}
-                  href={b.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[14px] font-semibold text-white transition-colors hover:text-[#8fb4ff]"
-                >
-                  {b.name}
+          <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-3">
+            {groupBrands.map((b) => {
+              const inner = (
+                <span className="grid h-11 place-items-center rounded-lg bg-white px-2.5 transition-opacity hover:opacity-85">
+                  <img
+                    src={b.logo}
+                    alt={b.name}
+                    title={b.name}
+                    className="h-8 w-auto max-w-[110px] object-contain"
+                  />
+                </span>
+              );
+              return b.href.startsWith("http") ? (
+                <a key={b.name} href={b.href} target="_blank" rel="noreferrer">
+                  {inner}
                 </a>
               ) : (
-                <Link
-                  key={b.name}
-                  href={b.href}
-                  className="text-[14px] font-semibold text-white transition-colors hover:text-[#8fb4ff]"
-                >
-                  {b.name}
+                <Link key={b.name} href={b.href}>
+                  {inner}
                 </Link>
-              )
-            )}
+              );
+            })}
           </div>
           <p className="mt-2 text-[12.5px] text-white/40">{t("groupNote")}</p>
         </div>
