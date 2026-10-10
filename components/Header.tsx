@@ -10,9 +10,11 @@ import AuthLink from "./AuthLink";
 export function Logo({ dark = false }: { dark?: boolean }) {
   return (
     <span className="flex items-center gap-2">
-      <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-[13px] font-bold text-white shadow-[0_4px_12px_-4px_rgba(29,78,216,0.6)]">
-        N
-      </span>
+      <img
+        src="/logo-niel-badge.png"
+        alt="NIEL"
+        className="h-8 w-8 rounded-full bg-white object-contain"
+      />
       <span
         className={`text-[17px] font-bold tracking-tight ${
           dark ? "text-white" : "text-ink"
