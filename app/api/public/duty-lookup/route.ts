@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { suggestHts, matchPga } from "@/lib/hts";
-import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
+import { suggestAdditionalDuties, type DutyRule, type Scope232Row } from "@/lib/additionalDuties";
 import { fetchRefTable } from "@/lib/dutyData";
 
 /* GET /api/public/duty-lookup?hts=95069100&origin=China&material=steel
@@ -21,6 +21,19 @@ export async function GET(req: NextRequest) {
 
   const dutyRules = await fetchRefTable(sb, "additional_duties", "*");
   const rules = (dutyRules ?? []) as DutyRule[];
+  // Section 232 metals scope (customs_v23). Optional enrichment: if the
+  // table is not there yet, the matcher falls back to headline rules.
+  let scope232: Scope232Row[] = [];
+  try {
+    scope232 = (await fetchRefTable(sb, "hts_232_scope", "*")) as Scope232Row[];
+  } catch { /* scope table not loaded yet */ }
+  const metal = (q.get("metal") ?? "").trim();
+  const mwp = Number(q.get("metal_weight_pct"));
+  const dutyOpts = {
+    scope232,
+    metal: metal || undefined,
+    metalWeightPct: Number.isFinite(mwp) && q.get("metal_weight_pct") ? mwp : undefined,
+  };
 
   /* ---- direct HTS mode ---- */
   if (bare.length >= 6) {
@@ -35,7 +48,7 @@ export async function GET(req: NextRequest) {
       .maybeSingle();
     // MFN schedule is 8-digit; additional-duty rules may be 10-digit, so the
     // full input (up to 10 digits) goes to the duty matcher.
-    const duty_suggestions = suggestAdditionalDuties(digits, origin, material, rules);
+    const duty_suggestions = suggestAdditionalDuties(digits, origin, material, rules, dutyOpts);
     // GRI-001 V3: PGA flags for the public /classify page (same rule table as the workbench).
     let pga_flags: { agency: string; agency_cn: string; note: string }[] = [];
     try {

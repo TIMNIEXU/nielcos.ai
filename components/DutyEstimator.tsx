@@ -169,7 +169,11 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     }
     for (const s of rateSuggestions) {
       if (s.duty_type === "301-FL" && exclDonation) continue; // user-declared donation exclusion
-      const r = Number(s.rate);
+      let r = Number(s.rate);
+      // basis 'floor10' (9903.82.07/.08): the rate is a COMBINED column 1 +
+      // Section 232 floor, so the additional duty is only the excess over
+      // the MFN rate already charged on the base line.
+      if (s.basis === "floor10") r = Math.max(0, r - (mfnRate ?? 0));
       const amt = (v * r) / 100;
       lines.push({
         code: extract9903(s) ?? "—",

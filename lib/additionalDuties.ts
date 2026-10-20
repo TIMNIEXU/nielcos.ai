@@ -20,6 +20,43 @@ export type DutySuggestion =
   | { kind: "rate"; duty_type: string; rate: number; source: string; note: string; basis: string }
   | { kind: "warning"; text: string; text_zh?: string };
 
+/* Section 232 metals scope row (hts_232_scope, customs_v23): HTS-specific
+   article/derivative membership per metal from CBP's Metals HTS List
+   (U.S. Note 16(c) subdivisions). tier: 'std50' (9903.82.02) | 'std25'
+   (9903.82.09) | 'floor10' (9903.82.07/.08 combined col.1+232 floor). */
+export type Scope232Row = {
+  hts_prefix: string;
+  metal: string;
+  subdiv: string;
+  kind: string;
+  tier: string;
+  effective_from: string | null;
+  source: string;
+  note: string;
+};
+
+export type DutyOpts = {
+  scope232?: Scope232Row[];
+  metal?: string; // structured metal declaration; wins over free text
+  metalWeightPct?: number; // covered-metal share of total weight, 0-100
+};
+
+export function normMetal(s?: string | null): string | null {
+  const u = (s || "").trim().toLowerCase();
+  return u === "steel" || u === "aluminum" || u === "copper" ? u : null;
+}
+
+/* Best-effort metal from a free-text material ("Stainless steel",
+   "铝合金", ...). Aluminum is tested first: e.g. 7614.10 aluminum wire
+   with a steel core is an ALUMINUM derivative on the CBP list. */
+export function metalFromText(material: string): string | null {
+  const m = material || "";
+  if (/alumin/i.test(m) || /铝|鋁/.test(m)) return "aluminum";
+  if (/copper/i.test(m) || /铜|銅/.test(m)) return "copper";
+  if (/steel|iron/i.test(m) || /钢|鋼|铁|鐵/.test(m)) return "steel";
+  return null;
+}
+
 const METAL_RE = /steel|aluminum|aluminium|copper|iron|钢|鐵|铝|鋁|铜|銅/i;
 
 /* Normalize free-text origin to the canonical names used in the table. */
@@ -48,7 +85,8 @@ export function suggestAdditionalDuties(
   htsNo: string | null,
   origin: string,
   material: string,
-  rules: DutyRule[]
+  rules: DutyRule[],
+  opts?: DutyOpts
 ): DutySuggestion[] {
   // Keep up to 10 digits: classic Section 301 (China) rates are defined at
   // the 10-digit level (Lists 1/2/3 = 25%, List 4A = 7.5%). MFN lookup stays
@@ -137,10 +175,87 @@ export function suggestAdditionalDuties(
     }
   }
 
+  // 1c) Section 232 metals scope (hts_232_scope, customs_v23): the
+  // HTS-specific derivative/article lists the headline rules above never
+  // covered. Membership is PER METAL — a code listed for aluminum is not
+  // steel scope (8302.50.0000, CBP ruling NY N346991). The curated
+  // additional_duties 232 rules win when they already produced a rate;
+  // scope only fills the gap. A resolved 232 rate here also drives the
+  // 301-FL exclusion flip in (2) via scopeHas232.
+  const scope = opts?.scope232 ?? [];
+  let scopeHas232 = false;
+  let scopeChecked = false;
+  if (scope.length && !byType.has("232")) {
+    const hits = scope.filter((r) => r.hts_prefix && bare.startsWith(r.hts_prefix));
+    if (hits.length) {
+      scopeChecked = true;
+      const metal = normMetal(opts?.metal) ?? metalFromText(material);
+      if (metal) {
+        const mh = hits.filter((r) => r.metal === metal);
+        if (mh.length) {
+          // Longest listed prefix wins (most specific membership).
+          const best = mh.reduce((a, b) => (b.hts_prefix.length > a.hts_prefix.length ? b : a));
+          const w = opts?.metalWeightPct;
+          const chapter = bare.slice(0, 2);
+          if (
+            w != null &&
+            w <= 15 &&
+            !["72", "73", "74", "76"].includes(chapter)
+          ) {
+            // In 232 scope but the metal share is at/below the 15%-of-weight
+            // threshold (or zero): $0 exclusion line, NOT a 232 hit — the
+            // forced-labor blanket in (2) still applies (the 9903.05.90
+            // exception is for products the 232 duty actually reaches).
+            out.push({
+              kind: "rate",
+              duty_type: "232-EXCL",
+              rate: 0,
+              source: best.source,
+              note:
+                w === 0
+                  ? "Section 232 metals: article contains no aluminum, steel or copper (9903.82.01)"
+                  : "Section 232 metals exclusion — covered metal is 15% or less of the total weight of the article (9903.82.03)",
+              basis: "full_value",
+            });
+          } else if (best.tier === "floor10") {
+            out.push({
+              kind: "rate",
+              duty_type: "232",
+              rate: 10,
+              source: best.source,
+              note: best.note,
+              basis: "floor10",
+            });
+            scopeHas232 = true;
+          } else {
+            out.push({
+              kind: "rate",
+              duty_type: "232",
+              rate: best.tier === "std50" ? 50 : 25,
+              source: best.source,
+              note: best.note,
+              basis: "full_value",
+            });
+            scopeHas232 = true;
+          }
+        }
+        // else: listed only for other metals — not subject for the declared
+        // metal; stay silent (scopeChecked suppresses the generic warning).
+      } else {
+        const metals = [...new Set(hits.map((r) => r.metal))].join(" / ");
+        out.push({
+          kind: "warning",
+          text: `Section 232: ${disp} is on the Section 232 metals list (${metals}). The duty depends on which metal the article is made of — declare the metal (and its share of total weight) to price it. An article made of a metal not listed for this code is not subject.`,
+          text_zh: `Section 232：税号 ${disp} 在 232 金属清单上（${metals}）。税率取决于产品实际所含金属——请注明金属类型（及其占总重量的比例）以计价；产品若由该税号未列明的金属制成，则不在征收范围内。`,
+        });
+      }
+    }
+  }
+
   // 2) Blanket origin-based rules (e.g. Section 301 forced labor, all HTS).
   // 232-covered products are excepted from the forced-labor 301
   // (9903.05.90): show the exclusion as a $0 line instead of charging it.
-  const has232 = out.some((s) => s.kind === "rate" && s.duty_type === "232");
+  const has232 = scopeHas232 || out.some((s) => s.kind === "rate" && s.duty_type === "232");
   for (const r of rules) {
     if (r.hts_prefix) continue;
     if (!r.origin_country) continue;
@@ -180,10 +295,11 @@ export function suggestAdditionalDuties(
     });
   }
 
-  // 3) Steel/aluminum/copper product outside the article chapters:
-  // may fall under the 232 derivative list (Annex I-B, HTS-specific).
-  // Warn instead of inventing a number.
-  if (!has232 && METAL_RE.test(material || "") && org && !["US", "USA", "UNITED STATES"].includes(org)) {
+  // 3) Steel/aluminum/copper product outside the article chapters and
+  // outside the loaded scope data: may still fall under the 232
+  // derivative list. Warn instead of inventing a number. Skipped when
+  // the scope table already resolved this HTS (1c).
+  if (!has232 && !scopeChecked && METAL_RE.test(material || "") && org && !["US", "USA", "UNITED STATES"].includes(org)) {
     out.push({
       kind: "warning",
       text: "Steel/aluminum/copper content — check the 232 derivative list (Annex I-B, HTS-specific rate) and confirm the rate before filing.",

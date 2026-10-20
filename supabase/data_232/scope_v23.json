@@ -1,0 +1,5196 @@
+[
+ {
+  "prefix": "7601",
+  "metal": "aluminum",
+  "subdiv": "i",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7604",
+  "metal": "aluminum",
+  "subdiv": "i",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7605",
+  "metal": "aluminum",
+  "subdiv": "i",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7606",
+  "metal": "aluminum",
+  "subdiv": "i",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7607",
+  "metal": "aluminum",
+  "subdiv": "i",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7608",
+  "metal": "aluminum",
+  "subdiv": "i",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7609",
+  "metal": "aluminum",
+  "subdiv": "i",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7616995160",
+  "metal": "aluminum",
+  "subdiv": "i",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7616995170",
+  "metal": "aluminum",
+  "subdiv": "i",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7308200035",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76101000",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76109000",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76121000",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76129010",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76129050",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76130000",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76141010",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76141050",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76149020",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76149040",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76149050",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7616109090",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7616995120",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7616995150",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7616995175",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7616995190",
+  "metal": "aluminum",
+  "subdiv": "ii",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "8415908010",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8415908020",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8415908045",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8415908085",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84248990",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8479899599",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8479909596",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "85043400",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "85049020",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "85049065",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "85049075",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8504909610",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8504909630",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8504909646",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8504909650",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8504909690",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8708292130",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "90139080",
+  "metal": "aluminum",
+  "subdiv": "ix",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "37013000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615102015",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615102025",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615103015",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615103025",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615105020",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615105040",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615107125",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615107130",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615107155",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7615107180",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "76151091",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "76152000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "76169910",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7616995130",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7616995140",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83021030",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83021060",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83022000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8302303010",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8302303060",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83024130",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8302416015",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8302416045",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8302416050",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8302416080",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83024230",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83024960",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83025000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83026030",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83026090",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8305100050",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83063000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83079060",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8309900020",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8309900025",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8412909070",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8412909075",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8414596590",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84148016",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84181000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8418998005",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8418998050",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8418998060",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84195010",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84195050",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84199010",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8422900640",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8424909080",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84431600",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84501100",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84512100",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84672200",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84672900",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84678100",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84678950",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84799085",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8481909060",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8481909085",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8483405020",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8483905020",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8487900080",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8501640110",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85022000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85023100",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8503009520",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8503009546",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8503009570",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85043120",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85043140",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85043160",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85043300",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85049041",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85087000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85139020",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85159020",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85169050",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8516908050",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85177100",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85299073",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8536908585",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85381000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8543908885",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85441900",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85444290",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85444920",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85444990",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85446020",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85446060",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8547900020",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8547900030",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8547900040",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87081030",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87081060",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8708295160",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8708806590",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8708996890",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87161000",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87163900",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8716805010",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87169050",
+  "metal": "aluminum",
+  "subdiv": "vi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "74061000",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74062000",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74071015",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74071030",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74071050",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072115",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072130",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072150",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072170",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072190",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072916",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072934",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072938",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072940",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74072950",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74081130",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74081160",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74081900",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74082100",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74082210",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74082250",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74082910",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74082950",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74091110",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74091150",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74091910",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74091950",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74091990",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74092100",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74092900",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74093110",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74093150",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74093190",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74093910",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74093950",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74093990",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74094000",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74099010",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74099050",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74099090",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74101100",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74101200",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74102130",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74102160",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74102200",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74111010",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74111050",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74112110",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74112150",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74112200",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74112910",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74112950",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74121000",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74122000",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74130010",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74130050",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74130090",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74151000",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74152100",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74152900",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74153305",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74153310",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74153380",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74153900",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74181000",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74182010",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74182050",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74192000",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74198003",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74198006",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74198009",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74198015",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74198016",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74198017",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74198030",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "74198050",
+  "metal": "copper",
+  "subdiv": "v",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "85444210",
+  "metal": "copper",
+  "subdiv": "viii",
+  "kind": "article",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85444220",
+  "metal": "copper",
+  "subdiv": "viii",
+  "kind": "article",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85444290",
+  "metal": "copper",
+  "subdiv": "viii",
+  "kind": "article",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85444910",
+  "metal": "copper",
+  "subdiv": "viii",
+  "kind": "article",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7206",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7207",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7208",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7209",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7210",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7211",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7212",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7213",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7214",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7215",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "72161000",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "72162100",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "72162200",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "72163100",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "72163200",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "72163300",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "72164000",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "72165000",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "72169900",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7217",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7218",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7219",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7220",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7221",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7222",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7223",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7224",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7225",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7226",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7227",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7228",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7229",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73011000",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "730210",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73024000",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "730290",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7304",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7305",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7306",
+  "metal": "steel",
+  "subdiv": "iii",
+  "kind": "article",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7216910010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73012010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73012050",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73023000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73071930",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73071990",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73072110",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73072150",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73072210",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73072250",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73072300",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73072900",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079110",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079130",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079150",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079230",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079290",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079330",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079360",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079390",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079910",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079930",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73079950",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73081000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73082000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73083010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73083050",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73084000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73089030",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73089060",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73089070",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73089095",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73090000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73101000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73102100",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73102900",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73110000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73121005",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73121010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73121020",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73121030",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73121050",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73121060",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73121070",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73121080",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73121090",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73129000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73130000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141210",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141220",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141230",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141260",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141290",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141410",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141420",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141430",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141460",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141490",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73141901",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73142000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73143110",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73143150",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73143900",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73144100",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73144200",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73144930",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73144960",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73145000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73151100",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73151200",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73151900",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73152010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73152050",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73158100",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73158210",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73158230",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73158250",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73158270",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73158910",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73158930",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73158950",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73159000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73160000",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73170010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73170020",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73170030",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73170055",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73170065",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73170075",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181100",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181200",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181300",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181410",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181450",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181520",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181540",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181550",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181560",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181580",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181600",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73181900",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73182100",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73182200",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73182300",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73182400",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73182900",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73194020",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73194030",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73194050",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73199010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73199090",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73201030",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73201060",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73201090",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73202010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73202050",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73209010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73209050",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7325100010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7325100020",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7325100025",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7325100030",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7325100080",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73259100",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73259910",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73259950",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73261100",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73261900",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7326200090",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73269010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73269025",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73269060",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7326908605",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7326908610",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7326908630",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7326908635",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7326908645",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "7326908688",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "76141010",
+  "metal": "steel",
+  "subdiv": "iv",
+  "kind": "derivative",
+  "tier": "std50"
+ },
+ {
+  "prefix": "73211110",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73211130",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73211160",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73211200",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73211900",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73218110",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73218150",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73218210",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73218250",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73218900",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73219010",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73219020",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73219040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73219050",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73219060",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73221900",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73229000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73231000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73239300",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73239400",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73239910",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73239930",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73239950",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73239970",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73239990",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73241000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73242900",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73249000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7325100035",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7326200010",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7326200020",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7326200030",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7326200040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7326200055",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73269035",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "73269045",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7326908660",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7326908675",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7326908676",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "7326908677",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8202390040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82034060",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82055955",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82057000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82111000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119110",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119120",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119125",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119130",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119140",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119150",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119180",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119220",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119240",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119260",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119290",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119300",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119410",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119450",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119510",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119550",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82119590",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82151000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82152000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159130",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159160",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159190",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159901",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159905",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159910",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159915",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159920",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159922",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159924",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159926",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159930",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159935",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159940",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159945",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "82159950",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83021060",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83024130",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83024160",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83024230",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83024960",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83052000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "83071060",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8309900080",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84031000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84069040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84079090",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84109000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84118180",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84122100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84122980",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8412909070",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8412909075",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84138100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8413919055",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8413919060",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8413919096",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84143040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84148016",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84149030",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84149041",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84151030",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84158300",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84159040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84181000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84182100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84182920",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84183000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84184000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84189940",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84221100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84254200",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84262000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84264900",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84269900",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84313100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84314340",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84314380",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84314910",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84331100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84339010",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84431600",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84501100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84502000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84512100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84512900",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84799045",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84799055",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84799065",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84799075",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84799085",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105004",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105008",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105012",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105016",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105024",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105028",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105032",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105036",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105052",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105056",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105060",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105064",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482105068",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482200064",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482200067",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8482200090",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84829905",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84829915",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84829925",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84829935",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84829945",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84829965",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8483101010",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8483101050",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84831050",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84832040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84832080",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84833040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84833080",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84834010",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8483405020",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84834090",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84835060",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84835090",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84836040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84839030",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84839050",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84839070",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84839080",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85015360",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85015380",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8501640110",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85023100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85030035",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85030065",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85030075",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85030095",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85042100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85042200",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85043200",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85043300",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8504909634",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8504909638",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8504909642",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85098020",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85142040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85142060",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85166040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85166060",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "85479000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86011000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86012000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86021000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86029000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86031000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86039000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86040000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86050000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86061000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86071100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86071903",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86071906",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86071912",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86071915",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86071990",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86072150",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8607301010",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8607301050",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8607301090",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86073050",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86079100",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86079950",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "86090000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8701210080",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8701220080",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8701230080",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8701240080",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8701290080",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87021031",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87021061",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87031010",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87031050",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87081030",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87089250",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87089275",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87089981",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87161000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87163900",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87168050",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87169030",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87169050",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "9403200075",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "9403200082",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "9403999020",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "9403999040",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "94062000",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "94069001",
+  "metal": "steel",
+  "subdiv": "vii",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "8207200070",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8207306062",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8207306095",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84014000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84079010",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84151060",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84151090",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84158101",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84158201",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84159080",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84179000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84198150",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84212900",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84248990",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84283200",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84283300",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84283900",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84286000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84287000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84289003",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84313900",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84314100",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84321000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84329000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84332000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84335100",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84335900",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84339050",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8454200010",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8454200060",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84553000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84559040",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84559080",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84571000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84749000",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84771030",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84771040",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84771090",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84779025",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8477908601",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84798955",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84798965",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84799095",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8480490010",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8480718045",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8480718060",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8480799010",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84836080",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84839020",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "85042300",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "85162900",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87013010",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87019110",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87019210",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87019310",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87019410",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87019510",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87032101",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87060030",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "8708292120",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87084030",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87084060",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87089210",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87089260",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87089315",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87089330",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87089923",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87168010",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "87169010",
+  "metal": "steel",
+  "subdiv": "x",
+  "kind": "derivative",
+  "tier": "floor10"
+ },
+ {
+  "prefix": "84271040",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84271080",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84272040",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84272080",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84279000",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84291100",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84291900",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84292000",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84293000",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84294000",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84295110",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84295150",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84295210",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84295250",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84295910",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84295950",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84312000",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84314200",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "84314990",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87011001",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87013050",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87019150",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87019250",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87019350",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87019450",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87019550",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87051000",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ },
+ {
+  "prefix": "87052000",
+  "metal": "steel",
+  "subdiv": "xi",
+  "kind": "derivative",
+  "tier": "std25"
+ }
+]

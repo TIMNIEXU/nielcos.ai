@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { fetchRefTable } from "@/lib/dutyData";
 import { suggestHts, matchPga } from "@/lib/hts";
-import { suggestAdditionalDuties, type DutyRule } from "@/lib/additionalDuties";
+import { suggestAdditionalDuties, type DutyRule, type Scope232Row } from "@/lib/additionalDuties";
 
 /* POST /api/app/customs/suggest
    { description } -> { candidates: [{hts_no, description, rate, rate_text, score}], pga }
@@ -21,12 +21,16 @@ export async function POST(req: NextRequest) {
   let hts = "";
   let origin = "";
   let material = "";
+  let metal = "";
+  let metalWeightPct: number | undefined;
   try {
     const body = await req.json();
     if (typeof body?.description === "string") description = body.description;
     if (typeof body?.hts === "string") hts = body.hts.trim();
     if (typeof body?.origin === "string") origin = body.origin.trim();
     if (typeof body?.material === "string") material = body.material.trim();
+    if (typeof body?.metal === "string") metal = body.metal.trim();
+    if (typeof body?.metal_weight_pct === "number") metalWeightPct = body.metal_weight_pct;
   } catch { /* fall through */ }
 
   const { data: rules } = await sb.from("pga_rules").select("hts_prefix, agency, agency_cn, note");
@@ -41,9 +45,19 @@ export async function POST(req: NextRequest) {
       .eq("hts_no", htsNo)
       .maybeSingle();
     const dutyRules = await fetchRefTable(sb, "additional_duties", "*");
+    // Section 232 metals scope (customs_v23); optional — matcher falls
+    // back to headline rules when the table is absent.
+    let scope232: Scope232Row[] = [];
+    try {
+      scope232 = (await fetchRefTable(sb, "hts_232_scope", "*")) as Scope232Row[];
+    } catch { /* scope table not loaded yet */ }
     // MFN schedule is 8-digit (htsNo); duty rules may be 10-digit, so pass
     // the raw input through instead of the truncated 8-digit code.
-    const duty_suggestions = suggestAdditionalDuties(hts, origin, material, (dutyRules ?? []) as DutyRule[]);
+    const duty_suggestions = suggestAdditionalDuties(hts, origin, material, (dutyRules ?? []) as DutyRule[], {
+      scope232,
+      metal: metal || undefined,
+      metalWeightPct,
+    });
     if (!row)
       return NextResponse.json({ hts_no: htsNo, found: false, duty_suggestions });
     const pga = matchPga(row.hts_no, rules ?? []);
