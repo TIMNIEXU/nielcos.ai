@@ -39,7 +39,24 @@ export type DutyOpts = {
   scope232?: Scope232Row[];
   metal?: string; // structured metal declaration; wins over free text
   metalWeightPct?: number; // covered-metal share of total weight, 0-100
+  metalOriginCountry?: string; // where the metal was melted/smelted (232 tiers)
+  usContentPct?: number; // USMCA: U.S. content share of value, 0-100 (estimator-side math)
+  entryDate?: string; // YYYY-MM-DD — drives the 2028-01-01 tier sunset
 };
+
+/* Column 2 / non-NTR countries (HTSUS general note 3(b)). */
+const GN3B = new Set(["BELARUS", "CUBA", "NORTH KOREA", "RUSSIA"]);
+/* 9903.82.22 listed partners (15% on (xi) derivative steel): named
+   economies + EU member states. */
+const PARTNER15 = new Set([
+  "ARGENTINA", "ECUADOR", "EL SALVADOR", "GUATEMALA", "JAPAN",
+  "SOUTH KOREA", "LIECHTENSTEIN", "SWITZERLAND", "TAIWAN", "UNITED KINGDOM",
+  "AUSTRIA", "BELGIUM", "BULGARIA", "CROATIA", "CYPRUS", "CZECH REPUBLIC",
+  "DENMARK", "ESTONIA", "FINLAND", "FRANCE", "GERMANY", "GREECE", "HUNGARY",
+  "IRELAND", "ITALY", "LATVIA", "LITHUANIA", "LUXEMBOURG", "MALTA",
+  "NETHERLANDS", "POLAND", "PORTUGAL", "ROMANIA", "SLOVAKIA", "SLOVENIA",
+  "SPAIN", "SWEDEN",
+]);
 
 export function normMetal(s?: string | null): string | null {
   const u = (s || "").trim().toLowerCase();
@@ -217,24 +234,81 @@ export function suggestAdditionalDuties(
                   : "Section 232 metals exclusion — covered metal is 15% or less of the total weight of the article (9903.82.03)",
               basis: "full_value",
             });
-          } else if (best.tier === "floor10") {
-            out.push({
-              kind: "rate",
-              duty_type: "232",
-              rate: 10,
-              source: best.source,
-              note: best.note,
-              basis: "floor10",
-            });
-            scopeHas232 = true;
           } else {
+            // Standard + special tiers (CSMS #68855869 / U.S. Note 16).
+            // Order matters: origin/metal-origin specials beat the
+            // standard tier; the interim headings (.07-.12, .20-.22)
+            // sunset on 2028-01-01 and collapse to the standard rates.
+            const subdiv = best.subdiv;
+            const post2028 = !!opts?.entryDate && opts.entryDate >= "2028-01-01";
+            const metalOrgRaw = normOrigin(opts?.metalOriginCountry ?? "");
+            const metalOrg = ["US", "USA"].includes(metalOrgRaw) ? "UNITED STATES" : metalOrgRaw;
+            let rate: number;
+            let basis = "full_value";
+            let note = best.note;
+            if (org === "RUSSIA" && subdiv === "iv") {
+              rate = 10;
+              note = "Section 232 — product of Russia, derivative steel articles (9903.82.15): 10% on full customs value.";
+            } else if (org === "RUSSIA" && subdiv === "x") {
+              rate = 25;
+              note = "Section 232 — product of Russia (9903.82.17): 25% on full customs value.";
+            } else if (GN3B.has(org) && best.tier === "floor10" && !post2028) {
+              rate = 25;
+              note = "Section 232 — product of a column 2 (non-NTR) country (9903.82.12): 25% on full customs value, through 2027-12-31.";
+            } else if (
+              metalOrg === "UNITED STATES" &&
+              ["ii", "iv", "vi", "vii", "viii", "xi"].includes(subdiv)
+            ) {
+              rate = 10;
+              note = "Section 232 — made with U.S. melted/smelted metal (at least 85% of the metal content) (9903.82.06): 10% on full customs value.";
+            } else if (
+              org === "UNITED KINGDOM" &&
+              metalOrg === "UNITED KINGDOM" &&
+              ["i", "ii", "iii", "iv"].includes(subdiv)
+            ) {
+              rate = 25;
+              note = "Section 232 — UK product with at least 95% UK melted/smelted metal (9903.82.04): 25% on full customs value.";
+            } else if (
+              org === "UNITED KINGDOM" &&
+              metalOrg === "UNITED KINGDOM" &&
+              ["vi", "vii"].includes(subdiv)
+            ) {
+              rate = 15;
+              note = "Section 232 — UK derivative with at least 95% UK melted/smelted metal (9903.82.05): 15% on full customs value.";
+            } else if (subdiv === "xi" && PARTNER15.has(org) && !post2028) {
+              rate = 15;
+              note = "Section 232 — derivative steel article of a listed partner economy (9903.82.22): 15% on full customs value, through 2027-12-31.";
+            } else if (
+              subdiv === "xi" &&
+              (org === "CANADA" || org === "MEXICO") &&
+              !post2028
+            ) {
+              // Rate stays 25 with basis 'usmca_split': the estimator
+              // applies the 40%-of-value U.S.-content cap (9903.82.21
+              // at 0%) when the user declares the U.S. content share.
+              rate = 25;
+              basis = "usmca_split";
+              note = "Section 232 — USMCA derivative steel (9903.82.20/.21): 25% on non-U.S. content and on U.S. content above 40% of value; U.S. content up to 40% of value enters at 0%. Two-line entry reporting. Through 2027-12-31.";
+            } else if (best.tier === "floor10") {
+              if (post2028) {
+                rate = 25;
+                note =
+                  best.note +
+                  " From 2028-01-01 the interim floor headings (9903.82.07-.12) expire; the standard derivative rate under 9903.82.09 applies.";
+              } else {
+                rate = 10;
+                basis = "floor10";
+              }
+            } else {
+              rate = best.tier === "std50" ? 50 : 25;
+            }
             out.push({
               kind: "rate",
               duty_type: "232",
-              rate: best.tier === "std50" ? 50 : 25,
+              rate,
               source: best.source,
-              note: best.note,
-              basis: "full_value",
+              note,
+              basis,
             });
             scopeHas232 = true;
           }

@@ -45,6 +45,8 @@ type Suggestion = {
   basis?: string;
   note?: string;
   note_cn?: string;
+  text?: string;
+  text_zh?: string;
 };
 
 type Candidate = {
@@ -93,6 +95,12 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
   const [mode, setMode] = useState<"ocean" | "air">("ocean");
   const [entryDate, setEntryDate] = useState(todayStr());
   const [exclDonation, setExclDonation] = useState(false);
+  /* Section 232 metals inputs (Phase 2): declared metal, its share of
+     total weight, where it was melted/smelted, and USMCA U.S. content. */
+  const [metalSel, setMetalSel] = useState("");
+  const [metalWeight, setMetalWeight] = useState("");
+  const [metalOrigin, setMetalOrigin] = useState("");
+  const [usContent, setUsContent] = useState("");
 
   const [lookingUp, setLookingUp] = useState(false);
   const [lookupMsg, setLookupMsg] = useState("");
@@ -132,6 +140,12 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     [suggestions]
   );
   const has301FL = rateSuggestions.some((s) => s.duty_type === "301-FL" && Number(s.rate) > 0);
+  /* Section 232 panel appears once the HTS touches the metals regime:
+     a resolved 232 line, a scope warning, or a metal already declared. */
+  const show232Panel =
+    metalSel !== "" ||
+    rateSuggestions.some((s) => s.duty_type === "232" || s.duty_type === "232-EXCL") ||
+    warnings.some((w) => `${w.text ?? ""} ${w.text_zh ?? ""}`.includes("Section 232"));
 
   const calc = useMemo(() => {
     const v = num(value);
@@ -174,6 +188,13 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
       // Section 232 floor, so the additional duty is only the excess over
       // the MFN rate already charged on the base line.
       if (s.basis === "floor10") r = Math.max(0, r - (mfnRate ?? 0));
+      // basis 'usmca_split' (9903.82.20/.21): the 25% applies to the
+      // non-U.S. content plus U.S. content above 40% of value — i.e. the
+      // dutiable share is 100% minus the U.S. content capped at 40%.
+      if (s.basis === "usmca_split") {
+        const us = Math.min(num(usContent), 40);
+        r = (r * (100 - us)) / 100;
+      }
       const amt = (v * r) / 100;
       lines.push({
         code: extract9903(s) ?? "—",
@@ -191,7 +212,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     const landed = v + duties + mpf + hmf;
     return { v, lines, totalRate, duties, mpf, hmf, landed };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, hts, htsDesc, mfnRate, mfnText, mfnSpecific, qty, rateSuggestions, exclDonation, mode, entryDate, origin]);
+  }, [value, hts, htsDesc, mfnRate, mfnText, mfnSpecific, qty, rateSuggestions, exclDonation, mode, entryDate, origin, usContent]);
 
   const applyDirectResult = (data: any) => {
     if (data.found) {
@@ -223,11 +244,28 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
   };
 
   const lookupDirect = async (htsDigits: string) => {
-    const res = await fetch(
-      `/api/public/duty-lookup?hts=${htsDigits}&origin=${encodeURIComponent(origin)}`
-    );
+    const p = new URLSearchParams({ hts: htsDigits, origin });
+    if (entryDate) p.set("entry_date", entryDate);
+    if (metalSel) p.set("metal", metalSel);
+    if (metalWeight.trim()) p.set("metal_weight_pct", metalWeight.trim());
+    if (metalOrigin) p.set("metal_origin", metalOrigin);
+    if (usContent.trim()) p.set("us_content_pct", usContent.trim());
+    const res = await fetch(`/api/public/duty-lookup?${p.toString()}`);
     applyDirectResult(await res.json());
   };
+
+  /* Re-run the lookup when the Section 232 inputs (or origin / entry
+     date, which drive the special tiers) change after an HTS is known. */
+  const metalFx = useRef(false);
+  useEffect(() => {
+    if (!metalFx.current) {
+      metalFx.current = true;
+      return;
+    }
+    const digits = hts.replace(/[^0-9]/g, "");
+    if (digits.length >= 6) void lookupDirect(digits);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [metalSel, metalWeight, metalOrigin, usContent, origin, entryDate]);
 
   const lookupWithText = async (text: string) => {
     const q = text.trim();
@@ -319,6 +357,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     setOrigin("China"); setMode("ocean"); setEntryDate(todayStr());
     setExclDonation(false); setLookupMsg(""); setCandidates([]);
     setSuggestions([]); setMfnRate(null); setMfnText(""); setMfnSpecific(null); setQty("");
+    setMetalSel(""); setMetalWeight(""); setMetalOrigin(""); setUsContent("");
     setImportMsg(""); setCopied(false);
   };
 
@@ -437,7 +476,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
             )}
             {warnings.map((w, i) => (
               <p key={i} className="mt-2 text-[12.5px] font-medium text-amber-700">
-                ⚠️ {zh ? w.note_cn || w.note : w.note || w.note_cn}
+                ⚠️ {zh ? w.text_zh || w.note_cn || w.note || w.text : w.text || w.note || w.note_cn || w.text_zh}
               </p>
             ))}
           </div>
@@ -505,6 +544,64 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
               className={inputCls}
             />
           </div>
+
+          {/* Section 232 metals (shown when the HTS touches the regime) */}
+          {show232Panel && (
+            <div className="rounded-xl border border-line bg-white px-4 py-3">
+              <p className={lblCls}>{t.m232Title}</p>
+              <div className="grid gap-3">
+                <div>
+                  <label className={lblCls}>{t.m232Metal}</label>
+                  <select
+                    value={metalSel}
+                    onChange={(e) => setMetalSel(e.target.value)}
+                    className={inputCls}
+                  >
+                    <option value="">{t.m232None}</option>
+                    <option value="steel">{t.mSteel}</option>
+                    <option value="aluminum">{t.mAluminum}</option>
+                    <option value="copper">{t.mCopper}</option>
+                  </select>
+                </div>
+                <div>
+                  <label className={lblCls}>{t.m232Weight}</label>
+                  <input
+                    value={metalWeight}
+                    onChange={(e) => setMetalWeight(e.target.value)}
+                    placeholder={t.m232WeightPh}
+                    inputMode="decimal"
+                    className={inputCls}
+                  />
+                </div>
+                <div>
+                  <label className={lblCls}>{t.m232Origin}</label>
+                  <select
+                    value={metalOrigin}
+                    onChange={(e) => setMetalOrigin(e.target.value)}
+                    className={inputCls}
+                  >
+                    <option value="">{t.m232None}</option>
+                    {["United States", ...ORIGINS].map((c) => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                  </select>
+                </div>
+                {(origin === "Canada" || origin === "Mexico") && (
+                  <div>
+                    <label className={lblCls}>{t.m232UsContent}</label>
+                    <input
+                      value={usContent}
+                      onChange={(e) => setUsContent(e.target.value)}
+                      placeholder={t.m232WeightPh}
+                      inputMode="decimal"
+                      className={inputCls}
+                    />
+                  </div>
+                )}
+              </div>
+              <p className="mt-2 text-[12px] text-faint">{t.m232Hint}</p>
+            </div>
+          )}
 
           {/* exclusions */}
           <div>

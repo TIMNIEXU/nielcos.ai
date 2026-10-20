@@ -29,10 +29,14 @@ export async function GET(req: NextRequest) {
   } catch { /* scope table not loaded yet */ }
   const metal = (q.get("metal") ?? "").trim();
   const mwp = Number(q.get("metal_weight_pct"));
+  const ucp = Number(q.get("us_content_pct"));
   const dutyOpts = {
     scope232,
     metal: metal || undefined,
     metalWeightPct: Number.isFinite(mwp) && q.get("metal_weight_pct") ? mwp : undefined,
+    metalOriginCountry: (q.get("metal_origin") ?? "").trim() || undefined,
+    usContentPct: Number.isFinite(ucp) && q.get("us_content_pct") ? ucp : undefined,
+    entryDate: (q.get("entry_date") ?? "").trim() || undefined,
   };
 
   /* ---- direct HTS mode ---- */

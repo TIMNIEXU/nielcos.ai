@@ -57,8 +57,9 @@ type Case = {
   hts: string;
   origin: string;
   material: string;
-  opts?: { metal?: string; metalWeightPct?: number };
+  opts?: { metal?: string; metalWeightPct?: number; metalOriginCountry?: string; entryDate?: string };
   expect: (lines: string[]) => boolean;
+  expectBasis?: string;
 };
 
 const fmt = (sugs: ReturnType<typeof suggestAdditionalDuties>) =>
@@ -120,6 +121,63 @@ const cases: Case[] = [
     opts: { metal: "copper" },
     expect: (l) => l.includes("232:25%"),
   },
+  // ---- Phase 3 special tiers ----
+  {
+    name: "P3 US-metal: 8302.50 aluminum, metal melted in US -> 10% (9903.82.06)",
+    hts: "8302500000", origin: "China", material: "Aluminum",
+    opts: { metalOriginCountry: "United States" },
+    expect: (l) => l.includes("232:10%") && l.includes("301-FL-EXCL:0%"),
+  },
+  {
+    name: "P3 UK derivative: 8302.50, UK origin + UK metal -> 15% (9903.82.05)",
+    hts: "8302500000", origin: "United Kingdom", material: "Aluminum",
+    opts: { metalOriginCountry: "United Kingdom" },
+    expect: (l) => l.includes("232:15%"),
+  },
+  {
+    name: "P3 UK article: 7601 aluminum, UK origin + UK metal -> 25% (9903.82.04)",
+    hts: "7601100000", origin: "United Kingdom", material: "Aluminum",
+    opts: { metalOriginCountry: "United Kingdom" },
+    expect: (l) => l.includes("232:25%"),
+  },
+  {
+    name: "P3 partner (xi): 8427.10.40 steel, Japan -> 15% (9903.82.22)",
+    hts: "8427104000", origin: "Japan", material: "Steel",
+    expect: (l) => l.includes("232:15%"),
+  },
+  {
+    name: "P3 partner expires: (xi) Japan with entry 2028 -> standard 25%",
+    hts: "8427104000", origin: "Japan", material: "Steel",
+    opts: { entryDate: "2028-03-01" },
+    expect: (l) => l.includes("232:25%"),
+  },
+  {
+    name: "P3 USMCA (xi): Mexico -> 25% (split basis checked separately)",
+    hts: "8427104000", origin: "Mexico", material: "Steel",
+    expect: (l) => l.includes("232:25%"),
+    expectBasis: "usmca_split",
+  },
+  {
+    name: "P3 Russia (iv): 7301.20.10 steel -> 10% (9903.82.15)",
+    hts: "7301201000", origin: "Russia", material: "Steel",
+    expect: (l) => l.includes("232:10%"),
+  },
+  {
+    name: "P3 Russia (x): 8207.20.0070 steel -> 25% (9903.82.17), not floor 10",
+    hts: "8207200070", origin: "Russia", material: "Steel",
+    expect: (l) => l.includes("232:25%"),
+  },
+  {
+    name: "P3 non-NTR floor: Belarus (x) -> 25% (9903.82.12)",
+    hts: "8207200070", origin: "Belarus", material: "Steel",
+    expect: (l) => l.includes("232:25%"),
+  },
+  {
+    name: "P3 floor post-2028: China (x) entry 2028-03 -> 25% standard",
+    hts: "8207200070", origin: "China", material: "Steel",
+    opts: { entryDate: "2028-03-01" },
+    expect: (l) => l.includes("232:25%"),
+  },
 ];
 
 let fail = 0;
@@ -128,9 +186,15 @@ for (const c of cases) {
     scope232: scope,
     metal: c.opts?.metal,
     metalWeightPct: c.opts?.metalWeightPct,
+    metalOriginCountry: c.opts?.metalOriginCountry,
+    entryDate: c.opts?.entryDate,
   });
   const lines = fmt(sugs);
-  const ok = c.expect(lines);
+  let ok = c.expect(lines);
+  if (c.expectBasis) {
+    const s232 = sugs.find((s) => s.kind === "rate" && s.duty_type === "232");
+    ok = ok && !!s232 && s232.kind === "rate" && s232.basis === c.expectBasis;
+  }
   if (!ok) fail++;
   console.log(`${ok ? "PASS" : "FAIL"}  ${c.name}`);
   console.log(`      -> ${lines.join(" | ")}`);

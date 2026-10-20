@@ -1,7 +1,7 @@
 # Section 232 Derivatives — Fix Plan & Data Scope
 
-Status: Phase 1 IMPLEMENTED 2026-10-20 (code + customs_v23.sql ready;
-goes live once v23 is run in Supabase). Phases 2–3 pending Tim.
+Status: Phases 1–3 IMPLEMENTED (Phase 1 live 2026-10-20 after Tim ran
+customs_v23.sql; Phases 2+3 in code the same day — see §7–§8).
 Trigger case: HTS 8302.50.0000, China, entered 2026-10-20 — nielcos.ai
 landed-cost returned 37.50% (301 List 3 25% + 301-FL blanket 12.5%);
 a competitor returned 50.00% (301 List 3 25% + Section 232 derivative 25%,
@@ -224,7 +224,30 @@ create table hts_232_scope (
   case totals 50.00%: List 3 25 + 232 25 + FL $0; steel variant no
   232; 3405.10 and 7202.80 regression checks pass).
 
-## 8. Open questions for Tim
+## 8. Phase 2+3 implementation record (2026-10-20)
+
+- **Phase 3 (matcher special tiers)** — resolved inside section 1c from
+  subdiv + origin + metal-origin + entry date, no new SQL:
+  U.S.-melted/smelted metal 10% (9903.82.06, subdivs ii/iv/vi/vii/viii/xi);
+  UK product + UK metal 25% (i–iv, 9903.82.04) / 15% (vi/vii, 9903.82.05);
+  listed partners incl. EU (xi) 15% (9903.82.22); USMCA CA/MX (xi) 25%
+  with basis `usmca_split` (9903.82.20/.21); column-2 countries on
+  floor tiers 25% (9903.82.12); Russia (iv) 10% (9903.82.15), (x) 25%
+  (9903.82.17). Entry date ≥ 2028-01-01 collapses the interim headings
+  to the standard rates and expires the partner/USMCA tiers.
+  Tests: 19/19 in `scripts/test_232_scope.ts`.
+- **Phase 2 (estimator UI)** — DutyEstimator reveals a "Section 232
+  metals" panel when the HTS touches the regime (232 line, scope
+  warning, or a declared metal): metal type, metal weight %, melt/smelt
+  country, plus a USMCA U.S.-content % field for Canada/Mexico origins.
+  Changing any of them (or origin/entry date) re-runs the lookup.
+  Estimator math handles basis `floor10` (combined floor) and
+  `usmca_split` (25% on value minus U.S. content capped at 40%).
+  Labels added to the `fxest` namespace in all 6 locales (no ICU
+  placeholders). Also fixed: warning suggestions render their
+  text/text_zh (previously looked up note/note_cn and showed blank).
+
+## 9. Open questions for Tim
 
 1. Copper list in Phase 1 or Phase 3? (Volume is small; data is the
    least settled of the three metals.)

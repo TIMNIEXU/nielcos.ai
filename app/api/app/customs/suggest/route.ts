@@ -23,6 +23,9 @@ export async function POST(req: NextRequest) {
   let material = "";
   let metal = "";
   let metalWeightPct: number | undefined;
+  let metalOrigin = "";
+  let usContentPct: number | undefined;
+  let entryDate = "";
   try {
     const body = await req.json();
     if (typeof body?.description === "string") description = body.description;
@@ -31,6 +34,9 @@ export async function POST(req: NextRequest) {
     if (typeof body?.material === "string") material = body.material.trim();
     if (typeof body?.metal === "string") metal = body.metal.trim();
     if (typeof body?.metal_weight_pct === "number") metalWeightPct = body.metal_weight_pct;
+    if (typeof body?.metal_origin === "string") metalOrigin = body.metal_origin.trim();
+    if (typeof body?.us_content_pct === "number") usContentPct = body.us_content_pct;
+    if (typeof body?.entry_date === "string") entryDate = body.entry_date.trim();
   } catch { /* fall through */ }
 
   const { data: rules } = await sb.from("pga_rules").select("hts_prefix, agency, agency_cn, note");
@@ -57,6 +63,9 @@ export async function POST(req: NextRequest) {
       scope232,
       metal: metal || undefined,
       metalWeightPct,
+      metalOriginCountry: metalOrigin || undefined,
+      usContentPct,
+      entryDate: entryDate || undefined,
     });
     if (!row)
       return NextResponse.json({ hts_no: htsNo, found: false, duty_suggestions });
