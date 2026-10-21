@@ -1,7 +1,7 @@
 /* FTA program-selection checks: segment matching (lib/programs.ts).
    Fixtures mirror real USITC Special-column shapes.
    Run: npx tsx scripts/test_programs.ts */
-import { segmentForProgram, type SpecialSegment } from "../lib/programs";
+import { programSegment, segmentForProgram, type SpecialSegment } from "../lib/programs";
 
 let pass = 0;
 let fail = 0;
@@ -37,6 +37,18 @@ check("explicit KR segment beats bare", segmentForProgram(bare, "KR")?.rate === 
 
 // No segments -> nothing offered.
 check("empty segments -> null", segmentForProgram([], "AU") === null);
+
+// USMCA Mexico: S+ segment wins when the line prints one (sugar-style
+// chapter-98 reference); otherwise Mexico falls back to the S segment
+// (2106.90.99 / 8708.29.15 print S only, and CBP calls it "S or S+").
+const MX = { spi: "S+", fallbackSpi: "S", labelKey: "progUSMCA" };
+check("Mexico falls back to S when no S+ segment", programSegment(food, MX)?.rate === 0);
+const sugar: SpecialSegment[] = [
+  { spis: ["BH", "CL", "JO", "KR", "OM", "SG"], rate: 0, rate_text: "Free" },
+  { spis: ["S+"], rate: null, rate_text: "See 9823.09.01-9823.09.09" },
+];
+check("Mexico prefers its S+ segment", programSegment(sugar, MX)?.rate_text === "See 9823.09.01-9823.09.09");
+check("Canada gets nothing on the sugar line", programSegment(sugar, { spi: "S", labelKey: "progUSMCA" }) === null);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

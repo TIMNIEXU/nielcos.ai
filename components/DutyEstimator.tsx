@@ -69,7 +69,7 @@ type DutyLine = {
 import { ORIGIN_OPTIONS as ORIGINS } from "@/lib/countries";
 import {
   ORIGIN_PROGRAMS,
-  segmentForProgram,
+  programSegment,
   type SpecialSegment,
 } from "@/lib/programs";
 
@@ -154,7 +154,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
   const programOptions = useMemo(() => {
     const out: { spi: string; labelKey: string; seg: SpecialSegment }[] = [];
     for (const p of ORIGIN_PROGRAMS[origin] ?? []) {
-      const seg = segmentForProgram(specialRates, p.spi);
+      const seg = programSegment(specialRates, p);
       if (seg) out.push({ spi: p.spi, labelKey: p.labelKey, seg });
     }
     return out;
