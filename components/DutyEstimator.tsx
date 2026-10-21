@@ -67,6 +67,11 @@ type DutyLine = {
 };
 
 import { ORIGIN_OPTIONS as ORIGINS } from "@/lib/countries";
+import {
+  ORIGIN_PROGRAMS,
+  segmentForProgram,
+  type SpecialSegment,
+} from "@/lib/programs";
 
 /* Pull a chapter-99 code out of a rule's note/source when our data has one
    (e.g. "…List 4A (9903.88.15)"). Never invent one. */
@@ -109,6 +114,10 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
   const [mfnRate, setMfnRate] = useState<number | null>(null);
   const [mfnText, setMfnText] = useState("");
   const [mfnSpecific, setMfnSpecific] = useState<SpecificRate | null>(null);
+  /* FTA program selection: special-rate segments from the lookup and
+     the SPI the user claimed ("" = none, MFN applies). */
+  const [specialRates, setSpecialRates] = useState<SpecialSegment[]>([]);
+  const [program, setProgram] = useState("");
   const [qty, setQty] = useState("");
   const [importing, setImporting] = useState(false);
   const [importMsg, setImportMsg] = useState("");
@@ -140,6 +149,17 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     [suggestions]
   );
   const has301FL = rateSuggestions.some((s) => s.duty_type === "301-FL" && Number(s.rate) > 0);
+  /* Programs claimable for the current origin AND granted a special
+     rate by the current HTS line — anything else is not offered. */
+  const programOptions = useMemo(() => {
+    const out: { spi: string; labelKey: string; seg: SpecialSegment }[] = [];
+    for (const p of ORIGIN_PROGRAMS[origin] ?? []) {
+      const seg = segmentForProgram(specialRates, p.spi);
+      if (seg) out.push({ spi: p.spi, labelKey: p.labelKey, seg });
+    }
+    return out;
+  }, [origin, specialRates]);
+  const appliedProgram = programOptions.find((o) => o.spi === program) ?? null;
   /* Section 232 panel appears once the HTS touches the metals regime:
      a resolved 232 line, a scope warning, or a metal already declared. */
   const show232Panel =
@@ -152,6 +172,9 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     const lines: DutyLine[] = [];
     let totalRate = 0;
     let duties = 0;
+    // Numeric base rate actually applied (MFN, or the claimed program
+    // rate). The 232 floor10 excess below is measured against this.
+    let baseNumeric = mfnRate ?? 0;
 
     if (hts) {
       const m = mfnRate ?? 0;
@@ -159,6 +182,8 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
       let effRate: number | null = mfnRate;
       let lineRate: number | null = mfnRate; // what the line displays
       let rateText: string | undefined;
+      let lineLabel = htsDesc || t.mfnName;
+      let lineSub = mfnText || undefined;
       if (mfnRate == null && mfnSpecific) {
         // specific (per-unit) MFN rate, e.g. 31.4¢/kg — auto-detected.
         // The line shows the rate text; the headline % uses the effective rate.
@@ -170,10 +195,30 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
       } else if (mfnRate == null && mfnText) {
         rateText = mfnText;
       }
+      if (appliedProgram) {
+        // A claimed FTA program rate replaces the Column 1 base rate;
+        // additional duties (301 / 232 / FL) still stack on top.
+        const seg = appliedProgram.seg;
+        lineLabel = t[appliedProgram.labelKey] || appliedProgram.spi;
+        lineSub = undefined;
+        baseNumeric = seg.rate ?? 0;
+        if (seg.rate != null) {
+          amt = (v * seg.rate) / 100;
+          effRate = seg.rate;
+          lineRate = seg.rate;
+          rateText = undefined;
+        } else {
+          // specific / chapter-98 program rate: show text, no auto math
+          amt = 0;
+          effRate = 0;
+          lineRate = null;
+          rateText = seg.rate_text;
+        }
+      }
       lines.push({
         code: hts,
-        label: htsDesc || t.mfnName,
-        sub: mfnText || undefined,
+        label: lineLabel,
+        sub: lineSub,
         rate: lineRate,
         rateText,
         amount: amt,
@@ -187,7 +232,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
       // basis 'floor10' (9903.82.07/.08): the rate is a COMBINED column 1 +
       // Section 232 floor, so the additional duty is only the excess over
       // the MFN rate already charged on the base line.
-      if (s.basis === "floor10") r = Math.max(0, r - (mfnRate ?? 0));
+      if (s.basis === "floor10") r = Math.max(0, r - baseNumeric);
       // basis 'usmca_split' (9903.82.20/.21): the 25% applies to the
       // non-U.S. content plus U.S. content above 40% of value — i.e. the
       // dutiable share is 100% minus the U.S. content capped at 40%.
@@ -212,7 +257,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     const landed = v + duties + mpf + hmf;
     return { v, lines, totalRate, duties, mpf, hmf, landed };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, hts, htsDesc, mfnRate, mfnText, mfnSpecific, qty, rateSuggestions, exclDonation, mode, entryDate, origin, usContent]);
+  }, [value, hts, htsDesc, mfnRate, mfnText, mfnSpecific, qty, rateSuggestions, exclDonation, mode, entryDate, origin, usContent, program, specialRates]);
 
   const applyDirectResult = (data: any) => {
     if (data.found) {
@@ -241,6 +286,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
       setLookupMsg(t.notFound);
     }
     setSuggestions((data.duty_suggestions ?? []) as Suggestion[]);
+    setSpecialRates((data.special_rates ?? []) as SpecialSegment[]);
   };
 
   const lookupDirect = async (htsDigits: string) => {
@@ -357,6 +403,7 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
     setOrigin("China"); setMode("ocean"); setEntryDate(todayStr());
     setExclDonation(false); setLookupMsg(""); setCandidates([]);
     setSuggestions([]); setMfnRate(null); setMfnText(""); setMfnSpecific(null); setQty("");
+    setSpecialRates([]); setProgram("");
     setMetalSel(""); setMetalWeight(""); setMetalOrigin(""); setUsContent("");
     setImportMsg(""); setCopied(false);
   };
@@ -514,12 +561,37 @@ function DutyEstimatorInner({ t, locale }: { t: T; locale: string }) {
           {/* origin */}
           <div>
             <label className={lblCls}>{t.originLabel}</label>
-            <select value={origin} onChange={(e) => setOrigin(e.target.value)} className={inputCls}>
+            <select
+              value={origin}
+              onChange={(e) => { setOrigin(e.target.value); setProgram(""); }}
+              className={inputCls}
+            >
               {ORIGINS.map((c) => (
                 <option key={c} value={c}>{c}</option>
               ))}
             </select>
           </div>
+
+          {/* import program (FTA preference) — offered only when the
+              current HTS line grants this origin's program a rate */}
+          {programOptions.length > 0 && (
+            <div>
+              <label className={lblCls}>{t.programLabel}</label>
+              <select
+                value={program}
+                onChange={(e) => setProgram(e.target.value)}
+                className={inputCls}
+              >
+                <option value="">{t.programNone}</option>
+                {programOptions.map((o) => (
+                  <option key={o.spi} value={o.spi}>
+                    {t[o.labelKey] || o.spi}
+                  </option>
+                ))}
+              </select>
+              <p className="mt-1.5 text-[12px] text-faint">{t.programNote}</p>
+            </div>
+          )}
 
           {/* mode */}
           <div>

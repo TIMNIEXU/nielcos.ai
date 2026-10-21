@@ -65,6 +65,26 @@ export async function GET(req: NextRequest) {
     } catch { /* PGA is advisory enrichment; never break the lookup */ }
     if (!row)
       return NextResponse.json({ found: false, hts_no: htsNo, duty_suggestions, pga_flags });
+    // FTA / preference program rates (customs_v24): the Special-column
+    // segments for this line. Optional enrichment — until the SQL is run
+    // the estimator simply offers no program selection.
+    let special_rates: { spis: string[]; rate: number | null; rate_text: string }[] = [];
+    try {
+      const { data: srows, error: serr } = await sb
+        .from("hts_special_rates")
+        .select("spis, rate, rate_text")
+        .eq("hts_no", row.hts_no);
+      if (!serr && srows) {
+        special_rates = srows.map((r: any) => ({
+          spis: String(r.spis ?? "")
+            .split(",")
+            .map((x: string) => x.trim())
+            .filter(Boolean),
+          rate: r.rate == null ? null : Number(r.rate),
+          rate_text: String(r.rate_text ?? ""),
+        }));
+      }
+    } catch { /* special-rates table not loaded yet */ }
     return NextResponse.json({
       found: true,
       hts_no: row.hts_no,
@@ -74,6 +94,7 @@ export async function GET(req: NextRequest) {
       revision: row.revision,
       duty_suggestions,
       pga_flags,
+      special_rates,
     });
   }
 
