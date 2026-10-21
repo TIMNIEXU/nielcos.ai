@@ -4,7 +4,7 @@
 
 export const ORIGIN_OPTIONS = [
   "China", "Vietnam", "Mexico", "Canada", "India", "Germany", "Japan",
-  "South Korea", "United Kingdom", "Taiwan", "Thailand", "Brazil",
+  "South Korea", "United Kingdom", "Australia", "Taiwan", "Thailand", "Brazil",
   "Malaysia", "Indonesia", "Italy", "France", "Cambodia", "Bangladesh",
   "Turkey", "Argentina", "Macau",
 ];

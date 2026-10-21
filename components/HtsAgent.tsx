@@ -29,7 +29,7 @@ type WatchHit = {
 };
 
 const ORIGINS = [
-  "China", "Vietnam", "Mexico", "Canada", "India", "Germany", "Japan",
+  "China", "Vietnam", "Mexico", "Canada", "Australia", "India", "Germany", "Japan",
   "South Korea", "Taiwan", "Thailand", "Malaysia", "Indonesia", "Italy",
   "Cambodia", "Bangladesh", "Turkey",
 ];
