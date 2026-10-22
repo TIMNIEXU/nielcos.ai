@@ -8,8 +8,10 @@ export default function Footer() {
   const locale = useLocale();
   const UTM = "utm_source=www-nielcos.ai&utm_medium=group_footer";
   const groupBrands = [
+    { name: "NIEL Group", href: `https://www.nielgroup.com?${UTM}`, logo: "/logo-niel-badge.png" },
     { name: "Niel Supply Chain", href: `https://www.nielsc.com?${UTM}`, logo: "/logo-niel-badge.png" },
     { name: "Niel Customs", href: `https://www.nielcustoms.com?${UTM}`, logo: "/logo-niel-badge.png" },
+    { name: "JOMA Corporate", href: `https://www.jomainc.com?${UTM}`, logo: "/logo-joma-logistics.png" },
     { name: "JOMA Logistics", href: `https://www.jomaus.com?${UTM}`, logo: "/logo-joma-logistics.png" },
     { name: "Niel Insurance", href: `https://nielinsurance.com?${UTM}`, logo: "/logo-niel-insurance.png" },
     { name: "NIEL COS", href: `/${locale}`, logo: "/logo-niel-badge.png" },

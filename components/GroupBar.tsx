@@ -7,7 +7,7 @@ export default function GroupBar() {
     <div className="border-b border-white/10 bg-[#0c1a33] text-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-1.5 lg:px-8">
         <a
-          href="https://www.nielsc.com?utm_source=www-nielcos.ai&utm_medium=group_nav"
+          href="https://www.nielgroup.com?utm_source=www-nielcos.ai&utm_medium=group_nav"
           className="text-[11px] font-bold tracking-[0.22em] text-[#8fb4ff] uppercase transition-colors hover:text-white"
         >
           NIEL Group
