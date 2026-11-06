@@ -123,6 +123,27 @@ export function isPodDischarge(eventName: string): boolean {
   return /discharge/.test(seg);
 }
 
+/** Derive arrival / ETA from container events when the shipment object
+    itself carries neither. A real arrival wins over ETA; estimated events
+    only feed ETA, never arrival. Shared by the shipment-doc path and the
+    container-list fallback, whose sideloaded shipment has no ETA of its
+    own (live case ONEU5222584: estimated.vessel_arrived 2026-11-15 was
+    visible in the events but eta stayed null on that path). */
+export function applyEventFallbacks(shipment: NormalizedShipment, events: TrackEvent[]): void {
+  if (!shipment.arrived_at) {
+    const arrival = events
+      .filter((e) => /vessel_arrived|vessel_arrival|berth/i.test(e.event) && e.timestamp && !/estimated/i.test(e.event))
+      .sort((x, y) => String(x.timestamp).localeCompare(String(y.timestamp)))[0];
+    if (arrival?.timestamp) shipment.arrived_at = arrival.timestamp;
+  }
+  if (!shipment.eta && !shipment.arrived_at) {
+    const est = events
+      .filter((e) => /estimated/i.test(e.event) && /arriv/i.test(e.event) && e.timestamp)
+      .sort((x, y) => String(x.timestamp).localeCompare(String(y.timestamp)))[0];
+    if (est?.timestamp) shipment.eta = est.timestamp;
+  }
+}
+
 function s(v: unknown): string | null {
   return typeof v === "string" && v.trim() ? v : null;
 }
@@ -290,24 +311,9 @@ export function normalizeShipmentDoc(doc: any): {
       Boolean(shipment.arrived_at);
     return normalizeContainer(c, map, { discharged });
   });
-  // Arrival fallback: derive from container events when the shipment object
-  // itself carries no arrival timestamp.
-  if (!shipment.arrived_at) {
-    const arrival = containers
-      .flatMap((c) => c.events)
-      .filter((e) => /vessel_arrived|vessel_arrival|berth/i.test(e.event) && e.timestamp && !/estimated/i.test(e.event))
-      .sort((x, y) => String(x.timestamp).localeCompare(String(y.timestamp)))[0];
-    if (arrival?.timestamp) shipment.arrived_at = arrival.timestamp;
-  }
-  // ETA fallback: carriers publish an estimated-arrival event long before
-  // the shipment object carries an ETA.
-  if (!shipment.eta && !shipment.arrived_at) {
-    const est = containers
-      .flatMap((c) => c.events)
-      .filter((e) => /estimated/i.test(e.event) && /arriv/i.test(e.event) && e.timestamp)
-      .sort((x, y) => String(x.timestamp).localeCompare(String(y.timestamp)))[0];
-    if (est?.timestamp) shipment.eta = est.timestamp;
-  }
+  // Arrival / ETA fallback: derive from container events when the shipment
+  // object itself carries no arrival timestamp.
+  applyEventFallbacks(shipment, containers.flatMap((c) => c.events));
   return { shipment, containers };
 }
 
@@ -465,6 +471,10 @@ async function attemptLookup(
         }
       }
       const container = normalizeContainer(cdoc.data, map, { discharged });
+      // The sideloaded shipment carries no ETA/arrival of its own, and the
+      // shipment-doc attempt above may have returned no containers — derive
+      // both from this container's events, same rules as normalizeShipmentDoc.
+      applyEventFallbacks(shipment, container.events);
       return { status: "ready", shipment, containers: [container], fetched_at };
     }
   }

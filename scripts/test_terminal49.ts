@@ -3,7 +3,7 @@
    (available_for_pickup, holds_at_pod_terminal, fees_at_pod_terminal,
    pickup_lfd), included terminals/lines/ports, and transport events.
    Run: npx tsx scripts/test_terminal49.ts */
-import { normalizeShipmentDoc, normalizeShipmentResource } from "../lib/terminal49";
+import { normalizeShipmentDoc, normalizeShipmentResource, applyEventFallbacks } from "../lib/terminal49";
 
 let failures = 0;
 function check(name: string, cond: boolean, extra?: unknown) {
@@ -208,6 +208,19 @@ check("in-transit customs unknown (transshipment discharge ignored)", r4.contain
 check("in-transit carrier unknown", r4.containers[0].carrier_state === "unknown");
 check("in-transit not arrived", r4.shipment.arrived_at === null, r4.shipment.arrived_at);
 check("ETA from estimated arrival event", r4.shipment.eta === "2026-11-15T01:00:00Z", r4.shipment.eta);
+
+/* Container-list fallback path (live ONEU5222584): the sideloaded shipment
+   has no ETA of its own, and the shipment-doc attempt can return no
+   containers — the estimated-arrival event on the container must still
+   fill the ETA, without inventing an arrival. */
+const sideloaded = normalizeShipmentResource(shipRes, new Map());
+check("sideloaded shipment ETA starts null", sideloaded.eta === null, sideloaded.eta);
+applyEventFallbacks(sideloaded, [
+  { event: "container.transport.transshipment_discharged", timestamp: "2026-10-03T21:20:00Z", location: null },
+  { event: "container.transport.estimated.vessel_arrived", timestamp: "2026-11-15T01:00:00Z", location: null },
+]);
+check("fallback ETA from estimated arrival event", sideloaded.eta === "2026-11-15T01:00:00Z", sideloaded.eta);
+check("fallback does not invent arrival", sideloaded.arrived_at === null, sideloaded.arrived_at);
 
 console.log(failures === 0 ? "\nALL PASS" : `\n${failures} FAILURES`);
 process.exit(failures === 0 ? 0 : 1);
