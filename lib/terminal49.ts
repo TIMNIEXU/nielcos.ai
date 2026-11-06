@@ -1,0 +1,409 @@
+/* Terminal49 integration — ocean container tracking with terminal-level
+   release data (customs / carrier holds, pickup availability, LFD, fees).
+
+   Server-only: reads TERMINAL49_API_KEY from the environment. The key is
+   NEVER exposed to the client; the public API route proxies and normalizes.
+
+   Data honesty rules (product law):
+   - "Customs released" here is the terminal/carrier-reported customs
+     status (CBP messages relayed to the terminal), NOT the filer's raw
+     ACE entry record. The UI must say so and show the fetch time.
+   - When the POD terminal is not covered by Terminal49 terminal
+     integrations, holds/fees arrays may be absent — that is "unknown",
+     never "released". */
+
+const BASE = "https://api.terminal49.com/v2";
+
+export type TrackRequestType = "container" | "bill_of_lading" | "booking_number";
+
+export function t49Configured(): boolean {
+  return Boolean(process.env.TERMINAL49_API_KEY);
+}
+
+async function t49Fetch(path: string, init?: RequestInit): Promise<any> {
+  const key = process.env.TERMINAL49_API_KEY;
+  if (!key) throw new T49Error("not_configured", 503);
+  const res = await fetch(`${BASE}${path}`, {
+    ...init,
+    headers: {
+      Authorization: `Token ${key}`,
+      Accept: "application/vnd.api+json",
+      "Content-Type": "application/vnd.api+json",
+      ...(init?.headers ?? {}),
+    },
+    signal: AbortSignal.timeout(20000),
+  });
+  const text = await res.text();
+  let json: any = null;
+  try {
+    json = text ? JSON.parse(text) : null;
+  } catch {
+    /* non-JSON body */
+  }
+  if (!res.ok) {
+    const msg =
+      json?.errors?.[0]?.detail ??
+      json?.errors?.[0]?.title ??
+      json?.message ??
+      `Terminal49 HTTP ${res.status}`;
+    // Free-plan accounts may create tracking requests but reads are gated
+    // until a trial/paid plan is active — surface that distinctly.
+    if (res.status === 401 && /permissions|paid plan|trial/i.test(String(msg))) {
+      throw new T49Error("api_restricted", 503, String(msg));
+    }
+    if (res.status === 401) throw new T49Error("bad_key", 503, String(msg));
+    if (res.status === 404) throw new T49Error("not_found", 404, String(msg));
+    if (res.status === 422) throw new T49Error("invalid_number", 422, String(msg));
+    throw new T49Error("upstream_error", 502, String(msg));
+  }
+  return json;
+}
+
+export class T49Error extends Error {
+  code: string;
+  status: number;
+  constructor(code: string, status: number, message?: string) {
+    super(message ?? code);
+    this.code = code;
+    this.status = status;
+  }
+}
+
+/* ------------------------- normalized display model ------------------------ */
+
+export type Hold = { name: string; status: string; description: string | null };
+export type Fee = { type: string; amount: number; currency: string };
+export type ReleaseState = "released" | "hold" | "unknown";
+
+export type TrackEvent = {
+  event: string;
+  timestamp: string | null;
+  location: string | null;
+};
+
+export type NormalizedContainer = {
+  container_number: string;
+  equipment: string | null;
+  terminal: string | null;
+  available_for_pickup: boolean | null;
+  terminal_supported: boolean;
+  customs_state: ReleaseState;
+  customs_holds: Hold[];
+  carrier_state: ReleaseState;
+  carrier_holds: Hold[];
+  other_holds: Hold[];
+  pickup_ready: boolean | null;
+  last_free_day: string | null;
+  fees: Fee[];
+  events: TrackEvent[];
+};
+
+export type NormalizedShipment = {
+  bill_of_lading_number: string | null;
+  booking_number: string | null;
+  shipping_line: string | null;
+  shipping_line_scac: string | null;
+  vessel: string | null;
+  voyage: string | null;
+  pol: string | null;
+  pod: string | null;
+  eta: string | null;
+  arrived_at: string | null;
+};
+
+const CUSTOMS_HOLDS = new Set(["customs", "usda", "vacis"]);
+const CARRIER_HOLDS = new Set(["freight", "line"]);
+
+function s(v: unknown): string | null {
+  return typeof v === "string" && v.trim() ? v : null;
+}
+function pick(obj: any, keys: string[]): string | null {
+  for (const k of keys) {
+    const v = s(obj?.[k]);
+    if (v) return v;
+  }
+  return null;
+}
+
+function mapIncluded(doc: any): Map<string, any> {
+  const map = new Map<string, any>();
+  const inc = Array.isArray(doc?.included) ? doc.included : [];
+  for (const r of inc) {
+    if (r?.type && r?.id) map.set(`${r.type}:${r.id}`, r);
+  }
+  if (doc?.data?.type && doc?.data?.id) map.set(`${doc.data.type}:${doc.data.id}`, doc.data);
+  return map;
+}
+
+function relOne(map: Map<string, any>, resource: any, name: string): any | null {
+  const d = resource?.relationships?.[name]?.data;
+  if (!d) return null;
+  return map.get(`${d.type}:${d.id}`) ?? null;
+}
+function relMany(map: Map<string, any>, resource: any, name: string): any[] {
+  const arr = resource?.relationships?.[name]?.data;
+  if (!Array.isArray(arr)) return [];
+  return arr.map((d: any) => map.get(`${d.type}:${d.id}`)).filter(Boolean);
+}
+
+export function normalizeContainer(
+  c: any,
+  map: Map<string, any>,
+  ctx: { discharged: boolean }
+): NormalizedContainer {
+  const a = c?.attributes ?? {};
+  const holdsRaw: Hold[] = Array.isArray(a.holds_at_pod_terminal)
+    ? a.holds_at_pod_terminal.map((h: any) => ({
+        name: String(h?.name ?? "other").toLowerCase(),
+        status: String(h?.status ?? "hold").toLowerCase(),
+        description: s(h?.description),
+      }))
+    : [];
+  const fees: Fee[] = Array.isArray(a.fees_at_pod_terminal)
+    ? a.fees_at_pod_terminal
+        .filter((f: any) => typeof f?.amount === "number")
+        .map((f: any) => ({
+          type: String(f?.type ?? "other"),
+          amount: f.amount,
+          currency: s(f?.currency_code) ?? "USD",
+        }))
+    : [];
+
+  const terminalRes = relOne(map, c, "pod_terminal");
+  // Terminal data counts as supported when the terminal is linked or the
+  // holds/fees keys are present at all (even empty). Missing keys = no
+  // terminal feed for this POD = release states stay "unknown".
+  const terminal_supported =
+    Boolean(terminalRes) ||
+    a.holds_at_pod_terminal !== undefined ||
+    a.fees_at_pod_terminal !== undefined;
+
+  const customs_holds = holdsRaw.filter((h) => CUSTOMS_HOLDS.has(h.name));
+  const carrier_holds = holdsRaw.filter((h) => CARRIER_HOLDS.has(h.name));
+  const other_holds = holdsRaw.filter(
+    (h) => !CUSTOMS_HOLDS.has(h.name) && !CARRIER_HOLDS.has(h.name)
+  );
+
+  const derive = (hs: Hold[]): ReleaseState => {
+    if (hs.length > 0) return "hold";
+    if (ctx.discharged && terminal_supported) return "released";
+    return "unknown";
+  };
+
+  const available = typeof a.available_for_pickup === "boolean" ? a.available_for_pickup : null;
+  let pickup_ready: boolean | null = null;
+  if (holdsRaw.length > 0) pickup_ready = false;
+  else if (available === true) pickup_ready = true;
+  else if (available === false) pickup_ready = false;
+
+  const events: TrackEvent[] = relMany(map, c, "transport_events")
+    .map((e: any) => ({
+      event: pick(e?.attributes, ["event", "event_type", "type", "name"]) ?? "event",
+      timestamp: pick(e?.attributes, ["timestamp", "event_at", "occurred_at", "created_at"]),
+      location: pick(e?.attributes, ["location", "location_name", "port_name"]),
+    }))
+    .sort((x, y) => String(x.timestamp ?? "").localeCompare(String(y.timestamp ?? "")));
+
+  const equipParts = [
+    a.equipment_length ? `${a.equipment_length}ft` : null,
+    s(a.equipment_height),
+    s(a.equipment_type),
+  ].filter(Boolean);
+
+  return {
+    container_number: s(a.number) ?? "",
+    equipment: equipParts.length ? equipParts.join(" ") : null,
+    terminal: terminalRes ? s(terminalRes.attributes?.name) : null,
+    available_for_pickup: available,
+    terminal_supported,
+    customs_state: derive(customs_holds),
+    customs_holds,
+    carrier_state: derive(carrier_holds),
+    carrier_holds,
+    other_holds,
+    pickup_ready,
+    last_free_day: pick(a, ["pickup_lfd", "last_free_day", "pickup_last_free_day", "lfd"]),
+    fees,
+    events,
+  };
+}
+
+export function normalizeShipment(doc: any, map: Map<string, any>): NormalizedShipment {
+  const sh = doc?.data?.type === "shipments" ? doc.data : null;
+  const a = sh?.attributes ?? {};
+  const line = sh ? relOne(map, sh, "shipping_line") : null;
+  const pol = sh ? relOne(map, sh, "port_of_loading") : null;
+  const pod = sh ? relOne(map, sh, "port_of_discharge") : null;
+  const ts = a.timestamps ?? {};
+  return {
+    bill_of_lading_number: s(a.bill_of_lading_number),
+    booking_number: s(a.booking_number),
+    shipping_line: line ? s(line.attributes?.name) : null,
+    shipping_line_scac: s(a.shipping_line_scac) ?? (line ? s(line.attributes?.scac) : null),
+    vessel: pick(a, ["vessel_name", "vessel"]),
+    voyage: pick(a, ["voyage_number", "voyage"]),
+    pol: pol ? s(pol.attributes?.name) : null,
+    pod: pod ? s(pod.attributes?.name) : null,
+    eta: pick(a, ["estimated_time_of_arrival", "eta", "pod_eta"]) ?? s(ts.estimated_arrival_at),
+    arrived_at:
+      pick(a, ["actual_time_of_arrival", "arrived_at"]) ??
+      s(ts.vessel_arrived_at) ??
+      s(ts.arrived_at),
+  };
+}
+
+export function normalizeShipmentDoc(doc: any): {
+  shipment: NormalizedShipment;
+  containers: NormalizedContainer[];
+} {
+  const map = mapIncluded(doc);
+  const shipment = normalizeShipment(doc, map);
+  const containersRaw =
+    doc?.data?.type === "shipments" ? relMany(map, doc.data, "containers") : [];
+  // Discharge detection: any container event mentioning discharge, or the
+  // shipment having an arrival timestamp.
+  const containers: NormalizedContainer[] = containersRaw.map((c: any) => {
+    const evts = relMany(map, c, "transport_events");
+    const discharged =
+      evts.some((e: any) =>
+        /discharge/i.test(String(e?.attributes?.event ?? e?.attributes?.event_type ?? ""))
+      ) || Boolean(shipment.arrived_at);
+    return normalizeContainer(c, map, { discharged });
+  });
+  // Arrival fallback: derive from container events when the shipment object
+  // itself carries no arrival timestamp.
+  if (!shipment.arrived_at) {
+    const arrival = containers
+      .flatMap((c) => c.events)
+      .filter((e) => /vessel_arrived|vessel_arrival|berth/i.test(e.event) && e.timestamp)
+      .sort((x, y) => String(x.timestamp).localeCompare(String(y.timestamp)))[0];
+    if (arrival?.timestamp) shipment.arrived_at = arrival.timestamp;
+  }
+  return { shipment, containers };
+}
+
+/* ------------------------------ lookup flow ------------------------------- */
+
+export type LookupResult =
+  | {
+      status: "ready";
+      shipment: NormalizedShipment;
+      containers: NormalizedContainer[];
+      fetched_at: string;
+    }
+  | { status: "processing"; fetched_at: string };
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+export async function createTrackingRequest(
+  requestType: TrackRequestType,
+  requestNumber: string
+): Promise<string | null> {
+  const doc = await t49Fetch("/tracking_requests", {
+    method: "POST",
+    body: JSON.stringify({
+      data: {
+        type: "tracking_requests",
+        attributes: {
+          request_type: requestType,
+          request_number: requestNumber,
+          auto_detect_vocc_scac: true,
+        },
+      },
+    }),
+  });
+  return s(doc?.data?.id);
+}
+
+async function trackingRequestShipmentId(trId: string): Promise<string | null> {
+  const doc = await t49Fetch(`/tracking_requests/${trId}`);
+  const rel = doc?.data?.relationships?.shipment?.data;
+  if (rel?.id) return String(rel.id);
+  const status = String(doc?.data?.attributes?.status ?? "");
+  if (/fail|error/i.test(status)) {
+    throw new T49Error("invalid_number", 422, "Tracking request failed — check the number.");
+  }
+  return null;
+}
+
+async function fetchShipmentDoc(shipmentId: string): Promise<any> {
+  const include =
+    "containers,containers.transport_events,containers.pod_terminal,shipping_line,port_of_loading,port_of_discharge";
+  try {
+    return await t49Fetch(`/shipments/${shipmentId}?include=${include}`);
+  } catch (e) {
+    if (e instanceof T49Error && (e.status === 400 || e.status === 422)) {
+      return await t49Fetch(`/shipments/${shipmentId}?include=containers,containers.transport_events`);
+    }
+    throw e;
+  }
+}
+
+async function findContainerDoc(containerNumber: string): Promise<any | null> {
+  try {
+    const doc = await t49Fetch(
+      `/containers?filter[number]=${encodeURIComponent(containerNumber)}&include=transport_events,pod_terminal,shipment`
+    );
+    const first = Array.isArray(doc?.data) ? doc.data[0] : null;
+    return first ? { data: first, included: doc.included ?? [] } : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Create (or reuse) a tracking request and return normalized data.
+    Terminal49 resolves new numbers asynchronously; while it works we
+    return { status: "processing" } and the client polls again. */
+export async function lookupContainer(
+  requestType: TrackRequestType,
+  requestNumber: string
+): Promise<LookupResult> {
+  const fetched_at = new Date().toISOString();
+  const trId = await createTrackingRequest(requestType, requestNumber);
+
+  let shipmentId: string | null = null;
+  if (trId) {
+    for (let i = 0; i < 5 && !shipmentId; i++) {
+      shipmentId = await trackingRequestShipmentId(trId);
+      if (!shipmentId) await sleep(2500);
+    }
+  }
+
+  if (shipmentId) {
+    const doc = await fetchShipmentDoc(shipmentId);
+    const { shipment, containers } = normalizeShipmentDoc(doc);
+    if (containers.length > 0) {
+      return { status: "ready", shipment, containers, fetched_at };
+    }
+    return { status: "processing", fetched_at };
+  }
+
+  // Fallback for container-number lookups already resolved in the account.
+  if (requestType === "container") {
+    const cdoc = await findContainerDoc(requestNumber);
+    if (cdoc?.data) {
+      const map = mapIncluded(cdoc);
+      const shipRel = cdoc.data?.relationships?.shipment?.data;
+      let shipment: NormalizedShipment = normalizeShipment({}, map);
+      let discharged = false;
+      const evts = relMany(map, cdoc.data, "transport_events");
+      discharged = evts.some((e: any) => /discharge/i.test(String(e?.attributes?.event ?? "")));
+      if (shipRel?.id) {
+        try {
+          const sdoc = await fetchShipmentDoc(String(shipRel.id));
+          const norm = normalizeShipmentDoc(sdoc);
+          if (norm.containers.length > 0) {
+            return { status: "ready", shipment: norm.shipment, containers: norm.containers, fetched_at };
+          }
+          shipment = norm.shipment;
+        } catch {
+          /* keep minimal shipment */
+        }
+      }
+      const container = normalizeContainer(cdoc.data, map, { discharged });
+      return { status: "ready", shipment, containers: [container], fetched_at };
+    }
+  }
+
+  return { status: "processing", fetched_at };
+}

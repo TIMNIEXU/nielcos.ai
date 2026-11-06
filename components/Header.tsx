@@ -107,6 +107,7 @@ export default function Header() {
     { href: `/${locale}/regulatory`, label: t("regulatory") },
     { href: `/${locale}/ad-cvd`, label: t("adcvd") },
     { href: `/${locale}/ad-cvd-checker`, label: t("adcvdchecker") },
+    { href: `/${locale}/track`, label: t("track") },
     { href: `/${locale}/developers`, label: t("developers") },
     { href: `/${locale}/#resources`, label: t("resources") },
     { href: `/${locale}/insurance`, label: t("insurance") },
