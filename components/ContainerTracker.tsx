@@ -280,6 +280,8 @@ export default function ContainerTracker({ t, locale }: { t: L; locale: string }
   };
 
   const ship = result && result.ok && result.status === "ready" ? result.shipment : null;
+  const readyContainers =
+    result && result.ok && result.status === "ready" ? result.containers : [];
 
   return (
     <div>
@@ -338,12 +340,15 @@ export default function ContainerTracker({ t, locale }: { t: L; locale: string }
               {ship.voyage ? ` · ${ship.voyage}` : ""}
             </span>
           )}
-          {ship.bill_of_lading_number && (
-            <span>
-              <span className="font-bold text-ink">{t.cardMbl}: </span>
-              <span className="font-mono">{ship.bill_of_lading_number}</span>
-            </span>
-          )}
+          {ship.bill_of_lading_number &&
+            // Container-tracked shipments can carry the container number in
+            // the BOL field — showing it as "MBL" would be redundant noise.
+            !readyContainers.some((c) => c.container_number === ship.bill_of_lading_number) && (
+              <span>
+                <span className="font-bold text-ink">{t.cardMbl}: </span>
+                <span className="font-mono">{ship.bill_of_lading_number}</span>
+              </span>
+            )}
           {(ship.pol || ship.pod) && (
             <span>
               <span className="font-bold text-ink">{t.cardRoute}: </span>

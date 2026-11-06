@@ -452,9 +452,11 @@ export async function lookupContainer(
   }
 
   // Both the tracking request and any account fallback came up empty with a
-  // provider-side failure — only then is the number itself the problem.
+  // provider-side failure. The number was format-valid (the route checked),
+  // so this is "not found" — e.g. carriers like MSC that don't support
+  // container-number tracking: the right guidance is to try the MBL.
   if (failed) {
-    throw new T49Error("invalid_number", 422, "Tracking request failed — check the number.");
+    throw new T49Error("not_found", 404, "No tracking data found for this number.");
   }
   return { status: "processing", fetched_at };
 }
