@@ -172,5 +172,42 @@ check("sideloaded shipment scac", hdr.shipping_line_scac === "OOLU");
 const hdrNull = normalizeShipmentResource(null, new Map());
 check("null shipment resource stays null", hdrNull.bill_of_lading_number === null && hdrNull.vessel === null);
 
+/* Regression (live ONEU5222584): still on the water, only a TRANSSHIPMENT
+   discharge in the events. Customs/carrier must stay "unknown" — counting
+   the transshipment discharge marked the box released before US arrival.
+   The estimated-arrival event must surface as the shipment ETA. */
+const docInTransit: any = {
+  data: {
+    type: "shipments",
+    id: "shp-4",
+    attributes: { bill_of_lading_number: "ONEY1234567890" },
+    relationships: { containers: { data: [{ type: "containers", id: "c8" }] } },
+  },
+  included: [
+    { type: "terminals", id: "t8", attributes: { name: "West Basin Container Terminal" } },
+    {
+      type: "containers",
+      id: "c8",
+      attributes: {
+        number: "ONEU5222584",
+        available_for_pickup: false,
+        holds_at_pod_terminal: [],
+        fees_at_pod_terminal: [],
+      },
+      relationships: {
+        pod_terminal: { data: { type: "terminals", id: "t8" } },
+        transport_events: { data: [{ type: "transport_events", id: "e9" }, { type: "transport_events", id: "e10" }] },
+      },
+    },
+    { type: "transport_events", id: "e9", attributes: { event: "container.transport.transshipment_discharged", timestamp: "2026-10-03T21:20:00Z" } },
+    { type: "transport_events", id: "e10", attributes: { event: "container.transport.estimated.vessel_arrived", timestamp: "2026-11-15T01:00:00Z" } },
+  ],
+};
+const r4 = normalizeShipmentDoc(docInTransit);
+check("in-transit customs unknown (transshipment discharge ignored)", r4.containers[0].customs_state === "unknown", r4.containers[0].customs_state);
+check("in-transit carrier unknown", r4.containers[0].carrier_state === "unknown");
+check("in-transit not arrived", r4.shipment.arrived_at === null, r4.shipment.arrived_at);
+check("ETA from estimated arrival event", r4.shipment.eta === "2026-11-15T01:00:00Z", r4.shipment.eta);
+
 console.log(failures === 0 ? "\nALL PASS" : `\n${failures} FAILURES`);
 process.exit(failures === 0 ? 0 : 1);

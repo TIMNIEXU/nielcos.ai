@@ -115,6 +115,14 @@ export type NormalizedShipment = {
 const CUSTOMS_HOLDS = new Set(["customs", "usda", "vacis"]);
 const CARRIER_HOLDS = new Set(["freight", "line"]);
 
+/** Discharge at the port of discharge only — transshipment discharges
+    happen mid-voyage and must never mark a container as released. */
+export function isPodDischarge(eventName: string): boolean {
+  if (/transshipment/i.test(eventName)) return false;
+  const seg = eventName.toLowerCase().split(".").pop() ?? "";
+  return /discharge/.test(seg);
+}
+
 function s(v: unknown): string | null {
   return typeof v === "string" && v.trim() ? v : null;
 }
@@ -270,14 +278,16 @@ export function normalizeShipmentDoc(doc: any): {
   const shipment = normalizeShipment(doc, map);
   const containersRaw =
     doc?.data?.type === "shipments" ? relMany(map, doc.data, "containers") : [];
-  // Discharge detection: any container event mentioning discharge, or the
-  // shipment having an arrival timestamp.
+  // Discharge detection: a discharge event AT THE POD, or the shipment
+  // having an arrival timestamp. A transshipment discharge must NOT count —
+  // the box is still on the water afterwards (live case ONEU5222584:
+  // transshipment discharge in October, US arrival mid-November; counting
+  // it marked customs "released" before the vessel even reached the US).
   const containers: NormalizedContainer[] = containersRaw.map((c: any) => {
     const evts = relMany(map, c, "transport_events");
     const discharged =
-      evts.some((e: any) =>
-        /discharge/i.test(String(e?.attributes?.event ?? e?.attributes?.event_type ?? ""))
-      ) || Boolean(shipment.arrived_at);
+      evts.some((e: any) => isPodDischarge(String(e?.attributes?.event ?? e?.attributes?.event_type ?? ""))) ||
+      Boolean(shipment.arrived_at);
     return normalizeContainer(c, map, { discharged });
   });
   // Arrival fallback: derive from container events when the shipment object
@@ -285,9 +295,18 @@ export function normalizeShipmentDoc(doc: any): {
   if (!shipment.arrived_at) {
     const arrival = containers
       .flatMap((c) => c.events)
-      .filter((e) => /vessel_arrived|vessel_arrival|berth/i.test(e.event) && e.timestamp)
+      .filter((e) => /vessel_arrived|vessel_arrival|berth/i.test(e.event) && e.timestamp && !/estimated/i.test(e.event))
       .sort((x, y) => String(x.timestamp).localeCompare(String(y.timestamp)))[0];
     if (arrival?.timestamp) shipment.arrived_at = arrival.timestamp;
+  }
+  // ETA fallback: carriers publish an estimated-arrival event long before
+  // the shipment object carries an ETA.
+  if (!shipment.eta && !shipment.arrived_at) {
+    const est = containers
+      .flatMap((c) => c.events)
+      .filter((e) => /estimated/i.test(e.event) && /arriv/i.test(e.event) && e.timestamp)
+      .sort((x, y) => String(x.timestamp).localeCompare(String(y.timestamp)))[0];
+    if (est?.timestamp) shipment.eta = est.timestamp;
   }
   return { shipment, containers };
 }
@@ -391,13 +410,12 @@ async function findContainerDoc(containerNumber: string): Promise<any | null> {
   }
 }
 
-/** Create (or reuse) a tracking request and return normalized data.
-    Terminal49 resolves new numbers asynchronously; while it works we
-    return { status: "processing" } and the client polls again. */
-export async function lookupContainer(
+/** One lookup attempt. Returns null when every path failed with nothing
+    found (the caller retries once before declaring the number unknown). */
+async function attemptLookup(
   requestType: TrackRequestType,
   requestNumber: string
-): Promise<LookupResult> {
+): Promise<LookupResult | null> {
   const fetched_at = new Date().toISOString();
   const first = await createAndPoll(requestType, requestNumber);
   let shipmentId = first.id;
@@ -431,7 +449,7 @@ export async function lookupContainer(
       let shipment: NormalizedShipment = normalizeShipmentResource(shipRes, map);
       let discharged = false;
       const evts = relMany(map, cdoc.data, "transport_events");
-      discharged = evts.some((e: any) => /discharge/i.test(String(e?.attributes?.event ?? "")));
+      discharged = evts.some((e: any) => isPodDischarge(String(e?.attributes?.event ?? "")));
       if (shipRel?.id) {
         try {
           const sdoc = await fetchShipmentDoc(String(shipRel.id));
@@ -452,11 +470,27 @@ export async function lookupContainer(
   }
 
   // Both the tracking request and any account fallback came up empty with a
-  // provider-side failure. The number was format-valid (the route checked),
-  // so this is "not found" — e.g. carriers like MSC that don't support
-  // container-number tracking: the right guidance is to try the MBL.
-  if (failed) {
-    throw new T49Error("not_found", 404, "No tracking data found for this number.");
-  }
+  // provider-side failure — signal the caller to retry once, then give up.
+  if (failed) return null;
   return { status: "processing", fetched_at };
+}
+
+/** Create (or reuse) a tracking request and return normalized data.
+    Terminal49 resolves new numbers asynchronously; while it works we
+    return { status: "processing" } and the client polls again. A first-ever
+    registration can also fail transiently while the identical number
+    resolves on a later attempt (observed live on fresh ONE/Evergreen
+    boxes), so a failed-empty attempt is retried once before the number
+    is declared unknown — e.g. MSC, which genuinely does not support
+    container-number tracking: the right guidance there is to try the MBL. */
+export async function lookupContainer(
+  requestType: TrackRequestType,
+  requestNumber: string
+): Promise<LookupResult> {
+  const first = await attemptLookup(requestType, requestNumber);
+  if (first) return first;
+  await sleep(6000);
+  const second = await attemptLookup(requestType, requestNumber);
+  if (second) return second;
+  throw new T49Error("not_found", 404, "No tracking data found for this number.");
 }
