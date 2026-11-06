@@ -325,26 +325,45 @@ export async function createTrackingRequest(
   return s(doc?.data?.id);
 }
 
-async function pollShipmentId(trId: string | null): Promise<string | null> {
-  let shipmentId: string | null = null;
-  if (trId) {
-    for (let i = 0; i < 5 && !shipmentId; i++) {
-      shipmentId = await trackingRequestShipmentId(trId);
-      if (!shipmentId) await sleep(2500);
-    }
+async function pollShipmentId(trId: string | null): Promise<PollOutcome> {
+  if (!trId) return { id: null, failed: false };
+  for (let i = 0; i < 5; i++) {
+    const r = await trackingRequestShipmentId(trId);
+    if (r.id || r.failed) return r;
+    await sleep(2500);
   }
-  return shipmentId;
+  return { id: null, failed: false };
 }
 
-async function trackingRequestShipmentId(trId: string): Promise<string | null> {
+/** Create a tracking request and poll it; a provider 422 counts as failed. */
+async function createAndPoll(
+  requestType: TrackRequestType,
+  requestNumber: string,
+  scac?: string
+): Promise<PollOutcome> {
+  try {
+    const trId = await createTrackingRequest(requestType, requestNumber, scac);
+    return await pollShipmentId(trId);
+  } catch (e) {
+    if (e instanceof T49Error && e.code === "invalid_number") {
+      return { id: null, failed: true };
+    }
+    throw e;
+  }
+}
+
+type PollOutcome = { id: string | null; failed: boolean };
+
+async function trackingRequestShipmentId(trId: string): Promise<PollOutcome> {
   const doc = await t49Fetch(`/tracking_requests/${trId}`);
   const rel = doc?.data?.relationships?.shipment?.data;
-  if (rel?.id) return String(rel.id);
+  if (rel?.id) return { id: String(rel.id), failed: false };
   const status = String(doc?.data?.attributes?.status ?? "");
-  if (/fail|error/i.test(status)) {
-    throw new T49Error("invalid_number", 422, "Tracking request failed — check the number.");
-  }
-  return null;
+  // A "failed" request does NOT prove the number is unknown: Terminal49 can
+  // fail the request (e.g. carrier container endpoint) while the container
+  // object itself exists in the account — the fallback lookup decides.
+  if (/fail|error/i.test(status)) return { id: null, failed: true };
+  return { id: null, failed: false };
 }
 
 async function fetchShipmentDoc(shipmentId: string): Promise<any> {
@@ -380,24 +399,15 @@ export async function lookupContainer(
   requestNumber: string
 ): Promise<LookupResult> {
   const fetched_at = new Date().toISOString();
-  let shipmentId: string | null = null;
-  try {
-    const trId = await createTrackingRequest(requestType, requestNumber);
-    shipmentId = await pollShipmentId(trId);
-  } catch (e) {
-    // Auto-detect sometimes fails on MBLs; the number's 4-letter prefix is
-    // the carrier SCAC for most lines — retry once with it explicitly.
-    if (
-      e instanceof T49Error &&
-      e.code === "invalid_number" &&
-      requestType === "bill_of_lading" &&
-      /^[A-Z]{4}/.test(requestNumber)
-    ) {
-      const trId2 = await createTrackingRequest(requestType, requestNumber, requestNumber.slice(0, 4));
-      shipmentId = await pollShipmentId(trId2);
-    } else {
-      throw e;
-    }
+  const first = await createAndPoll(requestType, requestNumber);
+  let shipmentId = first.id;
+  let failed = first.failed;
+  // Auto-detect sometimes fails on MBLs; the number's 4-letter prefix is
+  // the carrier SCAC for most lines — retry once with it explicitly.
+  if (!shipmentId && failed && requestType === "bill_of_lading" && /^[A-Z]{4}/.test(requestNumber)) {
+    const retry = await createAndPoll(requestType, requestNumber, requestNumber.slice(0, 4));
+    shipmentId = retry.id;
+    failed = retry.failed;
   }
 
   if (shipmentId) {
@@ -441,5 +451,10 @@ export async function lookupContainer(
     }
   }
 
+  // Both the tracking request and any account fallback came up empty with a
+  // provider-side failure — only then is the number itself the problem.
+  if (failed) {
+    throw new T49Error("invalid_number", 422, "Tracking request failed — check the number.");
+  }
   return { status: "processing", fetched_at };
 }
