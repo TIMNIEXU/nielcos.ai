@@ -2834,6 +2834,8 @@
     "sourceLabel": "Data source",
     "updatedAt": "Updated",
     "ctaWorkspace": "Track it in my workspace",
-    "ctaQuote": "Get a drayage quote"
+    "ctaQuote": "Get a drayage quote",
+    "pickupDone": "✓ Already picked up from the terminal.",
+    "evTransshipment": "Transshipment"
   }
 }

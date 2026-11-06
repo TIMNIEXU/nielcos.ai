@@ -2834,6 +2834,8 @@
     "sourceLabel": "数据来源",
     "updatedAt": "更新于",
     "ctaWorkspace": "在我的工作台持续跟踪",
-    "ctaQuote": "获取拖柜报价"
+    "ctaQuote": "获取拖柜报价",
+    "pickupDone": "✓ 已从码头提柜。",
+    "evTransshipment": "中转"
   }
 }

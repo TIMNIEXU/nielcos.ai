@@ -93,6 +93,7 @@ export type NormalizedContainer = {
   carrier_holds: Hold[];
   other_holds: Hold[];
   pickup_ready: boolean | null;
+  picked_up: boolean;
   last_free_day: string | null;
   fees: Fee[];
   events: TrackEvent[];
@@ -210,6 +211,10 @@ export function normalizeContainer(
     s(a.equipment_type),
   ].filter(Boolean);
 
+  // Already left the terminal: a gate-out or empty-return event means the
+  // pickup question is settled — the banner must not say "not ready".
+  const picked_up = events.some((e) => /gate_out|empty_in|empty.*return/i.test(e.event));
+
   return {
     container_number: s(a.number) ?? "",
     equipment: equipParts.length ? equipParts.join(" ") : null,
@@ -222,14 +227,14 @@ export function normalizeContainer(
     carrier_holds,
     other_holds,
     pickup_ready,
+    picked_up,
     last_free_day: pick(a, ["pickup_lfd", "last_free_day", "pickup_last_free_day", "lfd"]),
     fees,
     events,
   };
 }
 
-export function normalizeShipment(doc: any, map: Map<string, any>): NormalizedShipment {
-  const sh = doc?.data?.type === "shipments" ? doc.data : null;
+export function normalizeShipmentResource(sh: any, map: Map<string, any>): NormalizedShipment {
   const a = sh?.attributes ?? {};
   const line = sh ? relOne(map, sh, "shipping_line") : null;
   const pol = sh ? relOne(map, sh, "port_of_loading") : null;
@@ -250,6 +255,11 @@ export function normalizeShipment(doc: any, map: Map<string, any>): NormalizedSh
       s(ts.vessel_arrived_at) ??
       s(ts.arrived_at),
   };
+}
+
+export function normalizeShipment(doc: any, map: Map<string, any>): NormalizedShipment {
+  const sh = doc?.data?.type === "shipments" ? doc.data : null;
+  return normalizeShipmentResource(sh, map);
 }
 
 export function normalizeShipmentDoc(doc: any): {
@@ -297,22 +307,33 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export async function createTrackingRequest(
   requestType: TrackRequestType,
-  requestNumber: string
+  requestNumber: string,
+  scac?: string
 ): Promise<string | null> {
+  const attributes: Record<string, unknown> = {
+    request_type: requestType,
+    request_number: requestNumber,
+  };
+  if (scac) attributes.scac = scac;
+  else attributes.auto_detect_vocc_scac = true;
   const doc = await t49Fetch("/tracking_requests", {
     method: "POST",
     body: JSON.stringify({
-      data: {
-        type: "tracking_requests",
-        attributes: {
-          request_type: requestType,
-          request_number: requestNumber,
-          auto_detect_vocc_scac: true,
-        },
-      },
+      data: { type: "tracking_requests", attributes },
     }),
   });
   return s(doc?.data?.id);
+}
+
+async function pollShipmentId(trId: string | null): Promise<string | null> {
+  let shipmentId: string | null = null;
+  if (trId) {
+    for (let i = 0; i < 5 && !shipmentId; i++) {
+      shipmentId = await trackingRequestShipmentId(trId);
+      if (!shipmentId) await sleep(2500);
+    }
+  }
+  return shipmentId;
 }
 
 async function trackingRequestShipmentId(trId: string): Promise<string | null> {
@@ -359,13 +380,23 @@ export async function lookupContainer(
   requestNumber: string
 ): Promise<LookupResult> {
   const fetched_at = new Date().toISOString();
-  const trId = await createTrackingRequest(requestType, requestNumber);
-
   let shipmentId: string | null = null;
-  if (trId) {
-    for (let i = 0; i < 5 && !shipmentId; i++) {
-      shipmentId = await trackingRequestShipmentId(trId);
-      if (!shipmentId) await sleep(2500);
+  try {
+    const trId = await createTrackingRequest(requestType, requestNumber);
+    shipmentId = await pollShipmentId(trId);
+  } catch (e) {
+    // Auto-detect sometimes fails on MBLs; the number's 4-letter prefix is
+    // the carrier SCAC for most lines — retry once with it explicitly.
+    if (
+      e instanceof T49Error &&
+      e.code === "invalid_number" &&
+      requestType === "bill_of_lading" &&
+      /^[A-Z]{4}/.test(requestNumber)
+    ) {
+      const trId2 = await createTrackingRequest(requestType, requestNumber, requestNumber.slice(0, 4));
+      shipmentId = await pollShipmentId(trId2);
+    } else {
+      throw e;
     }
   }
 
@@ -384,7 +415,10 @@ export async function lookupContainer(
     if (cdoc?.data) {
       const map = mapIncluded(cdoc);
       const shipRel = cdoc.data?.relationships?.shipment?.data;
-      let shipment: NormalizedShipment = normalizeShipment({}, map);
+      // The container list response sideloads the shipment resource —
+      // its attributes alone (MBL, vessel, voyage, SCAC) fill the header.
+      const shipRes = relOne(map, cdoc.data, "shipment");
+      let shipment: NormalizedShipment = normalizeShipmentResource(shipRes, map);
       let discharged = false;
       const evts = relMany(map, cdoc.data, "transport_events");
       discharged = evts.some((e: any) => /discharge/i.test(String(e?.attributes?.event ?? "")));
@@ -395,9 +429,11 @@ export async function lookupContainer(
           if (norm.containers.length > 0) {
             return { status: "ready", shipment: norm.shipment, containers: norm.containers, fetched_at };
           }
-          shipment = norm.shipment;
+          if (norm.shipment.bill_of_lading_number || norm.shipment.vessel) {
+            shipment = norm.shipment;
+          }
         } catch {
-          /* keep minimal shipment */
+          /* keep the sideloaded shipment */
         }
       }
       const container = normalizeContainer(cdoc.data, map, { discharged });

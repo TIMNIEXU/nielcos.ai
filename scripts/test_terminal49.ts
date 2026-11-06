@@ -3,7 +3,7 @@
    (available_for_pickup, holds_at_pod_terminal, fees_at_pod_terminal,
    pickup_lfd), included terminals/lines/ports, and transport events.
    Run: npx tsx scripts/test_terminal49.ts */
-import { normalizeShipmentDoc } from "../lib/terminal49";
+import { normalizeShipmentDoc, normalizeShipmentResource } from "../lib/terminal49";
 
 let failures = 0;
 function check(name: string, cond: boolean, extra?: unknown) {
@@ -119,6 +119,58 @@ check("no-feed customs unknown", r2.containers[0].customs_state === "unknown", r
 check("no-feed carrier unknown", r2.containers[0].carrier_state === "unknown");
 check("no-feed terminal_supported false", r2.containers[0].terminal_supported === false);
 check("no-feed pickup_ready null", r2.containers[0].pickup_ready === null);
+
+/* Production shape (live OOLU6811152): dotted DCSA event names, cycle ends
+   with empty_in and no gate_out. picked_up must be true so the UI banner
+   says "already picked up" instead of "not ready". */
+const docCompleted: any = {
+  data: {
+    type: "shipments",
+    id: "shp-3",
+    attributes: { bill_of_lading_number: "OOLU1234567890" },
+    relationships: { containers: { data: [{ type: "containers", id: "c7" }] } },
+  },
+  included: [
+    {
+      type: "containers",
+      id: "c7",
+      attributes: {
+        number: "OOLU6811152",
+        available_for_pickup: false,
+        holds_at_pod_terminal: [],
+        fees_at_pod_terminal: [],
+      },
+      relationships: {
+        transport_events: { data: [{ type: "transport_events", id: "e7" }, { type: "transport_events", id: "e8" }] },
+      },
+    },
+    { type: "transport_events", id: "e7", attributes: { event: "container.transport.vessel_discharged", timestamp: "2026-10-20T01:41:00Z" } },
+    { type: "transport_events", id: "e8", attributes: { event: "container.transport.empty_in", timestamp: "2026-10-23T15:57:00Z" } },
+  ],
+};
+const r3 = normalizeShipmentDoc(docCompleted);
+check("completed box picked_up", r3.containers[0].picked_up === true);
+check("completed box customs released (dotted discharge event)", r3.containers[0].customs_state === "released", r3.containers[0].customs_state);
+
+/* Fallback shape: shipment header must come from the sideloaded shipment
+   resource on a container-list response. */
+const shipRes: any = {
+  type: "shipments",
+  id: "shp-9",
+  attributes: {
+    bill_of_lading_number: "OOLU1234567890",
+    vessel_name: "OOCL SPAIN",
+    voyage_number: "012E",
+    shipping_line_scac: "OOLU",
+  },
+  relationships: {},
+};
+const hdr = normalizeShipmentResource(shipRes, new Map());
+check("sideloaded shipment MBL", hdr.bill_of_lading_number === "OOLU1234567890");
+check("sideloaded shipment vessel", hdr.vessel === "OOCL SPAIN" && hdr.voyage === "012E");
+check("sideloaded shipment scac", hdr.shipping_line_scac === "OOLU");
+const hdrNull = normalizeShipmentResource(null, new Map());
+check("null shipment resource stays null", hdrNull.bill_of_lading_number === null && hdrNull.vessel === null);
 
 console.log(failures === 0 ? "\nALL PASS" : `\n${failures} FAILURES`);
 process.exit(failures === 0 ? 0 : 1);

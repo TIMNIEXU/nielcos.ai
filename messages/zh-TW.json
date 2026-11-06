@@ -2834,6 +2834,8 @@
     "sourceLabel": "資料來源",
     "updatedAt": "更新於",
     "ctaWorkspace": "在我的工作台持續追蹤",
-    "ctaQuote": "取得拖櫃報價"
+    "ctaQuote": "取得拖櫃報價",
+    "pickupDone": "✓ 已從碼頭提櫃。",
+    "evTransshipment": "中轉"
   }
 }

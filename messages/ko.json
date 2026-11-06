@@ -2834,6 +2834,8 @@
     "sourceLabel": "데이터 출처",
     "updatedAt": "업데이트",
     "ctaWorkspace": "내 워크스페이스에서 계속 추적",
-    "ctaQuote": "드레이지 견적 받기"
+    "ctaQuote": "드레이지 견적 받기",
+    "pickupDone": "✓ 이미 터미널에서 반출되었습니다.",
+    "evTransshipment": "환적"
   }
 }

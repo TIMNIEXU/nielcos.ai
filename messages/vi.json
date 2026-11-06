@@ -2834,6 +2834,8 @@
     "sourceLabel": "Nguồn dữ liệu",
     "updatedAt": "Cập nhật",
     "ctaWorkspace": "Theo dõi trong workspace của tôi",
-    "ctaQuote": "Nhận báo giá vận chuyển container"
+    "ctaQuote": "Nhận báo giá vận chuyển container",
+    "pickupDone": "✓ Đã lấy khỏi cảng.",
+    "evTransshipment": "Trung chuyển"
   }
 }

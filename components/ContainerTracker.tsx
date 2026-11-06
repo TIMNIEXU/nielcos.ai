@@ -22,6 +22,7 @@ type Cont = {
   carrier_holds: Hold[];
   other_holds: Hold[];
   pickup_ready: boolean | null;
+  picked_up: boolean;
   last_free_day: string | null;
   fees: Fee[];
   events: TrackEvent[];
@@ -69,12 +70,16 @@ function fmtDate(iso: string | null, locale: string): string {
 }
 
 function eventLabel(raw: string, t: L): string {
-  const e = raw.toLowerCase();
+  // Terminal49 event names arrive dotted, e.g. "container.transport.vessel_discharged".
+  const e = raw.toLowerCase().split(".").pop() ?? raw.toLowerCase();
+  if (/transshipment/.test(e) && /discharge/.test(e)) return `${t.evTransshipment} · ${t.evDischarge}`;
+  if (/transshipment/.test(e) && /load/.test(e)) return `${t.evTransshipment} · ${t.evLoaded}`;
+  if (/transshipment/.test(e)) return t.evTransshipment;
   if (/discharge/.test(e)) return t.evDischarge;
   if (/gate_out/.test(e) && /empty/.test(e)) return t.evEmptyOut;
   if (/gate_out/.test(e)) return t.evGateOut;
   if (/gate_in/.test(e)) return t.evGateIn;
-  if (/empty.*return|return.*empty/.test(e)) return t.evEmptyReturn;
+  if (/empty_in|empty.*return|return.*empty/.test(e)) return t.evEmptyReturn;
   if (/vessel.*(arriv|berth)|arriv.*vessel/.test(e)) return t.evArrived;
   if (/depart/.test(e)) return t.evDeparted;
   if (/load/.test(e)) return t.evLoaded;
@@ -120,8 +125,9 @@ function ContainerCard({ c, t, locale }: { c: Cont; t: L; locale: string }) {
     lfdDate && !Number.isNaN(lfdDate.getTime())
       ? Math.ceil((lfdDate.getTime() - Date.now()) / 86_400_000)
       : null;
-  const readyCls =
-    c.pickup_ready === true
+  const readyCls = c.picked_up
+    ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+    : c.pickup_ready === true
       ? "border-emerald-200 bg-emerald-50 text-emerald-800"
       : c.pickup_ready === false
         ? "border-amber-200 bg-amber-50 text-amber-800"
@@ -136,9 +142,10 @@ function ContainerCard({ c, t, locale }: { c: Cont; t: L; locale: string }) {
       </div>
 
       <div className={`mt-4 rounded-2xl border px-4 py-3 text-[14.5px] font-bold ${readyCls}`}>
-        {c.pickup_ready === true && <>{t.pickupReady}</>}
-        {c.pickup_ready === false && <>{t.pickupNotReady}</>}
-        {c.pickup_ready === null && <>{t.pickupUnknown}</>}
+        {c.picked_up && <>{t.pickupDone}</>}
+        {!c.picked_up && c.pickup_ready === true && <>{t.pickupReady}</>}
+        {!c.picked_up && c.pickup_ready === false && <>{t.pickupNotReady}</>}
+        {!c.picked_up && c.pickup_ready === null && <>{t.pickupUnknown}</>}
       </div>
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">

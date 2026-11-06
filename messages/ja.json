@@ -2834,6 +2834,8 @@
     "sourceLabel": "データソース",
     "updatedAt": "更新",
     "ctaWorkspace": "ワークスペースで継続追跡",
-    "ctaQuote": "ドレージ見積もりを取得"
+    "ctaQuote": "ドレージ見積もりを取得",
+    "pickupDone": "✓ ターミナルから引き取り済みです。",
+    "evTransshipment": "積み替え"
   }
 }
