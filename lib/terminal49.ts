@@ -376,7 +376,9 @@ async function createAndPoll(
     return await pollShipmentId(trId);
   } catch (e) {
     if (e instanceof T49Error && e.code === "invalid_number") {
-      return { id: null, failed: true, reason: "http_422" };
+      // Keep the provider's own words — a bare "422" cannot tell a bad
+      // number from an account/plan limit, and they need opposite fixes.
+      return { id: null, failed: true, reason: `422:${e.message}`.slice(0, 160) };
     }
     throw e;
   }
