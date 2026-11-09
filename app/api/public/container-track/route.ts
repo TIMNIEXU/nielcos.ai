@@ -71,7 +71,10 @@ export async function GET(req: NextRequest) {
     if (e instanceof T49Error) {
       const status =
         e.code === "invalid_number" ? 422 : e.code === "not_found" ? 404 : e.status;
-      return NextResponse.json({ ok: false, error: e.code }, { status });
+      return NextResponse.json(
+        { ok: false, error: e.code, ...(e.detail ? { detail: e.detail } : {}) },
+        { status }
+      );
     }
     console.error("container-track error:", (e as Error)?.message);
     return NextResponse.json({ ok: false, error: "upstream_error" }, { status: 502 });

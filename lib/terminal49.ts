@@ -62,10 +62,15 @@ async function t49Fetch(path: string, init?: RequestInit): Promise<any> {
 export class T49Error extends Error {
   code: string;
   status: number;
-  constructor(code: string, status: number, message?: string) {
+  /** Non-sensitive diagnostic trail (which lookup paths were tried and how
+      each failed) — surfaced by the API on not_found so a bad number can be
+      told apart from a carrier-side gap without reading server logs. */
+  detail?: string;
+  constructor(code: string, status: number, message?: string, detail?: string) {
     super(message ?? code);
     this.code = code;
     this.status = status;
+    this.detail = detail;
   }
 }
 
@@ -371,13 +376,13 @@ async function createAndPoll(
     return await pollShipmentId(trId);
   } catch (e) {
     if (e instanceof T49Error && e.code === "invalid_number") {
-      return { id: null, failed: true };
+      return { id: null, failed: true, reason: "http_422" };
     }
     throw e;
   }
 }
 
-type PollOutcome = { id: string | null; failed: boolean };
+type PollOutcome = { id: string | null; failed: boolean; reason?: string };
 
 async function trackingRequestShipmentId(trId: string): Promise<PollOutcome> {
   const doc = await t49Fetch(`/tracking_requests/${trId}`);
@@ -387,7 +392,13 @@ async function trackingRequestShipmentId(trId: string): Promise<PollOutcome> {
   // A "failed" request does NOT prove the number is unknown: Terminal49 can
   // fail the request (e.g. carrier container endpoint) while the container
   // object itself exists in the account — the fallback lookup decides.
-  if (/fail|error/i.test(status)) return { id: null, failed: true };
+  if (/fail|error/i.test(status)) {
+    return {
+      id: null,
+      failed: true,
+      reason: s(doc?.data?.attributes?.failed_reason) ?? status,
+    };
+  }
   return { id: null, failed: false };
 }
 
@@ -456,16 +467,16 @@ async function readyFromContainerDoc(
   return { status: "ready", shipment, containers: [container], fetched_at };
 }
 
-/** Candidate carrier SCACs for a number, from Terminal49's Infer endpoint
+/** Carrier prediction for a number, from Terminal49's Infer endpoint
     (ML over historical movements). Auto-detect inside a tracking request
     fails outright on lessor-owned boxes (live case FDCU0524219: FDCU is
     Florens, the box owner — the carrier moving it is ONE) because the
     prefix names the owner, not the VOCC; the request dies with
     scac_auto_detect_failed. Infer predicts the actual carrier from the
     box's movement history (Terminal49 claims ~9 of 10 for containers).
-    Returns up to 3 SCACs, best first. Never throws — inference is a
-    fallback, not a dependency. */
-async function inferScacCandidates(requestNumber: string): Promise<string[]> {
+    Returns the decision plus up to 3 candidate SCACs, best first.
+    Never throws — inference is a fallback, not a dependency. */
+async function inferScac(requestNumber: string): Promise<{ decision: string; candidates: string[] }> {
   try {
     const doc = await t49Fetch("/tracking_requests/infer_number", {
       method: "POST",
@@ -481,18 +492,53 @@ async function inferScacCandidates(requestNumber: string): Promise<string[]> {
       const scac = s(c?.scac);
       if (scac) ordered.push(scac);
     }
-    return [...new Set(ordered)].slice(0, 3);
+    return {
+      decision: s(line?.decision) ?? "unknown",
+      candidates: [...new Set(ordered)].slice(0, 3),
+    };
   } catch {
-    return [];
+    return { decision: "error", candidates: [] };
   }
 }
 
+/** Infer-guided retry: create tracking requests with each predicted SCAC
+    explicitly. Returns a ready/processing result, or null when every
+    candidate failed (the diary records how). A candidate that is accepted
+    but still resolving short-circuits to "processing" — the next lookup
+    finds it via the account check instead of burning more candidates. */
+async function inferRetry(
+  requestType: TrackRequestType,
+  requestNumber: string,
+  fetched_at: string,
+  diary: string[]
+): Promise<LookupResult | null> {
+  const { decision, candidates } = await inferScac(requestNumber);
+  diary.push(`infer:${decision}:${candidates.length ? candidates.join("/") : "none"}`);
+  for (const scac of candidates) {
+    const r = await createAndPoll(requestType, requestNumber, scac);
+    if (r.id) {
+      const doc = await fetchShipmentDoc(r.id);
+      const norm = normalizeShipmentDoc(doc);
+      if (norm.containers.length > 0) {
+        return { status: "ready", shipment: norm.shipment, containers: norm.containers, fetched_at };
+      }
+      return { status: "processing", fetched_at };
+    }
+    if (!r.failed) return { status: "processing", fetched_at };
+    diary.push(`scac:${scac}:failed:${r.reason ?? "?"}`);
+  }
+  return null;
+}
+
 /** One lookup attempt. Returns null when every path failed with nothing
-    found (the caller retries once before declaring the number unknown). */
+    found (the caller retries once before declaring the number unknown).
+    Every path taken is noted in `diary` (short codes) so a not_found can
+    carry its own diagnosis. */
 async function attemptLookup(
   requestType: TrackRequestType,
   requestNumber: string,
-  allowInfer = false
+  allowInfer = false,
+  diary: string[] = []
 ): Promise<LookupResult | null> {
   const fetched_at = new Date().toISOString();
   // Account first for containers: a request created by an earlier lookup
@@ -505,12 +551,21 @@ async function attemptLookup(
   const first = await createAndPoll(requestType, requestNumber);
   let shipmentId = first.id;
   let failed = first.failed;
+  if (failed && !shipmentId) diary.push(`auto_failed:${first.reason ?? "?"}`);
   // Auto-detect sometimes fails on MBLs; the number's 4-letter prefix is
   // the carrier SCAC for most lines — retry once with it explicitly.
   if (!shipmentId && failed && requestType === "bill_of_lading" && /^[A-Z]{4}/.test(requestNumber)) {
-    const retry = await createAndPoll(requestType, requestNumber, requestNumber.slice(0, 4));
+    const prefix = requestNumber.slice(0, 4);
+    const retry = await createAndPoll(requestType, requestNumber, prefix);
     shipmentId = retry.id;
     failed = retry.failed;
+    if (failed && !shipmentId) diary.push(`prefix_scac_failed:${prefix}:${retry.reason ?? "?"}`);
+    // The prefix is NOT always the SCAC (MSC: prefix MEDU, SCAC MSCU) —
+    // fall back to Infer's predicted carriers before giving up.
+    if (!shipmentId && failed && allowInfer) {
+      const viaInfer = await inferRetry(requestType, requestNumber, fetched_at, diary);
+      if (viaInfer) return viaInfer;
+    }
   }
 
   if (shipmentId) {
@@ -531,21 +586,8 @@ async function attemptLookup(
     // a lessor-owned box whose prefix names the owner, not the carrier.
     // Ask Infer for candidate carriers and retry with each SCAC explicitly.
     if (failed && allowInfer) {
-      const candidates = await inferScacCandidates(requestNumber);
-      for (const scac of candidates) {
-        const r = await createAndPoll(requestType, requestNumber, scac);
-        if (r.id) {
-          const doc = await fetchShipmentDoc(r.id);
-          const norm = normalizeShipmentDoc(doc);
-          if (norm.containers.length > 0) {
-            return { status: "ready", shipment: norm.shipment, containers: norm.containers, fetched_at };
-          }
-          return { status: "processing", fetched_at };
-        }
-        // Request accepted but still resolving — the next lookup finds it
-        // via the account check above; don't burn more candidates now.
-        if (!r.failed) return { status: "processing", fetched_at };
-      }
+      const viaInfer = await inferRetry(requestType, requestNumber, fetched_at, diary);
+      if (viaInfer) return viaInfer;
     }
   }
 
@@ -569,10 +611,16 @@ export async function lookupContainer(
   requestType: TrackRequestType,
   requestNumber: string
 ): Promise<LookupResult> {
-  const first = await attemptLookup(requestType, requestNumber, true);
+  const diary: string[] = [];
+  const first = await attemptLookup(requestType, requestNumber, true, diary);
   if (first) return first;
   await sleep(6000);
-  const second = await attemptLookup(requestType, requestNumber);
+  const second = await attemptLookup(requestType, requestNumber, false, diary);
   if (second) return second;
-  throw new T49Error("not_found", 404, "No tracking data found for this number.");
+  throw new T49Error(
+    "not_found",
+    404,
+    "No tracking data found for this number.",
+    diary.join(" | ").slice(0, 500)
+  );
 }
