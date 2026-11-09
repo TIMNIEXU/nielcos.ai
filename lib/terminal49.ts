@@ -53,6 +53,12 @@ async function t49Fetch(path: string, init?: RequestInit): Promise<any> {
     }
     if (res.status === 401) throw new T49Error("bad_key", 503, String(msg));
     if (res.status === 404) throw new T49Error("not_found", 404, String(msg));
+    // A full account (trial slot limit — pending requests count too) is a
+    // capacity problem, NOT "number not found": surface it distinctly so
+    // the UI never tells a user their cargo doesn't exist.
+    if (res.status === 422 && /tracking slots/i.test(String(msg))) {
+      throw new T49Error("slots_full", 503, String(msg));
+    }
     if (res.status === 422) throw new T49Error("invalid_number", 422, String(msg));
     throw new T49Error("upstream_error", 502, String(msg));
   }
