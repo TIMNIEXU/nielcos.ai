@@ -11,7 +11,7 @@ export default function Footer() {
     { name: "NIEL Group", href: `https://www.nielgroup.com?${UTM}`, logo: "/logo-niel-badge.png" },
     { name: "Niel Supply Chain", href: `https://www.nielsc.com?${UTM}`, logo: "/logo-niel-badge.png" },
     { name: "Niel Customs", href: `https://www.nielcustoms.com?${UTM}`, logo: "/logo-niel-badge.png" },
-    { name: "JOMA Corporate", href: `https://www.jomainc.com?${UTM}`, logo: "/logo-joma-logistics.png" },
+    { name: "JOMA Corporate", href: `https://www.jomainc.com?${UTM}`, logo: "/joma-logo.png" },
     { name: "JOMA Logistics", href: `https://www.jomaus.com?${UTM}`, logo: "/logo-joma-logistics.png" },
     { name: "Niel Insurance", href: `https://nielinsurance.com?${UTM}`, logo: "/logo-niel-insurance.png" },
     { name: "NIEL COS", href: `/${locale}`, logo: "/logo-niel-badge.png" },
@@ -43,7 +43,7 @@ export default function Footer() {
                   <img
                     src={b.logo}
                     alt={b.name}
-                    className="h-8 w-auto max-w-[84px] object-contain"
+                    className="h-8 w-auto max-w-[150px] object-contain"
                   />
                   <span className="whitespace-nowrap text-[13px] font-bold text-[#0c1a33]">
                     {b.name}
