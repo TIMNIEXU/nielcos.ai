@@ -63,7 +63,7 @@ export default async function ContactPage({
       <section className="mx-auto max-w-7xl px-5 pb-20 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-[1.15fr_1fr]">
           <Reveal>
-            <ContactForm />
+            <ContactForm locale={locale} />
           </Reveal>
           <div className="space-y-4">
             <Reveal delay={100}>

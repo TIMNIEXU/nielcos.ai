@@ -7,7 +7,7 @@
       "name": "Full name",
       "note": "Prefer email? Write to us directly — we reply within one business day.",
       "sub": "Tell us about your operation and we'll tailor the walkthrough.",
-      "submit": "Send request",
+      "submit": "Send request", "sent": "Request received — we'll reply within one business day.", "fallback": "Couldn't send it automatically, so your email app is open instead — please press send there.",
       "title": "Request a demo"
     },
     "hero": {

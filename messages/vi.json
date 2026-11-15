@@ -5,7 +5,7 @@
       "email": "Email công việc",
       "message": "Bạn đang cử động phần nào, và chỗ nào bị đau?",
       "name": "Họ và tên",
-      "note": "Bạn thích liên hệ qua email hơn? Hãy gửi email trực tiếp cho chúng tôi — chúng tôi sẽ trả lời trong vòng một ngày làm việc.",
+      "note": "Bạn thích liên hệ qua email hơn? Hãy gửi email trực tiếp cho chúng tôi — chúng tôi sẽ trả lời trong vòng một ngày làm việc.", "sent": "Đã nhận được yêu cầu của quý vị — chúng tôi sẽ trả lời trong vòng một ngày làm việc.", "fallback": "Không thể gửi tự động, ứng dụng email của quý vị đã được mở — vui lòng nhấn gửi ở đó.",
       "sub": "Hãy cho chúng tôi biết về quy trình hoạt động của quý vị và chúng tôi sẽ thiết kế hướng dẫn phù hợp với nhu cầu của quý vị.",
       "submit": "Gửi yêu cầu",
       "title": "Yêu cầu bản demo"
