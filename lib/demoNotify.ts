@@ -3,10 +3,9 @@
  *
  * No-ops silently when RESEND_API_KEY is not configured, so the site
  * works before the key is added. Optional env:
- *   DEMO_NOTIFY_TO   recipient (default tim@jomaus.com — the Resend
- *                     account owner's address. Resend's onboarding
- *                     sender can only deliver to the account owner
- *                     until the nielcos.ai domain is verified in
+ *   DEMO_NOTIFY_TO   recipient (default tim@jomainc.com. Resend's
+ *                     onboarding sender can only deliver to the account
+ *                     owner until the nielcos.ai domain is verified in
  *                     Resend; set this to sales@nielcos.ai after that)
  *   DEMO_NOTIFY_FROM sender (default Resend's onboarding sender)
  */
@@ -19,7 +18,7 @@ export async function notifyNewDemoRequest(d: {
 }): Promise<void> {
   const key = process.env.RESEND_API_KEY;
   if (!key) return;
-  const to = process.env.DEMO_NOTIFY_TO || "tim@jomaus.com";
+  const to = process.env.DEMO_NOTIFY_TO || "tim@jomainc.com";
   const from =
     process.env.DEMO_NOTIFY_FROM ||
     "NIEL COS Website <onboarding@resend.dev>";
